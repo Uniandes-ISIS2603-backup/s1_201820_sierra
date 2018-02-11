@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.AdquisicionDetailDTO;
-import co.edu.uniandes.csw.sierra.dtos.SierraDetailDTO;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
