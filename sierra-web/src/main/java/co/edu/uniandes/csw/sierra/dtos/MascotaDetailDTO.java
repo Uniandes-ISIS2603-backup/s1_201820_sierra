@@ -9,8 +9,17 @@ package co.edu.uniandes.csw.sierra.dtos;
  *
  * @author jc.sanchez12
  */
-public class MascotaDetailDTO 
+public class MascotaDetailDTO extends  MascotaDTO
 {
+    
+    /**
+     * Constructor por defecto
+    */
+    public MascotaDetailDTO()
+    {
+        super();
+    }
+    
     
     
 }
