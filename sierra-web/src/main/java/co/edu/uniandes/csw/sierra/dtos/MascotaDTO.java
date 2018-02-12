@@ -31,7 +31,7 @@ import java.util.Date;
  *   {
  *      "id": number,
  *      "name: String,
- *      "apellido": String, 
+ *      "genero": String
  *      "edad": number,
  *      "color": String,
  *      "esteril":boolean,
@@ -48,8 +48,7 @@ import java.util.Date;
  *
  *   {
  *      "id": 31,
- *      "name: "Rodolfo",
- *      "apellido": "Heinsteger",
+ *      "name: "Ircops",
  *      "edad": 2,
  *      "color":"negro",
  *      "esteril":true,
@@ -79,7 +78,7 @@ public class MascotaDTO
     /**
      * apellido de la  mascota
      */
-    private String apellido;
+    private String genero;
     
     /**
      * edad de la mascota
@@ -159,17 +158,17 @@ public class MascotaDTO
     }
 
     /**
-     * @return the apellido
+     * @return the genero
      */
-    public String getApellido() {
-        return apellido;
+    public String getGenero() {
+        return genero;
     }
 
     /**
-     * @param apellido the apellido to set
+     * @param genero the apellido to set
      */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     /**

@@ -40,9 +40,9 @@ package co.edu.uniandes.csw.sierra.dtos;
  *
  *   {
  *      "id": 1,
- *      "nombre": "Lobo Siberiano",
+ *      "nombre": "Perro",
  *      "caracteristicas": "Perros  similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color", 
- *      "clasificacion": "perro"
+ *      "clasificacion": "Mamifero"
  *   }
  *
  * </pre>
