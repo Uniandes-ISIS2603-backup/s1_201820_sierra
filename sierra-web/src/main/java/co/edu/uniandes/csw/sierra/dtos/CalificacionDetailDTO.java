@@ -11,4 +11,8 @@ package co.edu.uniandes.csw.sierra.dtos;
  */
 public class CalificacionDetailDTO extends CalificacionDTO{
     
+    
+    public CalificacionDetailDTO(){
+        super();
+    }
 }
