@@ -9,10 +9,10 @@ package co.edu.uniandes.csw.sierra.dtos;
  *
  * @author jd.zambrano
  */
-public class CalificacionDetailDTO extends CalificacionDTO{
+public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     
     
-    public CalificacionDetailDTO(){
+    public AcontecimientoDetailDTO(){
         super();
     }
 }

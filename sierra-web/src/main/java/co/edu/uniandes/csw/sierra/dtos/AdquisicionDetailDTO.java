@@ -11,4 +11,9 @@ package co.edu.uniandes.csw.sierra.dtos;
  */
 public class AdquisicionDetailDTO extends AdquisicionDTO{
     
+    
+    
+    public AdquisicionDetailDTO(){
+        super();
+    }
 }

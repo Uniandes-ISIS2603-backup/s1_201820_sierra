@@ -15,9 +15,9 @@ import java.util.Date;
  */
 public class AdquisicionDTO {
     
-    private long id;
+    private Long id;
     
-    private double valorTotal;
+    private Double valorTotal;
     
     private Date fecha;
     
@@ -28,28 +28,28 @@ public class AdquisicionDTO {
     /**
      * @return the ID
      */
-    public long getID() {
+    public Long getID() {
         return id;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 
     /**
      * @return the valorTotal
      */
-    public double getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
     /**
      * @param valorTotal the valorTotal to set
      */
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 

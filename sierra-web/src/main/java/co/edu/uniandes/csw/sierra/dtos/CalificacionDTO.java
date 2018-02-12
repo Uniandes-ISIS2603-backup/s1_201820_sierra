@@ -11,25 +11,25 @@ package co.edu.uniandes.csw.sierra.dtos;
  */
 public class CalificacionDTO {
     
-    private long id;
+    private Long id;
     
     private String comentarios;
     
-    private double valor;
+    private Double valor;
     
     private String sugerencia;
 
     /**
      * @return the ID
      */
-    public long getID() {
+    public Long getID() {
         return id;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 
@@ -50,14 +50,14 @@ public class CalificacionDTO {
     /**
      * @return the valor
      */
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
