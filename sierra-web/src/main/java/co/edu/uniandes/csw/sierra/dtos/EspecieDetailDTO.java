@@ -9,6 +9,15 @@ package co.edu.uniandes.csw.sierra.dtos;
  *
  * @author jc.sanchez12
  */
-public class EspecieDetailDTO {
+public class EspecieDetailDTO extends EspecieDTO
+{
+    
+     /**
+     * Constructor por defecto
+    */
+    public EspecieDetailDTO()
+    {
+        super();
+    }
     
 }
