@@ -6,8 +6,28 @@
 package co.edu.uniandes.csw.sierra.dtos;
 
 /**
- *
- * @author jd.zambrano
+ * CalificacionDTO es el objeto de transferencia de datos de la entidad Calificacion.
+ * <p>
+ * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
+ * <pre>
+ *  {
+ *      "id":number,
+ *      "comentarios":string,
+ *      "valor":number,
+ *      "sugerencia":string
+ *  }
+ * </pre>
+ * * Por ejemplo, una Calificacion se representaria de la siguiente manera:<br>
+ * <p>
+ * <pre>
+ *  {
+ *      "id":5,
+ *      "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
+ *      "valor":20000,
+ *      "sugerencia":"You don't mess with perfection"
+ *  }
+ * </pre>
+ * @author Juan David Zambrano
  */
 public class CalificacionDTO {
     

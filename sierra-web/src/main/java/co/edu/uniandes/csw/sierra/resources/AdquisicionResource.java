@@ -41,7 +41,7 @@ public class AdquisicionResource {
     }
     
     @GET
-    public ArrayList<AdquisicionDetailDTO> getAdquisiciones(){
+    public List<AdquisicionDetailDTO> getAdquisiciones(){
         return new ArrayList<>();
     }
     

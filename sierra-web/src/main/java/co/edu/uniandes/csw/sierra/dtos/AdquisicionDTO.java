@@ -10,8 +10,26 @@ import java.util.Date;
 
 
 /**
- *
- * @author jd.zambrano
+ * AdquisicionDTO es el objeto de transferencia de datos de la entidad Adquisicion.
+ * <p>
+ * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
+ * <pre>
+ *  {
+ *      "id":number,
+ *      "valorTotal":number,
+ *      "fecha":date
+ *  }
+ * </pre>
+ * * Por ejemplo, una Adquisicion se representaria de la siguiente manera:<br>
+ * <p>
+ * <pre>
+ *  {
+ *      "id":1,
+ *      "valorTotal":10000,
+ *      "fecha":"20/05/2014"
+ *  }
+ * </pre>
+ * @author Juan David Zambrano
  */
 public class AdquisicionDTO {
     
