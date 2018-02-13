@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * URL: /api/adquisiciones
  * </pre>
  *
- * @author ISIS2603
+ * @author Juan David Zambrano
  * @version 1.0
  */
 
