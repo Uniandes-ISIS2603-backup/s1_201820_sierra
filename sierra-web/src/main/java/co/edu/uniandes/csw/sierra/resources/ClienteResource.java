@@ -94,7 +94,7 @@ public class ClienteResource
      * @return JSON {@link ClienteDetailDTO} - El cliente buscado.
      */
     @GET
-    @Path("{id: \\d+")
+    @Path("{id: \\d+}")
     public ClienteDetailDTO getCliente(@PathParam("id") Long id)
     {
         return null;
