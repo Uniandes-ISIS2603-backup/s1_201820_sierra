@@ -79,6 +79,22 @@ public class EspecieDTO {
    {
         //Constructor por defecto
    }
+   
+   /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param especieEntity: Es la entidad que se va a convertir a DTO
+	 */
+	/**public SierraDTO( especieEntity especieEntity )
+	{
+		this.id = especieEntity.getId( );
+		this.nombre = especieEntity.getNombre( );
+		this.clasificacion = especieEntity.getClasificacion( );
+                this.caracteristicas = especieEntity.getCaracteristicas( );
+
+	}
+        * /
 
     /**
      * @return the nombre
@@ -111,14 +127,14 @@ public class EspecieDTO {
     /**
      * @return the calificacion
      */
-    public String getCalificacion() {
+    public String getClasificacion() {
         return clasificacion;
     }
 
     /**
      * @param calificacion the calificacion to set
      */
-    public void setCalificacion(String calificacion) {
+    public void setClasificacion(String calificacion) {
         this.clasificacion = calificacion;
     }
 

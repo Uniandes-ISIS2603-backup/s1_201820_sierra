@@ -129,6 +129,31 @@ public class MascotaDTO
         //Constructor por defecto
    }
 
+   /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param mascotaEntity: Es la entidad que se va a convertir a DTO
+	 */
+	/**public SierraDTO( mascotaEntity mascotaEntity )
+	{
+		this.id = mascotaEntity.getId( );
+		this.nombre = mascotaEntity.getNombre( );
+		this.genero = mascotaEntity.getGenero( );
+                this.edad = mascotaEntity.getEdad( );
+                this.color = mascotaEntity.getColor( );
+                this.esteril = mascotaEntity.getEsteril( );
+                this.adquirido = mascotaEntity.getAdquirido( );
+                this.imagen = mascotaEntity.getImagen( );
+                this.tamano = mascotaEntity.getTamano( );
+                this.nacimiento = mascotaEntity.getNacimineto( );
+                this.muerte = mascotaEntity.getMuerte( );
+
+	}
+        * /
+
+   
+   
     /**
      * @return the id
      */
