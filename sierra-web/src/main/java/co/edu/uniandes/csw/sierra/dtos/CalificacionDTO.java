@@ -54,14 +54,14 @@ public class CalificacionDTO {
     private String sugerencia;
 
     /**
-     * @return the ID
+     * @return the id
      */
     public Long getID() {
         return id;
     }
 
     /**
-     * @param ID the ID to set
+     * @param id the id to set
      */
     public void setID(Long id) {
         this.id = id;
