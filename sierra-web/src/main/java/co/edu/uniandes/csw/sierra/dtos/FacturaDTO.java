@@ -19,7 +19,7 @@ import java.util.Date;
  *  "fecha": date
  * }
  * * </pre>
- * Por ejemplo, una adquisición se representa de la siguiente manera: <br>
+ * Por ejemplo, una factura se representa de la siguiente manera: <br>
  * <p>
  * <pre>
  * {

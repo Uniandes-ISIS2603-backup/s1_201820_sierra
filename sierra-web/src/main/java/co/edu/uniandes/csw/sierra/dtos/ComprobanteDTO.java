@@ -11,6 +11,24 @@ import java.util.Date;
  *ComprobanteDTO es el objeto de transferencia de datos detallada de la entidad Comprobante.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
+ * <pre>
+ * {
+ *  "id":number,
+ *  "valorTotal": number,
+ *  "fecha": date,
+ *  "clienteId": number
+ * }
+ * </pre>
+ * Por ejemplo, un comprobante se representaría de la siguiente forma:<br>
+ * <p>
+ * <pre>
+ * {
+ *  "id":  1001,
+ *  "valorTotal": 200000,
+ *  "fecha": "13/02/2018",
+ *  "clienteId": 2007
+ * }
+ * </pre>
  * @author ja.amortegui10
  */
 public class ComprobanteDTO {
