@@ -110,8 +110,7 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
     
     private MascotaDTO mascota;
     
-    //TODO: hacer toca que alguien suba facturaDTO
-    //private FacturaDTO factura
+    private FacturaDTO factura;
     
     private ClienteDTO cliente;
     
@@ -159,5 +158,19 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
      */
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
+    }
+
+    /**
+     * @return the factura
+     */
+    public FacturaDTO getFactura() {
+        return factura;
+    }
+
+    /**
+     * @param factura the factura to set
+     */
+    public void setFactura(FacturaDTO factura) {
+        this.factura = factura;
     }
 }
