@@ -38,7 +38,6 @@ public class FacturaDTO {
     
     public FacturaDTO()
     {
-        
     }
 
     public long getId() {
