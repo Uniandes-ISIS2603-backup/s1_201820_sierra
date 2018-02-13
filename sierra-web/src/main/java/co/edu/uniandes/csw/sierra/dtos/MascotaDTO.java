@@ -39,7 +39,7 @@ import java.util.Date;
  *      "imagen":String,
  *      "tamano":String,
  *      "nacimiento": Date,
- *      "muerte": Date,
+ *      "muerte": Date
  *   }
  * </pre>
  * Por ejemplo una entidad de Mascota se representa asi:<br>

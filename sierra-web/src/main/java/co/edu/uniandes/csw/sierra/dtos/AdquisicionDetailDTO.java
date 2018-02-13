@@ -47,7 +47,12 @@ package co.edu.uniandes.csw.sierra.dtos;
  *          "nacimiento": Date,
  *          "muerte": Date
  *      },
- *      "factura":"FALTA EL DTO DE FACTURA!!!!!",
+ *      "factura":
+ *      {
+ *          "id": number, 
+ *          "valorTotal": number,
+ *          "fecha": date
+ *      },
  *      "cliente":{
  *          "name": string,
  *          "apellido": string,
@@ -82,7 +87,12 @@ package co.edu.uniandes.csw.sierra.dtos;
     *      "nacimiento": 03/10/2016,
  *          "muerte": 
  *      },
- *      "factura":"FALTA EL DTO DE FACTURA!!!!!(si, otra vez)",
+ *      "factura":
+ *      {
+ *          "id": 1001,
+ *          "valorTotal": 20000,
+ *          "fecha": "13/02/2018"
+ *      },
  *      "cliente":{
  *          "name": "Andres",
  *          "apellido": "Castro",

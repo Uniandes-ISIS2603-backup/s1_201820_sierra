@@ -5,9 +5,20 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 
+import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
+import co.edu.uniandes.csw.sierra.dtos.EspecieDTO;
+import co.edu.uniandes.csw.sierra.dtos.EspecieDetailDTO;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -33,5 +44,35 @@ import javax.ws.rs.Produces;
 @Consumes( "application/json" )
 @RequestScoped
 public class EspecieResource {
+   
+    @POST
+    public EspecieDetailDTO createEspecie(EspecieDetailDTO dto){
+        return dto;
+    }
     
+    @GET
+    public List<EspecieDetailDTO> getEspecies(){
+        return new ArrayList<>();
+    }
+    
+    @GET
+    @Path( "{id: \\d+}" )
+    public EspecieDetailDTO getEspecie( @PathParam( "id" ) Long id )
+    {
+        return null;
+    }
+    
+    @PUT
+    @Path( "{id: \\d+}" )
+    public EspecieDetailDTO updateEspecie( @PathParam( "id" ) Long id, EspecieDetailDTO dDTO ) throws BusinessLogicException
+    {
+	return dDTO;
+    }
+    
+    @DELETE
+    @Path( "{id: \\d+}" )
+    public void deleteEspecie( @PathParam( "id" ) Long id )
+    {
+    	
+    }
 }
