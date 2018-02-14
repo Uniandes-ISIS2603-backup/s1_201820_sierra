@@ -36,7 +36,7 @@ import javax.ws.rs.Produces;
  * @version 1.0
  */
 
-@Path( "razas" )
+@Path( "certificados" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
