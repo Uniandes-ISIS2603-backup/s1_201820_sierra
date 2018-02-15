@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -60,7 +61,7 @@ public class ComprobanteResource {
      *
      */
     @POST
-    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO comprobante)
+    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO comprobante) throws BusinessLogicException
     {
         return comprobante;
     }
@@ -120,7 +121,7 @@ public class ComprobanteResource {
      * </code>
      * </pre>
      * @param id Identificador de la entidad de comprobante que se desea actualizar. Este debe ser una cadena de digitos.
-     * @param infoComprobante {@link ComprobanteDetaiDTO} la entidad de comprobante que se desea guardar.
+     * @param infoComprobante {@link ComprobanteDetailDTO} la entidad de comprobante que se desea guardar.
      * @return JSON {@link ComprobanteDetailDTO} - La entidad de comprobante guardada.
      * @throws BusinessLogicException {@link BusinessLogicException}  Error de logica que se genera al no poder actualizar la entidad de Comprobante porque ya existe una con ese nombre.
      */

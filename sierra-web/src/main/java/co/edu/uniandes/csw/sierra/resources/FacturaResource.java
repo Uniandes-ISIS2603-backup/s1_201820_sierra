@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -121,7 +122,7 @@ public class FacturaResource {
      * </code>
      * </pre>
      * @param id Identificador de la entidad de factura que se desea actualizar. Este debe ser una cadena de digitos.
-     * @param infoFactura {@link FacturaDetailDETO} la entidad de factura que se desea guardar.
+     * @param infoFactura {@link FacturaDetailDTO} la entidad de factura que se desea guardar.
      * @return JSON {@link FacturaDetailDTO} - La entidad de factura guardada.
      * @throws BusinessLogicException {@link BusinessLogicException}  Error de logica que se genera al no poder actualizar la entidad de Factura porque ya existe una con ese nombre.
      */

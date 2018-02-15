@@ -24,9 +24,10 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,6 +40,8 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class EspeciePersistence 
 {
+    private static final Logger LOGGER = Logger.getLogger( SierraPersistence.class.getName( ) );
+    
     /**
      * Base de datos de persistencia
      */

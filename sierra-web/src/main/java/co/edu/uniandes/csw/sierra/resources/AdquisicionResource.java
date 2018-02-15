@@ -59,7 +59,7 @@ public class AdquisicionResource {
      * @throws BusinessLogicException Error de logica: ya existe una adquisicion igual.
      */
     @POST
-    public AdquisicionDetailDTO createAdquisicion(AdquisicionDetailDTO dto){
+    public AdquisicionDetailDTO createAdquisicion(AdquisicionDetailDTO dto) throws BusinessLogicException{
         return dto;
     }
     
