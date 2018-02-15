@@ -20,6 +20,7 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import java.util.Date;
 
 /**
@@ -98,7 +99,7 @@ public class MascotaDTO
     /**
      * verificacion si esta  adquirida la mascota
      */
-    private boolean adquirida;
+    private boolean adquirido;
     
     /**
      * imagen de la mascota
@@ -129,28 +130,28 @@ public class MascotaDTO
         //Constructor por defecto
    }
 
-   /**
+         /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
 	 *
 	 * @param mascotaEntity: Es la entidad que se va a convertir a DTO
 	 */
-	/**public SierraDTO( mascotaEntity mascotaEntity )
+	public MascotaDTO( MascotaEntity mascotaEntity )
 	{
 		this.id = mascotaEntity.getId( );
 		this.nombre = mascotaEntity.getNombre( );
 		this.genero = mascotaEntity.getGenero( );
                 this.edad = mascotaEntity.getEdad( );
                 this.color = mascotaEntity.getColor( );
-                this.esteril = mascotaEntity.getEsteril( );
-                this.adquirido = mascotaEntity.getAdquirido( );
+                this.esteril = mascotaEntity.isEsteril( );
+                this.adquirido = mascotaEntity.isAdquirido( );
                 this.imagen = mascotaEntity.getImagen( );
                 this.tamano = mascotaEntity.getTamano( );
-                this.nacimiento = mascotaEntity.getNacimineto( );
+                this.nacimiento = mascotaEntity.getNacimiento( );
                 this.muerte = mascotaEntity.getMuerte( );
 
 	}
-        * /
+      
 
    
    
@@ -241,15 +242,15 @@ public class MascotaDTO
     /**
      * @return the adquirida
      */
-    public boolean isAdquirida() {
-        return adquirida;
+    public boolean isAdquirido() {
+        return adquirido;
     }
 
     /**
-     * @param adquirida the adquirida to set
+     * @param adquirido the adquirida to set
      */
-    public void setAdquirida(boolean adquirida) {
-        this.adquirida = adquirida;
+    public void setAdquirido(boolean adquirido) {
+        this.adquirido = adquirido;
     }
 
     /**

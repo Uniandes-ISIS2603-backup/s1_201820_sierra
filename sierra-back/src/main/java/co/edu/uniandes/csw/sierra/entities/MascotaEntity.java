@@ -1,21 +1,46 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+The MIT License (MIT)
+
+Copyright (c) 2015 Los Andes University
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Entity
 public class MascotaEntity extends BaseEntity implements Serializable
 {
-    //Atributos
+
+    /**
+     * Codigo serializable por SA
+     */
+    private static final long serialVersionUID = 1L;
+    
     
      /**
      * nombre de la  mascota
@@ -45,7 +70,7 @@ public class MascotaEntity extends BaseEntity implements Serializable
     /**
      * verificacion si esta  adquirida la mascota
      */
-    private boolean adquirida;
+    private boolean adquirido;
     
     /**
      * imagen de la mascota
@@ -60,32 +85,15 @@ public class MascotaEntity extends BaseEntity implements Serializable
     /**
      * Fecha de la  nacimiento de la amscota
      */
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date nacimiento;
     
      /**
      * Fecha dela muerte de la amscota
      */
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date muerte;
     
-     /**
-     * Especie de la mascota
-     */
-    private EspecieEntity especie;
-    
-    /**
-     * Raza de la  mascota
-     */
-    private RazaEntity raza;
-    
-    /**
-     * Publicaciones de la mascota
-     */
-     private List<PublicacionEntity> publicaciones;
-     
-     /**
-      *  Adquisiciones de a mascota
-      */
-      private List<AdquisicionEntity> adquisiciones;
 
     /**
      * @return the nombre
@@ -160,15 +168,15 @@ public class MascotaEntity extends BaseEntity implements Serializable
     /**
      * @return the adquirida
      */
-    public boolean isAdquirida() {
-        return adquirida;
+    public boolean isAdquirido() {
+        return adquirido;
     }
 
     /**
-     * @param adquirida the adquirida to set
+     * @param adquirido the adquirida to set
      */
-    public void setAdquirida(boolean adquirida) {
-        this.adquirida = adquirida;
+    public void setAdquirido(boolean adquirido) {
+        this.adquirido = adquirido;
     }
 
     /**
@@ -214,6 +222,7 @@ public class MascotaEntity extends BaseEntity implements Serializable
     }
 
     /**
+     * 
      * @return the muerte
      */
     public Date getMuerte() {
@@ -227,62 +236,5 @@ public class MascotaEntity extends BaseEntity implements Serializable
         this.muerte = muerte;
     }
 
-    /**
-     * @return the especie
-     */
-    public EspecieEntity getEspecie() {
-        return especie;
-    }
-
-    /**
-     * @param especie the especie to set
-     */
-    public void setEspecie(EspecieEntity especie) {
-        this.especie = especie;
-    }
-
-    /**
-     * @return the raza
-     */
-    public RazaEntity getRaza() {
-        return raza;
-    }
-
-    /**
-     * @param raza the raza to set
-     */
-    public void setRaza(RazaEntity raza) {
-        this.raza = raza;
-    }
-
-    /**
-     * @return the publicaciones
-     */
-    public List<PublicacionEntity> getPublicaciones() {
-        return publicaciones;
-    }
-
-    /**
-     * @param publicaciones the publicaciones to set
-     */
-    public void setPublicaciones(List<PublicacionEntity> publicaciones) {
-        this.publicaciones = publicaciones;
-    }
-
-    /**
-     * @return the adquisiciones
-     */
-    public List<AdquisicionEntity> getAdquisiciones() {
-        return adquisiciones;
-    }
-
-    /**
-     * @param adquisiciones the adquisiciones to set
-     */
-    public void setAdquisiciones(List<AdquisicionEntity> adquisiciones) {
-        this.adquisiciones = adquisiciones;
-    }
-      
-      
-      
+   
 }
