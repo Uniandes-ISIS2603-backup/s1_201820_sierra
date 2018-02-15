@@ -6,13 +6,52 @@
 package co.edu.uniandes.csw.sierra.dtos;
 
 /**
- *
- * @author jd.zambrano
- */
+ * PublicacionDTO es el objeto de transferencia de datos detallada de la entidad Publicacion.
+ * <p>
+ * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
+ * <pre>
+ * {
+ * "id": number,
+ * "comentario": String,
+ * "fecha": Date,
+ * "tipo": String,
+ * "fotoURL":String,
+ },
+ * "mascota":{
+ *          "id": number,
+ *          "name: String,
+ *          "genero": String
+ *          "edad": number,
+ *          "color": String,
+ *          "esteril":boolean,
+ *          "adquirido":boolean,
+ *          "imagen":String,
+ *          "tamano":String,
+ *          "nacimiento": Date,
+ *          "muerte": Date
+ *      }
+ * }
+ *  </pre>
+ * @author Ja.penat
+ **/
 public class PublicacionDetailDTO extends PublicacionDTO{
+    
+    private MascotaDTO mascota;
     
     public PublicacionDetailDTO(){
         super();
     }
-    
+     /**
+     * @return the mascota
+     */
+    public MascotaDTO getMascota() {
+        return mascota;
+    }
+
+    /**
+     * @param mascota the mascota to set
+     */
+    public void setMascota(MascotaDTO mascota) {
+        this.mascota = mascota;
+    }
 }
