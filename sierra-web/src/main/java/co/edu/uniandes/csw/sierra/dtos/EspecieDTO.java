@@ -20,6 +20,8 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+
 /**
  * EspecieDTO Objeto de transferencia de datos de la entidad de Especie. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -86,7 +88,7 @@ public class EspecieDTO {
 	 *
 	 * @param especieEntity: Es la entidad que se va a convertir a DTO
 	 */
-	/**public SierraDTO( especieEntity especieEntity )
+	public EspecieDTO( EspecieEntity especieEntity )
 	{
 		this.id = especieEntity.getId( );
 		this.nombre = especieEntity.getNombre( );
@@ -94,7 +96,7 @@ public class EspecieDTO {
                 this.caracteristicas = especieEntity.getCaracteristicas( );
 
 	}
-        * /
+       
 
     /**
      * @return the nombre

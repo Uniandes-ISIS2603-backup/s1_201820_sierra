@@ -151,9 +151,7 @@ public class MascotaDTO
                 this.muerte = mascotaEntity.getMuerte( );
 
 	}
-      
-
-   
+  
    
     /**
      * @return the id
