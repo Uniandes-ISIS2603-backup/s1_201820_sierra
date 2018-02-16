@@ -70,7 +70,7 @@ public class EspecieDTO {
     /**
      * id  de la  especie
      */
-    private long  id;
+    private Long  id;
     
       /**
    *Constructor por defecto

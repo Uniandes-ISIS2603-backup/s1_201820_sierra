@@ -84,7 +84,7 @@ public class MascotaDTO
     /**
      * edad de la mascota
      */
-    private int edad;
+    private Integer edad;
     
     /**
      * color de la  mascota
@@ -94,12 +94,12 @@ public class MascotaDTO
     /**
      * verificacion si la mascota es esteril
      */
-    private boolean esteril;
+    private Boolean esteril;
     
     /**
      * verificacion si esta  adquirida la mascota
      */
-    private boolean adquirido;
+    private Boolean adquirido;
     
     /**
      * imagen de la mascota
@@ -200,7 +200,7 @@ public class MascotaDTO
     /**
      * @return the edad
      */
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
@@ -228,7 +228,7 @@ public class MascotaDTO
     /**
      * @return the esteril
      */
-    public boolean isEsteril() {
+    public Boolean isEsteril() {
         return esteril;
     }
 
@@ -242,7 +242,7 @@ public class MascotaDTO
     /**
      * @return the adquirida
      */
-    public boolean isAdquirido() {
+    public Boolean isAdquirido() {
         return adquirido;
     }
 
