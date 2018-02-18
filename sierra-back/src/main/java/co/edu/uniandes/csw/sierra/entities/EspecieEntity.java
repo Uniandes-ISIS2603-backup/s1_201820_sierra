@@ -1,14 +1,18 @@
 /*
-MIT License
-Copyright (c) 2017 ISIS2603
+The MIT License (MIT)
+
+Copyright (c) 2015 Los Andes University
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,44 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-package co.edu.uniandes.csw.sierra.dtos;
+package co.edu.uniandes.csw.sierra.entities;
 
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
- * EspecieDTO Objeto de transferencia de datos de la entidad de Especie. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
- * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * <pre>
- *   {
- *      "id": number,
- *      "nombre": String,
- *      "caracteristicas": String, 
- *      "clasificacion": String
- *    
- *   }
- * </pre>
- * Por ejemplo una entidad de Especie se representa asi:<br>
- * <p>
- * <pre>
- *
- *   {
- *      "id": 1,
- *      "nombre": "Perro",
- *      "caracteristicas": "Perros  similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color", 
- *      "clasificacion": "Mamifero"
- *   }
- *
- * </pre>
  *
  * @author jc.sanchez12
  */
-
-public class EspecieDTO {
-    
-    
+@Entity
+public class EspecieEntity extends BaseEntity implements Serializable
+{
     /**
+     * Codigo serializable por SA
+     */
+    private static final long serialVersionUID = 1L;
+    
+      /**
      * nombre de la especie
      */
     private String nombre;
@@ -69,34 +53,7 @@ public class EspecieDTO {
      */
     private String clasificacion;
     
-    /**
-     * id  de la  especie
-     */
-    private Long  id;
-    
-      /**
-   *Constructor por defecto
-   */
-   public EspecieDTO()
-   {
-        //Constructor por defecto
-   }
-   
-   /**
-	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-	 * la entidad que viene de argumento.
-	 *
-	 * @param especieEntity: Es la entidad que se va a convertir a DTO
-	 */
-	public EspecieDTO( EspecieEntity especieEntity )
-	{
-		this.id = especieEntity.getId( );
-		this.nombre = especieEntity.getNombre( );
-		this.clasificacion = especieEntity.getClasificacion( );
-                this.caracteristicas = especieEntity.getCaracteristicas( );
-
-	}
-       
+  
 
     /**
      * @return the nombre
@@ -127,34 +84,18 @@ public class EspecieDTO {
     }
 
     /**
-     * @return the calificacion
+     * @return the clasificacion
      */
     public String getClasificacion() {
         return clasificacion;
     }
 
     /**
-     * @param calificacion the calificacion to set
+     * @param clasificacion the clasificacion to set
      */
-    public void setClasificacion(String calificacion) {
-        this.clasificacion = calificacion;
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
-    /**
-     * @return the id
-     */
-    public long  getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(long  id) {
-        this.id = id;
-    }
-   
-   
-   
-    
+     
 }

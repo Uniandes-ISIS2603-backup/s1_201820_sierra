@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.*;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.*;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
@@ -69,7 +70,7 @@ public class ClienteResource
      * 200 OK Devuelve todos clientes de la aplicacion.</code>
      * </pre>
      * 
-     * @return JSONArray {@link CLienteDetailDTO} - los clientes encontrados en la aplicacion. Si no hay ninguno retorna vacio.
+     * @return JSONArray {@link ClienteDetailDTO} - los clientes encontrados en la aplicacion. Si no hay ninguno retorna vacio.
      */
     @GET
     public List<ClienteDetailDTO> getClientes ()
