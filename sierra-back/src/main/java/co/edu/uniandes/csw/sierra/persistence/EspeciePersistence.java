@@ -86,7 +86,7 @@ public class EspeciePersistence
      * @param id: id correspondiente a la especie buscada.
      * @return una especie.
      */   
-     public EspecieEntity find(Long id) {
+     public EspecieEntity findById(Long id) {
         LOGGER.log(Level.INFO, "Consultando especie con id={0}", id);
         return em.find(EspecieEntity.class, id);
     }
