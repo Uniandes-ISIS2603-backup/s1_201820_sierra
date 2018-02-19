@@ -69,7 +69,7 @@ public class EspecieLogic
      */
      public EspecieEntity getById( Long id )
      {
-	return persistence.find( id );
+	return persistence.findById(id );
      }
      
      /**

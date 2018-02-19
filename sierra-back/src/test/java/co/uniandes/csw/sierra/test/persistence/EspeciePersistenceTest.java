@@ -35,7 +35,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -136,6 +138,83 @@ public class EspeciePersistenceTest {
         }
     }
     
+   /**
+     * Prueba para crear una Especie.
+     */    
+    @Test
+    public void createEspecie()
+    {
+         PodamFactory factory = new PodamFactoryImpl();
+         EspecieEntity newEntity= factory.manufacturePojo(EspecieEntity.class);
+         EspecieEntity result= especiepersistence.create(newEntity);
+         
+         Assert.assertNotNull(result);
+         
+         EspecieEntity entity = em.find(EspecieEntity.class, result.getId());
+         
+         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+         Assert.assertEquals(newEntity.getCaracteristicas(), entity.getCaracteristicas());
+         Assert.assertEquals(newEntity.getClasificacion(), entity.getClasificacion());
+    }
     
+     /**
+     * Prueba para consultar la lista de Especies.
+     */
+    @Test
+    public void getEspeciesTest() {
+        List<EspecieEntity> list = especiepersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (EspecieEntity ent : list) {
+            boolean found = false;
+            for (EspecieEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
     
+      /**
+     * Prueba para consultar una Esppecie.
+     */    
+    @Test
+    public void getEspecieTest() {
+        EspecieEntity entity = data.get(0);
+        EspecieEntity newEntity = especiepersistence.findById(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getCaracteristicas(), newEntity.getCaracteristicas());
+        Assert.assertEquals(entity.getClasificacion(), newEntity.getClasificacion());
+    }
+    
+     /**
+     * Prueba para eliminar una Especie
+     */
+    @Test
+    public void deleteEspecieTest() {
+        EspecieEntity entity = data.get(0);
+        especiepersistence.delete(entity.getId());
+        EspecieEntity deleted = em.find(EspecieEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    /**
+     * Prueba para actualizar una Especie.
+     */    
+    @Test
+    public void updateEspecieTest() {
+        EspecieEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        EspecieEntity newEntity = factory.manufacturePojo(EspecieEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        especiepersistence.update(newEntity);
+        
+        EspecieEntity resp = em.find(EspecieEntity.class, entity.getId());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(newEntity.getCaracteristicas(), resp.getCaracteristicas());
+        Assert.assertEquals(newEntity.getClasificacion(), resp.getClasificacion());
+    }    
 }
