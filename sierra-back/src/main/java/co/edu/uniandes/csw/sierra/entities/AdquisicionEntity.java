@@ -28,8 +28,8 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     //Asociaciones
     //------------------
     
-        
-    private MascotaEntity mascota;
+     
+    //private MascotaEntity mascota;
 
     /**
      * @return the valorTotal
