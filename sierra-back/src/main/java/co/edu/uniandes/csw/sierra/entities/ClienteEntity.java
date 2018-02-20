@@ -22,23 +22,23 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private Long cedula; //Atributo que contiene el numero de cedula del cliente.
     private Long telefono; // Atributo que contiene el numero telefonico del cliente.
 
-    /**
-     * Lista de las mascotas que deseadas por un cliente.
-     */
-    @OneToMany
-    private List<MascotaEntity> deseadas;
-    
-    /**
-     * Lista de todas las adquisiciones de un cliente.
-     */
-    @OneToMany
-    private List<AdquisicionEntity> adquisiciones;
-    
-    /**
-     * Lista de todos los medios de pago de un cliente.
-     */
-    @OneToMany
-    private List<MedioDePagoEntity> mediosDePago;
+//    /**
+//     * Lista de las mascotas que deseadas por un cliente.
+//     */
+//    @OneToMany
+//    private List<MascotaEntity> deseadas;
+//    
+//    /**
+//     * Lista de todas las adquisiciones de un cliente.
+//     */
+//    @OneToMany
+//    private List<AdquisicionEntity> adquisiciones;
+//    
+//    /**
+//     * Lista de todos los medios de pago de un cliente.
+//     */
+//    @OneToMany
+//    private List<MedioDePagoEntity> mediosDePago;
     
     /**
      * Metodo que obtiene el nombre de un cliente.
@@ -104,52 +104,52 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.telefono = telefono;
     }
 
-    /**
-     * Obtiene todos animales que desea un cliente.
-     * @return Lista de las mascotas deseadas.
-     */
-    public List<MascotaEntity> getDeseadas() {
-        return deseadas;
-    }
-
-    /**
-     * Asigna mascotas que desea un cliente
-     * @param deseadas Lista de las mascotas deseadas.
-     */
-    public void setDeseadas(List<MascotaEntity> deseadas) {
-        this.deseadas = deseadas;
-    }
-
-    /**
-     * Obtiene todas las adquisiciones de un cliente.
-     * @return Lista de las adquisiciones.
-     */
-    public List<AdquisicionEntity> getAdquisiciones() {
-        return adquisiciones;
-    }
-
-    /**
-     * Asigna adquisiciones a un cliente.
-     * @param adquisiciones Lista de adquisiciones.
-     */
-    public void setAdquisiciones(List<AdquisicionEntity> adquisiciones) {
-        this.adquisiciones = adquisiciones;
-    }
-
-    /**
-     * Obtiene los medios de pago del cliente.
-     * @return Lista de los medios de pago de un cliente.
-     */
-    public List<MedioDePagoEntity> getMediosDePago() {
-        return mediosDePago;
-    }
-
-    /**
-     * Asigna los medios de pago a un cliente.
-     * @param mediosDePago Lista de los medios de pago.
-     */
-    public void setMediosDePago(List<MedioDePagoEntity> mediosDePago) {
-        this.mediosDePago = mediosDePago;
-    }  
+//    /**
+//     * Obtiene todos animales que desea un cliente.
+//     * @return Lista de las mascotas deseadas.
+//     */
+//    public List<MascotaEntity> getDeseadas() {
+//        return deseadas;
+//    }
+//
+//    /**
+//     * Asigna mascotas que desea un cliente
+//     * @param deseadas Lista de las mascotas deseadas.
+//     */
+//    public void setDeseadas(List<MascotaEntity> deseadas) {
+//        this.deseadas = deseadas;
+//    }
+//
+//    /**
+//     * Obtiene todas las adquisiciones de un cliente.
+//     * @return Lista de las adquisiciones.
+//     */
+//    public List<AdquisicionEntity> getAdquisiciones() {
+//        return adquisiciones;
+//    }
+//
+//    /**
+//     * Asigna adquisiciones a un cliente.
+//     * @param adquisiciones Lista de adquisiciones.
+//     */
+//    public void setAdquisiciones(List<AdquisicionEntity> adquisiciones) {
+//        this.adquisiciones = adquisiciones;
+//    }
+//
+//    /**
+//     * Obtiene los medios de pago del cliente.
+//     * @return Lista de los medios de pago de un cliente.
+//     */
+//    public List<MedioDePagoEntity> getMediosDePago() {
+//        return mediosDePago;
+//    }
+//
+//    /**
+//     * Asigna los medios de pago a un cliente.
+//     * @param mediosDePago Lista de los medios de pago.
+//     */
+//    public void setMediosDePago(List<MedioDePagoEntity> mediosDePago) {
+//        this.mediosDePago = mediosDePago;
+//    }  
     
 }

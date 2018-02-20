@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.sierra.entities.*;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,6 +19,7 @@ import javax.persistence.TypedQuery;
  *
  * @author de.gutierrez
  */
+@Stateless
 public class MedioDePagoPersistence 
 {
     private static final Logger LOGGER = Logger.getLogger(MedioDePagoPersistence.class.getName());
@@ -50,7 +52,7 @@ public class MedioDePagoPersistence
     
     /**
      * Devuelve todos los medioDePago de la base de datos.
-     * @return una lista con todos los clientes.
+     * @return una lista con todos los medioDePago.
      */
     public List<MedioDePagoEntity> findAll()
     {
@@ -71,8 +73,8 @@ public class MedioDePagoPersistence
     }
     
     /**
-     * Elimina un medioDePago con el id que se envia por parametro
-     * @param  id: id correspondiente al medioDePago a eliminar
+     * Elimina un medioDePago con el id que se envia por parametro.
+     * @param  id: id correspondiente al medioDePago a eliminar.
      */
     public void delete(Long id)
     {

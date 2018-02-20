@@ -8,12 +8,14 @@ package co.edu.uniandes.csw.sierra.persistence;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import java.util.*;
 import java.util.logging.*;
+import javax.ejb.Stateless;
 import javax.persistence.*;
 
 /**
  *
- * @author jc.sanchez12
+ * @author de.gutierrez
  */
+@Stateless
 public class ClientePersistence {
   
     private static final Logger LOGGER = Logger.getLogger(ClientePersistence.class.getName());
@@ -34,7 +36,7 @@ public class ClientePersistence {
     }
     
     /**
-     * Busca el cliente con id que se envia por parametro
+     * Busca el cliente con id que se envia por parametro.
      * @param id correspondiente al cliente buscado.
      * @return La entidad cliente.
      */
@@ -73,8 +75,7 @@ public class ClientePersistence {
     public void delete(Long id)
     {
         LOGGER.log(Level.INFO,"Eliminando cliente", ClienteEntity.class);
-        ClienteEntity entity = find(id);
-        
+        ClienteEntity entity = find(id);  
         em.remove(entity);
     }
 }
