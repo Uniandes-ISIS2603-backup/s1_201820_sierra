@@ -98,7 +98,6 @@ public class CalificacionResource {
      * @param id el identificador unico de la calificacion, debe ser una cadena de digitos
      * @return JSON (@link CalificacionDetailDTO) - La calificacion buscada
      */
-    
     @GET
     @Path( "{id: \\d+}" )
     public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id )
@@ -128,7 +127,6 @@ public class CalificacionResource {
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de 
      * logica del negocio.
      */
-    
     @PUT
     @Path( "{id: \\d+}" )
     public CalificacionDetailDTO updateCalificacion( @PathParam( "id" ) Long id, CalificacionDetailDTO dDTO ) throws BusinessLogicException
@@ -152,7 +150,6 @@ public class CalificacionResource {
      * </pre>
      * @param id el id de la entidad que se quiere borrar.
      */
-    
     @DELETE
     @Path( "{id: \\d+}" )
     public void deleteCalificacion( @PathParam( "id" ) Long id )
