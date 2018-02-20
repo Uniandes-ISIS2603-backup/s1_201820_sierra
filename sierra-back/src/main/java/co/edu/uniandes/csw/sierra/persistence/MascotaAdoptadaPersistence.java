@@ -73,9 +73,9 @@ public class MascotaAdoptadaPersistence
      */
     public List<MascotaAdoptadaEntity> findAll( )
 	{
-            LOGGER.info( "Consultando todas las entidades de Mascota adoptada" );
-            TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("select u from MascotaEntity u", MascotaAdoptadaEntity.class );
-            return query.getResultList( );
+        LOGGER.info("Consultando todas las entidades de MascotaAdoptada");
+        TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("select u from MascotaAdoptadaEntity u", MascotaAdoptadaEntity.class);
+        return query.getResultList();
 	}
     
      /**
