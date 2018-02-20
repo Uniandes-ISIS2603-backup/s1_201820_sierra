@@ -24,7 +24,6 @@ SOFTWARE.
 package co.uniandes.csw.sierra.test.persistence;
 
 
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.persistence.MascotaPersistence;
 import java.util.ArrayList;
@@ -209,7 +208,7 @@ public class MascotaPersistenceTest
     public void deletMascotaTest() {
         MascotaEntity entity = data.get(0);
         mascotaPersistence.delete(entity.getId());
-        EspecieEntity deleted = em.find(EspecieEntity.class, entity.getId());
+        MascotaEntity deleted = em.find(MascotaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
     
@@ -227,14 +226,14 @@ public class MascotaPersistenceTest
 
         mascotaPersistence.update(newEntity);
         
-        EspecieEntity resp = em.find(EspecieEntity.class, entity.getId());
+        MascotaEntity resp = em.find(MascotaEntity.class, entity.getId());
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
-        Assert.assertEquals(newEntity.getColor(), entity.getColor());
-        Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
-        Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
-        Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
-        Assert.assertEquals(newEntity.getNacimientoFecha(), entity.getNacimientoFecha());
-        Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
+        Assert.assertEquals(newEntity.getColor(), resp.getColor());
+        Assert.assertEquals(newEntity.getEdad(), resp.getEdad());
+        Assert.assertEquals(newEntity.getGenero(), resp.getGenero());
+        Assert.assertEquals(newEntity.getImagen(), resp.getImagen());
+        Assert.assertEquals(newEntity.getNacimientoFecha(), resp.getNacimientoFecha());
+        Assert.assertEquals(newEntity.getTamano(), resp.getTamano());
        
     }    
 }

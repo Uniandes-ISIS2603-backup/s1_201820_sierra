@@ -9,6 +9,6 @@ package co.edu.uniandes.csw.sierra.entities;
  *
  * @author jc.sanchez12
  */
-public class MascotaAdopcionEntity {
+public class MascotaAdoptadaEntity {
     
 }

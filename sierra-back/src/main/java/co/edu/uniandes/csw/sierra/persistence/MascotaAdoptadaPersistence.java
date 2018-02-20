@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-import co.edu.uniandes.csw.sierra.ejb.*;
 
 /**
  *
