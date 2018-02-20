@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -97,7 +98,6 @@ public class CalificacionResource {
      * @param id el identificador unico de la calificacion, debe ser una cadena de digitos
      * @return JSON (@link CalificacionDetailDTO) - La calificacion buscada
      */
-    
     @GET
     @Path( "{id: \\d+}" )
     public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id )
@@ -105,6 +105,28 @@ public class CalificacionResource {
         return null;
     }
     
+    /**
+     * <h1> PUT /api/calificaciones/id{id} : Actualiza una calificacion con el id dado
+     * <pre> Cuerpo de peticion: JSON {@link CalificacionDetailDTO}.
+     * 
+     * Actualiza la entidad de Calificacion con el id dado con la informacion 
+     * recibida en el cuerpo de la peticion.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Actualiza la entidad exitosamente y retorna un objeto identico
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una calificacion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere actualizar
+     * @param dDTO {@link CalificacionDetailDTO} La entidad de Calificacion que
+     * desea guardar.
+     * @return JSON {@link CalificacionDetailDTO} La entidad Calificacion actualizada
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de 
+     * logica del negocio.
+     */
     @PUT
     @Path( "{id: \\d+}" )
     public CalificacionDetailDTO updateCalificacion( @PathParam( "id" ) Long id, CalificacionDetailDTO dDTO ) throws BusinessLogicException
@@ -112,6 +134,22 @@ public class CalificacionResource {
 	return dDTO;
     }
     
+    /**
+     * <h1> DELETE /api/calificaciones/id{id} : Eliminaa una calificacion con el id dado
+     * <pre> 
+     * 
+     * Borra la entidad de Calificacion con el id dado.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Elimina la entidad exitosamente.
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una calificacion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere borrar.
+     */
     @DELETE
     @Path( "{id: \\d+}" )
     public void deleteCalificacion( @PathParam( "id" ) Long id )
