@@ -26,11 +26,21 @@ package co.uniandes.csw.sierra.test.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.persistence.MascotaPersistence;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
@@ -56,5 +66,51 @@ public class MascotaPersistenceTest
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+     /**
+     * Inyección de la dependencia a la clase MascotaPersistence cuyos métodos
+     * se van a probar.
+     */    
+    @Inject
+    private MascotaPersistence mascotaPersistence;
     
+     /**
+     * Contexto de Persistencia que se va a utilizar para acceder a la Base de
+     * datos por fuera de los métodos que se están probando.
+     */    
+    @PersistenceContext
+    private EntityManager em;
+    
+     /**
+     * Variable para martcar las transacciones del em anterior cuando se
+     * crean/borran datos para las pruebas.
+     */
+    @Inject
+    UserTransaction utx;
+    
+    private List<MascotaEntity> data = new ArrayList<MascotaEntity>();
+    
+    
+     /**
+     * Prueba para crear una Mascoat.
+     */    
+    @Test
+    public void createMascota()
+    {
+         PodamFactory factory = new PodamFactoryImpl();
+         MascotaEntity newEntity= factory.manufacturePojo(MascotaEntity.class);
+         MascotaEntity result= mascotaPersistence.create(newEntity);
+         
+         Assert.assertNotNull(result);
+         
+         MascotaEntity entity = em.find(MascotaEntity.class, result.getId());
+         
+         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+         Assert.assertEquals(newEntity.getColor(), entity.getColor());
+         Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
+         Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
+         Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
+         Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+         Assert.assertEquals(newEntity.getMuerte(), entity.getMuerte());
+         Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
+    }
 }
