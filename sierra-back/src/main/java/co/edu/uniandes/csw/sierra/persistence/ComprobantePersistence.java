@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.sierra.ejb.*;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -50,11 +51,11 @@ public class ComprobantePersistence {
      * @return una lista con todos los comprobantes existentes.
      */
     
-    public IList<ComprobanteEntity> findAll()
+    public List<ComprobanteEntity> findAll()
     {
         LOGGER.info("Consultando todos los comprobantes.");
         TypedQuery query = em.createQuery("select u from ComprobanteEntity u", CalificacionEntity.class);
-        return (IList<ComprobanteEntity>) query.getResultList();
+        return (List<ComprobanteEntity>) query.getResultList();
     }
     
     /**
