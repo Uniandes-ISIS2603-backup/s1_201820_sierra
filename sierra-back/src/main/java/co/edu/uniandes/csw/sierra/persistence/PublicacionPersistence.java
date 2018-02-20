@@ -74,15 +74,17 @@ public class PublicacionPersistence
         return em.merge(pubEntity);
     }
 
-    /**
+   /**
      * Metodo encargado de borrar la publicacion en la base de datos.
-     * @param pubEntity la publicacion que se quiere borrar en la base de datos.
+     * @param idPub id de la publicacion que se quiere borrar en la base de datos.
      */
 
-    public void delete(PublicacionEntity pubEntity) 
+    public void delete(Long idPub) 
     {
-        LOGGER.log(Level.INFO, "Borrando la Publicacion  con id={0}", pubEntity.getId());
-        em.remove(pubEntity);
+        LOGGER.log(Level.INFO,"Eliminando medioDePago",PublicacionEntity.class);
+        PublicacionEntity entity = find(idPub);
+        em.remove(entity);
     }
+
 
 }

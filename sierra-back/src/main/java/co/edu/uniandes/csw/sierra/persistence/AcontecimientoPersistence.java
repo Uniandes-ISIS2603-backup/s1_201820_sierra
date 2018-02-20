@@ -73,16 +73,16 @@ public class AcontecimientoPersistence
         LOGGER.log(Level.INFO, "Actualizando el Acontecimiento con id={0}", acEntity.getId());
         return em.merge(acEntity);
     }
-
+   
     /**
      * Metodo encargado de borrar el  acontecimiento en la base de datos.
-     * @param acEntity el acontecimiento que se quiere borrar en la base de datos.
+     * @param acId el id del acontecimiento que se quiere borrar en la base de datos.
      */
-
-    public void delete(AcontecimientoEntity acEntity) 
+    public void delete(Long acId) 
     {
-        LOGGER.log(Level.INFO, "Borrando el Acontecimiento con id={0}", acEntity.getId());
+        LOGGER.log(Level.INFO, "Borrando el Acontecimiento", acId);
+        AcontecimientoEntity acEntity = find(acId);
         em.remove(acEntity);
     }
-
+  
 }
