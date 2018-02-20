@@ -24,6 +24,7 @@ SOFTWARE.
 package co.uniandes.csw.sierra.test.persistence;
 
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.persistence.MascotaPersistence;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -89,9 +91,59 @@ public class MascotaPersistenceTest
     
     private List<MascotaEntity> data = new ArrayList<MascotaEntity>();
     
+  
+    /**
+     * Configuración inicial de la prueba.
+     *
+     *
+     */
+    @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     *
+     *
+     */
+    private void clearData() {
+        em.createQuery("delete from MascotaEntity").executeUpdate();
+    }
+
+    
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     *
+     *
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            MascotaEntity entity = factory.manufacturePojo(MascotaEntity.class);
+
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+    
     
      /**
-     * Prueba para crear una Mascoat.
+     * Prueba para crear una Mascota.
      */    
     @Test
     public void createMascota()
@@ -110,7 +162,79 @@ public class MascotaPersistenceTest
          Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
          Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
          Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
-         Assert.assertEquals(newEntity.getMuerte(), entity.getMuerte());
          Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
     }
+    
+    
+    
+     /**
+     * Prueba para consultar la lista de Mascotas.
+     */
+    @Test
+    public void getMascotasTest() {
+        List<MascotaEntity> list = mascotaPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (MascotaEntity ent : list) {
+            boolean found = false;
+            for (MascotaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+      /**
+     * Prueba para consultar una Mascota.
+     */    
+    @Test
+    public void getMascotaTest() {
+        MascotaEntity entity = data.get(0);
+        MascotaEntity newEntity = mascotaPersistence.findById(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(newEntity.getColor(), entity.getColor());
+        Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
+        Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
+        Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
+        Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+        Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
+    }
+    
+      /**
+     * Prueba para eliminar una Mascota
+     */
+    @Test
+    public void deletMascotaTest() {
+        MascotaEntity entity = data.get(0);
+        mascotaPersistence.delete(entity.getId());
+        EspecieEntity deleted = em.find(EspecieEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+      
+    /**
+     * Prueba para actualizar una Mascota.
+     */    
+    @Test
+    public void updateMascotaTest() {
+        MascotaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        MascotaEntity newEntity = factory.manufacturePojo(MascotaEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        mascotaPersistence.update(newEntity);
+        
+        EspecieEntity resp = em.find(EspecieEntity.class, entity.getId());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(newEntity.getColor(), entity.getColor());
+        Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
+        Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
+        Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
+        Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+        Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
+       
+    }    
 }

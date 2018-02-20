@@ -210,8 +210,9 @@ public class MascotaEntity extends BaseEntity implements Serializable
     /**
      * @return the nacimiento
      */
-    public Date getNacimiento() {
-        return nacimiento;
+    @SuppressWarnings("deprecation")
+    public  String  getNacimiento() {
+       return nacimiento.getDay()+"/"+nacimiento.getMonth()+"/"+ nacimiento.getYear();
     }
 
     /**

@@ -68,7 +68,7 @@ public class MascotaLogic
      */
      public MascotaEntity getById( Long id )
      {
-	return persistence.find( id );
+	return persistence.findById( id );
      }
      
      /**

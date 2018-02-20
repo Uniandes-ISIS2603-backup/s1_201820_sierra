@@ -85,7 +85,7 @@ public class MascotaPersistence {
      * @param id: id correspondiente a la mascota buscada.
      * @return una mascota.
      */   
-     public MascotaEntity find(Long id) {
+     public MascotaEntity findById(Long id) {
         LOGGER.log(Level.INFO, "Consultando especie con id={0}", id);
         return em.find(MascotaEntity.class, id);
     }
