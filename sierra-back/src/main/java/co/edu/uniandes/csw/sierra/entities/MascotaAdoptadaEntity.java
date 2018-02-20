@@ -5,10 +5,16 @@
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author jc.sanchez12
  */
-public class MascotaAdopcionEntity {
+@Entity
+public class MascotaAdoptadaEntity extends MascotaEntity
+{
+    
+    private static final long serialVersionUID = 1L;
     
 }

@@ -40,7 +40,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class EspeciePersistence 
 {
-    private static final Logger LOGGER = Logger.getLogger( SierraPersistence.class.getName( ) );
+    private static final Logger LOGGER = Logger.getLogger( EspeciePersistence.class.getName( ) );
     
     /**
      * Base de datos de persistencia

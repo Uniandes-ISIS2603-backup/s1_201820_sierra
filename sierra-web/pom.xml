@@ -84,13 +84,7 @@
             <artifactId>arquillian-junit-container</artifactId>
             <type>jar</type>
         </dependency>
-        <dependency>
-            <groupId>co.edu.uniandes.csw</groupId>
-            <artifactId>postman</artifactId>
-            <version>1.0</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
+        
     </dependencies>
     <build>
         <plugins>

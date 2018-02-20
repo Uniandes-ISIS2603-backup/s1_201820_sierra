@@ -23,19 +23,18 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.entities;
 
-import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 
 /**
  *
  * @author jc.sanchez12
  */
-@Entity
-public class MascotaEntity extends BaseEntity implements Serializable
+@MappedSuperclass
+public abstract class MascotaEntity extends BaseEntity
 {
-
+    
     /**
      * Codigo serializable por SA
      */
@@ -242,7 +241,6 @@ public class MascotaEntity extends BaseEntity implements Serializable
      */
     public void setMuerte(Date muerte) {
         this.muerte = muerte;
-    }
-
-   
+    }    
+    
 }
