@@ -7,13 +7,14 @@ package co.edu.uniandes.csw.sierra.persistence;
 
 import co.edu.uniandes.csw.sierra.ejb.*;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
