@@ -32,21 +32,21 @@ import java.util.Date;
  * @author ja.amortegui10
  */
 public class ComprobanteDTO {
-    private long  id;
-    private int valorTotal;
+    private Long  id;
+    private Integer valorTotal;
     private Date fecha;
-    private long clienteId;
+    private Long clienteId;
     
     public ComprobanteDTO()
     {
         
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public int getValorTotal() {
+    public Integer getValorTotal() {
         return valorTotal;
     }
 
@@ -54,15 +54,15 @@ public class ComprobanteDTO {
         return fecha;
     }
 
-    public long getClienteId() {
+    public Long getClienteId() {
         return clienteId;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setValorTotal(int valorTotal) {
+    public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
     }
 
@@ -70,7 +70,7 @@ public class ComprobanteDTO {
         this.fecha = fecha;
     }
 
-    public void setClienteId(long clienteId) {
+    public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
     }
     

@@ -32,23 +32,23 @@ import java.util.Date;
  * @author ja.amortegui10
  */
 public class FacturaDTO {
-    private long id;
-    private int valorTotal;
+    private Long id;
+    private Integer valorTotal;
     private Date fecha;
     
     public FacturaDTO()
     {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setValorTotal(int valorTotal) {
+    public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
     }
 
@@ -56,7 +56,7 @@ public class FacturaDTO {
         this.fecha = fecha;
     }
 
-    public int getValorTotal() {
+    public Integer getValorTotal() {
         return valorTotal;
     }
 

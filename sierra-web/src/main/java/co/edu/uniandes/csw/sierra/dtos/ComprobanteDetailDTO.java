@@ -60,5 +60,21 @@ public class ComprobanteDetailDTO extends ComprobanteDTO{
     {
         super();
     }
+
+    public FacturaDTO getFactura() {
+        return factura;
+    }
+
+    public MedioDePagoDTO getMedioDePago() {
+        return medioDePago;
+    }
+
+    public void setFactura(FacturaDTO factura) {
+        this.factura = factura;
+    }
+
+    public void setMedioDePago(MedioDePagoDTO medioDePago) {
+        this.medioDePago = medioDePago;
+    }
     
 }
