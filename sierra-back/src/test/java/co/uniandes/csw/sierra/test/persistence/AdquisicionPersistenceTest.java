@@ -5,8 +5,8 @@
  */
 package co.uniandes.csw.sierra.test.persistence;
 
-import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
-import co.edu.uniandes.csw.sierra.persistence.CalificacionPersistence;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -25,7 +25,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author jd.zambrano
  */
 @RunWith(Arquillian.class)
-public class CalificacionPersistenceTest {
+public class AdquisicionPersistenceTest {
     
     /**
      * @return Devuelve el jar que se va a desplegar en glassfish 
@@ -33,14 +33,14 @@ public class CalificacionPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CalificacionEntity.class.getPackage())
-                .addPackage(CalificacionPersistence.class.getPackage())
+                .addPackage(AdquisicionEntity.class.getPackage())
+                .addPackage(AdquisicionPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml","persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     @Inject
-    private CalificacionPersistence calificacionPersistence;
+    private AdquisicionPersistence adquisicionPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -54,12 +54,12 @@ public class CalificacionPersistenceTest {
     @Test
     public void createEditorialTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
-        CalificacionEntity result = calificacionPersistence.create(newEntity);
+        AdquisicionEntity newEntity = factory.manufacturePojo(AdquisicionEntity.class);
+        AdquisicionEntity result = adquisicionPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
 
-        CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
+        AdquisicionEntity entity = em.find(AdquisicionEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
