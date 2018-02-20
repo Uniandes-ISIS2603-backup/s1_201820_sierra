@@ -23,6 +23,13 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
        
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    
+    //------------------
+    //Asociaciones
+    //------------------
+    
+        
+    private MascotaEntity mascota;
 
     /**
      * @return the valorTotal
