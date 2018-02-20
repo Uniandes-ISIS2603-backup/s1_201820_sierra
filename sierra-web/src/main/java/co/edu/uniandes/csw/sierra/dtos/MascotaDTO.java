@@ -147,7 +147,7 @@ public class MascotaDTO
                 this.adquirido = mascotaEntity.isAdquirido( );
                 this.imagen = mascotaEntity.getImagen( );
                 this.tamano = mascotaEntity.getTamano( );
-                this.nacimiento = mascotaEntity.getNacimiento( );
+                this.nacimiento = mascotaEntity.getNacimiento();
                 this.muerte = mascotaEntity.getMuerte( );
 
 	}

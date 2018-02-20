@@ -161,7 +161,7 @@ public class MascotaPersistenceTest
          Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
          Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
          Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
-         Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+         Assert.assertEquals(newEntity.getNacimientoFecha(), entity.getNacimientoFecha());
          Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
     }
     
@@ -198,7 +198,7 @@ public class MascotaPersistenceTest
         Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
         Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
         Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
-        Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+        Assert.assertEquals(newEntity.getNacimientoFecha(), entity.getNacimientoFecha());
         Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
     }
     
@@ -233,7 +233,7 @@ public class MascotaPersistenceTest
         Assert.assertEquals(newEntity.getEdad(), entity.getEdad());
         Assert.assertEquals(newEntity.getGenero(), entity.getGenero());
         Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
-        Assert.assertEquals(newEntity.getNacimiento(), entity.getNacimiento());
+        Assert.assertEquals(newEntity.getNacimientoFecha(), entity.getNacimientoFecha());
         Assert.assertEquals(newEntity.getTamano(), entity.getTamano());
        
     }    
