@@ -15,7 +15,7 @@ public class ClienteDetailDTO extends ClienteDTO
 {
     private List<MedioDePagoDTO> mediosPago;
     private List<AdquisicionDTO> aquisiciones;
-    private List<MascotaDTO> deseadas;
+    private List<MascotaAdoptadaDTO> deseadas;
     
     /**
      * Metodo constructor por defecto.
@@ -61,7 +61,7 @@ public class ClienteDetailDTO extends ClienteDTO
      * Obtiene una lista las mascotas que desea un cliente.
      * @return Las mascotas deseadas.
      */
-    public List<MascotaDTO> getDeseadas() {
+    public List<MascotaAdoptadaDTO> getDeseadas() {
         return deseadas;
     }
 
@@ -69,7 +69,7 @@ public class ClienteDetailDTO extends ClienteDTO
      * Agrega una nueva mascota a la lista de deseadas.
      * @param deseadas Las mascotas que le interesan adquirir.
      */
-    public void setDeseadas(List<MascotaDTO> deseadas) {
+    public void setDeseadas(List<MascotaAdoptadaDTO> deseadas) {
         this.deseadas = deseadas;
     }
     

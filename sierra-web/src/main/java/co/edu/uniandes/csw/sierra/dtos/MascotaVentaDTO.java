@@ -47,7 +47,7 @@ package co.edu.uniandes.csw.sierra.dtos;
  * </pre>
  * @author Juan David Zambrano
  */
-public class MascotaVentaDTO extends MascotaDTO {
+public class MascotaVentaDTO  {
     
     private Integer precio;
 

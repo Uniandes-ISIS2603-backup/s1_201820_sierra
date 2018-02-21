@@ -96,7 +96,7 @@ public class EspecieDetailDTO extends EspecieDTO
     /**
      * Lista de mascotas que contiene una  especie
      */
-    private List<MascotaDTO> mascotas;
+    private List<MascotaAdoptadaDTO> mascotas;
  
     /**
      * Lista de razas que contiene una  especie
@@ -116,14 +116,14 @@ public class EspecieDetailDTO extends EspecieDTO
     /**
      * @return the mascotas
      */
-    public List<MascotaDTO> getMascotas() {
+    public List<MascotaAdoptadaDTO> getMascotas() {
         return mascotas;
     }
 
     /**
      * @param mascotas the mascotas to set
      */
-    public void setMascotas(List<MascotaDTO> mascotas) {
+    public void setMascotas(List<MascotaAdoptadaDTO> mascotas) {
         this.mascotas = mascotas;
     }
 

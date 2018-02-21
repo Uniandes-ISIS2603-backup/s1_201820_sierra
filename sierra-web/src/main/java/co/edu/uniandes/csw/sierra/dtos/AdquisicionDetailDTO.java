@@ -108,7 +108,7 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
     
     private CalificacionDTO calificacion;
     
-    private MascotaDTO mascota;
+    private MascotaAdoptadaDTO mascota;
     
     private FacturaDTO factura;
     
@@ -135,14 +135,14 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
     /**
      * @return the mascota
      */
-    public MascotaDTO getMascota() {
+    public MascotaAdoptadaDTO getMascota() {
         return mascota;
     }
 
     /**
      * @param mascota the mascota to set
      */
-    public void setMascota(MascotaDTO mascota) {
+    public void setMascota(MascotaAdoptadaDTO mascota) {
         this.mascota = mascota;
     }
 
