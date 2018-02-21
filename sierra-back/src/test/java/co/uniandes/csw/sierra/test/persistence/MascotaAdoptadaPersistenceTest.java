@@ -176,9 +176,7 @@ public class MascotaAdoptadaPersistenceTest
              Assert.assertTrue(found);
         }
     }
-    
-    
-    
+   
      /**
      * Prueba para consultar una Mascota Adoptada.
      */    
