@@ -20,6 +20,10 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -103,8 +107,6 @@ public class EspecieDetailDTO extends EspecieDTO
      */
     private List<RazaDTO> razas;
     
-    
-    
      /**
      * Constructor por defecto
     */
@@ -113,6 +115,30 @@ public class EspecieDetailDTO extends EspecieDTO
         super();
     }
 
+    
+      /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity
+     */
+    /**
+    public EspecieDetailDTO(EspecieEntity entity){
+        super(entity);
+        if (entity != null) {
+            mascotas = new ArrayList<>();
+            if(entity.getMascotas()!=null){
+                for(MascotaEntity entityMascota : entity.getMascotas())  {
+                mascotas.add(new Mascota(entityMascota));
+                }
+            }
+            razas = new ArrayList<>();
+            if(entity.getRazas()!=null){
+                for(RazaEntity entityRaza : entity.getRazas()){
+                razas.add(new RazaDetailDTO(entityRaza));
+                }   
+            }  
+        }
+    }
     /**
      * @return the mascotas
      */
