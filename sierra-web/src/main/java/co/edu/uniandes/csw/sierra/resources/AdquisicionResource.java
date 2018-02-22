@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
 * <pre>
 * Path: indica la dirección después de "api" para acceder al recurso
 * Produces/Consumes: indica que los servicios definidos en este recurso reciben y
-*devuelven objetos en formato JSON
+* devuelven objetos en formato JSON
 * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
 * </pre>
 * @author Juan David Zambrano
@@ -143,7 +143,7 @@ public class AdquisicionResource {
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; backround-color: #eaffe0;">
-     * 200 OK Elimina la entidad exitosamente.
+     * 200 OK Elimina la entidad exitosamente. 
      * </code>
      * <code style="color: #c7254e; backround-color: #f3f2f4;">
      * 404 Not Found no existe una adquisicion con el id dado
