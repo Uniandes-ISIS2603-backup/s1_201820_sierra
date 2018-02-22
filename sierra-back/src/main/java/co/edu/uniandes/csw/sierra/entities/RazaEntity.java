@@ -6,14 +6,14 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Entity
 public class RazaEntity extends BaseEntity implements Serializable {
-       //identificador numerico de la raza
-    private Long id;
     //nombre de la raza a la que corresponde el animal
     private String nombreRaza;
     // cuidados que se deben tener con la raza 
@@ -22,14 +22,6 @@ public class RazaEntity extends BaseEntity implements Serializable {
     private String destacable;
     //caracteristicas de la raza
     private String caracteristicas;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNombreRaza() {
         return nombreRaza;
