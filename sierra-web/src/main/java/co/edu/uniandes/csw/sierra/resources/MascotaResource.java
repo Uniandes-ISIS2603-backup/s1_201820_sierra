@@ -5,7 +5,8 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 
-import co.edu.uniandes.csw.sierra.dtos.MascotaAdoptadaDetailDTO;
+import co.edu.uniandes.csw.sierra.dtos.AcontecimientoDTO;
+import co.edu.uniandes.csw.sierra.dtos.MascotaDetailDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -19,7 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
- * <pre>Clase que implementa el recurso "mascotaAdoptad".
+ * <pre>Clase que implementa el recurso "mascota".
  * URL: /api/sierras
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
@@ -35,18 +36,20 @@ import javax.ws.rs.Produces;
  * @author jc.sanchez12
  * @version 1.0
  */
-@Path( "mascotasAdoptadas" )
+
+@Path( "mascotas" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
-public class MascotaAdoptadaResource {
-    @POST
-public MascotaAdoptadaDetailDTO createMascota(MascotaAdoptadaDetailDTO Dto)
+public class MascotaResource {
+
+@POST
+public MascotaDetailDTO createMascota(MascotaDetailDTO Dto)
 {
   return Dto;
 }
 @GET
-public List<MascotaAdoptadaDetailDTO> getMascotas()
+public List<MascotaDetailDTO> getMascotas()
 {
 return new ArrayList();
 }
@@ -54,7 +57,7 @@ return new ArrayList();
 
 @GET                    
 @Path("{id: \\d+}")
-public MascotaAdoptadaDetailDTO getMascota(@PathParam("id") long id)
+public MascotaDetailDTO getMascota(@PathParam("id") long id)
 {
 return null;
 }
@@ -62,7 +65,7 @@ return null;
 
 @PUT
 @Path("{id: \\d+}")
-public void updateMascota(@PathParam("id") long id, MascotaAdoptadaDetailDTO acDto) 
+public void updateMascota(@PathParam("id") long id, MascotaDetailDTO acDto) 
 {
 
 }

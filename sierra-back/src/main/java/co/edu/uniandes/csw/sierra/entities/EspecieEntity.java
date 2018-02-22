@@ -25,10 +25,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -56,20 +53,8 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     private String clasificacion;
     
-    /**
-     * Lista de mascotas que contiene la especie
-     */
-    @PodamExclude
-    @OneToMany
-    private List<MascotaEntity> mascotas;
+  
 
-    /**
-     * Lista de  razas que contiene  la especie
-     */
-    @PodamExclude
-    @OneToMany
-    private List<RazaEntity> razas;
-    
     /**
      * @return the nombre
      */
@@ -110,34 +95,6 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
-    }
-
-    /**
-     * @return the mascotas
-     */
-    public List<MascotaEntity> getMascotas() {
-        return mascotas;
-    }
-
-    /**
-     * @param mascotas the mascotas to set
-     */
-    public void setMascotas(List<MascotaEntity> mascotas) {
-        this.mascotas = mascotas;
-    }
-
-    /**
-     * @return the razas
-     */
-    public List<RazaEntity> getRazas() {
-        return razas;
-    }
-
-    /**
-     * @param razas the razas to set
-     */
-    public void setRazas(List<RazaEntity> razas) {
-        this.razas = razas;
     }
 
      

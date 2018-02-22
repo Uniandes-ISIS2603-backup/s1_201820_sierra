@@ -1,15 +1,30 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+MIT License
+Copyright (c) 2017 ISIS2603
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
  */
+
 package co.edu.uniandes.csw.sierra.dtos;
 
-import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import java.util.Date;
 
 /**
- * * MascotaAdopcionDTO Objeto de transferencia de datos de la entidad de MascotaAdopcion. Los DTO contienen las
+ * MascotaDTO Objeto de transferencia de datos de la entidad de Mascota. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
  * <p>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -46,62 +61,63 @@ import java.util.Date;
  *   }
  *
  * </pre>
- * @author Juan David Zambrano
+ *
+ * @author jc.sanchez12
  */
-public class MascotaAdoptadaDTO  {
-    
-    /**
-    * Id de la mascota adoptada
+public class MascotaDTO 
+{
+     /**
+    * Id 
     */
     private Long id;
     
     /**
-     * nombre de la  mascota adoptada
+     * nombre de la  mascota
      */
     private String nombre;
     
     /**
-     * apellido de la  mascota adoptada
+     * apellido de la  mascota
      */
     private String genero;
     
     /**
-     * edad de la mascota adoptada
+     * edad de la mascota
      */
     private Integer edad;
     
     /**
-     * color de la  mascota adoptada
+     * color de la  mascota
      */
     private String color;
     
     /**
-     * verificacion si la mascota adoptada es esteril
+     * verificacion si la mascota es esteril
      */
     private Boolean esteril;
     
     /**
-     * verificacion si esta  adquirida la mascota adoptada
+     * verificacion si esta  adquirida la mascota
      */
     private Boolean adquirido;
     
     /**
-     * imagen de la mascota adoptada
+     * imagen de la mascota
      */
     private String  imagen;
     
     /**
-     * tamano  de la mascota adoptada
+     * tamano  de la mascota
      */
     private String tamano;
     
     /**
-     * Fecha de la  nacimiento de la mascota adoptada
+     * Fecha de la  nacimiento de la amscota
      */
     private Date nacimiento;
     
      /**
-     * Fecha dela muerte de la mascota adoptada
+     * Fecha dela muerte de la amscota
      */
     private Date muerte;
     
@@ -109,17 +125,18 @@ public class MascotaAdoptadaDTO  {
     /**
    *Constructor por defecto
    */
-    public MascotaAdoptadaDTO()
-    {
-        
-    }
-  
-    /**
-    * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-    * la entidad que viene de argumento
-    * @param mascotaEntity MascotaAdoptadaEntity: Es la entidad que se va a convertir a DTO
-     */
-	public MascotaAdoptadaDTO( MascotaAdoptadaEntity mascotaEntity )
+   public MascotaDTO()
+   {
+        //Constructor por defecto
+   }
+
+         /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param mascotaEntity: Es la entidad que se va a convertir a DTO
+	 */
+	public MascotaDTO( MascotaEntity mascotaEntity )
 	{
 		this.id = mascotaEntity.getId( );
 		this.nombre = mascotaEntity.getNombre( );
@@ -290,5 +307,6 @@ public class MascotaAdoptadaDTO  {
         this.muerte = muerte;
     }
    
-    
+ 
+   
 }

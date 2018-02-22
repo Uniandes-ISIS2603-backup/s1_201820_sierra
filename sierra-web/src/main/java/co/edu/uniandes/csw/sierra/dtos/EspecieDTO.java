@@ -90,12 +90,11 @@ public class EspecieDTO {
 	 */
 	public EspecieDTO( EspecieEntity especieEntity )
 	{
-            if (especieEntity!=null) {
-                this.id = especieEntity.getId( );
+		this.id = especieEntity.getId( );
 		this.nombre = especieEntity.getNombre( );
 		this.clasificacion = especieEntity.getClasificacion( );
                 this.caracteristicas = especieEntity.getCaracteristicas( );
-            }
+
 	}
        
 

@@ -38,7 +38,7 @@ package co.edu.uniandes.csw.sierra.dtos;
  **/
 public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     
-    private MascotaAdoptadaDTO mascota;
+    private MascotaDTO mascota;
     
     public AcontecimientoDetailDTO()
     {
@@ -48,7 +48,7 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
      /**
      * @return the mascota
      */
-    public MascotaAdoptadaDTO getMascota() 
+    public MascotaDTO getMascota() 
     {
         return mascota;
     }
@@ -56,7 +56,7 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     /**
      * @param mascota the mascota to set
      */
-    public void setMascota(MascotaAdoptadaDTO mascota)
+    public void setMascota(MascotaDTO mascota)
     {
         this.mascota = mascota;
     }
