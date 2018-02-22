@@ -5,10 +5,13 @@
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author jc.sanchez12
  */
 public class CalificacionLogic {
     
+    private static final LOGGER = Logger.getLogger(CalificacionLogic.class.getName());
 }

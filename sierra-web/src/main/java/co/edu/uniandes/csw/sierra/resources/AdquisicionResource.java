@@ -105,7 +105,28 @@ public class AdquisicionResource {
     {
         return null;
     }
-    
+     /**
+     * <h1> PUT /api/adquisiciones/id{id} : Actualiza una adquisicion con el id dado
+     * <pre> Cuerpo de peticion: JSON {@link AdquisicionDetailDTO}.
+     * 
+     * Actualiza la entidad de Adquisicion con el id dado con la informacion 
+     * recibida en el cuerpo de la peticion.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Actualiza la entidad exitosamente y retorna un objeto identico
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una adquisicion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere actualizar
+     * @param dDTO {@link AdquisicionDetailDTO} La entidad de Adquisicion que
+     * desea guardar.
+     * @return JSON {@link AdquisicionDetailDTO} La entidad Adquisicion actualizada
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de 
+     * logica del negocio.
+     */
     @PUT
     @Path( "{id: \\d+}" )
     public AdquisicionDetailDTO updateAdquisicion( @PathParam( "id" ) Long id, AdquisicionDetailDTO dDTO ) throws BusinessLogicException
@@ -113,10 +134,26 @@ public class AdquisicionResource {
 	return dDTO;
     }
     
+    /**
+     * <h1> DELETE /api/adquisiciones/id{id} : Eliminaa una adquisicion con el id dado
+     * <pre> 
+     * 
+     * Borra la entidad de Adquisicion con el id dado.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Elimina la entidad exitosamente.
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una adquisicion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere borrar.
+     */
     @DELETE
     @Path( "{id: \\d+}" )
     public void deleteAdquisicion( @PathParam( "id" ) Long id )
     {
-    	
+    	//void
     }
 }
