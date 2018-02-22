@@ -1,35 +1,20 @@
 /*
-MIT License
-Copyright (c) 2017 ISIS2603
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 package co.edu.uniandes.csw.sierra.dtos;
 
 import java.util.List;
 
-
 /**
- * MascotaDetailDTO es el objeto de transferencia de datos detallada de la entidad Mascota.
+ * * MascotaAdopcionDTO Objeto de transferencia de datos de la entidad de MascotaAdopcion. Los DTO contienen las
+ * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
  * <p>
- * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
- *  {
- *           "id": number,
+ *   {
+ *          "id": number,
  *           "name: String,
  *           "genero": String
  *           "edad": number,
@@ -70,7 +55,16 @@ import java.util.List;
  *              "valorTotal":number,
  *              "fecha":date
  *              }
- *          
+ *              "acontecimiento"
+ *               {
+ *                  "id": number,
+ *                  "nombre: String,
+ *                  "descripccion": String
+ *                   "Fecha": Date,
+ *                   "importancia": number,
+ *                   "tipo":String,
+ *                   "FotoURL": String
+ *               }
  *  }
  * </pre>
  * * Por ejemplo, una especie detallada se representaria de la siguiente manera:<br>
@@ -116,13 +110,24 @@ import java.util.List;
  *            "valorTotal":10000,
  *            "fecha":"20/05/2017"
  *        }
- *  }
+ *         "acontecimiento"
+ *        {
+ *             "id": 2131,
+ *             "nombre:"Curacion mordida",
+ *             "descripccion": "Se le hizo una curacion por una herida  en el costado derecho",
+ *             "Fecha": 16/02/2018,
+ *             "importancia": 5,
+ *             "tipo":"Medica",
+ *             "FotoURL": "wqkfdosanofpdnaspfnwienrw"
+ *               }
+ *   }
+ *
  * </pre>
- * @author jc.sanchez12
+ * @author Juan Camilo Sanchez
  */
-public class MascotaDetailDTO extends  MascotaDTO
-{
+public class MascotaAdoptadaDetailDTO extends MascotaAdoptadaDTO{
     
+    private List<AcontecimientoDTO> acontecimientos;
     /**
      * Especie de la mascota
      */
@@ -146,10 +151,10 @@ public class MascotaDetailDTO extends  MascotaDTO
     /**
      * Constructor por defecto
     */
-    public MascotaDetailDTO()
-    {
-        super();
+    public MascotaAdoptadaDetailDTO(){
+        
     }
+    
 
     /**
      * @return the especie
@@ -206,7 +211,19 @@ public class MascotaDetailDTO extends  MascotaDTO
     public void setAdquisiciones(List<AdquisicionDTO> adquisiciones) {
         this.adquisiciones = adquisiciones;
     }
-    
-    
-    
+
+    /**
+     * @return the acontecimientos
+     */
+    public List<AcontecimientoDTO> getAcontecimientos() {
+        return acontecimientos;
+    }
+
+    /**
+     * @param acontecimientos the acontecimientos to set
+     */
+    public void setAcontecimientos(List<AcontecimientoDTO> acontecimientos) {
+        this.acontecimientos = acontecimientos;
+    }
+        
 }

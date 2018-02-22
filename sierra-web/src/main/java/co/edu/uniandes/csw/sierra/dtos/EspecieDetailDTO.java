@@ -20,6 +20,10 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -96,14 +100,12 @@ public class EspecieDetailDTO extends EspecieDTO
     /**
      * Lista de mascotas que contiene una  especie
      */
-    private List<MascotaDTO> mascotas;
+    private List<MascotaAdoptadaDTO> mascotas;
  
     /**
      * Lista de razas que contiene una  especie
      */
     private List<RazaDTO> razas;
-    
-    
     
      /**
      * Constructor por defecto
@@ -113,17 +115,41 @@ public class EspecieDetailDTO extends EspecieDTO
         super();
     }
 
+    
+      /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity
+     */
+    /**
+    public EspecieDetailDTO(EspecieEntity entity){
+        super(entity);
+        if (entity != null) {
+            mascotas = new ArrayList<>();
+            if(entity.getMascotas()!=null){
+                for(MascotaEntity entityMascota : entity.getMascotas())  {
+                mascotas.add(new Mascota(entityMascota));
+                }
+            }
+            razas = new ArrayList<>();
+            if(entity.getRazas()!=null){
+                for(RazaEntity entityRaza : entity.getRazas()){
+                razas.add(new RazaDetailDTO(entityRaza));
+                }   
+            }  
+        }
+    }
     /**
      * @return the mascotas
      */
-    public List<MascotaDTO> getMascotas() {
+    public List<MascotaAdoptadaDTO> getMascotas() {
         return mascotas;
     }
 
     /**
      * @param mascotas the mascotas to set
      */
-    public void setMascotas(List<MascotaDTO> mascotas) {
+    public void setMascotas(List<MascotaAdoptadaDTO> mascotas) {
         this.mascotas = mascotas;
     }
 

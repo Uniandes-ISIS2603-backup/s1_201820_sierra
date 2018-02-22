@@ -98,22 +98,22 @@ public class MascotaAdoptadaPersistence
      */
 	public MascotaAdoptadaEntity findByName( String name )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Mascota adoptada por nombre ", name );
-
-		// Se crea un query para buscar entidades de especie con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-		TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("Select e From MascotaEntity e where e.name = :name", MascotaAdoptadaEntity.class );
-		// Se remplaza el placeholder ":name" con el valor del argumento
-		query = query.setParameter( "name", name );
-		// Se invoca el query se obtiene la lista resultado
-		List<MascotaAdoptadaEntity> sameName = query.getResultList( );
-		if( sameName.isEmpty( ) )
-		{
-			return null;
-		}
-		else
-		{
-			return sameName.get( 0 );
-		}
+             LOGGER.log(Level.INFO, "Consultando mascota adoptada por nombre ", name);
+            // Se crea un query para buscar editoriales con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+            TypedQuery query = em.createQuery("Select e From MascotaAdoptadaEntity e where e.name = :name", MascotaAdoptadaEntity.class);
+            // Se remplaza el placeholder ":name" con el valor del argumento 
+            query = query.setParameter("name", name);
+            // Se invoca el query se obtiene la lista resultado
+            List<MascotaAdoptadaEntity> sameName = query.getResultList();
+            MascotaAdoptadaEntity result = null; 
+            if (sameName == null ) {
+                result = null;
+            } else if (sameName.isEmpty()) {
+                 result = null;
+            } else {
+                result =  sameName.get(0);
+            }
+            return result;
 	}
         
       /**

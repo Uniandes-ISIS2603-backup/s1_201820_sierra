@@ -100,23 +100,24 @@ public class EspeciePersistence
      */
 	public EspecieEntity findByName( String name )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Especie por nombre ", name );
+                    LOGGER.log(Level.INFO, "Consultando especie por nombre ", name);
 
-		// Se crea un query para buscar entidades de especie con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-		TypedQuery<EspecieEntity> query = em.createQuery( "Select e From EspecieEntity e where e.name = :name", EspecieEntity.class );
-		// Se remplaza el placeholder ":name" con el valor del argumento
-		query = query.setParameter( "name", name );
-		// Se invoca el query se obtiene la lista resultado
-		List<EspecieEntity> sameName = query.getResultList( );
-		if( sameName.isEmpty( ) )
-		{
-			return null;
-		}
-		else
-		{
-			return sameName.get( 0 );
-		}
-	}
+           // Se crea un query para buscar editoriales con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+           TypedQuery query = em.createQuery("Select e From EspecieEntity e where e.name = :name", EspecieEntity.class);
+           // Se remplaza el placeholder ":name" con el valor del argumento 
+           query = query.setParameter("name", name);
+           // Se invoca el query se obtiene la lista resultado
+           List<EspecieEntity> sameName = query.getResultList();
+           EspecieEntity result = null; 
+           if (sameName == null ) {
+               result = null;
+           } else if (sameName.isEmpty()) {
+                result = null;
+           } else {
+               result =  sameName.get(0);
+           }
+           return result;
+           }
     
     
     /**
