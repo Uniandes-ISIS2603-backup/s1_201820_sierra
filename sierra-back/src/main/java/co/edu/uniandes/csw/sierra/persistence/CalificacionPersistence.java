@@ -77,4 +77,9 @@ public class CalificacionPersistence {
         em.remove(entity);
     }
 
+    public CalificacionEntity findByAdquisicion() {
+        //TODO:terminar
+        return null;
+    }
+
 }
