@@ -25,7 +25,10 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -34,6 +37,9 @@ import javax.persistence.Entity;
 @Entity
 public class EspecieEntity extends BaseEntity implements Serializable
 {
+    
+    //--------------ATRIBUTOS--------------//
+    
     /**
      * Codigo serializable por SA
      */
@@ -53,8 +59,31 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     private String clasificacion;
     
-  
-
+    //---------------RELACIONES-----------------//
+    
+    /**
+     * Lista de razas de una especie
+     */
+    @PodamExclude
+    @OneToMany
+    private List<RazaEntity> razas;
+    
+    /**
+     * Lista de  mascotas que se pueden adoptar de una especie
+     */
+    @PodamExclude
+    @OneToMany
+    private List<MascotaAdoptadaEntity> mascotasAdoptadas;
+    
+    /**
+     * Lista de  mascotas que se pueden comprar de una especie
+     */
+    @PodamExclude
+    @OneToMany
+    private List<MascotaVentaEntity> mascotasVenta;
+    
+    //------------METODOS--------------//
+    
     /**
      * @return the nombre
      */
@@ -95,6 +124,48 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
+    }
+
+    /**
+     * @return the razas
+     */
+    public List<RazaEntity> getRazas() {
+        return razas;
+    }
+
+    /**
+     * @param razas the razas to set
+     */
+    public void setRazas(List<RazaEntity> razas) {
+        this.razas = razas;
+    }
+
+    /**
+     * @return the mascotasAdoptadas
+     */
+    public List<MascotaAdoptadaEntity> getMascotasAdoptadas() {
+        return mascotasAdoptadas;
+    }
+
+    /**
+     * @param mascotasAdoptadas the mascotasAdoptadas to set
+     */
+    public void setMascotasAdoptadas(List<MascotaAdoptadaEntity> mascotasAdoptadas) {
+        this.mascotasAdoptadas = mascotasAdoptadas;
+    }
+
+    /**
+     * @return the mascotasVenta
+     */
+    public List<MascotaVentaEntity> getMascotasVenta() {
+        return mascotasVenta;
+    }
+
+    /**
+     * @param mascotasVenta the mascotasVenta to set
+     */
+    public void setMascotasVenta(List<MascotaVentaEntity> mascotasVenta) {
+        this.mascotasVenta = mascotasVenta;
     }
 
      

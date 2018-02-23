@@ -5,10 +5,14 @@
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author jc.sanchez12
  */
-public class MascotaVentaEntity {
+@Entity
+public class MascotaVentaEntity extends BaseEntity
+{
     
 }
