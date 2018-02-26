@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -16,20 +18,26 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     
     private Long id;
     private Integer valorTotal;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     private Long clienteId;
     
     
+    
+    
     /**
      * Factura ligada al comprobante actual.
-     */ 
-//   private FacturaDTO factura;
-//
+     */
+    @OneToOne 
+   private FacturaEntity factura;
+
     /**
      * Medio de pago usado para el actual comprobante.
      */
-//   private MedioDePagoDTO medioDePago;    
-//    
+    @OneToOne
+   private MedioDePagoEntity medioDePago;    
+    
     
     /**
      * Métdo que retorna el id del Comprobante.
@@ -101,32 +109,32 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
      * Método que retorna la factura ligada al c omprobante.
      * @return factura
      */ 
-//  public FacturaDTO getFactura()    
-//  {
-//      return this.factura;
-//  }
+  public FacturaEntity getFactura()    
+  {
+      return this.factura;
+  }
     /**
      * Método que recibe a la factura ligada al comprobante actual como parámetro.
      * @param factura
      */
-//  public void setFactura(FacturaDTO factura)
-//  {
-//      this.factura = factura;
-//  }
+  public void setFactura(FacturaEntity factura)
+  {
+      this.factura = factura;
+  }
     /**
      * Método que retorna al medio de pago usad en el comprobante actual.
      * return medio de pago usado en el comprobante actual.
      */ 
-//  public MedioDePagoDTO getMedioDePago()
-//  {
-//      return this.medioDePago;
-//  }
+  public MedioDePagoEntity getMedioDePago()
+  {
+      return this.medioDePago;
+  }
     /**
      * Método que recibe al medio de pago usado en el comprobante actual como parametro.
      * @param medioDePago
      */ 
-//  public void setMedioDePago(MedioDePagoDTO medioDePago)
-//  {  
-//      this.medioDePago = medioDePago;
-//  }
+  public void setMedioDePago(MedioDePagoEntity medioDePago)
+  {  
+      this.medioDePago = medioDePago;
+  }
 }
