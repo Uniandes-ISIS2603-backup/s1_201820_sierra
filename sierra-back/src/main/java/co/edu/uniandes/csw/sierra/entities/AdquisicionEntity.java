@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.sierra.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -28,8 +31,17 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     //Asociaciones
     //------------------
     
-     
-    //private MascotaEntity mascota;
+    @OneToOne 
+    private MascotaEntity mascota;
+    
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @OneToOne
+    private CalificacionEntity calificacion;
+    
+    @OneToOne
+    private FacturaEntity factura;
 
     /**
      * @return the valorTotal
@@ -57,6 +69,62 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
      */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * @return the mascota
+     */
+    public MascotaEntity getMascota() {
+        return mascota;
+    }
+
+    /**
+     * @param mascota the mascota to set
+     */
+    public void setMascota(MascotaEntity mascota) {
+        this.mascota = mascota;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the calificacion
+     */
+    public CalificacionEntity getCalificacion() {
+        return calificacion;
+    }
+
+    /**
+     * @param calificacion the calificacion to set
+     */
+    public void setCalificacion(CalificacionEntity calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    /**
+     * @return the factura
+     */
+    public FacturaEntity getFactura() {
+        return factura;
+    }
+
+    /**
+     * @param factura the factura to set
+     */
+    public void setFactura(FacturaEntity factura) {
+        this.factura = factura;
     }
     
 }

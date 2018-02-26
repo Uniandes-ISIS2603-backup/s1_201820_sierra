@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  * Entidad que representa una calificacion.
@@ -23,6 +24,13 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
     
     private String sugerencia;
 
+    
+    //----------------
+    //Asociaciones
+    //0000000000000000
+    
+    @OneToOne(mappedBy= "calificacion")
+    private AdquisicionEntity adquisicion;
     /**
      * @return the comentarios
      */
