@@ -28,12 +28,14 @@ import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Stateless
 public class MascotaAdoptadaLogic
 {
      private static final Logger LOGGER = Logger.getLogger( MascotaAdoptadaLogic.class.getName( ) );
