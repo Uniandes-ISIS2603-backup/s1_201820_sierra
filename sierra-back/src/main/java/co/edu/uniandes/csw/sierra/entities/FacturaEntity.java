@@ -7,6 +7,10 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -16,9 +20,14 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     private Long id;
     private Integer valorTotal;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
-       
+    @OneToMany
+    @PodamExclude
+    private AdquisicionEntity adquisicion;
+    private List<ComprobanteEntity> comprobantes;
     /**
      * Adquisición ligada a la factura.
      */ 
@@ -83,37 +92,38 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     /**
      * Retorna la Adquisición ligada a la Factura..
      * @return Adquisición ligada a la Factura.
-     * public Adquisicion getAdquisicion()
-     */
-//     {
-//      return adquisicion;
-//     }
-//
+     **/
+     public AdquisicionEntity getAdquisicion()
+     
+     {
+        return adquisicion;
+     }
+
     /**
      * Asigna una adquisición a la Factura.
      * @Param adquisicion
      */
-//   public void setAdquisicion(AdquisicionDTO adquisicion) 
-//   {
-//      this.adquiscion = adquisicion;    
-//   } 
+   public void setAdquisicion(AdquisicionEntity adquisicion) 
+   {
+      this.adquisicion = adquisicion;    
+   } 
     
     /**
      * Retorna una lista de comprobantes
      * @return una lista de comprobantes.
      */
-//    public IList<ComprobanteDetailDTO> getComprobantes()
-//    {
-//         return this.adquisiciones;
-//    }
+    public List<ComprobanteEntity> getComprobantes()
+    {
+         return comprobantes;
+    }
     
     
     /**
      * Recibe como parámetro una lista de comprobantes
      * @param comprobantes
      */
-//   public void setComprobantes(IList<ComproanteDetailDTO> comprobantes)
-//   {
-//       this.comprobantes = comprobante;
-//   }    
+   public void setComprobantes(List<ComprobanteEntity> comprobantes)
+   {
+       this.comprobantes = comprobantes;
+   }    
 }
