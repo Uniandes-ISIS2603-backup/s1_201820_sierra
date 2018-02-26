@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -19,6 +20,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Juan David Zambrano
  */
+@Stateless
 public class MascotaVentaPersistence {
     
         private final static Logger LOGGER = Logger.getLogger(MascotaVentaPersistence.class.getName());
@@ -56,7 +58,7 @@ public class MascotaVentaPersistence {
          * @param id el id de la mascota venta buscada
          * @return la mascota con el id dado, Null si no existe
          */
-        public MascotaVentaEntity finById(Long id){
+        public MascotaVentaEntity find(Long id){
             LOGGER.log(Level.INFO, "Consultando MascotaVenta con el id= {0}", id);
             return em.find(MascotaVentaEntity.class, id);
         }
@@ -88,11 +90,10 @@ public class MascotaVentaPersistence {
          * Borra una entidad de MascotaVentacon el id dado
          * @param id el id de la mascota Venta que se quiere borrar
          */
-        public void delete(Long id){
-            LOGGER.log(Level.INFO, "Borrando una entidad de MascotaVenta con id={0}", id);
-            MascotaVentaEntity ent = em.find(MascotaVentaEntity.class, id);
+        public void delete(MascotaVentaEntity ent){
+            LOGGER.log(Level.INFO, "Borrando una entidad de MascotaVenta con id={0}", ent.getId());
             em.remove(ent); 
-            LOGGER.log(Level.INFO, "Borrada la entidad con id={0}", id);
+            LOGGER.log(Level.INFO, "Borrada la entidad con id={0}", ent.getId());
         }
         /**
          * Actualiza una mascota en venta
