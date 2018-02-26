@@ -73,7 +73,7 @@ public class CalificacionLogic {
         return r;
     }
     /**
-     * Obtiene una entidad de ADquiicion con base en un Id dado 
+     * Obtiene una entidad de Calificacion base en un Id dado 
      * @param id el Id que se quiere encontrar
      * @return la Calificacion con el Id dado, Null si no lo encuentra
      */
@@ -94,7 +94,7 @@ public class CalificacionLogic {
     
     /**
      * Elimina una Calificacion
-     * @param ent la adquiisicion que se desea eliminar
+     * @param ent la calificacion que se desea eliminar
      */
     public void delete(CalificacionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Calificacion con id ={0}", ent.getId());
