@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -19,6 +20,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Juan David Zambrano
  */
+@Stateless
 public class MascotaVentaPersistence {
     
         private final static Logger LOGGER = Logger.getLogger(MascotaVentaPersistence.class.getName());

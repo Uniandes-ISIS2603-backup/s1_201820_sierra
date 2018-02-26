@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.CalificacionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -54,9 +55,14 @@ public class CalificacionLogic {
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
      */
-    public CalificacionEntity create(CalificacionEntity ent){
+    public CalificacionEntity create(CalificacionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Calificacion");
-        //TODO: Definir reglas de negocio
+        if(ent.getValor() > 5){
+            throw new BusinessLogicException("El valor de la calificacion no debe ser mayor a 5");
+        }
+        if(ent.getValor()<0){
+            throw new BusinessLogicException("El valor de la calificacion no debe sermenor a 0");
+        }
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Calificacion");
         return ent;
@@ -86,8 +92,13 @@ public class CalificacionLogic {
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
      */
-    public CalificacionEntity update(CalificacionEntity ent){
-        //TODO: Agregar reglas de negocio
+    public CalificacionEntity update(CalificacionEntity ent) throws BusinessLogicException{
+        if(ent.getValor() > 5){
+            throw new BusinessLogicException("El valor de la calificacion no debe ser mayor a 5");
+        }
+        if(ent.getValor()<0){
+            throw new BusinessLogicException("El valor de la calificacion no debe sermenor a 0");
+        }
         LOGGER.log(Level.INFO, "Actualizando la entidad de Calificacion con el id={0}", ent.getId());
         return persistencia.update(ent);
     }
