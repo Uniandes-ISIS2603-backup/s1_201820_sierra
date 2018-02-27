@@ -36,7 +36,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     /**
      * Lista de comprobantes ligaras a la factura.
      */ 
-    @OneToMany
+    @OneToMany( mappedBy="comprobante" )
     private List<ComprobanteEntity> comprobantes;
    
     /**

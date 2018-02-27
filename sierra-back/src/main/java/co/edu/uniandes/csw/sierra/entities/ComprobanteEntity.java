@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -31,7 +32,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     /**
      * Factura ligada al comprobante actual.
      */
-    @OneToOne 
+    @ManyToOne 
    private FacturaEntity factura;
 
     /**
