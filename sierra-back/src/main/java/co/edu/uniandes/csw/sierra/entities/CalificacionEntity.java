@@ -73,5 +73,19 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
         this.sugerencia = sugerencia;
     }
 
+    /**
+     * @return the adquisicion
+     */
+    public AdquisicionEntity getAdquisicion() {
+        return adquisicion;
+    }
+
+    /**
+     * @param adquisicion the adquisicion to set
+     */
+    public void setAdquisicion(AdquisicionEntity adquisicion) {
+        this.adquisicion = adquisicion;
+    }
+
     
 }
