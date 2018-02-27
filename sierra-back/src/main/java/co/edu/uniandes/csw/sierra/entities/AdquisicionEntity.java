@@ -40,7 +40,7 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     @OneToOne
     private CalificacionEntity calificacion;
     
-    @OneToOne(mappedBy = "adquisicion")
+    @OneToOne
     private FacturaEntity factura;
 
     /**
