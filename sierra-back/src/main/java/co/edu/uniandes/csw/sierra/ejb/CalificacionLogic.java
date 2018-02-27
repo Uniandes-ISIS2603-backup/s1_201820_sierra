@@ -109,7 +109,7 @@ public class CalificacionLogic {
      */
     public void delete(CalificacionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Calificacion con id ={0}", ent.getId());
-        persistencia.delete(ent);
+        persistencia.delete(ent.getId());
     }
     
 }

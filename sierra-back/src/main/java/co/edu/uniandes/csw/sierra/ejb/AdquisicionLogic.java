@@ -109,7 +109,7 @@ public class AdquisicionLogic {
      */
     public void delete(AdquisicionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", ent.getId());
-        persistencia.delete(ent);
+        persistencia.delete(ent.getId());
     }
     
     
