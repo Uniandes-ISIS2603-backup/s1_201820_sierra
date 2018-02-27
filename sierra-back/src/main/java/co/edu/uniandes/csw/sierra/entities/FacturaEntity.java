@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.sierra.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -16,7 +17,10 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author jc.sanchez12
  */
+@Entity
 public class FacturaEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
     private Long id;
     private Integer valorTotal;

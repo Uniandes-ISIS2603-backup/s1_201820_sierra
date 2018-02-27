@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -14,6 +15,7 @@ import javax.persistence.Temporal;
  *
  * @author jc.sanchez12
  */
+@Entity
 public class ComprobanteEntity extends BaseEntity implements Serializable{
     
     private Long id;

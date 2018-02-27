@@ -24,8 +24,11 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -38,6 +41,8 @@ import javax.persistence.Temporal;
 @Entity
 public abstract class MascotaEntity extends BaseEntity
 {
+ 
+    //--------------------ATRIBUTOS--------------//
     
     /**
      * Codigo serializable por SA
@@ -97,7 +102,41 @@ public abstract class MascotaEntity extends BaseEntity
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date muerte;
     
+    //---------------RELACIONES-------------------//
+   
+    /**
+     * Especie  de la mascota
+     */
+    @ManyToOne
+    private EspecieEntity especie;
 
+    /**
+     * Ciente  de la  mascota
+     */
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    /**
+     * Adquisicion a la que  esta  ligada la mascota
+     */
+    @OneToOne(mappedBy= "mascota")
+    private AdquisicionEntity adquisicion;
+    
+    /**
+     * Raza de la  mascota
+     */
+    @ManyToOne
+    private RazaEntity raza;
+    
+    /**
+     * Publicaciones de una  mascota
+     */
+    @OneToMany(mappedBy="mascota")
+    private List<PublicacionEntity> publicaciones;
+
+    
+    //---------------METODOS---------------------//
+    
     /**
      * @return the nombre
      */
@@ -246,5 +285,75 @@ public abstract class MascotaEntity extends BaseEntity
     public void setMuerte(Date muerte) {
         this.muerte = muerte;
     }    
+
+    /**
+     * @return the especie
+     */
+    public EspecieEntity getEspecie() {
+        return especie;
+    }
+
+    /**
+     * @param especie the especie to set
+     */
+    public void setEspecie(EspecieEntity especie) {
+        this.especie = especie;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the adquisicion
+     */
+    public AdquisicionEntity getAdquisicion() {
+        return adquisicion;
+    }
+
+    /**
+     * @param adquisicion the adquisicion to set
+     */
+    public void setAdquisicion(AdquisicionEntity adquisicion) {
+        this.adquisicion = adquisicion;
+    }
+
+    /**
+     * @return the raza
+     */
+    public RazaEntity getRaza() {
+        return raza;
+    }
+
+    /**
+     * @param raza the raza to set
+     */
+    public void setRaza(RazaEntity raza) {
+        this.raza = raza;
+    }
+
+    /**
+     * @return the publicaciones
+     */
+    public List<PublicacionEntity> getPublicaciones() {
+        return publicaciones;
+    }
+
+    /**
+     * @param publicaciones the publicaciones to set
+     */
+    public void setPublicaciones(List<PublicacionEntity> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
     
 }
