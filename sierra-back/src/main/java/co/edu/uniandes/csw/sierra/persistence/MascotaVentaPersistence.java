@@ -90,10 +90,10 @@ public class MascotaVentaPersistence {
          * Borra una entidad de MascotaVentacon el id dado
          * @param id el id de la mascota Venta que se quiere borrar
          */
-        public void delete(MascotaVentaEntity ent){
-            LOGGER.log(Level.INFO, "Borrando una entidad de MascotaVenta con id={0}", ent.getId());
+        public void delete(Long id){
+            LOGGER.log(Level.INFO, "Borrando una entidad de MascotaVenta con id={0}", id);
+            MascotaVentaEntity ent = em.find(MascotaVentaEntity.class, id);
             em.remove(ent); 
-            LOGGER.log(Level.INFO, "Borrada la entidad con id={0}", ent.getId());
         }
         /**
          * Actualiza una mascota en venta
