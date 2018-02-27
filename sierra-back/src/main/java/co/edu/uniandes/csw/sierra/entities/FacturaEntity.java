@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -25,23 +26,19 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-
-    @OneToMany
-    @PodamExclude
-    private AdquisicionEntity adquisicion;
-    private List<ComprobanteEntity> comprobantes;
-    /**
+    
+     /**
      * Adquisición ligada a la factura.
      */ 
-//       @OneToMany
-//      private AdquisicionDTO adquisicion;
-//      
+    @OneToOne
+    private AdquisicionEntity adquisicion;
+    
     /**
      * Lista de comprobantes ligaras a la factura.
      */ 
-//      @OneToMany
-//      private IList<ComprobanteDetailDTO> comprobantes;
-    
+    @OneToMany
+    private List<ComprobanteEntity> comprobantes;
+   
     /**
      * Método que retorna el id de la factura.
      * @return 
