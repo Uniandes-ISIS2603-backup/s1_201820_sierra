@@ -72,7 +72,7 @@ public class EspecieEntity extends BaseEntity implements Serializable
     @OneToMany(mappedBy = "especie")
     private List<MascotaEntity>  mascotas;
     
-    //------------METODOS--------------// 
+    //------------METODOS--------------//  
     /**
      * @return the nombre
      */

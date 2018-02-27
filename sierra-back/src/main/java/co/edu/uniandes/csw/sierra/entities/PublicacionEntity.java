@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
 
 /**
  *Entidad que representa una publicacion.
@@ -18,9 +19,13 @@ import javax.persistence.Temporal;
 @Entity
 public class PublicacionEntity extends BaseEntity implements Serializable
 {
-     private String tipo;
+    
+    @ManyToOne
+    private MascotaEntity mascota;
+            
+    private String tipo;
      
-     private String fotoURL;
+    private String fotoURL;
      
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
@@ -99,4 +104,23 @@ public class PublicacionEntity extends BaseEntity implements Serializable
         this.comentario = pComentario;
     }
     
+     /**
+     * Metodo que se encarga de retornar la mascota asociada a la publicacion.
+     * @return mascota.
+     */
+    public MascotaEntity getMascota()
+    {
+        return mascota;
+    }
+    
+    /**
+     * Metodo encargado de cambiar la mascota a la que esta asignada la publicacion.
+     * @param pMascota
+     */
+    public void setMascota(MascotaEntity  pMascota)
+    {
+        mascota = pMascota;
+    }
 }
+
+
