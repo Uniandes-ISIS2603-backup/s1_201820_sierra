@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.sierra.ejb;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MedioDePagoPersistence;
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +18,9 @@ import javax.inject.Inject;
  */
 @Stateless
 public class MedioDePagoLogic {
+    
+    private static final Logger LOGGER = Logger.getLogger(MedioDePagoLogic.class.getName());
+    
     
     @Inject 
     private MedioDePagoPersistence persistence;
