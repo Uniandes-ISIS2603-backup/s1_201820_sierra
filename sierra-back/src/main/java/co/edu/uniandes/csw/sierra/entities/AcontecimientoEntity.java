@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
 /**
  *Entidad que representa un Acontecimiento.
  *@author ja.penat
@@ -16,6 +17,10 @@ import javax.persistence.Temporal;
 public class AcontecimientoEntity extends BaseEntity implements Serializable
 {
 
+    
+    @ManyToOne// Indica que la relacion es de varios acontecimientos a una mascota.
+    private MascotaAdoptadaEntity mascotaAdopcion;
+    
     private static final long serialVersionUID = 1L;
   
     private String nombre;
@@ -139,4 +144,21 @@ public class AcontecimientoEntity extends BaseEntity implements Serializable
         this.fotoURL = pFotoURL;
     }
     
+    /**
+     * Metodo que se encarga de retornar la mascota asociada al acontecimiento.
+     * @return mascotaAdopcion.
+     */
+    public MascotaAdoptadaEntity getMascota()
+    {
+        return mascotaAdopcion;
+    }
+    
+    /**
+     * Metodo encargado de cambiar la mascota a la que esta asignado el acontecimiento
+     * @param pMascotaAdopcion 
+     */
+    public void setMascota(MascotaAdoptadaEntity  pMascotaAdopcion)
+    {
+        mascotaAdopcion = pMascotaAdopcion;
+    }
 }
