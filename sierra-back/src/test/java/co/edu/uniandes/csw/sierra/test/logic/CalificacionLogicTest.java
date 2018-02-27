@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.sierra.persistence.CalificacionPersistence;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -44,4 +45,12 @@ public class CalificacionLogicTest {
      */
     @PersistenceContext
     private EntityManager em;
+    
+    /**
+     * Marcador de transacciones
+     */
+    @Inject
+    private UserTransaction ussrTX;
+    
+    
 }
