@@ -25,8 +25,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     private Date fecha;
     private Long clienteId;
     
-    
-    
+ 
     
     /**
      * Factura ligada al comprobante actual.

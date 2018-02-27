@@ -16,7 +16,8 @@ import javax.persistence.Entity;
  * @author Juan David Zambrano
  */
 @Entity
-public class MascotaVentaEntity extends MascotaEntity{
+public class MascotaVentaEntity extends MascotaEntity
+{
     
     private Integer precio;
     
