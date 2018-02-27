@@ -57,12 +57,12 @@ public class CalificacionLogic {
      */
     public CalificacionEntity create(CalificacionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Calificacion");
-        if(ent.getValor() > 5){
+        if(ent.getValor() > 5)
             throw new BusinessLogicException("El valor de la calificacion no debe ser mayor a 5");
-        }
-        if(ent.getValor()<0){
+        if(ent.getValor()<0)
             throw new BusinessLogicException("El valor de la calificacion no debe sermenor a 0");
-        }
+        if(ent.getAdquisicion() == null)
+            throw new BusinessLogicException("La calificacion debe estar asociada a una adquisicion");
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Calificacion");
         return ent;
