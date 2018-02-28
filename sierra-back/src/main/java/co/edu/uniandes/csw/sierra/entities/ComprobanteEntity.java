@@ -24,6 +24,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    
     private Long clienteId;
     
  
