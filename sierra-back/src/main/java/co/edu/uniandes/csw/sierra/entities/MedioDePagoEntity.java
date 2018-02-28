@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * Clase que modela la entidad del medio de pago.
@@ -18,6 +20,11 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     private Long numeroReferencia; //Atributo que contiene el numero de referencia de un medio de pago.
     private String tipo; //Atributo que contiene el tipo del medio de pago. Efectivo o tarjeta.
 
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    @OneToOne(mappedBy="medioDePago")
+    private ComprobanteEntity comprobante;
     /**
      * Metodo que obtiene el numero de referencia de un medio de pago.
      * @return El numero de referencia.
@@ -49,5 +56,36 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     public void setTipo(String tipo) {
         this.tipo = tipo;
     } 
-}
 
+    /**
+     * Devuelve el cliente al que pertenece el medio con el que se pago.
+     * @return El cliente asociado al medio de pago.
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * Modifica el cliente al que pertenece el medio de pago.
+     * @param cliente Nuevo cliente a modificar.
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * Obtiene un comprobante asociado al cuando se pago con el medio especifico.
+     * @return El comprobante cuando se pago.
+     */
+    public ComprobanteEntity getComprobante() {
+        return comprobante;
+    }
+
+    /**
+     * Modifica el comprobante caundo se realiza un pago con un medio.
+     * @param comprobante Nuevo comprobante por asignar.
+     */
+    public void setComprobante(ComprobanteEntity comprobante) {
+        this.comprobante = comprobante;
+    }
+}

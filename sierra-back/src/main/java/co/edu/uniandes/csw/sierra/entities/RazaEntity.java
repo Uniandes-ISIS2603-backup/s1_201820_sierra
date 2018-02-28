@@ -14,6 +14,8 @@ import javax.persistence.Entity;
  */
 @Entity
 public class RazaEntity extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     //nombre de la raza a la que corresponde el animal
     private String nombreRaza;
     // cuidados que se deben tener con la raza 

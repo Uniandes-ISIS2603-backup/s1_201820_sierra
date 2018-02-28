@@ -93,6 +93,7 @@ public class FacturaLogicTest {
         //Proceso Constructor.
     }
     
+
     @Before
     public void setup()
     {
@@ -128,9 +129,9 @@ public class FacturaLogicTest {
             data.add(newEntity);
         }
     }
-    
-    
 }
+
+
 /**
  * @OneToMany(mappedBy = "nombreClaseLocal", cascade = CascadeType.All, orphanRemoval...
  */

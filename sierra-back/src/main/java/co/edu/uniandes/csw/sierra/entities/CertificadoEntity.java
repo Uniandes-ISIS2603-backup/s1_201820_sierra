@@ -15,7 +15,9 @@ import javax.persistence.Entity;
  */
 @Entity
 public class CertificadoEntity extends BaseEntity implements Serializable {
-         //Identificador único del certificado
+
+    private static final long serialVersionUID = 1L;
+    //Identificador único del certificado
     private Long id;
     // fecha de expedisión del certicado
     private Date fecha;

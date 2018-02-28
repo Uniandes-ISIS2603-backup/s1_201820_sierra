@@ -98,7 +98,7 @@ public class MascotaVentaLogic {
      */
     public void delete(MascotaVentaEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la MascotaVenta con id ={0}", ent.getId());
-        persistencia.delete(ent);
+        persistencia.delete(ent.getId());
     }
     
 }

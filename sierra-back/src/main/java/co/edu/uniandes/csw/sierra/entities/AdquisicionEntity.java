@@ -23,9 +23,17 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  */
 @Entity
 public class AdquisicionEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
+    /**
+     * Valor total registrado por la adquisicion
+     */
     private Double valorTotal;
        
+    /**
+     * Fecha en la que  se produjo la adquisicion
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
@@ -34,18 +42,34 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     //Asociaciones
     //------------------
     
+    /**
+     * Mascota asociada  a la adquisicion
+     */
     @OneToOne 
     private MascotaEntity mascota;
     
+    /**
+     * Cliente que  hizo la adquisicion
+     */
     @ManyToOne
     private ClienteEntity cliente;
     
+    /**
+     * Calificacion de la adquisicion
+     */
     @OneToOne
     private CalificacionEntity calificacion;
     
+    /**
+     * Factura de la adquisicion
+     */
     @OneToOne
     private FacturaEntity factura;
 
+    
+    
+    
+    
     /**
      * @return the valorTotal
      */

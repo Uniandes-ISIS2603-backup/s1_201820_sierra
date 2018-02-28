@@ -16,21 +16,38 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class CalificacionEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
-    
+    /**
+     * Comentarios de la caificacion
+     */
     private String comentarios;
     
+    /**
+     * El valor de la calificacion
+     */
     private Double valor;
     
+   /**
+    * Sugerencias de la calificacion
+    */
     private String sugerencia;
 
     
     //----------------
     //Asociaciones
-    //0000000000000000
+    //---------------
     
+    /**
+     * La adquisicion a la que esta referenciada la calificacion
+     */
     @OneToOne(mappedBy= "calificacion")
     private AdquisicionEntity adquisicion;
+    
+    
+    
+    
     /**
      * @return the comentarios
      */
