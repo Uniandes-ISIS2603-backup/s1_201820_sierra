@@ -93,8 +93,45 @@ public class FacturaLogicTest {
         //Proceso Constructor.
     }
     
-   
+
+    @Before
+    public void setup()
+    {
+        try{
+            userTX.begin();
+            clearData();
+            insertData();
+            userTX.commit();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+            try
+            {
+                userTX.rollback();
+            }catch(Exception e1)
+            {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+    private void clearData()
+    {
+        em.createQuery("delete from FacturaEntity").executeUpdate();
+    }
+    
+    private void insertData()
+    {
+        for(int i = 0 ; i < 4; i++)
+        {
+            FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+            em.persist(newEntity);
+            data.add(newEntity);
+        }
+    }
 }
+
+
 /**
  * @OneToMany(mappedBy = "nombreClaseLocal", cascade = CascadeType.All, orphanRemoval...
  */
