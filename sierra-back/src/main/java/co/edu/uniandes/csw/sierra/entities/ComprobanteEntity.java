@@ -18,13 +18,23 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class ComprobanteEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
-    
+    /**
+     * Valor total del comprobante
+     */
     private Integer valorTotal;
     
+    /**
+     * Fecha del comprobante
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     
+    /**
+     * La id del cliente del comprobante
+     */
     private Long clienteId;
     
  
@@ -109,7 +119,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
   }
     /**
      * Método que retorna al medio de pago usad en el comprobante actual.
-     * return medio de pago usado en el comprobante actual.
+     * @return  medio de pago usado en el comprobante actual.
      */ 
   public MedioDePagoEntity getMedioDePago()
   {

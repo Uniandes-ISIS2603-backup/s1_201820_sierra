@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 @Entity
 public class MedioDePagoEntity extends BaseEntity implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
     private Long numeroReferencia; //Atributo que contiene el numero de referencia de un medio de pago.
     private String tipo; //Atributo que contiene el tipo del medio de pago. Efectivo o tarjeta.
 

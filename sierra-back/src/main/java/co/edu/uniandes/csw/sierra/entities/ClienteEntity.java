@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class ClienteEntity extends BaseEntity implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
     private String nombre; //Atributo que contiene el nombre de un cliente.
     private String apellido; //Atributo que contiene el apellido de un cliente.
     private Long cedula; //Atributo que contiene el numero de cedula del cliente.

@@ -18,9 +18,17 @@ import javax.persistence.Entity;
 @Entity
 public class MascotaVentaEntity extends MascotaEntity
 {
+
+    private static final long serialVersionUID = 1L;
     
+    /**
+     * Precio a pagar por la mascota
+     */
     private Integer precio;
     
+    /**
+     * Certificados asociados a la mascota
+     */
     @OneToMany
     @PodamExclude
     private List<CertificadoEntity> certificados;

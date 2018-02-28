@@ -19,18 +19,38 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PublicacionEntity extends BaseEntity implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
     
+    /**
+     * La mascota que  tiene  publicaciones
+     */
     @ManyToOne
     private MascotaEntity mascota;
-            
+    
+    /**
+     * Tipo de publicacion
+     */    
     private String tipo;
-     
+    
+    /**
+     * Foto asociada a la publicacion
+     */
     private String fotoURL;
-     
+    
+    /**
+     * Fecha de la publicacion
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
        
+    /**
+     * Comentario  de la publicacion
+     */
     private String comentario;
+    
+    
+    
     
       /**
      * Metodo que se encarga de retornar el tipo de la publicacion.

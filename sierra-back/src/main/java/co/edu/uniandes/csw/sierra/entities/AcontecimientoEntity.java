@@ -23,18 +23,38 @@ public class AcontecimientoEntity extends BaseEntity implements Serializable
     
     private static final long serialVersionUID = 1L;
   
+    /**
+     * Nombre resumido del acontecimiento
+     */
     private String nombre;
     
+    /**
+     * Descripccion del acontecimiento 
+     */
     private String descripcion;
     
+    /**
+     * Fecha del acontecimiento cuando fue registrado
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
     
+    /**
+     * Importancia del acontecimiento
+     */
     private Integer importancia;
     
+    /**
+     * El tipo de acontecimiento
+     */
     private String tipo;
     
+    /**
+     * Url de la foto asociada al evento
+     */
     private String fotoURL;
+    
+    
     
     /**
      * Metodo que se encarga de retornar el nombre del acontecimiento.
