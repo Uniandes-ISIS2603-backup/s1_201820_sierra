@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  * Entidad que representa una Adquisicion.
@@ -25,6 +27,7 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     private Double valorTotal;
        
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
     //------------------

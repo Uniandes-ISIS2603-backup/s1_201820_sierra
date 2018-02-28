@@ -72,8 +72,9 @@ public class CalificacionPersistence {
         return em.merge(entity);
     }
 
-    public void delete(CalificacionEntity entity) {
-        LOGGER.log(Level.INFO, "Borrando Calificacion con id={0}", entity.getId());
+    public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando Calificacion con id={0}", id);
+        CalificacionEntity entity = em.find(CalificacionEntity.class, id);
         em.remove(entity);
     }
 

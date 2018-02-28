@@ -7,11 +7,13 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Entity
 public class CertificadoEntity extends BaseEntity implements Serializable {
          //Identificador único del certificado
     private Long id;

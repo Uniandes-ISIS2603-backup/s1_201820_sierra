@@ -72,8 +72,9 @@ public class AdquisicionPersistence {
         return em.merge(entity);
     }
 
-    public void delete(AdquisicionEntity entity) {
-        LOGGER.log(Level.INFO, "Borrando Adquisicion con id={0}", entity.getId());
+    public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando Adquisicion con id={0}", id);
+        AdquisicionEntity entity = em.find(AdquisicionEntity.class, id);
         em.remove(entity);
     }
 

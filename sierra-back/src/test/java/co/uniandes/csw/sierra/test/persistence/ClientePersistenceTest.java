@@ -7,7 +7,6 @@ package co.uniandes.csw.sierra.test.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.*;
 import co.edu.uniandes.csw.sierra.persistence.ClientePersistence;
-import co.edu.uniandes.csw.sierra.persistence.EspeciePersistence;
 import java.util.*;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

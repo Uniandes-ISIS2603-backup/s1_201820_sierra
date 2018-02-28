@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.dtos;
+
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+
 /**
  * ClienteDTO Objeto de transferencia  de datos de la entidad Cliente. Los DTO contienen las
  * representaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -48,6 +51,21 @@ public class ClienteDTO
         
     }
 
+/**
+ * Crea u
+ * @param entity 
+ */    
+    public ClienteDTO(ClienteEntity entity)
+    {
+        if (entity != null)
+        {
+            this.id = entity.getId();
+            this.nombre = entity.getNombre();
+            this.apellido = entity.getApellido();
+            this.cedula = entity.getCedula();
+            this.telefono = entity.getTelefono();
+        }
+    }
     /**
      * Obtiene el nombre del cliente.
      * @return El nombre del cliente.

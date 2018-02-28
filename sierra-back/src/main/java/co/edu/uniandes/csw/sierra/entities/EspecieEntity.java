@@ -28,10 +28,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import uk.co.jemos.podam.common.PodamExclude;
 
 /**
- *
+ * 
  * @author jc.sanchez12
  */
 @Entity
@@ -64,26 +63,16 @@ public class EspecieEntity extends BaseEntity implements Serializable
     /**
      * Lista de razas de una especie
      */
-    @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy = "especie")
     private List<RazaEntity> razas;
-    
-    /**
-     * Lista de  mascotas que se pueden adoptar de una especie
-     */
-    @PodamExclude
-    @OneToMany
-    private List<MascotaAdoptadaEntity> mascotasAdoptadas;
-    
+        
     /**
      * Lista de  mascotas que se pueden comprar de una especie
      */
-    @PodamExclude
-    @OneToMany
-    private List<MascotaVentaEntity> mascotasVenta;
+    @OneToMany(mappedBy = "especie")
+    private List<MascotaEntity>  mascotas;
     
-    //------------METODOS--------------//
-    
+    //------------METODOS--------------//  
     /**
      * @return the nombre
      */
@@ -141,31 +130,17 @@ public class EspecieEntity extends BaseEntity implements Serializable
     }
 
     /**
-     * @return the mascotasAdoptadas
-     */
-    public List<MascotaAdoptadaEntity> getMascotasAdoptadas() {
-        return mascotasAdoptadas;
-    }
-
-    /**
-     * @param mascotasAdoptadas the mascotasAdoptadas to set
-     */
-    public void setMascotasAdoptadas(List<MascotaAdoptadaEntity> mascotasAdoptadas) {
-        this.mascotasAdoptadas = mascotasAdoptadas;
-    }
-
-    /**
      * @return the mascotasVenta
      */
-    public List<MascotaVentaEntity> getMascotasVenta() {
-        return mascotasVenta;
+    public List<MascotaEntity> getMascotas() {
+        return mascotas;
     }
 
     /**
-     * @param mascotasVenta the mascotasVenta to set
+     * @param mascotas
      */
-    public void setMascotasVenta(List<MascotaVentaEntity> mascotasVenta) {
-        this.mascotasVenta = mascotasVenta;
+    public void setMascotaS(List<MascotaEntity> mascotas) {
+        this.mascotas = mascotas;
     }
 
      

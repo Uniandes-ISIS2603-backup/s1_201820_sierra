@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -54,9 +55,14 @@ public class AdquisicionLogic {
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
      */
-    public AdquisicionEntity create(AdquisicionEntity ent){
+    public AdquisicionEntity create(AdquisicionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Adquisicion");
-        //TODO: Definir reglas de negocio
+        if(ent.getValorTotal() < 0)
+            throw new BusinessLogicException("El valor total no puede ser negativo");
+        if(ent.getCliente() == null)
+            throw new BusinessLogicException("La adquisicion debe tener un cliente asociado");
+        if(ent.getMascota() == null)
+            throw new BusinessLogicException("La Adquisicion debe tener una mascota asociada");
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Adquisicion");
         return ent;
@@ -86,8 +92,13 @@ public class AdquisicionLogic {
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
      */
-    public AdquisicionEntity update(AdquisicionEntity ent){
-        //TODO: Agregar reglas de negocio
+    public AdquisicionEntity update(AdquisicionEntity ent) throws BusinessLogicException{
+        if(ent.getValorTotal() < 0)
+            throw new BusinessLogicException("El valor total no puede ser negativo");
+        if(ent.getCliente() == null)
+            throw new BusinessLogicException("La adquisicion debe tener un cliente asociado");
+        if(ent.getMascota() == null)
+            throw new BusinessLogicException("La Adquisicion debe tener una mascota asociada");
         LOGGER.log(Level.INFO, "Actualizando la entidad de Adquisicion con el id={0}", ent.getId());
         return persistencia.update(ent);
     }
@@ -98,7 +109,7 @@ public class AdquisicionLogic {
      */
     public void delete(AdquisicionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", ent.getId());
-        persistencia.delete(ent);
+        persistencia.delete(ent.getId());
     }
     
     

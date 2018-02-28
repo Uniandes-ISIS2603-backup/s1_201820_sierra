@@ -20,6 +20,8 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class FacturaEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
     private static final Long serialVersionUID = 1L;
     
