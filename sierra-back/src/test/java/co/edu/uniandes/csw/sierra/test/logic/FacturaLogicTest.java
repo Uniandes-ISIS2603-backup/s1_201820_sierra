@@ -113,7 +113,26 @@ public class FacturaLogicTest {
             }
         }
     }
+    
+    private void clearData()
+    {
+        em.createQuery("delete from FacturaEntity").executeUpdate();
+    }
+    
+    private void insertData()
+    {
+        for(int i = 0 ; i < 4; i++)
+        {
+            FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+            em.persist(newEntity);
+            data.add(newEntity);
+        }
+    }
+    
+   
 }
+
+
 /**
  * @OneToMany(mappedBy = "nombreClaseLocal", cascade = CascadeType.All, orphanRemoval...
  */
