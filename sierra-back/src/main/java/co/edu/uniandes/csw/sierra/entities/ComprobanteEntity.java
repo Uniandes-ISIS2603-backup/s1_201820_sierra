@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -17,18 +18,13 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class ComprobanteEntity extends BaseEntity implements Serializable{
-
-    private static final long serialVersionUID = 1L;
     
-
+    
     private Integer valorTotal;
     
-    /**
-     * Fecha del comprobante
-     */
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-
+    
     private Long clienteId;
     
  
@@ -36,7 +32,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     /**
      * Factura ligada al comprobante actual.
      */
-    @OneToOne 
+    @ManyToOne 
    private FacturaEntity factura;
 
     /**
@@ -46,7 +42,6 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
    private MedioDePagoEntity medioDePago;    
     
     
-
     /**
      * Método que retorna el valor total del comprobante.
      * @return valorTotal
@@ -70,8 +65,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     public Long getClienteId() {
         return clienteId;
     }
-    
-    
+  
     
     /**
      * Método que recibe el valor total del comprobante como parametro.
@@ -115,7 +109,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
   }
     /**
      * Método que retorna al medio de pago usad en el comprobante actual.
-     * @return  medio de pago usado en el comprobante actual.
+     * return medio de pago usado en el comprobante actual.
      */ 
   public MedioDePagoEntity getMedioDePago()
   {
