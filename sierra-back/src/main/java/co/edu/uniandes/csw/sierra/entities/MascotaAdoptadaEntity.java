@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -20,7 +22,8 @@ public class MascotaAdoptadaEntity extends MascotaEntity
     private static final long serialVersionUID = 1L;
     
     //----------------Relaciones--------------//
-    @OneToMany(mappedBy = "mascotaAdopcion")
+    @PodamExclude
+    @OneToMany(mappedBy = "mascotaAdopcion", cascade = CascadeType.PERSIST)
     private List<AcontecimientoEntity> acontecimientos;
     //---------------METODOS---------------//
 

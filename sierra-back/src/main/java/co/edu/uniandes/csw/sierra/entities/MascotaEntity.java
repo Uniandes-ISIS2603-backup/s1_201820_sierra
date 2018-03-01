@@ -23,13 +23,17 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -94,12 +98,14 @@ public abstract class MascotaEntity extends BaseEntity
      * Fecha de la  nacimiento de la amscota
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date nacimiento;
     
      /**
      * Fecha dela muerte de la amscota
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date muerte;
     
     //---------------RELACIONES-------------------//
@@ -107,31 +113,36 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * Especie  de la mascota
      */
+    @PodamExclude
     @ManyToOne
     private EspecieEntity especie;
 
     /**
      * Ciente  de la  mascota
      */
+    @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
     
     /**
      * Adquisicion a la que  esta  ligada la mascota
      */
-    @OneToOne(mappedBy= "mascota")
+    @PodamExclude
+    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST)
     private AdquisicionEntity adquisicion;
     
     /**
      * Raza de la  mascota
      */
+    @PodamExclude
     @ManyToOne
     private RazaEntity raza;
     
     /**
      * Publicaciones de una  mascota
      */
-    @OneToMany(mappedBy="mascota")
+    @PodamExclude
+    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST)
     private List<PublicacionEntity> publicaciones;
 
     
