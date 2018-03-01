@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.jpa.config.Cascade;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -33,12 +35,14 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
      * Factura ligada al comprobante actual.
      */
     @ManyToOne 
+    @PodamExclude
    private FacturaEntity factura;
 
     /**
      * Medio de pago usado para el actual comprobante.
      */
     @OneToOne
+    @PodamExclude
    private MedioDePagoEntity medioDePago;    
     
     

@@ -8,10 +8,12 @@ package co.edu.uniandes.csw.sierra.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -27,7 +29,22 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     private String nombreCliente;
     private Integer precio;
     private String animalAdquirido;
-
+    
+     /**
+     * Adquisición ligada a la factura.
+     */ 
+    @OneToOne
+    @PodamExclude
+    private AdquisicionEntity adquisicion;
+    
+    /**
+     * Lista de comprobantes ligaras a la factura.
+     */
+    @OneToMany(mappedBy="comprobante", cascade = CascadeType.PERSIST)
+    @PodamExclude
+    private List<ComprobanteEntity> comprobantes;
+    
+    
     /**
      * 
      * @return 
@@ -77,17 +94,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     }
     
     
-     /**
-     * Adquisición ligada a la factura.
-     */ 
-    @OneToOne
-    private AdquisicionEntity adquisicion;
     
-    /**
-     * Lista de comprobantes ligaras a la factura.
-     */ 
-    @PodamExclude
-    private List<ComprobanteEntity> comprobantes;
    
     
     
