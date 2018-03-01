@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.sierra.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,22 +18,16 @@ import javax.persistence.Entity;
 public class CertificadoEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    //Identificador único del certificado
-    private Long id;
     // fecha de expedisión del certicado
     private Date fecha;
     //String que contiene  la descripción del certificado de pureza del perro
     private String descripcion;
     // String que contiene el url de la imagen
     private String imagen;
+    
+    @ManyToOne
+    private MascotaVentaEntity mascotaVenta;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getFecha() {
         return fecha;
