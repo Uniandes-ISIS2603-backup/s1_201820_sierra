@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -22,76 +23,95 @@ public class FacturaEntity extends BaseEntity implements Serializable{
 
     private static final long serialVersionUID = 1L;
     
-    private Long id;
-    private Integer valorTotal;
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
+    private Long idCliente;
+    private String nombreCliente;
+    private Integer precio;
+    private String animalAdquirido;
 
-    @OneToMany
-    @PodamExclude
-    private AdquisicionEntity adquisicion;
-    private List<ComprobanteEntity> comprobantes;
     /**
+     * 
+     * @return 
+     */
+    public Long getIdCliente() {
+        return idCliente;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getAnimalAdquirido() {
+        return animalAdquirido;
+    }
+    
+    /**
+     * 
+     * @param idCliente 
+     */
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    /**
+     * 
+     * @param nombreCliente 
+     */
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+    
+    /**
+     * 
+     * @param animalAdquirido 
+     */
+    public void setAnimalAdquirido(String animalAdquirido) {
+        this.animalAdquirido = animalAdquirido;
+    }
+    
+    
+     /**
      * Adquisición ligada a la factura.
      */ 
-//       @OneToMany
-//      private AdquisicionDTO adquisicion;
-//      
+    @OneToOne
+    private AdquisicionEntity adquisicion;
+    
     /**
      * Lista de comprobantes ligaras a la factura.
      */ 
-//      @OneToMany
-//      private IList<ComprobanteDetailDTO> comprobantes;
+    @PodamExclude
+    @OneToMany( mappedBy="comprobante" )
+    private List<ComprobanteEntity> comprobantes;
+   
     
-    /**
-     * Método que retorna el id de la factura.
-     * @return 
-     */
-    @Override
-    public Long getId() {
-        return id;
-    }
     
     /**
      * Método que retorna el valor total de la factura.
      * @return 
      */
     public Integer getValorTotal() {
-        return valorTotal;
+        return precio;
     }
-    /**
-     * Método que retorna la fecha en que se generó la factura.
-     * @return 
-     */
-    public Date getFecha() {
-        return fecha;
-    }
+    
 
-    /**
-     * Método que recibe como parámetro el id de la Factura.
-     * @param id 
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
     
     /**
      * Método que recibe como parámetro el valor total de la factura.
      * @param valorTotal 
      */
     public void setValorTotal(Integer valorTotal) {
-        this.valorTotal = valorTotal;
+        this.precio = valorTotal;
     }
     
-    /**
-     * Método que recibe coom parámetro la fecha en que se generó la Factura.
-     *@param fecha
-     */
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+    
     
     /**
      * Retorna la Adquisición ligada a la Factura..
