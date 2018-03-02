@@ -5,10 +5,14 @@
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -19,6 +23,8 @@ public class CertificadoEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // fecha de expedisión del certicado
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class) 
     private Date fecha;
     //String que contiene  la descripción del certificado de pureza del perro
     private String descripcion;
@@ -26,6 +32,7 @@ public class CertificadoEntity extends BaseEntity implements Serializable {
     private String imagen;
     
     @ManyToOne
+    @PodamExclude
     private MascotaVentaEntity mascotaVenta;
 
 
@@ -51,6 +58,20 @@ public class CertificadoEntity extends BaseEntity implements Serializable {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the mascotaVenta
+     */
+    public MascotaVentaEntity getMascotaVenta() {
+        return mascotaVenta;
+    }
+
+    /**
+     * @param mascotaVenta the mascotaVenta to set
+     */
+    public void setMascotaVenta(MascotaVentaEntity mascotaVenta) {
+        this.mascotaVenta = mascotaVenta;
     }
     
     

@@ -7,6 +7,7 @@ package co.uniandes.csw.sierra.test.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import co.edu.uniandes.csw.sierra.persistence.MascotaVentaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,7 +53,7 @@ public class MascotaVentaPersistenceTest {
     UserTransaction utx;
     
     
-    private List<MascotaVentaEntity> data;
+    private List<MascotaVentaEntity> data = new ArrayList<>();
     
     /**
      * prepara los datos para la prueba

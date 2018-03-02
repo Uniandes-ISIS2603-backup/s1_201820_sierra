@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -29,7 +30,7 @@ public class MascotaVentaEntity extends MascotaEntity
     /**
      * Certificados asociados a la mascota
      */
-    @OneToMany
+    @OneToMany(mappedBy = "mascotaVenta", cascade = CascadeType.PERSIST)
     @PodamExclude
     private List<CertificadoEntity> certificados;
 

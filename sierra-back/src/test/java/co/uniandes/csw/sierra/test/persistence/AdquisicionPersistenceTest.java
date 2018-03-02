@@ -7,6 +7,7 @@ package co.uniandes.csw.sierra.test.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -51,8 +52,7 @@ public class AdquisicionPersistenceTest {
     @Inject
     UserTransaction utx;
     
-    
-    private List<AdquisicionEntity> data;
+    private List<AdquisicionEntity> data = new ArrayList<>();
     
     /**
      * prepara los datos para la prueba

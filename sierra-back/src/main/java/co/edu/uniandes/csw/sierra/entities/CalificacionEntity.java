@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -42,7 +43,7 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
     /**
      * La adquisicion a la que esta referenciada la calificacion
      */
-    @OneToOne(mappedBy= "calificacion")
+    @OneToOne(mappedBy= "calificacion", cascade = CascadeType.PERSIST)
     private AdquisicionEntity adquisicion;
     
     

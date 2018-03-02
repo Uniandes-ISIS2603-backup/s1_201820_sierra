@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -46,24 +47,28 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
      * Mascota asociada  a la adquisicion
      */
     @OneToOne 
+    @PodamExclude
     private MascotaEntity mascota;
     
     /**
      * Cliente que  hizo la adquisicion
      */
     @ManyToOne
+    @PodamExclude
     private ClienteEntity cliente;
     
     /**
      * Calificacion de la adquisicion
      */
     @OneToOne
+    @PodamExclude
     private CalificacionEntity calificacion;
     
     /**
      * Factura de la adquisicion
      */
     @OneToOne
+    @PodamExclude
     private FacturaEntity factura;
 
     

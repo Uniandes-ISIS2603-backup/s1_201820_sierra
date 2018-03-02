@@ -7,6 +7,7 @@ package co.uniandes.csw.sierra.test.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.persistence.CalificacionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,7 +53,7 @@ public class CalificacionPersistenceTest {
     UserTransaction utx;
     
     
-    private List<CalificacionEntity> data;
+    private List<CalificacionEntity> data = new ArrayList<>();
     
     /**
      * prepara los datos para la prueba
