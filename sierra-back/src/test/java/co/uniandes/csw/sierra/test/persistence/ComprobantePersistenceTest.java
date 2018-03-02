@@ -13,13 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -27,6 +30,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author ja.amortegui10
  */
+@RunWith(Arquillian.class)
 public class ComprobantePersistenceTest {
     /**
      * * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -34,7 +38,6 @@ public class ComprobantePersistenceTest {
      * base de datos y el archivo beans.xml para resolver la inyección de
      * dependencias.
      */
-    
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -47,12 +50,14 @@ public class ComprobantePersistenceTest {
     /**
      * Inyección de la dependencia a la clase ComprobantePersistence cuyos métodos se van a probar.
      */
+    @Inject
     private ComprobantePersistence comprobantePersistence;
     
     /**
      * Contexto de persistencia que se va a usar para acceder a la  base de datos por fuera de los métodos probados actualmente.
      * 
      */
+    @PersistenceContext
     private EntityManager em;
     
     /**
@@ -60,6 +65,7 @@ public class ComprobantePersistenceTest {
      */
     @Inject
     UserTransaction utx;
+    
     private List<ComprobanteEntity> data = new ArrayList<ComprobanteEntity>();
     
      /**

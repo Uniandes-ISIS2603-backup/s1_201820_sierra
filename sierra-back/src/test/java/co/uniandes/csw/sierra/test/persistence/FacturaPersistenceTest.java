@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -48,12 +49,14 @@ public class FacturaPersistenceTest {
     /**
      * Inyección de la dependencia a la clase FacturaPersistence cuyos métodos se van a probar.
      */
+    @Inject
     private FacturaPersistence facturaPersistence;
     
     /**
      * Contexto de persistencia que se va a usar para acceder a la  base de datos por fuera de los métodos probados actualmente.
      * 
      */
+    @PersistenceContext
     private EntityManager em;
     
     
