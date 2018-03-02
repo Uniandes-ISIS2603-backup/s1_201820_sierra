@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -63,13 +64,13 @@ public class EspecieEntity extends BaseEntity implements Serializable
     /**
      * Lista de razas de una especie
      */
-    @OneToMany(mappedBy = "especie")
+    @OneToMany(mappedBy = "especie", cascade = CascadeType.PERSIST)
     private List<RazaEntity> razas;
         
     /**
      * Lista de  mascotas que se pueden comprar de una especie
      */
-    @OneToMany(mappedBy = "especie")
+    @OneToMany(mappedBy = "especie",cascade = CascadeType.PERSIST)
     private List<MascotaEntity>  mascotas;
     
     //------------METODOS--------------//  
