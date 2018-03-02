@@ -37,6 +37,8 @@ public class ClienteLogicTest {
     @Inject
     private ClienteLogic clienteLogic;
     
+    @Inject
+    private ClientePersistence persistence;
     @PersistenceContext
     private EntityManager em;
     

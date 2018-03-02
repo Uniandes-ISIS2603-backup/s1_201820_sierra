@@ -5,69 +5,55 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.*;
+import java.util.ArrayList;
 import java.util.List;
 /**
- * ClienteDetailDTO Objeto de transferencia  de datos detallada de la entidad Cliente. Los DTO contienen las
- * representaciones de los JSON que se transfieren entre el cliente y el servidor.
- * <p>
- * Al serializarse como JSON esta clase implementa el siguienta modelo:<br>
+ * Clase que extiende de {@link ClienteDTO} para manejar las relaciones entre los clientes JSON y otros DTOs. 
+ * Para conocer el contenido de la un cliente vaya a la documentacion de {@link ClienteDTO}
+ *
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * 
  * <pre>
  *  {
- * "name": string,
- * "apellido": string,
- * "cedula": number,
- * "id": number,
- * "telefono": number,
- * medioDePago:
- *      {
- *      "id": number,
- *      "numeroReferencia": number,
- *      "tipo": string
- *      },
- * adquisicion:
- *      {
- *      "id":number,
- *      "valorTotal":number,
- *      "fecha":date
- *      },
- * deseada:
- *      {
- *      "id": number,
- *      "name: String,
- *      "genero": String
- *      "edad": number,
- *      "color": String,
- *      "esteril":boolean,
- *      "adquirido":boolean,
- *      "imagen":String,
- *      "tamano":String,
- *      "nacimiento": Date,
- *      "muerte": Date
- *      }
- * }
+ *  "name": string,
+ *  "apellido": string,
+ *  "cedula": number,
+ *  "id": number,
+ *  "telefono": number,
+ *  "mediosPago":[@link MedioDePagoDTO],
+ *  "adquisiciones":{@link AdquisicionDTO},
+ *  "deseadas": [{@link MascotaDTO}]
+ *  }
  * </pre>
  * Por ejemplo una entidad Cliente se representa asi:<br>
  * <p>
  * <pre>
  *  {
- * "name": "Andres",
- * "apellido": "Castro",
- * "cedula": 1072548232,
- * "id": 001,
- * "telefono": 3182564852,
- * medioDePago:
- *      {
- *      "id": 010,
- *      "numeroReferencia": 100,
- *      "tipo": "efectivo"
- *      },
- * adquisicion:
- *      {
- *      "id":1,
- *      "valorTotal":10000,
- *      "fecha":"20/05/2014"
- *      },
- * deseada:
+ *      "name": "Andres",
+ *      "apellido": "Castro",
+ *      "cedula": 1072548232,
+ *      "id": 001,
+ *      "telefono": 3182564852,
+ *      "mediosPago":[
+ *                  {
+ *                      "id": 1,
+ *                      "numeroReferencia": 100,
+ *                      "tipo": "efectivo"
+ *                  },
+ *                  {
+ *                      "id":2,
+ *                      "numeroReferencia": 200,
+ *                      "tipo": "tarjetaDebito"
+ *                  }
+ *       ],
+ *       "adquisiciones":[
+ *                      {
+ *                          "id":1,
+ *                          "valorTotal":10000,
+ *                          "fecha":"20/05/2014"
+ *      }],
+ *      "deseadas":
  *      {
  *      "id": 31,
  *      "name: "Ircops",
@@ -88,7 +74,7 @@ import java.util.List;
 public class ClienteDetailDTO extends ClienteDTO
 {
     private List<MedioDePagoDTO> mediosPago;
-    private List<AdquisicionDTO> aquisiciones;
+    private List<AdquisicionDTO> adquisiciones;
     private List<MascotaDTO> deseadas;
     
     /**
@@ -98,6 +84,78 @@ public class ClienteDetailDTO extends ClienteDTO
     {
         super();
     }
+    /**
+     * Constructor para transformar un Entity a un DTO
+     * @param entity La entidad de la cual se construye el DTO
+     */
+   public ClienteDetailDTO (ClienteEntity entity)
+   {
+       super(entity);
+       if(entity != null)
+       {
+           if(entity.getMascotas() != null)
+           {
+               deseadas = new ArrayList<>();
+               for(MascotaEntity entityMascota : entity.getMascotas())
+               {
+                   deseadas.add(new MascotaDTO(entityMascota));
+               }
+           }
+           if(entity.getMediosDePago() != null)
+           {
+               mediosPago = new ArrayList<>();
+               for(MedioDePagoEntity entityMedio : entity.getMediosDePago())
+               {
+                   mediosPago.add(new MedioDePagoDTO(entityMedio));
+               }
+           }
+//           if(entity.getAdquisiciones() != null)
+//           {
+//               adquisiciones = new ArrayList<>();
+//               for (AdquisicionEntity entityAdquisicion : entity.getAdquisiciones())
+//               {
+//                   adquisiciones.add(new AdquisicionDetailDTO(entity));
+//               }
+//           }
+        
+       }
+   }
+   
+   /**
+     * Transformar un DTO a un Entity
+     * @return El DTO de la cliente para transformar a Entity
+     */
+   @Override
+   public ClienteEntity toEntity()
+   {
+       ClienteEntity cliente = new ClienteEntity();
+       if(deseadas != null){
+           List<MascotaEntity> mascotas = new ArrayList<>();
+           for (MascotaDTO dtoMascota : deseadas )
+           {
+           //    mascotas.add(dtoMascota.toEntity());
+           }
+           cliente.setMascotas(mascotas);
+       }
+       if(adquisiciones != null)
+       {
+           List<AdquisicionEntity> adqusicionEntity = new ArrayList<>();
+           for(AdquisicionDTO dtoAdquisicion : adquisiciones)
+           {
+          //     adqusicionEntity.add(dtoAdquisicion.toEntity());
+           }
+           cliente.setAdquisiciones(adqusicionEntity);
+       }
+       if(mediosPago != null)
+       {
+           List<MedioDePagoEntity> medioEntity = new ArrayList<>();
+           for (MedioDePagoDTO dtoMedio : mediosPago){
+               medioEntity.add(dtoMedio.toEntity());
+           }
+           cliente.setMediosDePago(medioEntity);
+       }
+       return cliente;
+   }
 
     /**
      * Obtiene la lista de los medios de pago de un cliente.
@@ -111,24 +169,23 @@ public class ClienteDetailDTO extends ClienteDTO
      * Agrega medios de pago de un cliente a una lista.
      * @param medioPago El que se desea agregar.
      */
-    public void setMediosPago(List<MedioDePagoDTO> medioPago) {
-        this.mediosPago = medioPago;
+    public void setMediosPago(List<MedioDePagoDTO> mediosPago) {    
+        this.mediosPago = mediosPago;
     }
-
     /**
      * Obtiene una lista con las adquisiciones de un cliente.
      * @return Las adquisiciones asociadas a un cliente.
      */
     public List<AdquisicionDTO> getAquisiciones() {
-        return aquisiciones;
+        return adquisiciones;
     }
 
     /**
      * Agrega una nueva adquisicion a la lista de un cliente.
      * @param aquisiciones Las nuevas adquisiciones.
      */
-    public void setAquisiciones(List<AdquisicionDTO> aquisiciones) {
-        this.aquisiciones = aquisiciones;
+    public void setAquisiciones(List<AdquisicionDTO> adquisiciones) {
+        this.adquisiciones = adquisiciones;
     }
 
     /**
@@ -145,12 +202,5 @@ public class ClienteDetailDTO extends ClienteDTO
      */
     public void setDeseadas(List<MascotaDTO> deseadas) {
         this.deseadas = deseadas;
-    }
-    
-    
-   
-
-    
-            
-    
+    }      
 }

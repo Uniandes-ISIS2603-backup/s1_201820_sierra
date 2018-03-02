@@ -14,7 +14,7 @@ import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
  * Al serializarse como JSON esta clase implementa el siguienta modelo:<br>
  * <pre>
  *  {
- * "name": string,
+ * "nombre": string,
  * "apellido": string,
  * "cedula": number,
  * "id": number,
@@ -51,10 +51,10 @@ public class ClienteDTO
         
     }
 
-/**
- * Crea u
- * @param entity 
- */    
+    /**
+     * Crea un objeto ClienteDTO a partir de un objeto ClienteEntity
+     * @param entity Entidad ClienteEntity desde la cual se va a crear el nuevo
+     */    
     public ClienteDTO(ClienteEntity entity)
     {
         if (entity != null)
@@ -65,6 +65,20 @@ public class ClienteDTO
             this.cedula = entity.getCedula();
             this.telefono = entity.getTelefono();
         }
+    }
+    /**
+     * Convertir DTO a Entity
+     * @return Un Entity con los valores del DTO 
+     */
+    public ClienteEntity toEntity( )
+    {
+        ClienteEntity entity = new ClienteEntity();
+        entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setApellido(this.apellido);
+        entity.setCedula(this.cedula);
+        entity.setTelefono(this.telefono);
+        return entity;
     }
     /**
      * Obtiene el nombre del cliente.

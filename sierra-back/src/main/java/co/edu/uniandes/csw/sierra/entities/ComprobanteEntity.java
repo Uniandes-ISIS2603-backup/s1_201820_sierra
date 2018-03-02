@@ -114,6 +114,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     /**
      * Método que retorna al medio de pago usad en el comprobante actual.
      * return medio de pago usado en el comprobante actual.
+     * @return 
      */ 
   public MedioDePagoEntity getMedioDePago()
   {

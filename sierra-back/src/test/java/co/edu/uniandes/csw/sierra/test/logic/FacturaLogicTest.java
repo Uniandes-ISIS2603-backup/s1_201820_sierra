@@ -77,9 +77,9 @@ public class FacturaLogicTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(MascotaAdoptadaLogic.class.getPackage())
-                .addPackage(MascotaAdoptadaEntity.class.getPackage())
-                .addPackage(MascotaAdoptadaPersistence.class.getPackage())
+                .addPackage(FacturaEntity.class.getPackage())
+                .addPackage(FacturaLogic.class.getPackage())
+                .addPackage(FacturaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
