@@ -40,7 +40,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     /**
      * Lista de comprobantes ligaras a la factura.
      */
-    @OneToMany(mappedBy="comprobante", cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @PodamExclude
     private List<ComprobanteEntity> comprobantes;
     
