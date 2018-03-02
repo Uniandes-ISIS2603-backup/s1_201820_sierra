@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.sierra.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -28,21 +29,21 @@ public class ClienteEntity extends BaseEntity implements Serializable
      * Lista de las mascotas que deseadas por un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
     private List<MascotaEntity> mascotas = new ArrayList<>();
     
     /**
      * Lista de todas las adquisiciones de un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
     private List<AdquisicionEntity> adquisiciones = new ArrayList<>();
     
     /**
      * Lista de todos los medios de pago de un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
     private List<MedioDePagoEntity> mediosDePago = new ArrayList<>();
     
     /**

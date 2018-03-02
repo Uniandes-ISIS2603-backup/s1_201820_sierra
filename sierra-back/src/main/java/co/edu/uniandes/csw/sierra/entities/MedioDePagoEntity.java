@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -26,7 +27,7 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     private ClienteEntity cliente;
     
     @PodamExclude
-    @OneToOne(mappedBy="medioDePago")
+    @OneToOne(mappedBy="medioDePago", cascade = CascadeType.PERSIST)
     private ComprobanteEntity comprobante;
     /**
      * Metodo que obtiene el numero de referencia de un medio de pago.

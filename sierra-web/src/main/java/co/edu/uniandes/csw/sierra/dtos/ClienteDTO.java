@@ -37,10 +37,10 @@ import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
  */
 public class ClienteDTO
 {
+    private Long id;  
     private String nombre;
     private String apellido;
-    private Long cedula;
-    private Long id;  
+    private Long cedula; 
     private Long telefono;
     
     /**
