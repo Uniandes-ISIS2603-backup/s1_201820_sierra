@@ -82,10 +82,9 @@ public class EspecieDTO {
         //Constructor por defecto
    }
    
-   /**
+         /**
 	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
 	 * la entidad que viene de argumento.
-	 *
 	 * @param especieEntity: Es la entidad que se va a convertir a DTO
 	 */
 	public EspecieDTO( EspecieEntity especieEntity )
@@ -97,6 +96,19 @@ public class EspecieDTO {
 
 	}
        
+        /**
+         * Convertir un DTO a Entity 
+        * @return especieEntity es a entidad que  se crea a partir de DTO
+         */
+        public EspecieEntity toEntity()
+        {
+            EspecieEntity entity= new EspecieEntity();
+            entity.setId(id);
+            entity.setNombre(nombre);
+            entity.setCaracteristicas(caracteristicas);
+            entity.setClasificacion(clasificacion);
+            return entity;
+        }
 
     /**
      * @return the nombre
