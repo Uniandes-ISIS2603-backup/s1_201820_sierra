@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.FacturaPersistence;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.ArrayList;
@@ -129,6 +130,19 @@ public class FacturaLogicTest {
             data.add(newEntity);
         }
     }
+    
+    
+    @Test
+    public void createMascotaAdoptadaTest()throws BusinessLogicException
+    {
+        FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
+        FacturaEntity resultado = logic.create(newEntity);
+        Assert.assertNotNull(resultado);
+        FacturaEntity entity = em.find(FacturaEntity.class, resultado.getId());
+        Assert.assertEquals(newEntity, entity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
 }
 
 
