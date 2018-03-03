@@ -133,7 +133,7 @@ public class FacturaLogicTest {
     
     
     @Test
-    public void createMascotaAdoptadaTest()throws BusinessLogicException
+    public void createFacturaTest()throws BusinessLogicException
     {
         FacturaEntity newEntity = factory.manufacturePojo(FacturaEntity.class);
         FacturaEntity resultado = logic.create(newEntity);
@@ -143,7 +143,65 @@ public class FacturaLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
     
+    @Test
+    public void getFacturasTest(){
+        List<FacturaEntity> list = logic.getAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (FacturaEntity entity : list) {
+            boolean found = false;
+            for (FacturaEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void getFacturaTest()
+    {
+        FacturaEntity entity = data.get(0);
+        FacturaEntity resultado = logic.getById(entity.getId());
+        Assert.assertNotNull(resultado);
+        Assert.assertEquals(entity.getId(), resultado.getId());
+        Assert.assertEquals(entity.getName(), resultado.getName());
+        Assert.assertEquals(entity.getAnimalAdquirido(), resultado.getAnimalAdquirido());
+        Assert.assertEquals(entity.getPrecio(), resultado.getPrecio());
+        
+    }
+    
+    @Test
+    public void deleteFacturaTest()
+    {
+        FacturaEntity entity = data.get(0);
+        logic.delete(entity.getId());
+        FacturaEntity borrada = em.find(FacturaEntity.class, entity.getId());
+        Assert.assertNull(borrada);
+    }
+    
+    @Test 
+    public void updateFacturaTest()
+    {
+        FacturaEntity entity = data.get(0);
+        FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
+
+        pojoEntity.setId(entity.getId());
+
+        logic.update(pojoEntity);
+
+        FacturaEntity respuesta = em.find(FacturaEntity.class, entity.getId());
+
+        Assert.assertEquals(pojoEntity.getId(), respuesta.getId());
+        Assert.assertEquals(pojoEntity.getName(), respuesta.getName());
+        Assert.assertEquals(pojoEntity.getAnimalAdquirido(), respuesta.getAnimalAdquirido());
+        Assert.assertEquals(pojoEntity.getPrecio(), respuesta.getPrecio());
+    }
+    
+    
 }
+
+
 
 
 /**

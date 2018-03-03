@@ -52,7 +52,7 @@ public class ComprobanteLogic {
         return persistence.find(id);
     }
     
-    public ComprobanteEntity update(ComprobanteEntity entity)throws BusinessLogicException
+    public ComprobanteEntity update(ComprobanteEntity entity)
     {
         return persistence.update(entity);
     }
