@@ -10,12 +10,14 @@ import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.CertificadoPersistence;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author rj.gonzalez10
  */
+@Stateless
 public class CertificadoLogic {
        private final static Logger LOGGER = Logger.getLogger(CertificadoLogic.class.getName());
     
