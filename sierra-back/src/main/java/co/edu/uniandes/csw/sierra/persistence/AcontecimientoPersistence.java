@@ -62,7 +62,31 @@ public class AcontecimientoPersistence
         LOGGER.log(Level.INFO, "Consultando el Acontecimiento con  el id={0}", id);
         return em.find(AcontecimientoEntity.class, id);
     }
+ /**
+     * Busca si hay alguna entidad de Acontecimiento con el nombre que se envía de argumento
+     * @param pName: Nombre de la entidad de Acontecimiento que se está buscando
+     * @return null si no existe ninguna entidad Acontecimiento con el nombre del argumento. Si
+     * existe alguna devuelve la primera.
+     */
+	public AcontecimientoEntity findByName( String name )
+	{
+		LOGGER.log( Level.INFO, "Consultando entidades de Acontecimiento por nombre ", name );
 
+		// Se crea un query para buscar entidades de especie con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+		TypedQuery<AcontecimientoEntity> query = em.createQuery( "Select e From AcontecimientoEntity e where e.name = :name", AcontecimientoEntity.class );
+		// Se remplaza el placeholder ":name" con el valor del argumento
+		query = query.setParameter( "name", name );
+		// Se invoca el query se obtiene la lista resultado
+		List<AcontecimientoEntity> sameName = query.getResultList( );
+		if( sameName.isEmpty( ) )
+		{
+			return null;
+		}
+		else
+		{
+			return sameName.get( 0 );
+		}
+        }
     /**
      * Metodo encargado de actualizar el  acontecimiento en la base de datos.
      * @param acEntity el acontecimiento que se quiere actualizar en la base de datos.
