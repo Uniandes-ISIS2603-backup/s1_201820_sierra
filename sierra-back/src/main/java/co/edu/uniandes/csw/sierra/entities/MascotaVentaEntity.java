@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
+import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
  *
@@ -25,6 +26,7 @@ public class MascotaVentaEntity extends MascotaEntity
     /**
      * Precio a pagar por la mascota
      */
+    @PodamIntValue(minValue = 0)
     private Integer precio;
     
     /**

@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaVentaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -54,8 +55,11 @@ public class MascotaVentaLogic {
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
      */
-    public MascotaVentaEntity create(MascotaVentaEntity ent){
+    public MascotaVentaEntity create(MascotaVentaEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de MascotaVenta");
+        if(ent.getPrecio() < 0){
+            throw new BusinessLogicException("El precio no debe ser negativo y fue: " + ent.getPrecio());
+        }
         //TODO: Definir reglas de negocio
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de MascotaVenta");
@@ -86,9 +90,12 @@ public class MascotaVentaLogic {
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
      */
-    public MascotaVentaEntity update(MascotaVentaEntity ent){
+    public MascotaVentaEntity update(MascotaVentaEntity ent) throws BusinessLogicException{
         //TODO: Agregar reglas de negocio
         LOGGER.log(Level.INFO, "Actualizando la entidad de MascotaVenta con el id={0}", ent.getId());
+        if(ent.getPrecio() < 0){
+            throw new BusinessLogicException("El precio no debe ser negativo y fue: " + ent.getPrecio());
+        }
         return persistencia.update(ent);
     }
     

@@ -59,10 +59,6 @@ public class AdquisicionLogic {
         LOGGER.info("Creando una entidad de Adquisicion");
         if(ent.getValorTotal() < 0)
             throw new BusinessLogicException("El valor total no puede ser negativo");
-        if(ent.getCliente() == null)
-            throw new BusinessLogicException("La adquisicion debe tener un cliente asociado");
-        if(ent.getMascota() == null)
-            throw new BusinessLogicException("La Adquisicion debe tener una mascota asociada");
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Adquisicion");
         return ent;
@@ -95,10 +91,6 @@ public class AdquisicionLogic {
     public AdquisicionEntity update(AdquisicionEntity ent) throws BusinessLogicException{
         if(ent.getValorTotal() < 0)
             throw new BusinessLogicException("El valor total no puede ser negativo");
-        if(ent.getCliente() == null)
-            throw new BusinessLogicException("La adquisicion debe tener un cliente asociado");
-        if(ent.getMascota() == null)
-            throw new BusinessLogicException("La Adquisicion debe tener una mascota asociada");
         LOGGER.log(Level.INFO, "Actualizando la entidad de Adquisicion con el id={0}", ent.getId());
         return persistencia.update(ent);
     }

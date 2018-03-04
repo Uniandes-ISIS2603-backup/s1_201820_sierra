@@ -23,10 +23,10 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.sierra.test.logic;
 
-import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
-import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.sierra.persistence.CalificacionPersistence;
+import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,7 +52,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Juan David Zambrano
  */
 @RunWith(Arquillian.class)
-public class CalificacionLogicTest {
+public class AdquisicionLogicTest {
     
     /**
      * PodamFactory
@@ -63,13 +63,13 @@ public class CalificacionLogicTest {
      * Injeccion de la clase que se va a probar
      */
     @Inject
-    private CalificacionLogic calLogic; 
+    private AdquisicionLogic calLogic; 
     
     /**
      * Injeccion  de la clase de persistencia
      */
     @Inject
-    private CalificacionPersistence calPersistence; 
+    private AdquisicionPersistence calPersistence; 
     
     /**
      * Manejador de persistencia
@@ -83,20 +83,20 @@ public class CalificacionLogicTest {
     @Inject
     private UserTransaction ussrTX;
     
-    private List<CalificacionEntity> data = new ArrayList<>();
+    private List<AdquisicionEntity> data = new ArrayList<>();
     
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CalificacionLogic.class.getPackage())
-                .addPackage(CalificacionEntity.class.getPackage())
-                .addPackage(CalificacionPersistence.class.getPackage())
+                .addPackage(AdquisicionLogic.class.getPackage())
+                .addPackage(AdquisicionEntity.class.getPackage())
+                .addPackage(AdquisicionPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     
-    public CalificacionLogicTest(){
+    public AdquisicionLogicTest(){
         //Constructor Vacio
     }
     
@@ -118,7 +118,7 @@ public class CalificacionLogicTest {
     }
     
      private void clearData() {
-        em.createQuery("delete from CalificacionEntity").executeUpdate();
+        em.createQuery("delete from AdquisicionEntity").executeUpdate();
     }
 
     /**
@@ -128,7 +128,7 @@ public class CalificacionLogicTest {
      */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            CalificacionEntity entity = factory.manufacturePojo(CalificacionEntity.class);
+            AdquisicionEntity entity = factory.manufacturePojo(AdquisicionEntity.class);
             em.persist(entity);
             data.add(entity);
 
@@ -136,19 +136,19 @@ public class CalificacionLogicTest {
     }
     
         /**
-     * Prueba para crear una Calificacion
+     * Prueba para crear una Adquisicion
      */
     @Test
-    public void createCalificacionTest(){
-        CalificacionEntity newEntity = factory.manufacturePojo(CalificacionEntity.class);
+    public void createAdquisicionTest(){
+        AdquisicionEntity newEntity = factory.manufacturePojo(AdquisicionEntity.class);
         try{
-            CalificacionEntity result = calLogic.create(newEntity);
+            AdquisicionEntity result = calLogic.create(newEntity);
             Assert.assertNotNull(result);
-            CalificacionEntity entity = em.find(CalificacionEntity.class, result.getId());
+            AdquisicionEntity entity = em.find(AdquisicionEntity.class, result.getId());
             Assert.assertEquals(newEntity.getName(), entity.getName());
-            Assert.assertEquals(newEntity.getValor(), entity.getValor());
+            
         }catch(BusinessLogicException e){
-            fail("No deberia crear exception");
+            fail("No deberia generar Exception: " + e.getMessage());
         }
 
         
@@ -159,14 +159,14 @@ public class CalificacionLogicTest {
      * Prueba que se pueden recuperar los objetos de la base de datos
      */
     @Test
-    public void getCalificacionesTest(){
-        List<CalificacionEntity> list =  calLogic.getAll();
+    public void getAdquisicionesTest(){
+        List<AdquisicionEntity> list =  calLogic.getAll();
         //Revisa que ambas listas tengan el mismo tamano
         Assert.assertEquals(data.size(), list.size());
-        for(CalificacionEntity ent: list){
+        for(AdquisicionEntity ent: list){
             boolean fand= false;
-            //Revisa que ambas calificaciones tengan el mismo ID
-            for(CalificacionEntity ent2: data){
+            //Revisa que ambas adquisiciones tengan el mismo ID
+            for(AdquisicionEntity ent2: data){
                 if(ent.getId().equals(ent2.getId())){
                     fand = true;
                 }
@@ -175,44 +175,43 @@ public class CalificacionLogicTest {
         }
     }
     /**
-     * test para obtener una Calificacion en especifico
+     * test para obtener una Adquisicion en especifico
      */
     @Test
-    public void getCalificacionTest(){
-        CalificacionEntity ent = data.get(0);
-        CalificacionEntity ent2 = calLogic.getById(ent.getId());
+    public void getAdquisicionTest(){
+        AdquisicionEntity ent = data.get(0);
+        AdquisicionEntity ent2 = calLogic.getById(ent.getId());
         Assert.assertNotNull(ent2);
         Assert.assertEquals(ent.getName(), ent2.getName());
-        Assert.assertEquals(ent.getValor(), ent2.getValor());
     }
 
     /**
-     * Prueba para borrar una Calificacion
+     * Prueba para borrar una Adquisicion
      */
     @Test
-    public void deleteCalificacionTest(){
-        CalificacionEntity ent = data.get(0);
+    public void deleteAdquisicionTest(){
+        AdquisicionEntity ent = data.get(0);
         calLogic.delete(ent);
-        CalificacionEntity notFound = em.find(CalificacionEntity.class, ent.getId());
+        AdquisicionEntity notFound = em.find(AdquisicionEntity.class, ent.getId());
         Assert.assertNull(notFound);
         
     }
     /**
-     * Test para actualizar una Calificacion
+     * Test para actualizar una Adquisicion
      */
     @Test
-    public void updateCalificacionTest(){
-        CalificacionEntity ent = data.get(0);
+    public void updateAdquisicionTest(){
+        AdquisicionEntity ent = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        CalificacionEntity newEnt = factory.manufacturePojo(CalificacionEntity.class);
+        AdquisicionEntity newEnt = factory.manufacturePojo(AdquisicionEntity.class);
         newEnt.setId(ent.getId());
         
         try {
             calLogic.update(newEnt);
-            CalificacionEntity retrievedEnt = em.find(CalificacionEntity.class, ent.getId());
+            AdquisicionEntity retrievedEnt = em.find(AdquisicionEntity.class, ent.getId());
         Assert.assertEquals(newEnt.getName(), retrievedEnt.getName());
         } catch (BusinessLogicException ex) {
-            fail("No deberia generar Exception");
+            fail("No deberia generar Exception: " + ex.getMessage());
         }
         
         
