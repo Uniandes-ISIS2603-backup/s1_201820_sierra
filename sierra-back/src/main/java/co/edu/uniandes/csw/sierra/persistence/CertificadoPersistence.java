@@ -33,7 +33,7 @@ public class CertificadoPersistence {
     {
         LOGGER.info("Creando un certificado");
         em.persist(entity);
-        LOGGER.info("Creando el certicado");
+        LOGGER.info("Creado el certicado");
         return entity;
     }
     
