@@ -65,7 +65,7 @@ public class MascotaVentaPersistenceTest {
             em.joinTransaction();
             clearData();
             insertData();
-            utx.begin();
+            utx.commit();
         }catch (Exception e){
             e.printStackTrace();
             try{
