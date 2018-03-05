@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
 import java.util.Date;
 
 /**
@@ -23,6 +24,33 @@ public class PublicacionDTO {
     
     private Date fecha;
 
+    public PublicacionDTO( )
+    {
+       //Defecto
+    } 
+    
+     public PublicacionDTO(PublicacionEntity Entity)
+    {
+        this.comentario = Entity.getComentario();
+        this.fecha = Entity.getFecha();
+        this.fotoURL = Entity.getFotoURL();
+        this.id = Entity.getId();
+        this.tipo = Entity.getTipo();
+    } 
+     
+    public PublicacionEntity toEntity()
+    {
+        PublicacionEntity entity = new PublicacionEntity();
+        entity.setFecha(fecha);
+        entity.setTipo(tipo);
+        entity.setDescripcion(comentario);
+        entity.setFotoURL(fotoURL);
+        entity.setId(id);
+        
+        return entity;
+                
+    }
+    
     /**
      * @return the id
      */

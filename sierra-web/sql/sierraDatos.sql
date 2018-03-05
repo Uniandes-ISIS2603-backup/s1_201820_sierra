@@ -25,11 +25,16 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (10, 'A
 
 insert into ComprobanteEntity(id, valorTotal, fecha, clienteId) values (10, 120000, '01/01/2018', 10 );
 
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (10, 'Canino', 'Comen carne', 'clasificacion1');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (1, 'mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (2, 'mamifero', 'Independientes y agiles', 'felino');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez');
+
 
 insert into FacturaEntity(id, valorTotal, fecha) values (10, 120000, '01/01/2018'),
 
 insert into MascotaAdoptadaEntity()values ();
+
 
 insert into MascotaVentaEntity() values ();
 

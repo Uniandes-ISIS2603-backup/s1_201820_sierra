@@ -6,8 +6,12 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
+import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +31,7 @@ import javax.ws.rs.Produces;
  * URL: /api/mascotaAdoptadas
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "especies".</i>
+ * este recurso tiene la ruta "mascotasAdoptadas".</i>
  * <p>
  * <h2>Anotaciones </h2>
  * <pre>
@@ -46,11 +50,12 @@ import javax.ws.rs.Produces;
 public class MascotaAdoptadaResource 
 {
     /**
-     * Se injecta la claselogica del recurso
+     * Se injecta la clase logica del recurso
      */
     @Inject
     private MascotaAdoptadaLogic mascotaAdoptadaLogica;
     
+  
     /**
      * Convierte una lista de entities a una lista de Detaildto.
      *
@@ -67,7 +72,7 @@ public class MascotaAdoptadaResource
     }
     
       /**
-     * <h1>GET /api/especies : Obtener todos las mascotas adoptadas.</h1>
+     * <h1>GET /api/mascotasAdoptadas : Obtener todos las mascotas adoptadas.</h1>
      *
      * <pre>Busca y devuelve todos las mascotas adoptadas que existen en la aplicacion.
      * 
@@ -97,17 +102,17 @@ public class MascotaAdoptadaResource
      * </pre>
      * @param id Identificador de la mascota adoptada  que se esta buscando. Este debe ser una cadena de dígitos.
      * @return JSON {@link MascotaAdopcionDetailDTO} - La mascota adoptada buscado
-     * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando no se encuentra el autor.
+     * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando no se encuentra la mascota adoptada
      */
     @GET
     @Path( "{id: \\d+}" )
     public MascotaAdopcionDetailDTO getMascotaAdoptada( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-        MascotaAdoptadaEntity especie= mascotaAdoptadaLogica.getById(id);
-        if (especie==null) {
+        MascotaAdoptadaEntity mascota= mascotaAdoptadaLogica.getById(id);
+        if (mascota==null) {
              throw new BusinessLogicException("La compania no existe.");
         }
-        return new MascotaAdopcionDetailDTO(especie);
+        return new MascotaAdopcionDetailDTO(mascota);
     }
 
      /**
@@ -124,17 +129,18 @@ public class MascotaAdoptadaResource
      * 200 OK Creo la mascota adoptada  .
      * </code>
      * </pre>
-     * @param dto {@link MascotaAdopcionDetailDTO} -La especie  que se desea guardar.
-     * @return JSON {@link MascotaAdopcionDetailDTO}  - La especie se a guardado con el atributo id autogenerado.
+     * @param dto {@link MascotaAdopcionDetailDTO} -La mascota adoptada  que se desea guardar.
+     * @return JSON {@link MascotaAdopcionDetailDTO}  - La mascotaadoptada se a guardado con el atributo id autogenerado.
      * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     @POST
     public MascotaAdopcionDetailDTO createMascota(MascotaAdopcionDetailDTO dto) throws BusinessLogicException{
+ 
         return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.create(dto.toEntity()));
     }
     
    /**
-     * <h1>PUT /api/especies/{id} : Actualizar especie con el id dado.</h1>
+     * <h1>PUT /api/mascotasAdoptadas/{id} : Actualizar mascota adoptada con el id dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link MascotaAdopcionDetailDTO}.
      *
      * Actualiza la mascota adoptada  con el id recibido en la URL con la información que se recibe en el cuerpo de la petición.
@@ -147,8 +153,8 @@ public class MascotaAdoptadaResource
      * </code> 
      * </pre>
      * @param id Identificador de la mascota adoptada que se desea actualizar. Este debe ser una cadena de dígitos.
-     * @param dDTO {@link MascotaAdopcionDetailDTO} La especie que se desea guardar.
-     * @return JSON {@link MascotaAdopcionDetailDTO} - La especie guardado.
+     * @param dDTO {@link MascotaAdopcionDetailDTO} La mascota adoptada que se desea guardar.
+     * @return JSON {@link MascotaAdopcionDetailDTO} - La mascota adoptada guardada.
      * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica 
      */
     @PUT
@@ -159,7 +165,7 @@ public class MascotaAdoptadaResource
         entity.setId(id);
         MascotaAdoptadaEntity oldEntity = mascotaAdoptadaLogica.getById(id);
         if (oldEntity == null) {
-            throw new BusinessLogicException("La especie no existe");
+            throw new BusinessLogicException("La la mascota adoptada no existe");
         }
         entity.setAcontecimientos(oldEntity.getAcontecimientos());
         entity.setPublicaciones(oldEntity.getPublicaciones());
@@ -191,7 +197,7 @@ public class MascotaAdoptadaResource
     {
         MascotaAdoptadaEntity entity = mascotaAdoptadaLogica.getById(id);
         if (entity == null) {
-            throw new BusinessLogicException("La especie no existe");
+            throw new BusinessLogicException("La mascota adoptada no existe");
         }
         mascotaAdoptadaLogica.delete(id);
     	

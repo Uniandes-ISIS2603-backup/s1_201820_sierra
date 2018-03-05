@@ -41,8 +41,9 @@ public class EspecieLogic
              throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
          }
          else{
+             //El nombre de la  especie no puede ser vacio
              if (entity.getNombre().equals("")) {
-                  throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
+                  throw new BusinessLogicException( "El nombre de la  especie \"" + entity.getName( ) + " no es un nombre valido\"" );
              }
              else{
              persistence.create(entity);
@@ -94,7 +95,6 @@ public class EspecieLogic
      */
     public EspecieEntity update(EspecieEntity entity)
     {
-        
         return persistence.update(entity);
     }
     

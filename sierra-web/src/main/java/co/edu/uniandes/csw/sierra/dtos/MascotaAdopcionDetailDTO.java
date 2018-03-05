@@ -56,7 +56,7 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
      */
     public MascotaAdopcionDetailDTO(MascotaAdoptadaEntity entity)
     {
-         super(entity);
+        super(entity);
         if (entity!=null) {
             if (entity.getEspecie()!=null) {
                 this.especie= new EspecieDTO(entity.getEspecie());
@@ -64,28 +64,36 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
             else {
                 entity.setEspecie(null);
             }
-        }
-        if (entity.getRaza()!=null) {
-    //        this.raza= new RazaDTO(entity.getRaza());
-        }
-        else{
-            entity.setRaza(null);
-        }
-        if(entity.getAdquisicion()!=null){
-           this.adquisicion= new AdquisicionDTO(entity.getAdquisicion());
-        }
-        if (entity.getPublicaciones()!=null) {
-            publicaciones= new ArrayList<>();
-            for (PublicacionEntity entityPublicacion : entity.getPublicaciones()) {
-     //      publicaciones.add(new PublicacionDTO(entityPublicacion));
+            
+             if (entity.getRaza()!=null)
+             {
+                this.raza= new RazaDTO(entity.getRaza());
+             }
+             else
+             {
+               entity.setRaza(null);
+             }
+            if(entity.getAdquisicion()!=null){
+               this.adquisicion= new AdquisicionDTO(entity.getAdquisicion());
             }
-        } 
-        if (entity.getAcontecimientos()!=null) {
-            acontecimientos= new ArrayList<>();
-            for (AcontecimientoEntity entityAcontecimiento : entity.getAcontecimientos() ) {
-     //       acontecimientos.add(new AcontecimientoDTO(entity));
+            else{
+                entity.setAdquisicion(null);
+            }
+            if (entity.getPublicaciones()!=null) {
+                publicaciones= new ArrayList<>();
+                for (PublicacionEntity entityPublicacion : entity.getPublicaciones()) {
+                publicaciones.add(new PublicacionDTO(entityPublicacion));
+                }
+            } 
+            if (entity.getAcontecimientos()!=null)
+            {
+                acontecimientos= new ArrayList<>();
+                for (AcontecimientoEntity entityAcontecimiento : entity.getAcontecimientos() ) {
+                acontecimientos.add(new AcontecimientoDTO(entity));
+                }
             }
         }
+       
     }
     
      /**
