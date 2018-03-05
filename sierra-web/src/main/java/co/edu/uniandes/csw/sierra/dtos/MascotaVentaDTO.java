@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
+
 /**
  * * MascotaVentaDTO Objeto de transferencia de datos de la entidad de MascotaVenta. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -55,6 +57,12 @@ public class MascotaVentaDTO extends MascotaDTO {
         super();
     }
     
+    public MascotaVentaDTO(MascotaVentaEntity ent){
+        super(ent);
+        if(ent != null)
+            this.precio = ent.getPrecio();
+    }
+    
     /**
      * @return the precio
      */
@@ -69,5 +77,10 @@ public class MascotaVentaDTO extends MascotaDTO {
         this.precio = precio;
     }
     
-    
+    public MascotaVentaEntity toEntity(){
+        MascotaVentaEntity ent = new MascotaVentaEntity();
+        super.toEntity(ent);
+        ent.setPrecio(this.precio);
+        return ent;
+    }
 }
