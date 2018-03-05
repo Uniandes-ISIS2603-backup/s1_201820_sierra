@@ -158,9 +158,8 @@ public class MascotaDTO
 	 *
 	 * @return mascotaEntity: Es la entidad que se va a convertir a DTO
 	 */
-        public MascotaEntity toEntity()
+        public MascotaEntity toEntity(MascotaEntity entity)
         {
-            MascotaEntity entity= new MascotaEntity() {};
             entity.setNombre(nombre);
             entity.setId(id);
             entity.setAdquirido(adquirido);

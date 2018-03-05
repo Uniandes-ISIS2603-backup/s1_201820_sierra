@@ -22,6 +22,7 @@ package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -152,7 +153,6 @@ public class EspecieDetailDTO extends EspecieDTO
     @Override
     public EspecieEntity toEntity() {
         EspecieEntity entity = super.toEntity();
-        
         if (razas!=null)
         {
             List<RazaEntity> razasEntity=new ArrayList<>();
@@ -164,7 +164,15 @@ public class EspecieDetailDTO extends EspecieDTO
         if (mascotas!=null) {
              List<MascotaEntity> mascotasEntity=new ArrayList<>();
              for (MascotaDTO mascotaDto : mascotas) {
-                mascotasEntity.add(mascotaDto.toEntity());
+             if (MascotaAdopcionDTO.class.isInstance(mascotaDto))
+             {
+                 mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
+                 entity.setMascotaS(mascotasEntity);
+             }
+             else{
+                 mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
+                 entity.setMascotaS(mascotasEntity);
+             }
             }
              entity.setMascotaS(mascotasEntity);
         }
@@ -198,8 +206,5 @@ public class EspecieDetailDTO extends EspecieDTO
      */
     public void setRazas(List<RazaDTO> razas) {
         this.razas = razas;
-    }
-    
-    
-    
+    }   
 }

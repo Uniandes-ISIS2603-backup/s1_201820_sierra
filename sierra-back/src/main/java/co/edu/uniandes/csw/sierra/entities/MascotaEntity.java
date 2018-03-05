@@ -147,6 +147,7 @@ public abstract class MascotaEntity extends BaseEntity
 
     
     //---------------METODOS---------------------//
+
     
     /**
      * @return the nombre
