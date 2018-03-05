@@ -39,10 +39,7 @@ public class AcontecimientoLogic
      * @return la entidad persistida con el id autogenerado
      */
     public AcontecimientoEntity create(AcontecimientoEntity ent) throws BusinessLogicException{
-        LOGGER.info("Creando una entidad de Acontecimiento");
-        if(ent.getMascota().getMuerte().after(ent.getFecha()) && ent.getFecha().after(ent.getMascota().getNacimiento()))
-            throw new BusinessLogicException("La fecha del Acontecimiento no es válida");
-        else if(persistencia.findByName(ent.getNombre()) != null)
+        if(persistencia.findByName(ent.getNombre()) != null)
         {
             throw new BusinessLogicException("Ya hay un acontecimiento con el mismo nombre");
         }
@@ -76,15 +73,18 @@ public class AcontecimientoLogic
      * @return la entidad con los cambios ya realizados
      */
     public AcontecimientoEntity update(AcontecimientoEntity ent) throws BusinessLogicException{
-        if(ent.getMascota().getMuerte().after(ent.getFecha()) && ent.getFecha().after(ent.getMascota().getNacimiento()))
-            throw new BusinessLogicException("La fecha del Acontecimiento no es válida");
+        if(persistencia.findByName(ent.getNombre()) != null)
+        {
+            throw new BusinessLogicException("Ya hay un acontecimiento con este nombre");
+        }
+        
         LOGGER.log(Level.INFO, "Actualizando la entidad de Acontecimieto con el id={0}", ent.getId());
         return persistencia.update(ent);
     }
     
     /**
      * Elimina una Acontecimiento
-     * @param ent la adquiisicion que se desea eliminar
+     * @param ent el acontecimiento que se desea eliminar
      */
     public void delete(AcontecimientoEntity ent){
         LOGGER.log(Level.INFO, "Eliminando el Acontecimiento con id ={0}", ent.getId());

@@ -39,8 +39,6 @@ public class PublicacionLogic
      */
     public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Publicacion");
-        if(ent.getMascota().getNacimiento().after(ent.getFecha()))
-            throw new BusinessLogicException("La fecha de la publicacion no es válida");
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Publicacion");
         return ent;
@@ -71,8 +69,7 @@ public class PublicacionLogic
      * @return la entidad con los cambios ya realizados
      */
     public PublicacionEntity update(PublicacionEntity ent) throws BusinessLogicException{
-      if(ent.getMascota().getNacimiento().after(ent.getFecha()))
-       throw new BusinessLogicException("La fecha de la publicacion no es válida");
+      
         LOGGER.log(Level.INFO, "Actualizando la entidad de Publicacion con el id={0}", ent.getId());
         return persistencia.update(ent);
     }
