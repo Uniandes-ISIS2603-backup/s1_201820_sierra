@@ -68,6 +68,7 @@ public class AdquisicionDTO {
         this.fecha = ent.getFecha();
     }
 
+
     /**
      * @return the id
      */

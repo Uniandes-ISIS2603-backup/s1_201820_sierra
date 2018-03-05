@@ -119,7 +119,7 @@ public class EspecieDetailDTO extends EspecieDTO
     }
     
   /**
-     * Crea un objeto EspeciDetailDTO a partir de un objeto EspeciEntity
+     * Crea un objeto EspecieDetailDTO a partir de un objeto EspeciEntity
      * incluyendo los atributos de EspecieDTO.
      *
      * @param entity Entidad EspecieEntity desde la cual se va a crear el nuevo
