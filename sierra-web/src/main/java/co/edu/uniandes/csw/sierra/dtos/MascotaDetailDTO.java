@@ -20,7 +20,7 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
-import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
 import java.util.ArrayList;

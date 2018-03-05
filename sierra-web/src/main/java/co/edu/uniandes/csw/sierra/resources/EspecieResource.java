@@ -25,7 +25,7 @@ import javax.ws.rs.Produces;
 
 /**
  * <pre>Clase que implementa el recurso "especie".
- * URL: /api/sierras
+ * URL: /api/especies
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "especies".</i>

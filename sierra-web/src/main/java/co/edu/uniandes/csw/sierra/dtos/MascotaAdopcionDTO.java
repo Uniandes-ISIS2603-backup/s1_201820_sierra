@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import java.util.Date;
+
 /**
  * * MascotaAdopcionDTO Objeto de transferencia de datos de la entidad de MascotaAdopcion. Los DTO contienen las
  * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -43,12 +46,276 @@ package co.edu.uniandes.csw.sierra.dtos;
  *   }
  *
  * </pre>
- * @author Juan David Zambrano
+ * @author Juan Camilo Sanchez
  */
-public class MascotaAdopcionDTO extends MascotaDTO {
+public class MascotaAdopcionDTO 
+{
     
-    public MascotaAdopcionDTO(){
-        super();
+      /**
+    * Id 
+    */
+    private Long id;
+    
+    /**
+     * nombre de la  mascota
+     */
+    private String nombre;
+    
+    /**
+     * apellido de la  mascota
+     */
+    private String genero;
+    
+    /**
+     * edad de la mascota
+     */
+    private Integer edad;
+    
+    /**
+     * color de la  mascota
+     */
+    private String color;
+    
+    /**
+     * verificacion si la mascota es esteril
+     */
+    private Boolean esteril;
+    
+    /**
+     * verificacion si esta  adquirida la mascota
+     */
+    private Boolean adquirido;
+    
+    /**
+     * imagen de la mascota
+     */
+    private String  imagen;
+    
+    /**
+     * tamano  de la mascota
+     */
+    private String tamano;
+    
+    /**
+     * Fecha de la  nacimiento de la amscota
+     */
+    private Date nacimiento;
+    
+     /**
+     * Fecha dela muerte de la amscota
+     */
+    private Date muerte;
+    
+           
+    /**
+   *Constructor por defecto
+   */
+   public MascotaAdopcionDTO()
+   {
+        //Constructor por defecto
+   }
+
+         /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @param mascotaAdoptadaEntity: Es la entidad que se va a convertir a DTO
+	 */
+	public MascotaAdopcionDTO( MascotaAdoptadaEntity mascotaAdoptadaEntity )
+	{
+		this.id = mascotaAdoptadaEntity.getId( );
+		this.nombre = mascotaAdoptadaEntity.getNombre( );
+		this.genero = mascotaAdoptadaEntity.getGenero( );
+                this.edad = mascotaAdoptadaEntity.getEdad( );
+                this.color = mascotaAdoptadaEntity.getColor( );
+                this.esteril = mascotaAdoptadaEntity.isEsteril( );
+                this.adquirido = mascotaAdoptadaEntity.isAdquirido( );
+                this.imagen = mascotaAdoptadaEntity.getImagen( );
+                this.tamano = mascotaAdoptadaEntity.getTamano( );
+                this.nacimiento = mascotaAdoptadaEntity.getNacimiento();
+                this.muerte = mascotaAdoptadaEntity.getMuerte( );
+
+	}
+        
+         /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @return MascotaAdoptadaEntity: Es la entidad que se va a convertir a DTO
+	 */
+        public MascotaAdoptadaEntity toEntity()
+        {
+            MascotaAdoptadaEntity entity= new MascotaAdoptadaEntity();
+            entity.setNombre(nombre);
+            entity.setId(id);
+            entity.setAdquirido(adquirido);
+            entity.setGenero(genero);
+            entity.setEdad(edad);
+            entity.setColor(color);
+            entity.setEsteril(esteril);
+            entity.setImagen(imagen);
+            entity.setTamano(tamano);
+            entity.setNacimiento(nacimiento);
+            entity.setMuerte(muerte);
+            return entity;
+        }
+  
+   
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
     }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the genero
+     */
+    public String getGenero() {
+        return genero;
+    }
+
+    /**
+     * @param genero the apellido to set
+     */
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    /**
+     * @return the edad
+     */
+    public Integer getEdad() {
+        return edad;
+    }
+
+    /**
+     * @param edad the edad to set
+     */
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    /**
+     * @return the color
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /**
+     * @return the esteril
+     */
+    public Boolean isEsteril() {
+        return esteril;
+    }
+
+    /**
+     * @param esteril the esteril to set
+     */
+    public void setEsteril(boolean esteril) {
+        this.esteril = esteril;
+    }
+
+    /**
+     * @return the adquirida
+     */
+    public Boolean isAdquirido() {
+        return adquirido;
+    }
+
+    /**
+     * @param adquirido the adquirida to set
+     */
+    public void setAdquirido(boolean adquirido) {
+        this.adquirido = adquirido;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    /**
+     * @return the tamano
+     */
+    public String getTamano() {
+        return tamano;
+    }
+
+    /**
+     * @param tamano the tamano to set
+     */
+    public void setTamano(String tamano) {
+        this.tamano = tamano;
+    }
+
+    /**
+     * @return the nacimiento
+     */
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    /**
+     * @param nacimiento the nacimiento to set
+     */
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    /**
+     * @return the muerte
+     */
+    public Date getMuerte() {
+        return muerte;
+    }
+
+    /**
+     * @param muerte the muerte to set
+     */
+    public void setMuerte(Date muerte) {
+        this.muerte = muerte;
+    }
+   
+    
+    
     
 }
