@@ -19,6 +19,8 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+
 /**
  * CalificacionDetailDTO es el objeto de transferencia de datos detallada de la entidad Calificacion.
  * <p>
@@ -61,6 +63,30 @@ public class CalificacionDetailDTO extends CalificacionDTO{
     
     public CalificacionDetailDTO(){
         super();
+    }
+    
+    /**
+     * constructor que convierte una Entity a un DetailDTO
+     * @param ent la entidad que se quiere convertir
+     */
+    public CalificacionDetailDTO(CalificacionEntity ent){
+        super(ent);
+        if(ent != null){
+            this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
+        }
+    }
+    
+    /**
+     * Metodo que convierte un DetailDTO a una entity
+     * @return 
+     */
+    @Override
+    public CalificacionEntity toEntity(){
+        CalificacionEntity ent = super.toEntity();
+        if(adquisicion != null){
+            ent.setAdquisicion(adquisicion.toEntity());
+        }
+        return ent;
     }
 
     /**

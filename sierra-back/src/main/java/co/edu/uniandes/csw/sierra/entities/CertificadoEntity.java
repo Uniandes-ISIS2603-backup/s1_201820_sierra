@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.entities;
-
 import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,9 +21,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class CertificadoEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // fecha de expedisión del certicado
+    // fecha de expedición del certicado
     @Temporal(javax.persistence.TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class) 
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     //String que contiene  la descripción del certificado de pureza del perro
     private String descripcion;

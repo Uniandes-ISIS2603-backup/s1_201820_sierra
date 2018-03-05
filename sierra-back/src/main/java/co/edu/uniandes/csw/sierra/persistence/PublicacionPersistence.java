@@ -13,11 +13,13 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.ejb.Stateless;
 
 /**
  *Clase encargada del la persistencia de publicacion.
  * @author ja.penat
  */
+@Stateless
 public class PublicacionPersistence 
 {
       private static final Logger LOGGER = Logger.getLogger(PublicacionPersistence.class.getName());

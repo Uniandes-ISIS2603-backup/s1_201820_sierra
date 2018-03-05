@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.entities;
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *Entidad que representa un Acontecimiento.
  *@author ja.penat
@@ -36,7 +38,9 @@ public class AcontecimientoEntity extends BaseEntity implements Serializable
     /**
      * Fecha del acontecimiento cuando fue registrado
      */
+
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
     /**

@@ -6,11 +6,13 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *Entidad que representa una publicacion.
@@ -42,6 +44,7 @@ public class PublicacionEntity extends BaseEntity implements Serializable
      * Fecha de la publicacion
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
        
     /**

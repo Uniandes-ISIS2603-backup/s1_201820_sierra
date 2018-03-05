@@ -20,6 +20,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.dtos;
 
 import java.util.Date;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 
 
 
@@ -55,6 +56,16 @@ public class AdquisicionDTO {
     
     public AdquisicionDTO(){
         
+    }
+    
+    /**
+     * Constructor que convierte una entidad a un DTO
+     * @param ent 
+     */
+    public AdquisicionDTO(AdquisicionEntity ent){
+        this.id = ent.getId();
+        this.valorTotal = ent.getValorTotal();
+        this.fecha = ent.getFecha();
     }
 
     /**
@@ -99,6 +110,16 @@ public class AdquisicionDTO {
         this.fecha = fecha;
     }
     
-    
+    /**
+     * convierte un DTO a un Entity
+     * @return 
+     */
+    public AdquisicionEntity toEntity(){
+        AdquisicionEntity ent = new AdquisicionEntity();
+        ent.setId(this.id);
+        ent.setFecha(this.fecha);
+        ent.setValorTotal(this.valorTotal);
+        return ent;
+    }
     
 }
