@@ -98,10 +98,10 @@ public class RazaPersistenceTest {
     
     
     /**
-     * Prueba para crear una MascotaVenta
+     * Prueba para crear una Raza
      */
     @Test
-    public void createMascotaVentaTest(){
+    public void createRazaTest(){
         PodamFactory factory = new PodamFactoryImpl();
         RazaEntity newEntity = factory.manufacturePojo(RazaEntity.class);
         RazaEntity result = razaPersistence.create(newEntity);
@@ -120,7 +120,7 @@ public class RazaPersistenceTest {
      * Prueba que se pueden recuperar los objetos de la base de datos
      */
     @Test
-    public void getMascotaVentaesTest(){
+    public void getRazasTest(){
         List<RazaEntity> list =  razaPersistence.findAll();
         //Revisa que ambas listas tengan el mismo tamano
         Assert.assertEquals(data.size(), list.size());
@@ -136,10 +136,10 @@ public class RazaPersistenceTest {
         }
     }
     /**
-     * test para obtener una MascotaVenta en especifico
+     * test para obtener una Raza en especifico
      */
     @Test
-    public void getMascotaVentaTest(){
+    public void getRazaTest(){
         RazaEntity ent = data.get(0);
         RazaEntity ent2 = razaPersistence.find(ent.getId());
         Assert.assertNotNull(ent2);
@@ -148,10 +148,10 @@ public class RazaPersistenceTest {
     }
 
     /**
-     * Prueba para borrar una MascotaVenta
+     * Prueba para borrar una Raza
      */
     @Test
-    public void deleteMascotaVentaTest(){
+    public void deleteRazaTest(){
         RazaEntity ent = data.get(0);
         razaPersistence.delete(ent.getId());
         RazaEntity notFound = em.find(RazaEntity.class, ent.getId());
@@ -159,10 +159,10 @@ public class RazaPersistenceTest {
         
     }
     /**
-     * Test para actualizar una MascotaVenta
+     * Test para actualizar una Raza
      */
     @Test
-    public void updateMascotaVentaTest(){
+    public void updateRazaTest(){
         RazaEntity ent = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         RazaEntity newEnt = factory.manufacturePojo(RazaEntity.class);
