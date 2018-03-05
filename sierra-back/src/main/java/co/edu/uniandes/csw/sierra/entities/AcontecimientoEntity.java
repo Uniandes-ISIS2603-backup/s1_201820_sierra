@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.entities;
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *Entidad que representa un Acontecimiento.
  *@author ja.penat
@@ -16,20 +19,46 @@ import javax.persistence.Temporal;
 public class AcontecimientoEntity extends BaseEntity implements Serializable
 {
 
+    
+    @ManyToOne// Indica que la relacion es de varios acontecimientos a una mascota.
+    private MascotaAdoptadaEntity mascotaAdopcion;
+    
     private static final long serialVersionUID = 1L;
   
+    /**
+     * Nombre resumido del acontecimiento
+     */
     private String nombre;
     
+    /**
+     * Descripccion del acontecimiento 
+     */
     private String descripcion;
     
+    /**
+     * Fecha del acontecimiento cuando fue registrado
+     */
+
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
+    /**
+     * Importancia del acontecimiento
+     */
     private Integer importancia;
     
+    /**
+     * El tipo de acontecimiento
+     */
     private String tipo;
     
+    /**
+     * Url de la foto asociada al evento
+     */
     private String fotoURL;
+    
+    
     
     /**
      * Metodo que se encarga de retornar el nombre del acontecimiento.
@@ -139,4 +168,21 @@ public class AcontecimientoEntity extends BaseEntity implements Serializable
         this.fotoURL = pFotoURL;
     }
     
+    /**
+     * Metodo que se encarga de retornar la mascota asociada al acontecimiento.
+     * @return mascotaAdopcion.
+     */
+    public MascotaAdoptadaEntity getMascota()
+    {
+        return mascotaAdopcion;
+    }
+    
+    /**
+     * Metodo encargado de cambiar la mascota a la que esta asignado el acontecimiento
+     * @param pMascotaAdopcion 
+     */
+    public void setMascota(MascotaAdoptadaEntity  pMascotaAdopcion)
+    {
+        mascotaAdopcion = pMascotaAdopcion;
+    }
 }

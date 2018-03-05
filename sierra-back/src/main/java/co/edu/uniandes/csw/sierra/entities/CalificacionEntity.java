@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  * Entidad que representa una calificacion.
@@ -15,14 +17,38 @@ import javax.persistence.Entity;
  */
 @Entity
 public class CalificacionEntity extends BaseEntity implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     
-    
+    /**
+     * Comentarios de la caificacion
+     */
     private String comentarios;
     
+    /**
+     * El valor de la calificacion
+     */
     private Double valor;
     
+   /**
+    * Sugerencias de la calificacion
+    */
     private String sugerencia;
 
+    
+    //----------------
+    //Asociaciones
+    //---------------
+    
+    /**
+     * La adquisicion a la que esta referenciada la calificacion
+     */
+    @OneToOne(mappedBy= "calificacion", cascade = CascadeType.PERSIST)
+    private AdquisicionEntity adquisicion;
+    
+    
+    
+    
     /**
      * @return the comentarios
      */
@@ -63,6 +89,20 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
      */
     public void setSugerencia(String sugerencia) {
         this.sugerencia = sugerencia;
+    }
+
+    /**
+     * @return the adquisicion
+     */
+    public AdquisicionEntity getAdquisicion() {
+        return adquisicion;
+    }
+
+    /**
+     * @param adquisicion the adquisicion to set
+     */
+    public void setAdquisicion(AdquisicionEntity adquisicion) {
+        this.adquisicion = adquisicion;
     }
 
     

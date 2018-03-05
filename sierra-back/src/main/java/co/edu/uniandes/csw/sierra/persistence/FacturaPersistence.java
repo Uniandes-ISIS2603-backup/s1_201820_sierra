@@ -15,11 +15,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Stateless
 public class FacturaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(FacturaPersistence.class.getName());

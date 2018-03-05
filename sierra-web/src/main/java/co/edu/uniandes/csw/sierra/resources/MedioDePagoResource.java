@@ -26,11 +26,11 @@ import javax.ws.rs.*;
  * </pre>
  * @author de.gutierrez
  */
-@Path( "mediosDePago")
+@Path("/mediosDePago")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class MetodoDePagoResource 
+public class MedioDePagoResource 
 {
     /**
      * <h1> POST /api/mediosDePago : Crea un nuevo medio de pago.</h1>

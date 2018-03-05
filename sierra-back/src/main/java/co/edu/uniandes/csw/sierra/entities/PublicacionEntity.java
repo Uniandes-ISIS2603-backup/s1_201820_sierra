@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *Entidad que representa una publicacion.
@@ -18,14 +21,39 @@ import javax.persistence.Temporal;
 @Entity
 public class PublicacionEntity extends BaseEntity implements Serializable
 {
-     private String tipo;
-     
-     private String fotoURL;
-     
+
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * La mascota que  tiene  publicaciones
+     */
+    @ManyToOne
+    private MascotaEntity mascota;
+    
+    /**
+     * Tipo de publicacion
+     */    
+    private String tipo;
+    
+    /**
+     * Foto asociada a la publicacion
+     */
+    private String fotoURL;
+    
+    /**
+     * Fecha de la publicacion
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
        
+    /**
+     * Comentario  de la publicacion
+     */
     private String comentario;
+    
+    
+    
     
       /**
      * Metodo que se encarga de retornar el tipo de la publicacion.
@@ -99,4 +127,23 @@ public class PublicacionEntity extends BaseEntity implements Serializable
         this.comentario = pComentario;
     }
     
+     /**
+     * Metodo que se encarga de retornar la mascota asociada a la publicacion.
+     * @return mascota.
+     */
+    public MascotaEntity getMascota()
+    {
+        return mascota;
+    }
+    
+    /**
+     * Metodo encargado de cambiar la mascota a la que esta asignada la publicacion.
+     * @param pMascota
+     */
+    public void setMascota(MascotaEntity  pMascota)
+    {
+        mascota = pMascota;
+    }
 }
+
+

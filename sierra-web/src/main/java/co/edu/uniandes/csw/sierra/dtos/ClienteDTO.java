@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.dtos;
+
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+
 /**
  * ClienteDTO Objeto de transferencia  de datos de la entidad Cliente. Los DTO contienen las
  * representaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -11,7 +14,7 @@ package co.edu.uniandes.csw.sierra.dtos;
  * Al serializarse como JSON esta clase implementa el siguienta modelo:<br>
  * <pre>
  *  {
- * "name": string,
+ * "nombre": string,
  * "apellido": string,
  * "cedula": number,
  * "id": number,
@@ -34,10 +37,10 @@ package co.edu.uniandes.csw.sierra.dtos;
  */
 public class ClienteDTO
 {
+    private Long id;  
     private String nombre;
     private String apellido;
-    private Long cedula;
-    private Long id;  
+    private Long cedula; 
     private Long telefono;
     
     /**
@@ -48,6 +51,35 @@ public class ClienteDTO
         
     }
 
+    /**
+     * Crea un objeto ClienteDTO a partir de un objeto ClienteEntity
+     * @param entity Entidad ClienteEntity desde la cual se va a crear el nuevo
+     */    
+    public ClienteDTO(ClienteEntity entity)
+    {
+        if (entity != null)
+        {
+            this.id = entity.getId();
+            this.nombre = entity.getNombre();
+            this.apellido = entity.getApellido();
+            this.cedula = entity.getCedula();
+            this.telefono = entity.getTelefono();
+        }
+    }
+    /**
+     * Convertir DTO a Entity
+     * @return Un Entity con los valores del DTO 
+     */
+    public ClienteEntity toEntity( )
+    {
+        ClienteEntity entity = new ClienteEntity();
+        entity.setId(this.id);
+        entity.setNombre(this.nombre);
+        entity.setApellido(this.apellido);
+        entity.setCedula(this.cedula);
+        entity.setTelefono(this.telefono);
+        return entity;
+    }
     /**
      * Obtiene el nombre del cliente.
      * @return El nombre del cliente.

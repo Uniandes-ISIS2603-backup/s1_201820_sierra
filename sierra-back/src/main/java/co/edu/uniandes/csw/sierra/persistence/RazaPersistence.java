@@ -5,8 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-import co.edu.uniandes.csw.sierra.entities.CertificadoEntity;
-import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -69,6 +68,32 @@ public class RazaPersistence {
        LOGGER.log(Level.INFO, "Actualizando raza", RazaEntity.class);
        return em.merge(entity);
     }
+    /**
+     * Busca si hay alguna entidad de Especie con el nombre que se envía de argumento
+     * @param name: Nombre de la entidad de Especie que se está buscando
+     * @return null si no existe ninguna entidad Especie con el nombre del argumento. Si
+     * existe alguna devuelve la primera.
+     */
+	public RazaEntity findByName( String name )
+	{
+		LOGGER.log( Level.INFO, "Consultando entidades de raza por nombre ", name );
+
+		// Se crea un query para buscar entidades de raza con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
+		TypedQuery<RazaEntity> query = em.createQuery( "Select e From RazaEntity e where e.name = :name", RazaEntity.class );
+		// Se remplaza el placeholder ":name" con el valor del argumento
+		query = query.setParameter( "name", name );
+		// Se invoca el query se obtiene la lista resultado
+		List<RazaEntity> sameName = query.getResultList( );
+		if( sameName.isEmpty( ) )
+		{
+			return null;
+		}
+		else
+		{
+			return sameName.get( 0 );
+		}
+	}
+    
     
     /**
      * Elimina una raza con el id que se envia por parametro

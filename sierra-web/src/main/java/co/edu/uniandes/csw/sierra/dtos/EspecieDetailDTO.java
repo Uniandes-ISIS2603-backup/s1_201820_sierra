@@ -20,6 +20,10 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -111,6 +115,61 @@ public class EspecieDetailDTO extends EspecieDTO
     public EspecieDetailDTO()
     {
         super();
+        
+    }
+    
+  /**
+     * Crea un objeto EspecieDetailDTO a partir de un objeto EspeciEntity
+     * incluyendo los atributos de EspecieDTO.
+     *
+     * @param entity Entidad EspecieEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
+     */
+    public EspecieDetailDTO(EspecieEntity entity)
+    {
+        super(entity);
+        if (entity!=null) {
+            razas= new ArrayList<>();
+            for (RazaEntity entityRazas : entity.getRazas()) {
+    //            razas.add(new RazaDTO(entityRazas));
+            }
+            mascotas= new ArrayList<>();
+            for (MascotaEntity entityMascotas : entity.getMascotas()) {
+                mascotas.add(new MascotaDTO(entityMascotas));
+            }
+        }
+        
+    }
+    
+     /**
+     * Convierte un objeto EspecieDetailDTO a EspecieEntity incluyendo los
+     * atributos de EspecieDTO.
+     *
+     * @return Nueva objeto EspecieEntity.
+     *
+     */
+    @Override
+    public EspecieEntity toEntity() {
+        EspecieEntity entity = super.toEntity();
+        
+        if (razas!=null)
+        {
+            List<RazaEntity> razasEntity=new ArrayList<>();
+            for (RazaDTO razaDto : razas) {
+ //               razasEntity.add(razaDto.toEntity());
+            }
+            entity.setRazas(razasEntity);
+        }
+        if (mascotas!=null) {
+             List<MascotaEntity> mascotasEntity=new ArrayList<>();
+             for (MascotaDTO mascotaDto : mascotas) {
+                mascotasEntity.add(mascotaDto.toEntity());
+            }
+             entity.setMascotaS(mascotasEntity);
+        }
+        
+        return entity;
     }
 
     /**

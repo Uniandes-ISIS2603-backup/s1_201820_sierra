@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -14,6 +19,36 @@ import javax.persistence.Entity;
  */
 @Entity
 public class RazaEntity extends BaseEntity implements Serializable {
+
+    /**
+     * @return the mascotas
+     */
+    public List<MascotaEntity> getMascotas() {
+        return mascotas;
+    }
+
+    /**
+     * @param mascotas the mascotas to set
+     */
+    public void setMascotas(List<MascotaEntity> mascotas) {
+        this.mascotas = mascotas;
+    }
+
+    /**
+     * @return the especie
+     */
+    public EspecieEntity getEspecie() {
+        return especie;
+    }
+
+    /**
+     * @param especie the especie to set
+     */
+    public void setEspecie(EspecieEntity especie) {
+        this.especie = especie;
+    }
+
+    private static final long serialVersionUID = 1L;
     //nombre de la raza a la que corresponde el animal
     private String nombreRaza;
     // cuidados que se deben tener con la raza 
@@ -22,6 +57,15 @@ public class RazaEntity extends BaseEntity implements Serializable {
     private String destacable;
     //caracteristicas de la raza
     private String caracteristicas;
+    
+    //Asociaciones, lo hace Juan zambrano porque Rodrigo esta incapacitado
+    @OneToMany(mappedBy = "raza", cascade = CascadeType.PERSIST)
+    @PodamExclude
+    private List<MascotaEntity> mascotas;
+    
+    @ManyToOne
+    @PodamExclude
+    private EspecieEntity especie;
 
     public String getNombreRaza() {
         return nombreRaza;

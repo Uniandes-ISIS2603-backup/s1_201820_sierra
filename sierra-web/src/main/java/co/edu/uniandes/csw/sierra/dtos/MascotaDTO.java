@@ -151,6 +151,29 @@ public class MascotaDTO
                 this.muerte = mascotaEntity.getMuerte( );
 
 	}
+        
+         /**
+	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+	 * la entidad que viene de argumento.
+	 *
+	 * @return mascotaEntity: Es la entidad que se va a convertir a DTO
+	 */
+        public MascotaEntity toEntity()
+        {
+            MascotaEntity entity= new MascotaEntity() {};
+            entity.setNombre(nombre);
+            entity.setId(id);
+            entity.setAdquirido(adquirido);
+            entity.setGenero(genero);
+            entity.setEdad(edad);
+            entity.setColor(color);
+            entity.setEsteril(esteril);
+            entity.setImagen(imagen);
+            entity.setTamano(tamano);
+            entity.setNacimiento(nacimiento);
+            entity.setMuerte(muerte);
+            return entity;
+        }
   
    
     /**

@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
+import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -42,6 +45,27 @@ devuelven objetos en formato JSON
 public class CalificacionResource {
     
     /**
+     * la conexion con logic
+     */
+    @Inject
+    private CalificacionLogic calificacionLogic;
+    
+    /**
+     * Metodo que convierte una lista de entidades a una lista de DetailDTO
+     * @param lista la lista de entidades
+     * @return la lista de DetailDTO
+     */
+    public List<CalificacionDetailDTO> listEntityToDTO(List<CalificacionEntity> lista){
+        List<CalificacionDetailDTO> r = new ArrayList<>();
+        for(CalificacionEntity ent: lista){
+            r.add(new CalificacionDetailDTO(ent));
+        }
+        return r;
+    }
+    
+    
+    
+    /**
      * <h1> POST /api/calificaciones : Crea una calificacion. </h1>
      * <pre> Cuerpo de la peticion: JSON (@link CalificacionDetailDTO).
      * Crea una nueva calificacion con la informacion que entra por el cuerpo de la peticion.
@@ -51,16 +75,16 @@ public class CalificacionResource {
      * 200 OK La calificacion fue creada
      * </code>
      * <code style=" color: #c7254e; backround-color: #f9f2f4;">
-     * 412 Precondition Failed: Ya existe una calificacion asociada a esa Adquisicion
+     * 412 Precondition Failed: Ya existe una calificacion asociada a esa Calificacion
      * </code>
      * </pre>
      * @param dto (@link CalificacionDetailDTO) - La nueva calificacion
      * @return JSON (@link CalificacionDetailDTO) - La calificacion guardada con el atributo id
-     * @throws BusinessLogicException Error de logica: ya existe una calificacion asociada a la adquisicion dada
+     * @throws BusinessLogicException Error de logica: ya existe una calificacion asociada a la calificacion dada
      */
     @POST
     public CalificacionDetailDTO createCalificacion(CalificacionDetailDTO dto) throws BusinessLogicException{
-        return dto;
+        return new CalificacionDetailDTO(calificacionLogic.create(dto.toEntity()));
     }
     
     /**
@@ -80,7 +104,7 @@ public class CalificacionResource {
     */
     @GET
     public List<CalificacionDetailDTO> getCalificaciones(){
-        return new ArrayList<>();
+        return listEntityToDTO(calificacionLogic.getAll());
     }
     
     /**
@@ -100,9 +124,13 @@ public class CalificacionResource {
      */
     @GET
     @Path( "{id: \\d+}" )
-    public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id )
+    public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-        return null;
+        CalificacionEntity ent = calificacionLogic.getById(id);
+        if(ent == null){
+            throw new BusinessLogicException("La calificacion con el id: " + id + " no existe");
+        }
+        return new CalificacionDetailDTO(ent);
     }
     
     /**
@@ -131,7 +159,15 @@ public class CalificacionResource {
     @Path( "{id: \\d+}" )
     public CalificacionDetailDTO updateCalificacion( @PathParam( "id" ) Long id, CalificacionDetailDTO dDTO ) throws BusinessLogicException
     {
-	return dDTO;
+        CalificacionEntity ent = dDTO.toEntity();
+        ent.setId(id);
+        //revisa si existe la entidad
+        CalificacionEntity oldEnt = calificacionLogic.getById(id);
+        if(oldEnt == null)
+            throw new BusinessLogicException("No existe una Calificacion con el id: " + id);
+        
+        ent.setAdquisicion(oldEnt.getAdquisicion());
+        return new CalificacionDetailDTO(calificacionLogic.update(ent));
     }
     
     /**
@@ -152,8 +188,12 @@ public class CalificacionResource {
      */
     @DELETE
     @Path( "{id: \\d+}" )
-    public void deleteCalificacion( @PathParam( "id" ) Long id )
+    public void deleteCalificacion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-    	
+    	CalificacionEntity ent = calificacionLogic.getById(id);
+        if(ent == null)
+            throw new BusinessLogicException("No existe la calificacion con id: " + id);
+        calificacionLogic.delete(ent);
     }
+    
 }

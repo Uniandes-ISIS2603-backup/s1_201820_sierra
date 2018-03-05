@@ -4,31 +4,36 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.entities;
-
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Entity
 public class CertificadoEntity extends BaseEntity implements Serializable {
-         //Identificador único del certificado
-    private Long id;
-    // fecha de expedisión del certicado
+
+    private static final long serialVersionUID = 1L;
+    // fecha de expedición del certicado
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     //String que contiene  la descripción del certificado de pureza del perro
     private String descripcion;
     // String que contiene el url de la imagen
     private String imagen;
+    
+    @ManyToOne
+    @PodamExclude
+    private MascotaVentaEntity mascotaVenta;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getFecha() {
         return fecha;
@@ -52,6 +57,20 @@ public class CertificadoEntity extends BaseEntity implements Serializable {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    /**
+     * @return the mascotaVenta
+     */
+    public MascotaVentaEntity getMascotaVenta() {
+        return mascotaVenta;
+    }
+
+    /**
+     * @param mascotaVenta the mascotaVenta to set
+     */
+    public void setMascotaVenta(MascotaVentaEntity mascotaVenta) {
+        this.mascotaVenta = mascotaVenta;
     }
     
     

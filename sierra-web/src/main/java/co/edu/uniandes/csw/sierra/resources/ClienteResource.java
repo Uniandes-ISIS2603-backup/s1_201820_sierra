@@ -12,6 +12,7 @@ import java.util.*;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *<pre>Clase que implementa el recurso "cliente".
@@ -28,9 +29,9 @@ import javax.ws.rs.Produces;
  * </pre>
  * @author de.gutierrez
  */
-@Path("clientes")
-@Produces("application/json")
-@Consumes("application/json")
+@Path("/clientes")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class ClienteResource 
 {

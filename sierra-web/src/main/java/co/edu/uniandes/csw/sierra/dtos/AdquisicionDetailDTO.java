@@ -19,6 +19,8 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+
 /**
  * AdquisicionDTO es el objeto de transferencia de datos detallada de la entidad Adquisicion.
  * <p>
@@ -116,6 +118,41 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
     
     public AdquisicionDetailDTO(){
         super();
+    }
+    /**
+     * Constructor que convierte un Entity a un DetailDTO
+     * @param ent la entidad
+     */
+    public AdquisicionDetailDTO(AdquisicionEntity ent){
+        super(ent);
+        if(ent != null){
+            //calificacion = new CalificacionDTO(ent.getCalificacion());
+            mascota = new MascotaDTO(ent.getMascota());
+            //factura = new FacturaDTO(ent.getFactura());
+            cliente = new ClienteDTO(ent.getCliente());
+            
+        }
+    }
+    /**
+     * Convierte una AdquisicionDetailDTO a una entidad de Adquisicion
+     * @return la entidad creada
+     */
+    @Override
+    public AdquisicionEntity toEntity(){
+        AdquisicionEntity ent = super.toEntity();
+        if(calificacion != null){
+            //ent.setCalificacion(calificacion.toEntity());
+        }
+        if(mascota != null){
+            ent.setMascota(mascota.toEntity());
+        }
+        if(cliente != null){
+            ent.setCliente(cliente.toEntity());
+        }
+        if(factura != null){
+            //ent.setFactura(factura.toEntity());
+        }
+        return ent;
     }
 
     /**

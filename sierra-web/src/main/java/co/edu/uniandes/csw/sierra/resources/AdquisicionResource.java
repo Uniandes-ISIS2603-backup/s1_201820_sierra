@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.AdquisicionDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -28,7 +31,7 @@ import javax.ws.rs.Produces;
 * <pre>
 * Path: indica la dirección después de "api" para acceder al recurso
 * Produces/Consumes: indica que los servicios definidos en este recurso reciben y
-*devuelven objetos en formato JSON
+* devuelven objetos en formato JSON
 * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
 * </pre>
 * @author Juan David Zambrano
@@ -40,6 +43,28 @@ import javax.ws.rs.Produces;
 @Consumes( "application/json" )
 @RequestScoped
 public class AdquisicionResource {
+    
+    
+    
+    
+    /**
+     * la conexion con logic
+     */
+    @Inject
+    private AdquisicionLogic adquisicionLogic;
+    
+    /**
+     * Metodo que convierte una lista de entidades a una lista de DetailDTO
+     * @param lista la lista de entidades
+     * @return la lista de DetailDTO
+     */
+    public List<AdquisicionDetailDTO> listEntityToDTO(List<AdquisicionEntity> lista){
+        List<AdquisicionDetailDTO> r = new ArrayList<>();
+        for(AdquisicionEntity ent: lista){
+            r.add(new AdquisicionDetailDTO(ent));
+        }
+        return r;
+    }
     
     /**
      * <h1> POST /api/adquisiciones : Crea una adquisicion. </h1>
@@ -60,7 +85,7 @@ public class AdquisicionResource {
      */
     @POST
     public AdquisicionDetailDTO createAdquisicion(AdquisicionDetailDTO dto) throws BusinessLogicException{
-        return dto;
+        return new AdquisicionDetailDTO(adquisicionLogic.create(dto.toEntity()));
     }
     
     /**
@@ -80,7 +105,7 @@ public class AdquisicionResource {
     */
     @GET
     public List<AdquisicionDetailDTO> getAdquisiciones(){
-        return new ArrayList<>();
+        return listEntityToDTO(adquisicionLogic.getAll());
     }
     
     
@@ -101,22 +126,76 @@ public class AdquisicionResource {
      */
     @GET
     @Path( "{id: \\d+}" )
-    public AdquisicionDetailDTO getAdquisicion( @PathParam( "id" ) Long id )
+    public AdquisicionDetailDTO getAdquisicion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-        return null;
+        AdquisicionEntity ent = adquisicionLogic.getById(id);
+        if(ent == null){
+            throw new BusinessLogicException("La adqusicicion con el id: " + id + " no existe");
+        }
+        return new AdquisicionDetailDTO(ent);
     }
     
+    /**
+     * <h1> PUT /api/adquisiciones/id{id} : Actualiza una adquisicion con el id dado
+     * <pre> Cuerpo de peticion: JSON {@link AdquisicionDetailDTO}.
+     * 
+     * Actualiza la entidad de Adquisicion con el id dado con la informacion 
+     * recibida en el cuerpo de la peticion.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Actualiza la entidad exitosamente y retorna un objeto identico
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una adquisicion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere actualizar
+     * @param dDTO {@link AdquisicionDetailDTO} La entidad de Adquisicion que
+     * desea guardar.
+     * @return JSON {@link AdquisicionDetailDTO} La entidad Adquisicion actualizada
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de 
+     * logica del negocio.
+     */
     @PUT
     @Path( "{id: \\d+}" )
-    public AdquisicionDetailDTO updateAdquisicion( @PathParam( "id" ) Long id, AdquisicionDetailDTO dDTO ) throws BusinessLogicException
-    {
-	return dDTO;
+    public AdquisicionDetailDTO updateAdquisicion( @PathParam( "id" ) Long id, AdquisicionDetailDTO dDTO ) throws BusinessLogicException{
+        AdquisicionEntity ent = dDTO.toEntity();
+        ent.setId(id);
+        //revisa si existe la entidad
+        AdquisicionEntity oldEnt = adquisicionLogic.getById(id);
+        if(oldEnt == null)
+            throw new BusinessLogicException("No existe una Adquisicion con el id: " + id);
+        ent.setCalificacion(oldEnt.getCalificacion());
+        ent.setCliente(oldEnt.getCliente());
+        ent.setFactura(oldEnt.getFactura());
+        ent.setMascota(oldEnt.getMascota());
+        return new AdquisicionDetailDTO(adquisicionLogic.update(ent));
     }
     
+    /**
+     * <h1> DELETE /api/adquisiciones/id{id} : Eliminaa una adquisicion con el id dado
+     * <pre> 
+     * 
+     * Borra la entidad de Adquisicion con el id dado.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; backround-color: #eaffe0;">
+     * 200 OK Elimina la entidad exitosamente. 
+     * </code>
+     * <code style="color: #c7254e; backround-color: #f3f2f4;">
+     * 404 Not Found no existe una adquisicion con el id dado
+     * </code>
+     * </pre>
+     * @param id el id de la entidad que se quiere borrar.
+     */
     @DELETE
     @Path( "{id: \\d+}" )
-    public void deleteAdquisicion( @PathParam( "id" ) Long id )
+    public void deleteAdquisicion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-    	
+    	AdquisicionEntity ent = adquisicionLogic.getById(id);
+        if(ent == null)
+            throw new BusinessLogicException("No existe la adquisicion con id: " + id);
+        adquisicionLogic.delete(ent);
     }
 }

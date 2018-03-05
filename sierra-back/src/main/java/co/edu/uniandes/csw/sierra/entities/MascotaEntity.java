@@ -23,10 +23,17 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -38,6 +45,8 @@ import javax.persistence.Temporal;
 @Entity
 public abstract class MascotaEntity extends BaseEntity
 {
+ 
+    //--------------------ATRIBUTOS--------------//
     
     /**
      * Codigo serializable por SA
@@ -89,15 +98,56 @@ public abstract class MascotaEntity extends BaseEntity
      * Fecha de la  nacimiento de la amscota
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date nacimiento;
     
      /**
      * Fecha dela muerte de la amscota
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date muerte;
     
+    //---------------RELACIONES-------------------//
+   
+    /**
+     * Especie  de la mascota
+     */
+    @PodamExclude
+    @ManyToOne
+    private EspecieEntity especie;
 
+    /**
+     * Ciente  de la  mascota
+     */
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
+    
+    /**
+     * Adquisicion a la que  esta  ligada la mascota
+     */
+    @PodamExclude
+    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST)
+    private AdquisicionEntity adquisicion;
+    
+    /**
+     * Raza de la  mascota
+     */
+    @PodamExclude
+    @ManyToOne
+    private RazaEntity raza;
+    
+    /**
+     * Publicaciones de una  mascota
+     */
+    @PodamExclude
+    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST)
+    private List<PublicacionEntity> publicaciones;
+
+    
+    //---------------METODOS---------------------//
+    
     /**
      * @return the nombre
      */
@@ -246,5 +296,75 @@ public abstract class MascotaEntity extends BaseEntity
     public void setMuerte(Date muerte) {
         this.muerte = muerte;
     }    
+
+    /**
+     * @return the especie
+     */
+    public EspecieEntity getEspecie() {
+        return especie;
+    }
+
+    /**
+     * @param especie the especie to set
+     */
+    public void setEspecie(EspecieEntity especie) {
+        this.especie = especie;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the adquisicion
+     */
+    public AdquisicionEntity getAdquisicion() {
+        return adquisicion;
+    }
+
+    /**
+     * @param adquisicion the adquisicion to set
+     */
+    public void setAdquisicion(AdquisicionEntity adquisicion) {
+        this.adquisicion = adquisicion;
+    }
+
+    /**
+     * @return the raza
+     */
+    public RazaEntity getRaza() {
+        return raza;
+    }
+
+    /**
+     * @param raza the raza to set
+     */
+    public void setRaza(RazaEntity raza) {
+        this.raza = raza;
+    }
+
+    /**
+     * @return the publicaciones
+     */
+    public List<PublicacionEntity> getPublicaciones() {
+        return publicaciones;
+    }
+
+    /**
+     * @param publicaciones the publicaciones to set
+     */
+    public void setPublicaciones(List<PublicacionEntity> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
     
 }

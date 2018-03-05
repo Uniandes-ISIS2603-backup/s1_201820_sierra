@@ -19,6 +19,8 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+
 /**
  * CalificacionDTO es el objeto de transferencia de datos de la entidad Calificacion.
  * <p>
@@ -53,6 +55,34 @@ public class CalificacionDTO {
     
     private String sugerencia;
 
+    
+    public CalificacionDTO(){
+        
+    }
+    /**
+     * Constructor que convierte una entity a un DTO
+     * @param ent 
+     */
+    public CalificacionDTO(CalificacionEntity ent){
+        this.id = ent.getId();
+        this.comentarios = ent.getComentarios();
+        this.valor = ent.getValor();
+        this.sugerencia = ent.getSugerencia();
+    }
+    
+    /**
+     * Metodo que convierte un DTO a un Entity
+     * @return la entidad creada
+     */
+    public CalificacionEntity toEntity(){
+        CalificacionEntity ent = new CalificacionEntity();
+        ent.setId(id);
+        ent.setComentarios(comentarios);
+        ent.setValor(valor);
+        ent.setSugerencia(sugerencia);
+        return ent;
+    }
+    
     /**
      * @return the id
      */

@@ -15,7 +15,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
- *
+ * Clase que representa una especie en la capa logica.
  * @author jc.sanchez12
  */
 @Stateless
@@ -28,6 +28,7 @@ public class EspecieLogic
     
         /**
          * Crea una  entity en la  base de datos  de tipo especie
+         * No existe  alguna  regla que  repercuta en la creacion de una especie mientras no exista ya en la base de datos.
          * @param entity Bojeto con los datos  de la nueva  EspecieEntity 
          * @return Objeto de  tipo EspecieEntity con los  datos nuevos  
          * @throws BusinessLogicException 
@@ -40,16 +41,21 @@ public class EspecieLogic
              throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
          }
          else{
+             if (entity.getNombre().equals("")) {
+                  throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
+             }
+             else{
              persistence.create(entity);
              LOGGER.info( "Termina proceso de creación de una entidad de Especie" );
              return entity;
+             } 
          }
      }
      
      
     /**
      * Obtiene la lista de los registros de Especies.
-     *
+     * No existe  alguna  regla que  repercuta en la obtencion de todas las especies en la base de datos.
      * @return Colección de objetos de EspecieEntity.
      */
      public List<EspecieEntity> getAll()
@@ -63,7 +69,6 @@ public class EspecieLogic
      
      /**
      * Obtiene los datos de una instancia de Especie a partir de su ID.
-     *
      * @param id Identificador de la instancia a consultar
      * @return Instancia de EsoeciEntity con los datos de la especie consultada.
      */
@@ -74,7 +79,6 @@ public class EspecieLogic
      
      /**
      * Obtiene los datos de una instancia de Especie a partir de su nombre.
-     *
      * @param nombre nombre  de la instancia a consultar
      * @return Instancia de EspecieEntity con los datos de la especie consultada.
      */
@@ -85,7 +89,6 @@ public class EspecieLogic
      
      /**
      * Actualiza la información de una instancia de Especie.
-     *
      * @param entity Instancia de EspecieEntity con los nuevos datos.
      * @return Instancia de EspecieEntity con los datos actualizados.
      */

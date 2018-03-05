@@ -25,15 +25,21 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
- *
+ * 
  * @author jc.sanchez12
  */
 @Entity
 public class EspecieEntity extends BaseEntity implements Serializable
 {
+    
+    //--------------ATRIBUTOS--------------//
+    
     /**
      * Codigo serializable por SA
      */
@@ -53,8 +59,21 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     private String clasificacion;
     
-  
-
+    //---------------RELACIONES-----------------//
+    
+    /**
+     * Lista de razas de una especie
+     */
+    @OneToMany(mappedBy = "especie", cascade = CascadeType.PERSIST)
+    private List<RazaEntity> razas;
+        
+    /**
+     * Lista de  mascotas que se pueden comprar de una especie
+     */
+    @OneToMany(mappedBy = "especie",cascade = CascadeType.PERSIST)
+    private List<MascotaEntity>  mascotas;
+    
+    //------------METODOS--------------//  
     /**
      * @return the nombre
      */
@@ -95,6 +114,34 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
+    }
+
+    /**
+     * @return the razas
+     */
+    public List<RazaEntity> getRazas() {
+        return razas;
+    }
+
+    /**
+     * @param razas the razas to set
+     */
+    public void setRazas(List<RazaEntity> razas) {
+        this.razas = razas;
+    }
+
+    /**
+     * @return the mascotasVenta
+     */
+    public List<MascotaEntity> getMascotas() {
+        return mascotas;
+    }
+
+    /**
+     * @param mascotas
+     */
+    public void setMascotaS(List<MascotaEntity> mascotas) {
+        this.mascotas = mascotas;
     }
 
      

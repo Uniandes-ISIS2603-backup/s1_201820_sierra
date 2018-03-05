@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -48,12 +49,14 @@ public class FacturaPersistenceTest {
     /**
      * Inyección de la dependencia a la clase FacturaPersistence cuyos métodos se van a probar.
      */
+    @Inject
     private FacturaPersistence facturaPersistence;
     
     /**
      * Contexto de persistencia que se va a usar para acceder a la  base de datos por fuera de los métodos probados actualmente.
      * 
      */
+    @PersistenceContext
     private EntityManager em;
     
     
@@ -132,9 +135,8 @@ public class FacturaPersistenceTest {
         FacturaEntity entity = em.find(FacturaEntity.class, result.getId());
         
         Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getValorTotal(), entity.getValorTotal());
+        Assert.assertEquals(newEntity.getPrecio(), entity.getPrecio());
     }
     
     /**
@@ -170,8 +172,7 @@ public class FacturaPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-        Assert.assertEquals(entity.getFecha(), newEntity.getFecha());
-        Assert.assertEquals(entity.getValorTotal(), newEntity.getValorTotal());
+        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio());
     }
     
     /**
@@ -203,7 +204,6 @@ public class FacturaPersistenceTest {
         FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
         Assert.assertEquals(newEntity.getId(), resp.getId());
         Assert.assertEquals(newEntity.getName(), resp.getName());
-        Assert.assertEquals(newEntity.getFecha(), resp.getFecha());
-        Assert.assertEquals(newEntity.getValorTotal(), resp.getValorTotal());
+        Assert.assertEquals(newEntity.getPrecio(), resp.getPrecio());
     }
 }

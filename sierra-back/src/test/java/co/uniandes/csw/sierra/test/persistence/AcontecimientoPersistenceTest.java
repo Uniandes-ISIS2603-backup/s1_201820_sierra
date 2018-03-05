@@ -92,7 +92,7 @@ public class AcontecimientoPersistenceTest
      */
     private void clearData() 
     {
-        em.createQuery("delete from PublicacionEntity").executeUpdate();
+        em.createQuery("delete from AcontecimientoEntity").executeUpdate();
     }
  
      /**

@@ -7,113 +7,153 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import org.eclipse.persistence.jpa.config.Cascade;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author jc.sanchez12
  */
+@Entity
 public class FacturaEntity extends BaseEntity implements Serializable{
-    
-    private Long id;
-    private Integer valorTotal;
-    private Date fecha;
 
-       
-    /**
+    private static final long serialVersionUID = 1L;
+    
+    private Long idCliente;
+    private String nombreCliente;
+    private Integer precio;
+    private String animalAdquirido;
+    
+     /**
      * Adquisición ligada a la factura.
      */ 
-//       @OneToMany
-//      private AdquisicionDTO adquisicion;
-//      
-    /**
-     * Lista de comprobantes ligaras a la factura.
-     */ 
-//      @OneToMany
-//      private IList<ComprobanteDetailDTO> comprobantes;
+    @OneToOne(mappedBy="factura", cascade = CascadeType.PERSIST)
+    @PodamExclude
+    private AdquisicionEntity adquisicion;
     
     /**
-     * Método que retorna el id de la factura.
+     * Lista de comprobantes ligaras a la factura.
+     */
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="factura")
+    @PodamExclude
+    private List<ComprobanteEntity> comprobantes;
+    
+    
+    /**
+     * 
      * @return 
      */
-    @Override
-    public Long getId() {
-        return id;
+    public Long getIdCliente() {
+        return idCliente;
     }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getAnimalAdquirido() {
+        return animalAdquirido;
+    }
+    
+    /**
+     * 
+     * @param idCliente 
+     */
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    /**
+     * 
+     * @param nombreCliente 
+     */
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+    
+    /**
+     * 
+     * @param animalAdquirido 
+     */
+    public void setAnimalAdquirido(String animalAdquirido) {
+        this.animalAdquirido = animalAdquirido;
+    }
+    
+    
+    
+   
+    
     
     /**
      * Método que retorna el valor total de la factura.
      * @return 
      */
-    public Integer getValorTotal() {
-        return valorTotal;
+    public Integer getPrecio() {
+        return precio;
     }
-    /**
-     * Método que retorna la fecha en que se generó la factura.
-     * @return 
-     */
-    public Date getFecha() {
-        return fecha;
-    }
+    
 
-    /**
-     * Método que recibe como parámetro el id de la Factura.
-     * @param id 
-     */
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
     
     /**
      * Método que recibe como parámetro el valor total de la factura.
      * @param valorTotal 
      */
-    public void setValorTotal(Integer valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setPrecio(Integer valorTotal) {
+        this.precio = valorTotal;
     }
     
-    /**
-     * Método que recibe coom parámetro la fecha en que se generó la Factura.
-     *@param fecha
-     */
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+    
     
     /**
      * Retorna la Adquisición ligada a la Factura..
      * @return Adquisición ligada a la Factura.
-     * public Adquisicion getAdquisicion()
-     */
-//     {
-//      return adquisicion;
-//     }
-//
+     **/
+     public AdquisicionEntity getAdquisicion()
+     
+     {
+        return adquisicion;
+     }
+
     /**
      * Asigna una adquisición a la Factura.
      * @Param adquisicion
      */
-//   public void setAdquisicion(AdquisicionDTO adquisicion) 
-//   {
-//      this.adquiscion = adquisicion;    
-//   } 
+   public void setAdquisicion(AdquisicionEntity adquisicion) 
+   {
+      this.adquisicion = adquisicion;    
+   } 
     
     /**
      * Retorna una lista de comprobantes
      * @return una lista de comprobantes.
      */
-//    public IList<ComprobanteDetailDTO> getComprobantes()
-//    {
-//         return this.adquisiciones;
-//    }
+    public List<ComprobanteEntity> getComprobantes()
+    {
+         return comprobantes;
+    }
     
     
     /**
      * Recibe como parámetro una lista de comprobantes
      * @param comprobantes
      */
-//   public void setComprobantes(IList<ComproanteDetailDTO> comprobantes)
-//   {
-//       this.comprobantes = comprobante;
-//   }    
+   public void setComprobantes(List<ComprobanteEntity> comprobantes)
+   {
+       this.comprobantes = comprobantes;
+   }    
 }

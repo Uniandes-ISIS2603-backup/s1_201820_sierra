@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import java.util.Date;
 
 /**
@@ -41,7 +42,29 @@ public class ComprobanteDTO {
     {
         
     }
-
+    
+    public ComprobanteDTO(ComprobanteEntity entity)
+    {
+        this.id = entity.getId();
+        this.fecha = entity.getFecha();
+        this.valorTotal = entity.getValorTotal();
+        this.clienteId = entity.getClienteId();
+    }
+    
+    /**
+     * Método que transforma la clase de DTO a Entity y la retorna.
+     * @return 
+     */
+    public ComprobanteEntity toEntity()
+    {
+        ComprobanteEntity entity = new ComprobanteEntity();
+        entity.setId(this.id);
+        entity.setFecha(this.fecha);
+        entity.setValorTotal(this.valorTotal);
+        entity.setClienteId(this.clienteId);
+        return entity;
+    }
+    
     public Long getId() {
         return id;
     }

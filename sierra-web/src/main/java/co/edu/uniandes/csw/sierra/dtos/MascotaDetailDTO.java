@@ -20,6 +20,10 @@ SOFTWARE.
 
 package co.edu.uniandes.csw.sierra.dtos;
 
+
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -139,9 +143,9 @@ public class MascotaDetailDTO extends  MascotaDTO
      private List<PublicacionDTO> publicaciones;
      
      /**
-      *  Adquisiciones de a mascota
+      *  Adquisicion de a mascota
       */
-      private List<AdquisicionDTO> adquisiciones;
+      private AdquisicionDTO adquisicion;
     
     /**
      * Constructor por defecto
@@ -151,6 +155,66 @@ public class MascotaDetailDTO extends  MascotaDTO
         super();
     }
 
+     /** Crea un objeto MascotaDetailDTO a partir de un objeto EspeciEntity
+     * incluyendo los atributos de EspecieDTO.
+     *
+     * @param entity Entidad EspecieEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
+     */
+    public MascotaDetailDTO(MascotaEntity entity)
+    {
+        super(entity);
+        if (entity!=null) {
+            if (entity.getEspecie()!=null) {
+                this.especie= new EspecieDTO(entity.getEspecie());
+            }
+            else {
+                entity.setEspecie(null);
+            }
+        }
+        if (entity.getRaza()!=null) {
+    //        this.raza= new RazaDTO(entity.getRaza());
+        }
+        else{
+            entity.setRaza(null);
+        }
+        if(entity.getAdquisicion()!=null){
+           this.adquisicion= new AdquisicionDTO(entity.getAdquisicion());
+        }
+        if (entity.getPublicaciones()!=null) {
+            publicaciones= new ArrayList<>();
+            for (PublicacionEntity entityPublicacion : entity.getPublicaciones()) {
+     //           publicaciones.add(new PublicacionDTO(entityPublicacion));
+            }
+        } 
+    }
+    
+     /**
+     * Transformar el DTO a una entidad
+     * @return La entidad que representa la mascota.
+     */
+    public MascotaEntity toEntity() {
+        MascotaEntity mascota = super.toEntity();
+        if (this.getEspecie()!= null) {
+            mascota.setEspecie(this.getEspecie().toEntity());
+        }
+        if (this.getRaza()!= null) {
+    //        mascota.setRaza(this.getRaza().toEntity);
+        }
+        if (this.getAdquisicion()!= null) {
+    //        mascota.setAdquisicion(this.getAdquisicion().toEntity);
+        }
+        if (publicaciones != null) {
+            List<PublicacionEntity> publicacionEnity = new ArrayList<>();
+            for (PublicacionDTO dtopub : publicaciones) {
+    //            publicacionEnity.add(dtopub.toEntity());
+            }
+            mascota.setPublicaciones(publicacionEnity);
+        }
+        return mascota;
+    }
+    
     /**
      * @return the especie
      */
@@ -196,15 +260,15 @@ public class MascotaDetailDTO extends  MascotaDTO
     /**
      * @return the adquisiciones
      */
-    public List<AdquisicionDTO> getAdquisiciones() {
-        return adquisiciones;
+    public AdquisicionDTO getAdquisicion() {
+        return adquisicion;
     }
 
     /**
-     * @param adquisiciones the adquisiciones to set
+     * @param adquisicion the adquisiciones to set
      */
-    public void setAdquisiciones(List<AdquisicionDTO> adquisiciones) {
-        this.adquisiciones = adquisiciones;
+    public void setAdquisicion(AdquisicionDTO adquisicion) {
+        this.adquisicion = adquisicion;
     }
     
     
