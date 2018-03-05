@@ -5,6 +5,12 @@
  */
 package co.uniandes.csw.sierra.test.persistence;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
@@ -30,9 +36,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author ja.amortegui10
  */
-@RunWith(Arquillian.class)
 public class ComprobantePersistenceTest {
-    /**
+    
+    
+    
+    public ComprobantePersistenceTest() {
+    }
+    
+   /**
      * * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
      * embebido. El jar contiene las clases de Company, el descriptor de la
      * base de datos y el archivo beans.xml para resolver la inyección de
@@ -195,6 +206,7 @@ public class ComprobantePersistenceTest {
     @Test
     public void updateFacturaTest()
     {
+        Assert.assertTrue(data.size() == 0);
         ComprobanteEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ComprobanteEntity newEntity = factory.manufacturePojo(ComprobanteEntity.class);
@@ -209,4 +221,5 @@ public class ComprobantePersistenceTest {
         Assert.assertEquals(newEntity.getFecha(), resp.getFecha());
         Assert.assertEquals(newEntity.getValorTotal(), resp.getValorTotal());
     }
+    
 }

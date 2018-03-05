@@ -6,10 +6,14 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.AdquisicionDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -41,6 +45,28 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class AdquisicionResource {
     
+    
+    
+    
+    /**
+     * la conexion con logic
+     */
+    @Inject
+    private AdquisicionLogic adquisicionLogic;
+    
+    /**
+     * Metodo que convierte una lista de entidades a una lista de DetailDTO
+     * @param lista la lista de entidades
+     * @return la lista de DetailDTO
+     */
+    public List<AdquisicionDetailDTO> listEntityToDTO(List<AdquisicionEntity> lista){
+        List<AdquisicionDetailDTO> r = new ArrayList<>();
+        for(AdquisicionEntity ent: lista){
+            r.add(new AdquisicionDetailDTO(ent));
+        }
+        return r;
+    }
+    
     /**
      * <h1> POST /api/adquisiciones : Crea una adquisicion. </h1>
      * <pre> Cuerpo de la peticion: JSON (@link AdquisicionDetailDTO).
@@ -60,7 +86,7 @@ public class AdquisicionResource {
      */
     @POST
     public AdquisicionDetailDTO createAdquisicion(AdquisicionDetailDTO dto) throws BusinessLogicException{
-        return dto;
+        return new AdquisicionDetailDTO(adquisicionLogic.create(dto.toEntity()));
     }
     
     /**
@@ -80,7 +106,7 @@ public class AdquisicionResource {
     */
     @GET
     public List<AdquisicionDetailDTO> getAdquisiciones(){
-        return new ArrayList<>();
+        return listEntityToDTO(adquisicionLogic.getAll());
     }
     
     
@@ -101,9 +127,13 @@ public class AdquisicionResource {
      */
     @GET
     @Path( "{id: \\d+}" )
-    public AdquisicionDetailDTO getAdquisicion( @PathParam( "id" ) Long id )
+    public AdquisicionDetailDTO getAdquisicion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-        return null;
+        AdquisicionEntity ent = adquisicionLogic.getById(id);
+        if(ent == null){
+            throw new BusinessLogicException("La adqusicicion con el id: " + id + " no existe");
+        }
+        return new AdquisicionDetailDTO(ent);
     }
     
     /**
@@ -130,9 +160,18 @@ public class AdquisicionResource {
      */
     @PUT
     @Path( "{id: \\d+}" )
-    public AdquisicionDetailDTO updateAdquisicion( @PathParam( "id" ) Long id, AdquisicionDetailDTO dDTO ) throws BusinessLogicException
-    {
-	return dDTO;
+    public AdquisicionDetailDTO updateAdquisicion( @PathParam( "id" ) Long id, AdquisicionDetailDTO dDTO ) throws BusinessLogicException{
+        AdquisicionEntity ent = dDTO.toEntity();
+        ent.setId(id);
+        //revisa si existe la entidad
+        AdquisicionEntity oldEnt = adquisicionLogic.getById(id);
+        if(oldEnt == null)
+            throw new BusinessLogicException("No existe una Adquisicion con el id: " + id);
+        ent.setCalificacion(oldEnt.getCalificacion());
+        ent.setCliente(oldEnt.getCliente());
+        ent.setFactura(oldEnt.getFactura());
+        ent.setMascota(oldEnt.getMascota());
+        return new AdquisicionDetailDTO(adquisicionLogic.update(ent));
     }
     
     /**
@@ -153,8 +192,11 @@ public class AdquisicionResource {
      */
     @DELETE
     @Path( "{id: \\d+}" )
-    public void deleteAdquisicion( @PathParam( "id" ) Long id )
+    public void deleteAdquisicion( @PathParam( "id" ) Long id ) throws BusinessLogicException
     {
-    	
+    	AdquisicionEntity ent = adquisicionLogic.getById(id);
+        if(ent == null)
+            throw new BusinessLogicException("No existe la adquisicion con id: " + id);
+        adquisicionLogic.delete(ent);
     }
 }

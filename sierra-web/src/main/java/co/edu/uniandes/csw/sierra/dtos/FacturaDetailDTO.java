@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,6 +74,35 @@ public class FacturaDetailDTO extends FacturaDTO{
     public FacturaDetailDTO()
     {
         super();
+    }
+    
+    public FacturaDetailDTO(FacturaEntity entity)
+    {
+        super(entity);
+        this.adquisicion = new AdquisicionDetailDTO(entity.getAdquisicion());
+        this.comprobantes = new ArrayList<ComprobanteDetailDTO>();
+        List<ComprobanteEntity> comprobantesEntity = entity.getComprobantes();
+        for(ComprobanteEntity comprobanteActual : comprobantesEntity)
+            this.comprobantes.add(new ComprobanteDetailDTO(comprobanteActual));
+    }
+    
+    /**
+     * Mëtodo que transforma la clase de un DetailDTO a un Entity y retora el resultado.
+     * @return 
+     */
+    @Override
+    public FacturaEntity toEntity()
+    {
+        FacturaEntity entity = super.toEntity();
+        if(adquisicion != null)
+            entity.setAdquisicion(adquisicion.toEntity());
+        List<ComprobanteEntity> comprobantesEntity = new ArrayList<ComprobanteEntity>();
+        if(comprobantes.size() > 0)
+            for(ComprobanteDetailDTO comprobanteActual : comprobantes)
+                comprobantesEntity.add(comprobanteActual.toEntity());
+        
+        return entity;
+                
     }
 
     public AdquisicionDTO getAdquisicion() {

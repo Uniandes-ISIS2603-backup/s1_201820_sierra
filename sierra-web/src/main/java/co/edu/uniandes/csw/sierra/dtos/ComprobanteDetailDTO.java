@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+
 /**
  *ComprobanteDetailDTO es el objeto de transferencia de datos detallada de la entidad detallada Comprobante.
  * <p>
@@ -59,6 +61,31 @@ public class ComprobanteDetailDTO extends ComprobanteDTO{
     public ComprobanteDetailDTO()
     {
         super();
+    }
+    
+    public ComprobanteDetailDTO(ComprobanteEntity entity)
+    {
+        super(entity);
+        if(entity != null)
+        {
+            medioDePago = new MedioDePagoDTO(entity.getMedioDePago());
+            factura = new FacturaDTO(entity.getFactura());
+        }
+    }
+    
+    /**
+     * Método que transforma la clase de DetailDTO a Entity y retorna el resultado.
+     * @return 
+     */
+    @Override
+    public ComprobanteEntity toEntity()
+    {
+        ComprobanteEntity entity = super.toEntity();
+        if(factura!= null)
+            entity.setFactura(factura.toEntity());
+        if(medioDePago != null)
+            entity.setMedioDePago(medioDePago.toEntity());
+        return entity;
     }
 
     public FacturaDTO getFactura() {
