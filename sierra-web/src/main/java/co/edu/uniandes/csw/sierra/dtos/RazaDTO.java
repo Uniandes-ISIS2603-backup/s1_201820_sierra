@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
+
 /**
  *
  * RazaDTO Objeto de transferencia de datos de la entidad de certificado. Los DTO contienen las
@@ -39,7 +41,7 @@ package co.edu.uniandes.csw.sierra.dtos;
  */
 public class RazaDTO {
     //identificador numerico de la raza
-    private int id;
+    private Long id;
     //nombre de la raza a la que corresponde el animal
     private String nombreRaza;
     // cuidados que se deben tener con la raza 
@@ -52,6 +54,26 @@ public class RazaDTO {
     
     public RazaDTO(){
         //constructor por defecto
+    }
+    public RazaDTO(RazaEntity razaEntity)
+    {
+        this.caracteristicas = razaEntity.getCaracteristicas();
+        this.cuidados = razaEntity.getCuidados();
+        this.destacable = razaEntity.getDestacable();
+        this.id = razaEntity.getId();
+        this.nombreRaza = razaEntity.getNombreRaza();
+    }
+    public RazaEntity toEntity(){
+        RazaEntity entity = new RazaEntity();
+        entity.setCaracteristicas(caracteristicas);
+        entity.setCuidados(cuidados);
+        entity.setDestacable(destacable);
+        entity.setName(nombreRaza);
+        entity.setId(Long.MIN_VALUE);
+        
+        return entity;
+                
+
     }
 
     public String getNombreRaza() {
@@ -86,11 +108,11 @@ public class RazaDTO {
         this.caracteristicas = caracteristicas;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
     

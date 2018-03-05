@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,6 +19,7 @@ import javax.persistence.TypedQuery;
  *
  * @author rj.gonzalez10
  */
+@Stateless
 public class RazaPersistence {
         private static final Logger LOGGER = Logger.getLogger(RazaPersistence.class.getName());
     @PersistenceContext( unitName = "SierraPU" )
