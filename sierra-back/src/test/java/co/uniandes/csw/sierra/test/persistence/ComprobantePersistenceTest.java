@@ -36,6 +36,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author ja.amortegui10
  */
+@RunWith(Arquillian.class)
 public class ComprobantePersistenceTest {
     
     

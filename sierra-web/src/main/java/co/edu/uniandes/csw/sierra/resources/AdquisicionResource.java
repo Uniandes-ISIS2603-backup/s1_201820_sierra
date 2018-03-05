@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.AdquisicionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
