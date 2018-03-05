@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.CertificadoEntity;
 import java.util.Date;
 
 /**
@@ -51,7 +52,25 @@ public class CertificadoDTO {
     public CertificadoDTO(){
         //constructor por default
     }
-
+    public CertificadoDTO(CertificadoEntity entity)
+    {
+        this.descripcion = entity.getDescripcion();
+        this.imagen = entity.getImagen();
+        this.id = entity.getId();
+        this.fecha = entity.getFecha();
+    }
+    
+    public CertificadoEntity toEntity()
+    {
+        CertificadoEntity entity = new CertificadoEntity();
+         entity.setFecha(fecha);
+         entity.setDescripcion(descripcion);
+         entity.setImagen(imagen);
+         entity.setId(id);
+        
+        
+        return entity;
+    }
     public Date getFecha() {
         return fecha;
     }

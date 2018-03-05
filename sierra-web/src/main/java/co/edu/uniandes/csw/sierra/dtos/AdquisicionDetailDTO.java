@@ -20,6 +20,9 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 
 /**
  * AdquisicionDTO es el objeto de transferencia de datos detallada de la entidad Adquisicion.
@@ -144,7 +147,14 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
             //ent.setCalificacion(calificacion.toEntity());
         }
         if(mascota != null){
-            ent.setMascota(mascota.toEntity());
+            if (MascotaAdopcionDTO.class.isInstance(mascota))
+            {
+                 ent.setMascota(mascota.toEntity(new MascotaAdoptadaEntity() ));
+            }
+            else{
+                  ent.setMascota(mascota.toEntity(new MascotaVentaEntity()));
+            }
+           
         }
         if(cliente != null){
             ent.setCliente(cliente.toEntity());

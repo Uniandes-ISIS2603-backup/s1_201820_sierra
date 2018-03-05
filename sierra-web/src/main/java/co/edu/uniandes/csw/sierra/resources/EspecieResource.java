@@ -114,7 +114,7 @@ public class EspecieResource {
     }
     
      /**
-     * <h1>POST /api/especies : Crear un autor.</h1>
+     * <h1>POST /api/especies : Crear un especies.</h1>
      *
      * <pre>Cuerpo de petición: JSON {@link EspecieDetailDTO}.
      * 
