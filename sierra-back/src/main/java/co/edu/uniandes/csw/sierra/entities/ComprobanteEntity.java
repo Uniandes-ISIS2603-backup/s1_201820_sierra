@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.entities;
 
+import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -25,6 +27,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     private Integer valorTotal;
     
     @Temporal(javax.persistence.TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
     
     private Long clienteId;

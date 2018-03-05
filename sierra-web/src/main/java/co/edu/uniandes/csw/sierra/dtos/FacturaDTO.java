@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import java.util.Date;
 
 /**
@@ -33,11 +34,35 @@ import java.util.Date;
  */
 public class FacturaDTO {
     private Long id;
-    private Integer valorTotal;
-    private Date fecha;
+    private Integer precio;
+    private String nombreCliente;
+    private Long idCliente;
     
     public FacturaDTO()
     {
+    }
+    
+    public FacturaDTO(FacturaEntity entity)
+    {
+        this.id = entity.getId();
+        this.precio = entity.getPrecio();
+        this.nombreCliente = entity.getNombreCliente();
+        this.idCliente = entity.getIdCliente();
+        
+    }
+    
+    /**
+     * Método que transforma la clase de un DTO a un Entity y retorna el resultado.
+     * @return 
+     */
+    public FacturaEntity toEntity()
+    {
+        FacturaEntity entity = new FacturaEntity();
+        entity.setId(id);
+        entity.setPrecio(precio);
+        entity.setNombreCliente(nombreCliente);
+        entity.setIdCliente(idCliente);
+        return entity;
     }
 
     public Long getId() {
@@ -48,20 +73,30 @@ public class FacturaDTO {
         this.id = id;
     }
 
-    public void setValorTotal(Integer valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal(Integer precio) {
+        this.precio = precio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public Integer getValorTotal() {
-        return valorTotal;
+        return precio;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+    
+    public void setIdCliente(Long idCliente)
+    {
+        this.idCliente = idCliente;
+    }
+    
+    public Long getIdCliente()
+    {
+        return idCliente;
     }
     
     

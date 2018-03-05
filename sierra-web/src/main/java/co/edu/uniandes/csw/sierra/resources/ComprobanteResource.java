@@ -35,7 +35,7 @@ import javax.ws.rs.Produces;
  * @author ja.amortegui10
  */
 
-@Path( "adquisiciones" )
+@Path( "comprobantes" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
