@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -42,6 +45,12 @@ import javax.ws.rs.Produces;
 public class ComprobanteResource {
     
     /**
+     * Injección de la lógica.
+     */
+    @Inject
+    private ComprobanteLogic logic;
+    
+    /**
      * <h1> POST /api/comprobantes : Crea un comprobante. </h1>
      * <pre>
      * Cuerpo de la peticion: JSON (@link ComprobanteDetailDTO).
@@ -55,15 +64,25 @@ public class ComprobanteResource {
      * 412 Precodition Failed: Ya existe un comprobante.
      * </code>
      *  </pre>
-     * @param comprobante {@link ComprobanteDetailDTO} - El comprobante que se desea guardar
+     * @param dto {@link ComprobanteDetailDTO} - El comprobante que se desea guardar
      * @return JSON {@link ComprobanteDetailDTO} - El comprobante guardado con el atributo id generado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de logica que se genera cuando ya existe un comprobante.
      *
      */
     @POST
-    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO comprobante) throws BusinessLogicException
+    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto) throws BusinessLogicException
     {
-        return comprobante;
+        return new ComprobanteDetailDTO(logic.create(dto.toEntity()));
+    }
+    
+    
+    
+    private List<ComprobanteDetailDTO> listEntity2DTO(List<ComprobanteEntity> entities)
+    {
+        List<ComprobanteDetailDTO> dtos = new ArrayList<>();
+        for(ComprobanteEntity entityActual : entities)
+            dtos.add(new ComprobanteDetailDTO(entityActual));
+        return dtos;
     }
     
     /**
@@ -80,7 +99,7 @@ public class ComprobanteResource {
     @GET
     public List<ComprobanteDetailDTO> getComprobantes()
     {
-        return new ArrayList<ComprobanteDetailDTO>();
+        return listEntity2DTO(logic.getAll());
     }
     
     /**
@@ -102,9 +121,13 @@ public class ComprobanteResource {
     
     @GET
     @Path("{id: \\d+}")
-    public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)
+    public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)throws BusinessLogicException
     {
-        return null;
+        ComprobanteEntity encontrado = logic.getById(id);
+        if(encontrado == null)
+            throw new BusinessLogicException("No existe un comprobante con el id dado por parámetro.");
+        
+        return new ComprobanteDetailDTO(encontrado);
     }
     
     /**
@@ -130,7 +153,14 @@ public class ComprobanteResource {
     @Path("(id: \\d+)")
     public ComprobanteDetailDTO updateComprobante(@PathParam("id") Long id, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException
     {
-        return infoComprobante;
+        ComprobanteEntity entity = infoComprobante.toEntity();
+        entity.setId(id);
+        ComprobanteEntity oldEntity = logic.getById(id);
+        if(oldEntity == null)
+            throw new BusinessLogicException("El comprobante no existe.");
+        entity.setFactura(oldEntity.getFactura());
+        entity.setMedioDePago(oldEntity.getMedioDePago());
+        return new ComprobanteDetailDTO(logic.update(entity));
     }
     
     /**
@@ -149,8 +179,12 @@ public class ComprobanteResource {
     
     @DELETE
     @Path("(id: \\d+)")
-    public void deleteComprobante(@PathParam("id") Long id)
+    public void deleteComprobante(@PathParam("id") Long id)throws BusinessLogicException
     {
         //process
+        ComprobanteEntity entity = logic.getById(id);
+        if(entity == null)
+            throw new BusinessLogicException("El comprobante buscado no existe.");
+        logic.delete(id);
     }
 }

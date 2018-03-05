@@ -5,12 +5,17 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 
+import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -41,6 +46,12 @@ import javax.ws.rs.Produces;
 @Consumes( "application/json" )
 @RequestScoped
 public class FacturaResource {
+    
+    /**
+     * Injección de la lógica.
+     */
+    @Inject
+    private FacturaLogic logic;
     /**
      * <h1> POST /api/factura : Crea una factura. </h1>
      * <pre>
@@ -55,15 +66,23 @@ public class FacturaResource {
      * 412 Precodition Failed: Ya existe una factura.
      * </code>
      *  </pre>
-     * @param factura {@link FacturaDetailDTO} - La factura que se desea guardar
+     * @param dto {@link FacturaDetailDTO} - La factura que se desea guardar
      * @return JSON {@link FacturaDetailDTO} - La factura guardada con el atributo id generado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de logica que se genera cuando ya existe una factura.
      *
      */
     @POST
-    public FacturaDetailDTO createFactura(FacturaDetailDTO factura) throws BusinessLogicException
+    public FacturaDetailDTO createFactura(FacturaDetailDTO dto) throws BusinessLogicException
     {
-        return factura;
+        return new FacturaDetailDTO(logic.create(dto.toEntity()));
+    }
+    
+    private List<FacturaDetailDTO> listEntity2DTO(List<FacturaEntity> entities)
+    {
+        List<FacturaDetailDTO> dtos = new ArrayList<>();
+        for(FacturaEntity entityActual : entities)
+            dtos.add(new FacturaDetailDTO(entityActual));
+        return dtos;
     }
     
     /**
@@ -81,7 +100,7 @@ public class FacturaResource {
     @GET
     public List<FacturaDetailDTO> getFacturas()
     {
-        return new ArrayList<FacturaDetailDTO>();
+        return listEntity2DTO(logic.getAll());
     }
     
     /**
@@ -103,9 +122,13 @@ public class FacturaResource {
     
     @GET
     @Path("{id: \\d+}")
-    public FacturaDetailDTO getFactura(@PathParam("id") Long id)
+    public FacturaDetailDTO getFactura(@PathParam("id") Long id)throws BusinessLogicException
     {
-        return null;
+        FacturaEntity encontrada = logic.getById(id);
+        if(encontrada == null)
+            throw new BusinessLogicException("No existe una factura con el id dado por parámetro.");
+        
+        return new FacturaDetailDTO(encontrada);
     }
     
     /**
@@ -131,7 +154,14 @@ public class FacturaResource {
     @Path("(id: \\d+)")
     public FacturaDetailDTO updateFactura(@PathParam("id") Long id, FacturaDetailDTO infoFactura)throws BusinessLogicException
     {
-        return infoFactura;
+        FacturaEntity entity = infoFactura.toEntity();
+        entity.setId(id);
+        FacturaEntity oldEntity = logic.getById(id);
+        if(oldEntity == null)
+            throw new BusinessLogicException("El comprobante no existe.");
+        entity.setAdquisicion(oldEntity.getAdquisicion());
+        entity.setComprobantes(oldEntity.getComprobantes());
+        return new FacturaDetailDTO(logic.update(entity));
     }
     
     /**
@@ -153,5 +183,9 @@ public class FacturaResource {
     public void deleteFactura(@PathParam("id") Long id)throws BusinessLogicException
     {
         //process
+        FacturaEntity entity = logic.getById(id);
+        if(entity == null)
+            throw new BusinessLogicException("La factura buscada no existe.");
+        logic.delete(id);
     }
 }
