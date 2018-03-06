@@ -6,9 +6,13 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.RazaDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -42,6 +46,28 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class RazaResource {
     /**
+     * Injecccion de la logica
+     */
+    @Inject
+    private RazaLogic razaLogic;
+    
+    /**
+     * Convierte una lista de entities a una lista de Detaildto.
+     *
+     * @param entityList Lista  a convertir.
+     * @return Lista convertida.
+     * 
+     */
+    private List<RazaDetailDTO> listEntity2DTO(List<RazaEntity> entityList) {
+        List<RazaDetailDTO> list = new ArrayList<>();
+        for (RazaEntity entity : entityList) {
+            list.add(new RazaDetailDTO(entity));
+        }
+        return list;
+    }
+    
+   
+    /**
      * <h1> POST /api/razas : Crea una nueva raza.</h1>
      * <p>
      * <pre> Cuerpo de la peticion: JSON {@link RazaDetail}.
@@ -65,12 +91,10 @@ public class RazaResource {
      */
 
 @POST
-public RazaDetailDTO createRaza(RazaDetailDTO Dto)
-{
-  return Dto;
-}
+ public RazaDetailDTO createRaza(RazaDetailDTO dto) throws BusinessLogicException{
+        return new RazaDetailDTO(razaLogic.create(dto.toEntity()));}
  /**
-     * <h1> GET /api/razas : Obtener todos certificados asociados a las mascotas. </h1>
+     * <h1> GET /api/razas : Obtener todas las razas asociadas a las mascotas. </h1>
      * <p>
      * <pre> busca y retorna todas las razas.
      * Codigos de respuesta:
@@ -80,10 +104,9 @@ public RazaDetailDTO createRaza(RazaDetailDTO Dto)
      * @return JSONArray {@link  RazaDetail} - Los medios de pago en la aplicacion. Si no hay ninguno retorna vacio. 
      */
 @GET
-public List<RazaDetailDTO> getRazas()
-{
-return new ArrayList();
-}
+    public List<RazaDetailDTO> getRazas(){
+       return listEntity2DTO(razaLogic.getAll());
+    }
 /**
      * <h1> GET /api/razas/{id} Obtenre una raza por su id.</h1>
      * <p>
@@ -106,10 +129,14 @@ return new ArrayList();
 
 @GET                    
 @Path("{id: \\d+}")
-public RazaDetailDTO getRaza(@PathParam("id") long id)
-{
-return null;
-}
+public RazaDetailDTO getRaza( @PathParam( "id" ) Long id ) throws BusinessLogicException
+    {
+        RazaEntity raza= razaLogic.getById(id);
+        if (raza==null) {
+             throw new BusinessLogicException("La raza que desea buscar no esta registrada en la base de datos.");
+        }
+        return new RazaDetailDTO(raza);
+    }
 /**
      * <h1> PUT /api/razas/{id} : Actualizar una raza. </h1>
      * <pre> Cuerpo de peticion: JSON {@link RazaDetail}.
@@ -132,9 +159,18 @@ return null;
 
 @PUT
 @Path("{id: \\d+}")
-public void updateRaza(@PathParam("id") long id, RazaDetailDTO acDto) 
-{
-    /**
+ public RazaDetailDTO updateRaza( @PathParam( "id" ) Long id, RazaDetailDTO dDTO ) throws BusinessLogicException
+    {
+        RazaEntity entity = dDTO.toEntity();
+        entity.setId(id);
+        RazaEntity oldEntity = razaLogic.getById(id);
+        if (oldEntity == null) {
+            throw new BusinessLogicException("La raza no existe");
+        }
+        entity.setMascotas(oldEntity.getMascotas());
+        return new RazaDetailDTO(razaLogic.update(entity));
+    }
+ /**
      * <h1> DELETE /api/razas{id} : Borra una raza.</h1>
      * <p>
      * <pre> Borra la entidad raza con el id asociado recibido en la URL.
@@ -147,14 +183,16 @@ public void updateRaza(@PathParam("id") long id, RazaDetailDTO acDto)
      *
      * @param id Identificador de la entidad de raza que se desea borrar. Este debe ser una cadena de digitos.
      */
-
-
-}
 @DELETE
 @Path("{id:\\d+}")
-public void deleteRaza(@PathParam("id") long id)
-{
-}
+ public void deleteRaza( @PathParam( "id" ) Long id ) throws BusinessLogicException
+    {
+        RazaEntity entity = razaLogic.getById(id);
+        if (entity == null) {
+            throw new BusinessLogicException("La raza que desea borrar no existe en la base de datos");
+        }
+        razaLogic.delete(id);
+    }
 }
 
 
