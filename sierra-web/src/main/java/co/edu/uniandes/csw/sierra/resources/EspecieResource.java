@@ -108,7 +108,7 @@ public class EspecieResource {
     {
         EspecieEntity especie= especieLogic.getById(id);
         if (especie==null) {
-             throw new BusinessLogicException("La compania no existe.");
+             throw new BusinessLogicException("La especie que desea buscar no esta registrada en la base de datos.");
         }
         return new EspecieDetailDTO(especie);
     }
@@ -190,9 +190,8 @@ public class EspecieResource {
     {
         EspecieEntity entity = especieLogic.getById(id);
         if (entity == null) {
-            throw new BusinessLogicException("La especie no existe");
+            throw new BusinessLogicException("La especie que desea borrar no existe en la base de datos");
         }
         especieLogic.delete(id);
-    	
     }
 }

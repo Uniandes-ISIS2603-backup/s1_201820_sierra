@@ -1,0 +1,255 @@
+{
+	"info": {
+		"name": "Sierra/EspecieCollection",
+		"_postman_id": "5e2e5412-451b-0d0e-52af-2c3bc3031a82",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"1"
+					]
+				},
+				"description": "Obtiene una especie por su id "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"4"
+					]
+				},
+				"description": "Obtiene una especie por  un id  test 2"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies"
+					]
+				},
+				"description": "Obtiene todas las especies de la base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"10"
+					]
+				},
+				"description": "Obtiene  una especie  del id  por su id Tes3  Este falla ya que no existe una  especie con ese id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"caracteristicas\": \"Agiles y peligrosas\",\n    \"clasificacion\": \"Reptil\",\n    \"nombre\": \"Serpiente\",\n    \"mascotas\": [],\n    \"razas\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"4"
+					]
+				},
+				"description": "Actualiza los datos de una especie por  un id  dado "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"caracteristicas\": \"Bonito y gordito\",\n    \"clasificacion\": \"Mamifero\",\n    \"nombre\": \"Hamster\",\n    \"mascotas\": [],\n    \"razas\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies"
+					]
+				},
+				"description": "Crea una  nueva especie por medio del  Detail que se envia como parametro"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"4"
+					]
+				},
+				"description": "Borra una especie  de la base de datos por su id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/12",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"caracteristicas\": \"Agiles y peligrosas\",\n    \"clasificacion\": \"Reptil\",\n    \"nombre\": \"Serpiente\",\n    \"mascotas\": [],\n    \"razas\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies",
+						"12"
+					]
+				},
+				"description": "Trata de actualizar  una especie  que no se encuentra registrada"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"caracteristicas\": \"Bonito y gordito\",\n    \"clasificacion\": \"canino\",\n    \"nombre\": \"\",\n    \"mascotas\": [],\n    \"razas\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/especies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"especies"
+					]
+				},
+				"description": "Error que el nombre de la especie no puede ser vacio "
+			},
+			"response": []
+		}
+	]
+}
