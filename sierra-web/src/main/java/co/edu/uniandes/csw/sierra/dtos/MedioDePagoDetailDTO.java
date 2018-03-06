@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
+
 /**
  *MedioDePagoDTO Objeto de transferencia de datos datallada de la entidad Medio de pago. Los DTO contienen las 
  * representaciones de los JSON que se transfieren entre el cliente y el servidor.
@@ -45,18 +47,32 @@ package co.edu.uniandes.csw.sierra.dtos;
  * 
  * @author de.gutierrez
  */
-public class MedioDePagoDetail extends MedioDePagoDTO
+public class MedioDePagoDetailDTO extends MedioDePagoDTO
 {
     private ClienteDTO cliente;
     
     /**
      * Constructor por defecto.
      */
-    public MedioDePagoDetail()
+    public MedioDePagoDetailDTO()
     {
         super();
     }
-    
+    public MedioDePagoDetailDTO(MedioDePagoEntity entity)
+    {
+        super(entity);
+        if(entity != null)
+        {
+            if(entity.getCliente() != null)
+            {
+                this.cliente = new ClienteDTO(entity.getCliente());
+            }
+            else {
+                entity.setCliente(null);
+            }
+        }
+    }
+
     /**
      * Obtiene la informacion del cliente que selecciona un medio de pago.
      * @return El cliente que selecciono un medio de pago.

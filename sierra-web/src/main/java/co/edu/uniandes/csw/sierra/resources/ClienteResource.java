@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.*;
+import co.edu.uniandes.csw.sierra.ejb.ClienteLogic;
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.*;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -35,6 +38,8 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 public class ClienteResource 
 {
+    @Inject
+    private ClienteLogic clienteLogic;
     /**
      * <h1> POST /api/clientes : Crea un nuevo cliente</h1>
      * <p>
@@ -59,7 +64,9 @@ public class ClienteResource
     @POST
     public ClienteDetailDTO createCliente(ClienteDetailDTO cliente) throws BusinessLogicException
     {
-        return cliente;
+        ClienteEntity clienteEntity = cliente.toEntity();
+        ClienteEntity nuevoCliente = clienteLogic.createCliente(clienteEntity);
+        return new ClienteDetailDTO(nuevoCliente);
     }
    
     /**
@@ -76,7 +83,7 @@ public class ClienteResource
     @GET
     public List<ClienteDetailDTO> getClientes ()
     {
-        return new ArrayList<>();
+        return listEntityDetailDTO(clienteLogic.getClientes());
     }
     
     /**
@@ -97,9 +104,14 @@ public class ClienteResource
      */
     @GET
     @Path("{id: \\d+}")
-    public ClienteDetailDTO getCliente(@PathParam("id") Long id)
+    public ClienteDetailDTO getCliente(@PathParam("id") Long id) throws BusinessLogicException
     {
-        return null;
+        ClienteEntity entity = clienteLogic.getCliente(id);
+        if(entity == null)
+        {
+            throw new BusinessLogicException("El recurso /clientes/" + id + " no existe.");
+        }
+        return new ClienteDetailDTO(entity);
     }
     
     /**
@@ -124,7 +136,12 @@ public class ClienteResource
     @Path( "{id: \\d+}")
     public ClienteDetailDTO updateCliente (@PathParam ("id") Long id, ClienteDetailDTO infoCliente) throws BusinessLogicException
     {
-        return infoCliente;
+        infoCliente.setId(id);
+        ClienteEntity entity = clienteLogic.getCliente(id);
+        if(entity == null){
+             throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+        }
+        return new ClienteDetailDTO(clienteLogic.updateCliente(id, infoCliente.toEntity()));
     }
     
     /**
@@ -144,6 +161,18 @@ public class ClienteResource
     @Path ( "{id: \\d+}" )
     public void deleteCliente (@PathParam ("id") Long id)
     {
-        //voi
+        ClienteEntity entity = clienteLogic.getCliente(id);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
+        }
+        clienteLogic.deleteCliente(id);
+    }
+    public List<ClienteDetailDTO> listEntityDetailDTO(List<ClienteEntity> clienteList)
+    {
+        List<ClienteDetailDTO> list = new ArrayList<>();
+        for (ClienteEntity entity : clienteList){
+            list.add(new ClienteDetailDTO(entity));
+        }
+        return list;
     }
 }

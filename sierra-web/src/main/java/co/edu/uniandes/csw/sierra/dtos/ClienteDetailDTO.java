@@ -109,14 +109,14 @@ public class ClienteDetailDTO extends ClienteDTO
                    mediosPago.add(new MedioDePagoDTO(entityMedio));
                }
            }
-//           if(entity.getAdquisiciones() != null)
-//           {
-//               adquisiciones = new ArrayList<>();
-//               for (AdquisicionEntity entityAdquisicion : entity.getAdquisiciones())
-//               {
-//                   adquisiciones.add(new AdquisicionDetailDTO(entity));
-//               }
-//           }
+           if(entity.getAdquisiciones() != null)
+           {
+               adquisiciones = new ArrayList<>();
+               for (AdquisicionEntity entityAdquisicion : entity.getAdquisiciones())
+               {
+                   adquisiciones.add(new AdquisicionDetailDTO(entityAdquisicion));
+               }
+           }
         
        }
    }
@@ -142,7 +142,7 @@ public class ClienteDetailDTO extends ClienteDTO
            List<AdquisicionEntity> adqusicionEntity = new ArrayList<>();
            for(AdquisicionDTO dtoAdquisicion : adquisiciones)
            {
-          //     adqusicionEntity.add(dtoAdquisicion.toEntity());
+              adqusicionEntity.add(dtoAdquisicion.toEntity());
            }
            cliente.setAdquisiciones(adqusicionEntity);
        }

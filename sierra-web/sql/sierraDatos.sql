@@ -41,7 +41,11 @@ insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (10, '5/6/2017', 19
 
 insert into CertificadoEntity(id, fecha, descripcion, imagen) values (10, '01/01/2018', 'El perro cuenta con todas las vacunas', 'http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg');
 
-insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (10, 'Andres', 'Rodriguez', 1072585123, 3125225625);
+insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (1, 'Andres', 'Rodriguez', 1072585123, 3125225625);
+insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (2, 'Durant', 'de Broke', 39548662, 3125225625);
+insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (3, 'Basile', 'Youle', 2154899, 3205485498);
+insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (4, 'Hollis', 'Gair', 1069654987, 3125489699);
+insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (5, 'Goodby', 'Knapp', 39265488, 3215448500);
 
 insert into ComprobanteEntity(id, valorTotal, fecha, clienteId) values (10, 120000, '01/01/2018', 10 );
 
@@ -50,4 +54,6 @@ insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (2,
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez');
 
-insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (10, 20, 'tarjeta debito');
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (3, 30, 'tarjeta credito');
