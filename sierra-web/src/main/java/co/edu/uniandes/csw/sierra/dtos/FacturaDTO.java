@@ -44,10 +44,15 @@ public class FacturaDTO {
     
     public FacturaDTO(FacturaEntity entity)
     {
-        this.id = entity.getId();
-        this.precio = entity.getPrecio();
-        this.nombreCliente = entity.getNombreCliente();
-        this.idCliente = entity.getIdCliente();
+        if(entity !=  null)
+        {
+            this.id = entity.getId();
+            this.precio = entity.getPrecio();
+            this.nombreCliente = entity.getNombreCliente();
+            this.idCliente = entity.getIdCliente();this.id = entity.getId(); 
+        }
+        
+        
         
     }
     

@@ -79,11 +79,15 @@ public class FacturaDetailDTO extends FacturaDTO{
     public FacturaDetailDTO(FacturaEntity entity)
     {
         super(entity);
-        this.adquisicion = new AdquisicionDetailDTO(entity.getAdquisicion());
-        this.comprobantes = new ArrayList<ComprobanteDetailDTO>();
-        List<ComprobanteEntity> comprobantesEntity = entity.getComprobantes();
-        for(ComprobanteEntity comprobanteActual : comprobantesEntity)
+        if(entity != null)
+        {
+            this.adquisicion = new AdquisicionDetailDTO(entity.getAdquisicion());
+            this.comprobantes = new ArrayList<ComprobanteDetailDTO>();
+            List<ComprobanteEntity> comprobantesEntity = entity.getComprobantes();
+            for(ComprobanteEntity comprobanteActual : comprobantesEntity)
             this.comprobantes.add(new ComprobanteDetailDTO(comprobanteActual));
+        }
+        
     }
     
     /**

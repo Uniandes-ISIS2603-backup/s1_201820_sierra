@@ -45,10 +45,14 @@ public class ComprobanteDTO {
     
     public ComprobanteDTO(ComprobanteEntity entity)
     {
-        this.id = entity.getId();
-        this.fecha = entity.getFecha();
-        this.valorTotal = entity.getValorTotal();
-        this.clienteId = entity.getClienteId();
+        if(entity != null)
+        {
+            this.id = entity.getId();
+            this.fecha = entity.getFecha();
+            this.valorTotal = entity.getValorTotal();
+            this.clienteId = entity.getClienteId();
+        }
+        
     }
     
     /**
