@@ -189,7 +189,7 @@ public class CalificacionResource {
      */
     @DELETE
     @Path( "{id: \\d+}" )
-    public void deleteCalificacion( @PathParam( "id" ) Long id ) throws BusinessLogicException
+    public void deleteCalificacion( @PathParam( "id" ) Long id )
     {
     	CalificacionEntity ent = calificacionLogic.getById(id);
         if(ent == null)

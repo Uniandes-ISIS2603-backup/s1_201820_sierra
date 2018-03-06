@@ -129,10 +129,14 @@ public class AdquisicionDetailDTO extends AdquisicionDTO{
     public AdquisicionDetailDTO(AdquisicionEntity ent){
         super(ent);
         if(ent != null){
-            //calificacion = new CalificacionDTO(ent.getCalificacion());
-            mascota = new MascotaDTO(ent.getMascota());
-            //factura = new FacturaDTO(ent.getFactura());
-            cliente = new ClienteDTO(ent.getCliente());
+            if(ent.getCalificacion() != null)
+                calificacion = new CalificacionDTO(ent.getCalificacion());
+            if(ent.getMascota() != null)
+                mascota = new MascotaDTO(ent.getMascota());
+            if(ent.getFactura() != null)
+                factura = new FacturaDTO(ent.getFactura());
+            if(ent.getCliente() != null)
+                cliente = new ClienteDTO(ent.getCliente());
             
         }
     }

@@ -28,16 +28,16 @@ insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (8, '
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (9, 'Operative value-added pricing structure', 'Web Designer III', 2.42);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (10, 'Re-contextualized executive adapter', 'Programmer IV', 1.78);
 
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (1, '9/10/2017', 4275280, 1);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (2, '8/17/2017', 2454248, 2);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (3, '5/26/2017', 524211, 3);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (4, '8/31/2017', 2323369, 4);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (5, '12/14/2017', 109852, 5);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (6, '12/26/2017', 2117086, 6);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (7, '1/30/2018', 3327783, 7);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (8, '11/22/2017', 4299768, 8);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (9, '8/18/2017', 1134113, 9);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal, Calificacion_ID) values (10, '6/28/2017', 549762, 10);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (1, '11/24/2017', 2146379);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (2, '12/3/2017', 2843100);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (3, '2/1/2018', 4617331);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (4, '6/23/2017', 715105);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (5, '11/12/2017', 2802294);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (6, '12/9/2017', 3466209);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (7, '1/24/2018', 3573395);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (8, '3/8/2017', 4900605);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (9, '7/23/2017', 3683016);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (10, '5/6/2017', 1970169);
 
 insert into CertificadoEntity(id, fecha, descripcion, imagen) values (10, '01/01/2018', 'El perro cuenta con todas las vacunas', 'http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg');
 

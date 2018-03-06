@@ -65,14 +65,14 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
             this.certificados= new ArrayList<>();
             if (ent.getCertificados() != null) {
                 for (CertificadoEntity entCertificado : ent.getCertificados()) {
-                    //this.publicaciones.add(new PublicacionDTO(entPublicacion));
+                    this.certificados.add(new CertificadoDTO(entCertificado));
                 }
             }
             
             this.publicaciones = new ArrayList<>();
             if (ent.getPublicaciones() != null) {
                 for (PublicacionEntity entPublicacion : ent.getPublicaciones()) {
-                    //this.publicaciones.add(new PublicacionDTO(entPublicacion));
+                    this.publicaciones.add(new PublicacionDTO(entPublicacion));
                 }
             }
             
@@ -83,7 +83,7 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
                 this.especie = new EspecieDTO(ent.getEspecie());
             
             if(ent.getRaza() != null){
-                //this.raza = new RazaDTO(ent.getRaza());
+                this.raza = new RazaDTO(ent.getRaza());
             }   
         }
     }
@@ -100,7 +100,7 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
         if (this.certificados != null) {
             List<CertificadoEntity> listCertificados = new ArrayList<>();
             for (CertificadoDTO cert : certificados) {
-                //listCertificados.add(cert.toEnity());
+                listCertificados.add(cert.toEntity());
             }
             ent.setCertificados(listCertificados);
         }
@@ -111,12 +111,12 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
         if(publicaciones != null){
             List<PublicacionEntity> listPublicacion= new ArrayList<>();
             for (PublicacionDTO publica : publicaciones){
-                //listPublicacion.add(publica.toEntity());
+                listPublicacion.add(publica.toEntity());
             }
             ent.setPublicaciones(listPublicacion);
         }
         if(raza != null){
-            //ent.setRaza(raza.toEntity());
+            ent.setRaza(raza.toEntity());
         }   
         return ent;
     }

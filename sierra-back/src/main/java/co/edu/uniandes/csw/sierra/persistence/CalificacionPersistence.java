@@ -64,7 +64,7 @@ public class CalificacionPersistence {
 
     
     public CalificacionEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultandoaaaaa Calificacion con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando Calificacion con id={0}", id);
         return em.find(CalificacionEntity.class, id);
     }
 
