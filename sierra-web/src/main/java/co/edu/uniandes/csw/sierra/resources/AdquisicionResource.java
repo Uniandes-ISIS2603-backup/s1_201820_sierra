@@ -21,7 +21,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-
+import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
+            
 /**
 * <pre>Clase que implementa el recurso "Adquisiciones". URL: /api/adquisiciones
 * </pre>
@@ -81,7 +82,7 @@ public class AdquisicionResource {
      * </pre>
      * @param dto (@link AdquisicionDetailDTO) - La nueva adquisicion
      * @return JSON (@link AdquisicionDetailDTO) - La adquisicion guardada con el atributo id
-     * @throws BusinessLogicException Error de logica: ya existe una adquisicion igual.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} Error de logica: ya existe una adquisicion igual.
      */
     @POST
     public AdquisicionDetailDTO createAdquisicion(AdquisicionDetailDTO dto) throws BusinessLogicException{
@@ -123,6 +124,7 @@ public class AdquisicionResource {
      * </pre>
      * @param id el identificador unico de la adquisicion, debe ser una cadena de digitos
      * @return JSON (@link AdquisicionDetailDTO) - La adquisicion buscada
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper}
      */
     @GET
     @Path( "{id: \\d+}" )
@@ -136,7 +138,7 @@ public class AdquisicionResource {
     }
     
     /**
-     * <h1> PUT /api/adquisiciones/id{id} : Actualiza una adquisicion con el id dado
+     * <h1> PUT /api/adquisiciones/id{id} : Actualiza una adquisicion con el id dado</h1>
      * <pre> Cuerpo de peticion: JSON {@link AdquisicionDetailDTO}.
      * 
      * Actualiza la entidad de Adquisicion con el id dado con la informacion 
@@ -188,6 +190,7 @@ public class AdquisicionResource {
      * </code>
      * </pre>
      * @param id el id de la entidad que se quiere borrar.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper}
      */
     @DELETE
     @Path( "{id: \\d+}" )
