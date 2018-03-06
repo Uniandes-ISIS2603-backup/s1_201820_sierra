@@ -1,0 +1,177 @@
+{
+	"id": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+	"name": "pruebas postman Razas",
+	"description": "",
+	"order": [
+		"0c6aa7bb-113f-6548-0a9b-dc662c786777",
+		"56a81de6-ebe7-532f-9978-1e152576b741",
+		"c2467d28-5a0b-f167-4062-d113685072c5",
+		"93e59707-4508-815f-f305-7e2f1dcd0acc",
+		"fab65812-1e6c-dfc3-9f64-40eaa8225d6d"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520318802600,
+	"owner": 0,
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "0c6aa7bb-113f-6548-0a9b-dc662c786777",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/sierra-web/api/razas",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "POST",
+			"collectionId": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520318807156,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "  {\r\n      \r\n       \"id\": 4684643413,\r\n       \"nombreRaza\": \"yorkshire\",\r\n       \"cuidados\": \"concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses\",\r\n       \"destacable\": \"raza preferible para apartamentos de pequeñas dimensiones, no son la mejor raza para los niños\",\r\n       \"caracteristicas\": \"raza pequeña de pelo liso, tonalidad que combina negro, sorado y café, requieren una actividad física media\",\r\n       \"mascotas\": []\r\n   }"
+		},
+		{
+			"id": "56a81de6-ebe7-532f-9978-1e152576b741",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/sierra-web/api/razas",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520318817318,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "  {\r\n      \r\n       \"id\": 4684643413,\r\n       \"nombreRaza\": \"yorkshire\",\r\n       \"cuidados\": \"concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses\",\r\n       \"destacable\": \"raza preferible para apartamentos de pequeñas dimensiones, no son la mejor raza para los niños\",\r\n       \"caracteristicas\": \"raza pequeña de pelo liso, tonalidad que combina negro, sorado y café, requieren una actividad física media\",\r\n       \"mascotas\": []\r\n   }"
+		},
+		{
+			"id": "93e59707-4508-815f-f305-7e2f1dcd0acc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/sierra-web/api/razas/4684643413",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "PUT",
+			"collectionId": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/sierra-web/api/razas/4684643413",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520318834404,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "  {\r\n      \r\n       \"id\": 4684643413,\r\n       \"nombreRaza\": \"goldenRetriver\",\r\n       \"cuidados\": \"concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses\",\r\n       \"destacable\": \"raza preferible para apartamentos de pequeñas dimensiones, no son la mejor raza para los niños\",\r\n       \"caracteristicas\": \"raza pequeña de pelo liso, tonalidad que combina negro, sorado y café, requieren una actividad física media\",\r\n       \"mascotas\": []\r\n   }"
+		},
+		{
+			"id": "c2467d28-5a0b-f167-4062-d113685072c5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/sierra-web/api/razas/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "GET",
+			"collectionId": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/sierra-web/api/razas/1",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520318822951,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "  {\r\n      \r\n       \"id\": 4684643413,\r\n       \"nombreRaza\": \"yorkshire\",\r\n       \"cuidados\": \"concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses\",\r\n       \"destacable\": \"raza preferible para apartamentos de pequeñas dimensiones, no son la mejor raza para los niños\",\r\n       \"caracteristicas\": \"raza pequeña de pelo liso, tonalidad que combina negro, sorado y café, requieren una actividad física media\",\r\n       \"mascotas\": []\r\n   }"
+		},
+		{
+			"id": "fab65812-1e6c-dfc3-9f64-40eaa8225d6d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/sierra-web/api/razas/4684643413",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": [],
+			"auth": null,
+			"method": "DELETE",
+			"collectionId": "202c1b39-eeb7-6730-ca8c-cfa42b8b228f",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8080/sierra-web/api/razas/4684643413",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520318839711,
+			"version": 2,
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "  {\r\n      \r\n       \"id\": 4684643413,\r\n       \"nombreRaza\": \"goldenRetriver\",\r\n       \"cuidados\": \"concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses\",\r\n       \"destacable\": \"raza preferible para apartamentos de pequeñas dimensiones, no son la mejor raza para los niños\",\r\n       \"caracteristicas\": \"raza pequeña de pelo liso, tonalidad que combina negro, sorado y café, requieren una actividad física media\",\r\n       \"mascotas\": []\r\n   }"
+		}
+	]
+}
