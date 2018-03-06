@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
 import java.util.Date;
 
 /**
@@ -26,6 +27,37 @@ public class AcontecimientoDTO {
     private String tipo;
     
     private String fotoURL;
+    
+    public AcontecimientoDTO()
+    {
+        
+    }
+    
+       public AcontecimientoDTO(AcontecimientoEntity Entity)
+    {
+        this.descripcion = Entity.getDescripcion();
+        this.fecha = Entity.getFecha();
+        this.fotoURL = Entity.getFotoURL();
+        this.id = Entity.getId();
+        this.tipo = Entity.getTipo();
+        this.nombre=Entity.getNombre();
+        this.importancia=Entity.getImportancia();
+    } 
+     
+    public AcontecimientoEntity toEntity()
+    {
+        AcontecimientoEntity entity = new AcontecimientoEntity();
+        entity.setFecha(fecha);
+        entity.setTipo(tipo);
+        entity.setDescripcion(descripcion);
+        entity.setFotoURL(fotoURL);
+        entity.setId(id);
+        entity.setImportancia(importancia);
+        entity.setNombre(nombre);
+        
+        return entity;
+                
+    }
 
     /**
      * @return the id

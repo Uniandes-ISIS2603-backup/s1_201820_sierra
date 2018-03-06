@@ -42,9 +42,9 @@ import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
  *
  *   {
  *      "id": 1,
- *      "nombre": "Perro",
- *      "caracteristicas": "Perros  similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color", 
- *      "clasificacion": "Mamifero"
+ *      "nombre": "Mamifero",
+ *      "caracteristicas": " similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color", 
+ *      "clasificacion": "Canino"
  *   }
  *
  * </pre>

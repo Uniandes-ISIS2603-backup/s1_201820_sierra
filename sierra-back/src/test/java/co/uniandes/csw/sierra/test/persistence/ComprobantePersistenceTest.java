@@ -207,7 +207,7 @@ public class ComprobantePersistenceTest {
     @Test
     public void updateFacturaTest()
     {
-        Assert.assertTrue(data.size() == 0);
+        
         ComprobanteEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ComprobanteEntity newEntity = factory.manufacturePojo(ComprobanteEntity.class);

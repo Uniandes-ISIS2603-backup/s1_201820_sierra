@@ -30,7 +30,7 @@ public class ComprobantePersistence {
     public ComprobanteEntity create(ComprobanteEntity entity)
     {
         LOGGER.info("Creando una nueva entidad de Comprobante.");
-        em.persist(em);
+        em.persist(entity);
         LOGGER.info("Creando una entidad de Comprobante.");
         return entity;
     }

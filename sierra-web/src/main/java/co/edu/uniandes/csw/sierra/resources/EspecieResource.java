@@ -99,8 +99,8 @@ public class EspecieResource {
      * </code> 
      * </pre>
      * @param id Identificador de la especie  que se esta buscando. Este debe ser una cadena de dígitos.
-     * @return JSON {@link EspecieDetailDTO} - El autor buscado
-     * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando no se encuentra el autor.
+     * @return JSON {@link EspecieDetailDTO} - La especie buscada
+     * @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando no se encuentra la especie.
      */
     @GET
     @Path( "{id: \\d+}" )

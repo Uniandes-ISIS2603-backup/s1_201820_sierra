@@ -63,6 +63,7 @@ public class RazaDTO {
         this.id = razaEntity.getId();
         this.nombreRaza = razaEntity.getNombreRaza();
     }
+    
     public RazaEntity toEntity(){
         RazaEntity entity = new RazaEntity();
         entity.setCaracteristicas(caracteristicas);

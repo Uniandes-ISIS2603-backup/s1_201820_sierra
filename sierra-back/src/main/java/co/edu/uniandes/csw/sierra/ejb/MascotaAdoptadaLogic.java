@@ -23,7 +23,9 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.List;
@@ -57,6 +59,7 @@ public class MascotaAdoptadaLogic
              throw new BusinessLogicException( "Ya existe una entidad de Mascota adoptada con el nombre \"" + entity.getName( ) + "\"" );
          }
          else{
+              
              persistence.create(entity);
              LOGGER.info( "Termina proceso de creación de una entidad de Mascota adoptada" );
              return entity;

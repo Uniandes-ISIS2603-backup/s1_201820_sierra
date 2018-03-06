@@ -133,7 +133,7 @@ public class EspecieDetailDTO extends EspecieDTO
         if (entity!=null) {
             razas= new ArrayList<>();
             for (RazaEntity entityRazas : entity.getRazas()) {
-    //            razas.add(new RazaDTO(entityRazas));
+                razas.add(new RazaDTO(entityRazas));
             }
             mascotas= new ArrayList<>();
             for (MascotaEntity entityMascotas : entity.getMascotas()) {
