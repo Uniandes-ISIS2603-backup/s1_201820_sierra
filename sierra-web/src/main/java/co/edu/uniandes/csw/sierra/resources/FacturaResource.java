@@ -151,7 +151,7 @@ public class FacturaResource {
      */
     
     @PUT
-    @Path("(id: \\d+)")
+    @Path("{id: \\d+}")
     public FacturaDetailDTO updateFactura(@PathParam("id") Long id, FacturaDetailDTO infoFactura)throws BusinessLogicException
     {
         FacturaEntity entity = infoFactura.toEntity();

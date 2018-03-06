@@ -76,7 +76,11 @@ public class ComprobanteResource {
     }
     
     
-    
+    /**
+     * 
+     * @param entities, lista de lista de entidades.
+     * @return la lista de datos resultantes de la transformación de las entidades dadas por parámetro.
+     */
     private List<ComprobanteDetailDTO> listEntity2DTO(List<ComprobanteEntity> entities)
     {
         List<ComprobanteDetailDTO> dtos = new ArrayList<>();
@@ -94,7 +98,7 @@ public class ComprobanteResource {
      * 200 OK Devuelve todos los comprobantes de la aplicación.</code>
      * </pre>
      * 
-     * @return JSONArray {@link ComprobanteDetailDTO} - las facturas encontradas en la aplicación. Si no hay ninguna retorna vacio.
+     * @return JSONArray {@link ComprobanteDetailDTO} - Los comprobantes encontrados en la aplicación. Si no hay ninguna retorna vacio.
      */
     @GET
     public List<ComprobanteDetailDTO> getComprobantes()
@@ -150,7 +154,7 @@ public class ComprobanteResource {
      */
     
     @PUT
-    @Path("(id: \\d+)")
+    @Path("{id: \\d+}")
     public ComprobanteDetailDTO updateComprobante(@PathParam("id") Long id, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException
     {
         ComprobanteEntity entity = infoComprobante.toEntity();
