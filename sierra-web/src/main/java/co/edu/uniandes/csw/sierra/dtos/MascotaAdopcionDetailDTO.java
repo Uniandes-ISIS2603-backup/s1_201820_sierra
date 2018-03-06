@@ -89,7 +89,7 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
             {
                 acontecimientos= new ArrayList<>();
                 for (AcontecimientoEntity entityAcontecimiento : entity.getAcontecimientos() ) {
-                acontecimientos.add(new AcontecimientoDTO(entity));
+                acontecimientos.add(new AcontecimientoDTO(entityAcontecimiento));
                 }
             }
         }
@@ -106,15 +106,15 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
             mascota.setEspecie(this.getEspecie().toEntity());
         }
         if (this.getRaza()!= null) {
-    //        mascota.setRaza(this.getRaza().toEntity);
+            mascota.setRaza(this.getRaza().toEntity());
         }
         if (this.getAdquisicion()!= null) {
-    //        mascota.setAdquisicion(this.getAdquisicion().toEntity);
+            mascota.setAdquisicion(this.getAdquisicion().toEntity());
         }
         if (publicaciones != null) {
             List<PublicacionEntity> publicacionEnity = new ArrayList<>();
             for (PublicacionDTO dtopub : publicaciones) {
-    //            publicacionEnity.add(dtopub.toEntity());
+               publicacionEnity.add(dtopub.toEntity());
             }
             mascota.setPublicaciones(publicacionEnity);
         }
@@ -122,8 +122,9 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
         if (acontecimientos!=null) {
             List<AcontecimientoEntity> acontecimientoEntity=new ArrayList<>();
             for (AcontecimientoDTO acontecimientoDto : acontecimientos) {
-    //         acontecimientoEntity.add(acontecimientoDto.toEntity());            
+             acontecimientoEntity.add(acontecimientoDto.toEntity());            
             }
+            mascota.setAcontecimientos(acontecimientoEntity);
         }   
         return mascota;
         
