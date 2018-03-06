@@ -1,0 +1,441 @@
+{
+	"id": "c7e87b63-6faa-4de8-82ad-832128b4b556",
+	"name": "Sierra/EspecieCollection",
+	"allTests": [],
+	"timestamp": "2018-03-06T01:26:46.593Z",
+	"collection_id": "5e2e5412-451b-0d0e-52af-2c3bc3031a82",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "no-environment",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "5e2e5412-451b-0d0e-52af-2c3bc3031a82",
+		"name": "Sierra/EspecieCollection",
+		"description": "",
+		"order": [
+			"52d74302-110a-d4a1-6944-7330e5560876",
+			"fd4d0199-23c4-bf82-1c38-b1eddf1de145",
+			"3c818495-2206-d355-e650-185e0f819b54",
+			"2c979cf9-5cdf-9461-4dfa-4fbe7c3d6c07",
+			"a5548f45-d735-a34f-3f0d-34ee920a17ba",
+			"d9c5ebf6-58b0-5c74-38a3-cd36f65a151f",
+			"99cbed7d-2eb9-b8ad-64cb-b29c23f93f05",
+			"30036a49-941b-4f55-45c7-e954d5e9834f",
+			"1fa95872-9c30-e00e-cc01-9e418db18d27"
+		],
+		"folders": [],
+		"folders_order": [],
+		"timestamp": 1520298633435,
+		"synced": false,
+		"remote_id": 0,
+		"owner": 0,
+		"sharedWithTeam": false,
+		"subscribed": false,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"createdAt": 1520298633435,
+		"updatedAt": 1520299280115,
+		"write": true,
+		"published": false,
+		"favorite": false,
+		"permissions": {},
+		"syncedPermissions": {},
+		"events": [],
+		"variables": [],
+		"auth": null
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"enabled": true,
+			"key": "new_id",
+			"type": "text",
+			"value": "157"
+		},
+		{
+			"enabled": true,
+			"key": "new_id_e",
+			"type": "text",
+			"value": "1"
+		},
+		{
+			"enabled": true,
+			"key": "new_id_b",
+			"type": "text",
+			"value": "1"
+		}
+	],
+	"results": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/1",
+			"id": "52d74302-110a-d4a1-6944-7330e5560876",
+			"url": "http://localhost:8080/sierra-web/api/especies/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"54"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "54",
+			"totalRequestTime": "54",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "fd4d0199-23c4-bf82-1c38-b1eddf1de145",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"8"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "8",
+			"totalRequestTime": "8",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "3c818495-2206-d355-e650-185e0f819b54",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"21"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "21",
+			"totalRequestTime": "21",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/10",
+			"id": "2c979cf9-5cdf-9461-4dfa-4fbe7c3d6c07",
+			"url": "http://localhost:8080/sierra-web/api/especies/10",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"7"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "7",
+			"totalRequestTime": "7",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "a5548f45-d735-a34f-3f0d-34ee920a17ba",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"11"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "11",
+			"totalRequestTime": "11",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "d9c5ebf6-58b0-5c74-38a3-cd36f65a151f",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"13"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "13",
+			"totalRequestTime": "13",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "99cbed7d-2eb9-b8ad-64cb-b29c23f93f05",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"10"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "10",
+			"totalRequestTime": "10",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/12",
+			"id": "30036a49-941b-4f55-45c7-e954d5e9834f",
+			"url": "http://localhost:8080/sierra-web/api/especies/12",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"10"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "10",
+			"totalRequestTime": "10",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "1fa95872-9c30-e00e-cc01-9e418db18d27",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"8"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "8",
+			"totalRequestTime": "8",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 142,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/1",
+			"id": "52d74302-110a-d4a1-6944-7330e5560876",
+			"url": "http://localhost:8080/sierra-web/api/especies/1",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "fd4d0199-23c4-bf82-1c38-b1eddf1de145",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "3c818495-2206-d355-e650-185e0f819b54",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/10",
+			"id": "2c979cf9-5cdf-9461-4dfa-4fbe7c3d6c07",
+			"url": "http://localhost:8080/sierra-web/api/especies/10",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "a5548f45-d735-a34f-3f0d-34ee920a17ba",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "d9c5ebf6-58b0-5c74-38a3-cd36f65a151f",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/4",
+			"id": "99cbed7d-2eb9-b8ad-64cb-b29c23f93f05",
+			"url": "http://localhost:8080/sierra-web/api/especies/4",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies/12",
+			"id": "30036a49-941b-4f55-45c7-e954d5e9834f",
+			"url": "http://localhost:8080/sierra-web/api/especies/12",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/especies",
+			"id": "1fa95872-9c30-e00e-cc01-9e418db18d27",
+			"url": "http://localhost:8080/sierra-web/api/especies",
+			"time": "2018-03-06T01:26:46.593Z",
+			"responseCode": {
+				"code": 412,
+				"name": "Precondition Failed",
+				"detail": {
+					"name": "Precondition Failed",
+					"detail": "The server does not meet one of the preconditions that the requester put on the request."
+				}
+			},
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}
