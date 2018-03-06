@@ -22,10 +22,9 @@ package co.edu.uniandes.csw.sierra.dtos;
 import java.util.Date;
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 
-
-
 /**
- * AdquisicionDTO es el objeto de transferencia de datos de la entidad Adquisicion.
+ * AdquisicionDTO es el objeto de transferencia de datos de la entidad
+ * Adquisicion.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
  * <pre>
@@ -34,40 +33,44 @@ import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
  *      "valorTotal":number,
  *      "fecha":date
  *  }
- * </pre>
- * * Por ejemplo, una Adquisicion se representaria de la siguiente manera:<br>
+ * </pre> * Por ejemplo, una Adquisicion se representaria de la siguiente
+ * manera:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *  {
  *      "id":1,
  *      "valorTotal":10000,
  *      "fecha":"20/05/2014"
  *  }
  * </pre>
+ *
  * @author Juan David Zambrano
  */
 public class AdquisicionDTO {
-    
+
     private Long id;
-    
+
     private Double valorTotal;
-    
+
     private Date fecha;
-    
-    public AdquisicionDTO(){
-        
-    }
-    
-    /**
-     * Constructor que convierte una entidad a un DTO
-     * @param ent 
-     */
-    public AdquisicionDTO(AdquisicionEntity ent){
-        this.id = ent.getId();
-        this.valorTotal = ent.getValorTotal();
-        this.fecha = ent.getFecha();
+
+    public AdquisicionDTO() {
+
     }
 
+    /**
+     * Constructor que convierte una entidad a un DTO
+     *
+     * @param ent
+     */
+    public AdquisicionDTO(AdquisicionEntity ent) {
+        if (ent != null) {
+            this.id = ent.getId();
+            this.valorTotal = ent.getValorTotal();
+            this.fecha = ent.getFecha();
+        }
+    }
 
     /**
      * @return the id
@@ -110,17 +113,18 @@ public class AdquisicionDTO {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+
     /**
      * convierte un DTO a un Entity
-     * @return 
+     *
+     * @return
      */
-    public AdquisicionEntity toEntity(){
+    public AdquisicionEntity toEntity() {
         AdquisicionEntity ent = new AdquisicionEntity();
         ent.setId(this.id);
         ent.setFecha(this.fecha);
         ent.setValorTotal(this.valorTotal);
         return ent;
     }
-    
+
 }

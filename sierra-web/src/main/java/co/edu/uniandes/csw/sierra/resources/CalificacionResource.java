@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
 * <pre>Clase que implementa el recurso "Calificaciones". URL: /api/calificaciones
@@ -124,17 +125,17 @@ public class CalificacionResource {
      */
     @GET
     @Path( "{id: \\d+}" )
-    public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id ) throws BusinessLogicException
+    public CalificacionDetailDTO getCalificacion( @PathParam( "id" ) Long id ) 
     {
         CalificacionEntity ent = calificacionLogic.getById(id);
         if(ent == null){
-            throw new BusinessLogicException("La calificacion con el id: " + id + " no existe");
+            throw new WebApplicationException("La calificacion con el id: " + id + " no existe", 404);
         }
         return new CalificacionDetailDTO(ent);
     }
     
     /**
-     * <h1> PUT /api/calificaciones/id{id} : Actualiza una calificacion con el id dado
+     * <h1> PUT /api/calificaciones/id{id} : Actualiza una calificacion con el id dado</h1>
      * <pre> Cuerpo de peticion: JSON {@link CalificacionDetailDTO}.
      * 
      * Actualiza la entidad de Calificacion con el id dado con la informacion 
@@ -164,7 +165,7 @@ public class CalificacionResource {
         //revisa si existe la entidad
         CalificacionEntity oldEnt = calificacionLogic.getById(id);
         if(oldEnt == null)
-            throw new BusinessLogicException("No existe una Calificacion con el id: " + id);
+           throw new WebApplicationException("La calificacion con el id: " + id + " no existe", 404);
         
         ent.setAdquisicion(oldEnt.getAdquisicion());
         return new CalificacionDetailDTO(calificacionLogic.update(ent));
@@ -192,7 +193,7 @@ public class CalificacionResource {
     {
     	CalificacionEntity ent = calificacionLogic.getById(id);
         if(ent == null)
-            throw new BusinessLogicException("No existe la calificacion con id: " + id);
+            throw new WebApplicationException("La calificacion con el id: " + id + " no existe", 404);
         calificacionLogic.delete(ent);
     }
     

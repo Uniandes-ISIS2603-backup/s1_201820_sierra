@@ -22,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
+import javax.ws.rs.WebApplicationException;
             
 /**
 * <pre>Clase que implementa el recurso "Adquisiciones". URL: /api/adquisiciones
@@ -132,7 +133,7 @@ public class AdquisicionResource {
     {
         AdquisicionEntity ent = adquisicionLogic.getById(id);
         if(ent == null){
-            throw new BusinessLogicException("La adqusicicion con el id: " + id + " no existe");
+            throw new WebApplicationException("La adqusicicion con el id: " + id + " no existe", 404);
         }
         return new AdquisicionDetailDTO(ent);
     }
@@ -167,7 +168,7 @@ public class AdquisicionResource {
         //revisa si existe la entidad
         AdquisicionEntity oldEnt = adquisicionLogic.getById(id);
         if(oldEnt == null)
-            throw new BusinessLogicException("No existe una Adquisicion con el id: " + id);
+            throw new WebApplicationException("La adqusicicion con el id: " + id + " no existe", 404);
         ent.setCalificacion(oldEnt.getCalificacion());
         ent.setCliente(oldEnt.getCliente());
         ent.setFactura(oldEnt.getFactura());
@@ -190,15 +191,14 @@ public class AdquisicionResource {
      * </code>
      * </pre>
      * @param id el id de la entidad que se quiere borrar.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper}
      */
     @DELETE
     @Path( "{id: \\d+}" )
-    public void deleteAdquisicion( @PathParam( "id" ) Long id ) throws BusinessLogicException
+    public void deleteAdquisicion( @PathParam( "id" ) Long id )
     {
     	AdquisicionEntity ent = adquisicionLogic.getById(id);
         if(ent == null)
-            throw new BusinessLogicException("No existe la adquisicion con id: " + id);
+            throw new WebApplicationException("La adqusicicion con el id: " + id + " no existe", 404);
         adquisicionLogic.delete(ent);
     }
 }

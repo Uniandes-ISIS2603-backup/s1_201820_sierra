@@ -82,7 +82,7 @@ public class CalificacionLogic {
      * @return la Calificacion con el Id dado, Null si no lo encuentra
      */
     public CalificacionEntity getById(Long id){
-        LOGGER.log(Level.INFO, "Buscando la Calificacion con el id={0}", id);
+        LOGGER.log(Level.INFO, "Buscandokkkk la Calificacion con el id={0}", id);
         return persistencia.find(id);
     }
     /**

@@ -22,7 +22,8 @@ package co.edu.uniandes.csw.sierra.dtos;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 
 /**
- * CalificacionDTO es el objeto de transferencia de datos de la entidad Calificacion.
+ * CalificacionDTO es el objeto de transferencia de datos de la entidad
+ * Calificacion.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
  * <pre>
@@ -32,10 +33,11 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  *      "valor":number,
  *      "sugerencia":string
  *  }
- * </pre>
- * * Por ejemplo, una Calificacion se representaria de la siguiente manera:<br>
+ * </pre> * Por ejemplo, una Calificacion se representaria de la siguiente
+ * manera:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *  {
  *      "id":5,
  *      "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
@@ -43,38 +45,43 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  *      "sugerencia":"You don't mess with perfection"
  *  }
  * </pre>
+ *
  * @author Juan David Zambrano
  */
 public class CalificacionDTO {
-    
+
     private Long id;
-    
+
     private String comentarios;
-    
+
     private Double valor;
-    
+
     private String sugerencia;
 
-    
-    public CalificacionDTO(){
-        
+    public CalificacionDTO() {
+
     }
+
     /**
      * Constructor que convierte una entity a un DTO
-     * @param ent 
+     *
+     * @param ent
      */
-    public CalificacionDTO(CalificacionEntity ent){
-        this.id = ent.getId();
-        this.comentarios = ent.getComentarios();
-        this.valor = ent.getValor();
-        this.sugerencia = ent.getSugerencia();
+    public CalificacionDTO(CalificacionEntity ent) {
+        if (ent != null) {
+            this.id = ent.getId();
+            this.comentarios = ent.getComentarios();
+            this.valor = ent.getValor();
+            this.sugerencia = ent.getSugerencia();
+        }
     }
-    
+
     /**
      * Metodo que convierte un DTO a un Entity
+     *
      * @return la entidad creada
      */
-    public CalificacionEntity toEntity(){
+    public CalificacionEntity toEntity() {
         CalificacionEntity ent = new CalificacionEntity();
         ent.setId(id);
         ent.setComentarios(comentarios);
@@ -82,7 +89,7 @@ public class CalificacionDTO {
         ent.setSugerencia(sugerencia);
         return ent;
     }
-    
+
     /**
      * @return the id
      */
@@ -138,5 +145,5 @@ public class CalificacionDTO {
     public void setSugerencia(String sugerencia) {
         this.sugerencia = sugerencia;
     }
-    
+
 }

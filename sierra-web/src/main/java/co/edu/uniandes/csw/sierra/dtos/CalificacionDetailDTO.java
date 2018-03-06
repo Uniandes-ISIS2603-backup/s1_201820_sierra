@@ -71,7 +71,7 @@ public class CalificacionDetailDTO extends CalificacionDTO{
      */
     public CalificacionDetailDTO(CalificacionEntity ent){
         super(ent);
-        if(ent != null){
+        if(ent != null && ent.getAdquisicion() != null){
             this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
         }
     }
