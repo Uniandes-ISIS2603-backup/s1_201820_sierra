@@ -1,0 +1,167 @@
+{
+	"info": {
+		"name": "AdquisicionCollection",
+		"_postman_id": "f47c8558-a437-49d2-894a-60b248519411",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/adquisiciones/111111",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11f969a7-f7c9-4fc3-93fd-397f1b693b50",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/adquisiciones/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"adquisiciones",
+						"111111"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/adquisiciones/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2043b573-99c1-4372-a354-dee6cc4b0bd9",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"numero de adquisiciones\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/adquisiciones/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"adquisiciones",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/adquisiciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2043b573-99c1-4372-a354-dee6cc4b0bd9",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"numero de adquisiciones\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/adquisiciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"adquisiciones"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/adquisiciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"adquisicionDetailDTO\",\n    \"fecha\": \"2017-11-24\",\n    \"valorTotal\": 55555\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/adquisiciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"adquisiciones"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
