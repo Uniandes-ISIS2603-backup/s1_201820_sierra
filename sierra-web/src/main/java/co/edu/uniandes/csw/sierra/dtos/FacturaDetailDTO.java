@@ -63,6 +63,7 @@ import java.util.List;
  *          "clienteId": 200
  *      }
  *  ]
+ * }
  * </pre>
  * @author ja.amortegui10
  */
