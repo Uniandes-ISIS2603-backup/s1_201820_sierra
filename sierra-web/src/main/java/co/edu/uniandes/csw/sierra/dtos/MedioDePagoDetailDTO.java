@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 
 /**
@@ -50,7 +51,7 @@ import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 public class MedioDePagoDetailDTO extends MedioDePagoDTO
 {
     private ClienteDTO cliente;
-    
+    private ComprobanteDTO comprobante;
     /**
      * Constructor por defecto.
      */
@@ -65,14 +66,28 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO
         {
             if(entity.getCliente() != null)
             {
-                this.cliente = new ClienteDTO(entity.getCliente());
+                cliente = new ClienteDTO(entity.getCliente());
             }
-            else {
-                entity.setCliente(null);
+           
+            if(entity.getComprobante() != null)
+            {
+                comprobante = new ComprobanteDTO(entity.getComprobante());
             }
         }
+        
     }
 
+    @Override
+    public MedioDePagoEntity toEntity ()
+    {
+        MedioDePagoEntity medio = new MedioDePagoEntity();
+        if(cliente != null)
+        {
+            medio.setCliente(cliente.toEntity());
+            medio.setComprobante(comprobante.toEntity());
+        }
+        return medio;
+    }
     /**
      * Obtiene la informacion del cliente que selecciona un medio de pago.
      * @return El cliente que selecciono un medio de pago.

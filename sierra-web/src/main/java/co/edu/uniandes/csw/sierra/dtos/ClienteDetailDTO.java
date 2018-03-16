@@ -129,11 +129,20 @@ public class ClienteDetailDTO extends ClienteDTO
    public ClienteEntity toEntity()
    {
        ClienteEntity cliente = new ClienteEntity();
+       MascotaEntity otra = null;
        if(deseadas != null){
            List<MascotaEntity> mascotas = new ArrayList<>();
            for (MascotaDTO dtoMascota : deseadas )
            {
-           //    mascotas.add(dtoMascota.toEntity());
+           if (MascotaAdopcionDTO.class.isInstance(dtoMascota))
+            {
+                otra = dtoMascota.toEntity(new MascotaAdoptadaEntity());
+                mascotas.add(otra);
+            }
+            else{
+                 otra = dtoMascota.toEntity(new MascotaVentaEntity());
+                 mascotas.add(otra);
+            }
            }
            cliente.setMascotas(mascotas);
        }

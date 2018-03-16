@@ -13,6 +13,7 @@ import java.util.*;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 /**
  *<pre>Clase que implementa el recurso "medioDePago".
@@ -30,8 +31,8 @@ import javax.ws.rs.*;
  * @author de.gutierrez
  */
 @Path("mediosDePago")
-@Produces("application/json")
-@Consumes("application/json")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class MedioDePagoResource 
 {
@@ -84,33 +85,33 @@ public class MedioDePagoResource
         return listEntityDetailDTO(medioDePagoLogic.getMediosDePago());
     }
     
-    /**
-     * <h1> GET /api/mediosDePago/{id} Obtener un medio de pago con el id.</h1>
-     * <p>
-     * <pre> Busca un medio de pago con el id asociado recibido por la URL y la devuelve.
+   /**
+     * <h1>GET /api/mediosDePago/{id} : Obtener un medioDePago por id.</h1>
+     * 
+     * <pre>Busca el medioDePago con el id asociado recibido en la URL y la devuelve.
      * 
      * Codigos de respuesta:
-     * 
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve el medioDePago correspondiente al id.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe un medioDePago con el id dado.
-     * </code>
-     *</pre>
-     * @param id Identificador del medio de pago que se esta buscando. Este debe ser una cadena de digitos.
-     * @return JSON {@link MedioDePagoDetailDTO} - El medio de pago buscado.
-     @throws BusinessLogicException {@link BusinessLogicException} - Error de lógica que se genera cuando no se encuentra el medioDePago.
+     * </code> 
+     * </pre>
+     * @param id Identificador del medioDePago que se esta buscando. Este debe ser una cadena de digitos.
+     * @return JSON {@link MedioDePagoDetailDTO} - El medioDePago buscado.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}. no exite
      */
     @GET
     @Path("{id: \\d+}")
-    public MedioDePagoDetailDTO getMedioDePago(@PathParam ("id") Long id) throws BusinessLogicException
+    public MedioDePagoDetailDTO getMedio(@PathParam("id") Long id) throws BusinessLogicException
     {
         MedioDePagoEntity entity = medioDePagoLogic.getMedioDePago(id);
-        if(entity == null){
-             throw new BusinessLogicException("El recurso /mediosDePago/" + id + " no existe.");
+        if(entity == null)
+        {
+             throw new WebApplicationException("El recurso clientes " + id + " no existe.", 404);  
         }
-        return new MedioDePagoDetailDTO(medioDePagoLogic.getMedioDePago(id));
+        return new MedioDePagoDetailDTO(entity);
     }
     
     /**
