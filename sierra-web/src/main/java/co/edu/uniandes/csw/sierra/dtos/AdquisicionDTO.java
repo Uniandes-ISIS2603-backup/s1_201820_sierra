@@ -38,11 +38,8 @@ import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
  * <p>
  * <
  * pre>
- *  {
- *      "id":1,
- *      "valorTotal":10000,
- *      "fecha":"20/05/2014"
- *  }
+ * {
+ * "id":1, "valorTotal":10000, "fecha":"20/05/2014" }
  * </pre>
  *
  * @author Juan David Zambrano

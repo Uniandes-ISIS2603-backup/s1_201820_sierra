@@ -39,6 +39,7 @@ devuelven objetos en formato JSON
 * @author Juan David Zambrano
 * @version 1.0
 */
+//TODO: Revisar el path para llegar a este recurso
 @Path( "calificaciones" )
 @Produces( "application/json" )
 @Consumes( "application/json" )

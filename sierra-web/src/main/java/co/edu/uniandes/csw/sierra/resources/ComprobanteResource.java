@@ -37,7 +37,7 @@ import javax.ws.rs.Produces;
 * </pre>
  * @author ja.amortegui10
  */
-
+//TODO: Revisar el path para llegar a este recurso
 @Path( "comprobantes" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
@@ -128,6 +128,7 @@ public class ComprobanteResource {
     public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)throws BusinessLogicException
     {
         ComprobanteEntity encontrado = logic.getById(id);
+        //TODO: disparar WebApplicationException
         if(encontrado == null)
             throw new BusinessLogicException("No existe un comprobante con el id dado por parámetro.");
         
@@ -160,6 +161,7 @@ public class ComprobanteResource {
         ComprobanteEntity entity = infoComprobante.toEntity();
         entity.setId(id);
         ComprobanteEntity oldEntity = logic.getById(id);
+        //TODO: disparar WebApplicationException
         if(oldEntity == null)
             throw new BusinessLogicException("El comprobante no existe.");
         entity.setFactura(oldEntity.getFactura());
@@ -187,6 +189,7 @@ public class ComprobanteResource {
     {
         //process
         ComprobanteEntity entity = logic.getById(id);
+        //TODO: disparar WebApplicationException
         if(entity == null)
             throw new BusinessLogicException("El comprobante buscado no existe.");
         logic.delete(id);

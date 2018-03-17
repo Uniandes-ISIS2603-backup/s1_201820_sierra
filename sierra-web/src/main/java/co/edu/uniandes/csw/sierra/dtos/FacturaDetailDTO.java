@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *FacturaDetailDTO es el objeto de transferencia de datos detallada de la entidad Factura.
+ * FacturaDetailDTO es el objeto de transferencia de datos detallada de la
+ * entidad Factura.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
  * <pre>
  * {
- *  "id": number, 
- *  "valorTotal": number, 
+ *  "id": number,
+ *  "valorTotal": number,
  *  "fecha": date,
  *  "adquisicion":
  *  {
@@ -28,21 +29,21 @@ import java.util.List;
  *  "comprobantes":
  *  [
  *      {
- *          "id": number, 
+ *          "id": number,
  *          "valorTotal": number,
  *          "fecha": date,
  *          "clienteId": number
  *      }
  *  ]
- * </pre>
- * Por ejemplo, una Factura se representa de la siguiente manera: <br>
+ * </pre> Por ejemplo, una Factura se representa de la siguiente manera: <br>
  * <p>
- * <pre>
+ * <
+ * pre>
  * {
  *  "id": 20,
  *  "valorTotal": 20000,
  *  "fecha": "13/02/2018",
- *  "adquisicion": 
+ *  "adquisicion":
  *  {
  *      "id": 1001,
  *      "valorTotal": 20000,
@@ -51,13 +52,13 @@ import java.util.List;
  *  "comprobantes":
  *  [
  *      {
- *          "id": 1003, 
+ *          "id": 1003,
  *          "valorTotal": 20000,
  *          "fecha": "13/02/2018",
  *          "clienteId": 200
  *      },
  *      {
- *          "id": 1003, 
+ *          "id": 1003,
  *          "valorTotal": 0,
  *          "fecha": "13/02/2018",
  *          "clienteId": 200
@@ -65,49 +66,52 @@ import java.util.List;
  *  ]
  * }
  * </pre>
+ *
  * @author ja.amortegui10
  */
-public class FacturaDetailDTO extends FacturaDTO{
-    
+public class FacturaDetailDTO extends FacturaDTO {
+
     private AdquisicionDTO adquisicion;
     private List<ComprobanteDetailDTO> comprobantes;
-    
-    public FacturaDetailDTO()
-    {
+
+    public FacturaDetailDTO() {
         super();
     }
-    
-    public FacturaDetailDTO(FacturaEntity entity)
-    {
+
+    public FacturaDetailDTO(FacturaEntity entity) {
         super(entity);
-        if(entity != null)
-        {
+        if (entity != null) {
             this.adquisicion = new AdquisicionDetailDTO(entity.getAdquisicion());
-            this.comprobantes = new ArrayList<ComprobanteDetailDTO>();
+            this.comprobantes = new ArrayList<>();
             List<ComprobanteEntity> comprobantesEntity = entity.getComprobantes();
-            for(ComprobanteEntity comprobanteActual : comprobantesEntity)
-            this.comprobantes.add(new ComprobanteDetailDTO(comprobanteActual));
+            for (ComprobanteEntity comprobanteActual : comprobantesEntity) {
+                this.comprobantes.add(new ComprobanteDetailDTO(comprobanteActual));
+            }
         }
-        
+
     }
-    
+
     /**
-     * Mëtodo que transforma la clase de un DetailDTO a un Entity y retora el resultado.
-     * @return 
+     * Mëtodo que transforma la clase de un DetailDTO a un Entity y retora el
+     * resultado.
+     *
+     * @return
      */
     @Override
-    public FacturaEntity toEntity()
-    {
+    public FacturaEntity toEntity() {
         FacturaEntity entity = super.toEntity();
-        if(adquisicion != null)
+        if (adquisicion != null) {
             entity.setAdquisicion(adquisicion.toEntity());
-        List<ComprobanteEntity> comprobantesEntity = new ArrayList<ComprobanteEntity>();
-        if(comprobantes.size() > 0)
-            for(ComprobanteDetailDTO comprobanteActual : comprobantes)
+        }
+        List<ComprobanteEntity> comprobantesEntity = new ArrayList<>();
+        if (comprobantes.size() > 0) {
+            for (ComprobanteDetailDTO comprobanteActual : comprobantes) {
                 comprobantesEntity.add(comprobanteActual.toEntity());
-        
+            }
+        }
+
         return entity;
-                
+
     }
 
     public AdquisicionDTO getAdquisicion() {
@@ -125,6 +129,5 @@ public class FacturaDetailDTO extends FacturaDTO{
     public void setComprobantes(List<ComprobanteDetailDTO> comprobantes) {
         this.comprobantes = comprobantes;
     }
-    
-    
+
 }

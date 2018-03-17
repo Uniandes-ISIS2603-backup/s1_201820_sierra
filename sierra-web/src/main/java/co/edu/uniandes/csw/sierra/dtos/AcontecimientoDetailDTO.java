@@ -42,7 +42,7 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     
     public AcontecimientoDetailDTO()
     {
-        super();
+        super(); 
  
     }
      /**
@@ -60,4 +60,6 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     {
         this.mascota = mascota;
     }
+    
+       //TODO: Falta el constructor que recibve un entity y falta el método toEntity 
 }

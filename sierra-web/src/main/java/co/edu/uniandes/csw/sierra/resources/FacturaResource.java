@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.resources;
-
+//TODO: Borrar loque no se usa
 import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
@@ -40,7 +40,7 @@ import javax.ws.rs.Produces;
  * 
  * @author ja.amortegui10
  */
-
+//TODO: Revisar el path para llegar a este recurso
 @Path( "facturas" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
@@ -125,6 +125,7 @@ public class FacturaResource {
     public FacturaDetailDTO getFactura(@PathParam("id") Long id)throws BusinessLogicException
     {
         FacturaEntity encontrada = logic.getById(id);
+        
         if(encontrada == null)
             throw new BusinessLogicException("No existe una factura con el id dado por parámetro.");
         
