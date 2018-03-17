@@ -23,6 +23,7 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+//TODO: Borrar lo que no se use
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
@@ -38,91 +39,86 @@ import javax.inject.Inject;
  * @author jc.sanchez12
  */
 @Stateless
-public class MascotaAdoptadaLogic
-{
-     private static final Logger LOGGER = Logger.getLogger( MascotaAdoptadaLogic.class.getName( ) );
-     
-     @Inject
-     private MascotaAdoptadaPersistence persistence;
-     
-      /**
-         * Crea una  entity en la  base de datos  de tipo MascotaAdoptada
-         * @param entity entidad con los datos  de la nueva  MascotaAdoptadaEntity 
-         * @return Objeto de  tipo MascotaAdoptadaEntity con los  datos nuevos  
-         * @throws BusinessLogicException 
-         */
-     public MascotaAdoptadaEntity create( MascotaAdoptadaEntity entity) throws BusinessLogicException
-     {
-         LOGGER.info( "Inicia proceso de creación de una entidad de Mascota adoptda" );
-         if (persistence.findByName(entity.getNombre())!=null)
-         {
-             throw new BusinessLogicException( "Ya existe una entidad de Mascota adoptada con el nombre \"" + entity.getName( ) + "\"" );
-         }
-         else{
-              
-             persistence.create(entity);
-             LOGGER.info( "Termina proceso de creación de una entidad de Mascota adoptada" );
-             return entity;
-         }
-     }
-     
-      /**
+public class MascotaAdoptadaLogic {
+
+    private static final Logger LOGGER = Logger.getLogger(MascotaAdoptadaLogic.class.getName());
+
+    @Inject
+    private MascotaAdoptadaPersistence persistence;
+
+    /**
+     * Crea una entity en la base de datos de tipo MascotaAdoptada
+     *
+     * @param entity entidad con los datos de la nueva MascotaAdoptadaEntity
+     * @return Objeto de tipo MascotaAdoptadaEntity con los datos nuevos
+     * @throws BusinessLogicException
+     */
+    public MascotaAdoptadaEntity create(MascotaAdoptadaEntity entity) throws BusinessLogicException {
+        LOGGER.info("Inicia proceso de creación de una entidad de Mascota adoptda");
+        if (persistence.findByName(entity.getNombre()) != null) {
+            throw new BusinessLogicException("Ya existe una entidad de Mascota adoptada con el nombre \"" + entity.getName() + "\"");
+        } else {
+
+            persistence.create(entity);
+            LOGGER.info("Termina proceso de creación de una entidad de Mascota adoptada");
+            return entity;
+        }
+    }
+
+    /**
      * Obtiene la lista de los registros de Mascotas adoptadas.
      *
      * @return Colección de objetos de MascotaAdoptadaEntity.
      */
-     public List<MascotaAdoptadaEntity> getAll()
-     {
-                LOGGER.info( "Inicia proceso de consultar todas las entidades de Mascota adoptada" );
-		List<MascotaAdoptadaEntity> entities = persistence.findAll( );
-                LOGGER.info( "Termina proceso de consultar todas las entidades de Mascota adoptada" );
-		return entities;
-     }
-     
-     /**
+    public List<MascotaAdoptadaEntity> getAll() {
+        LOGGER.info("Inicia proceso de consultar todas las entidades de Mascota adoptada");
+        List<MascotaAdoptadaEntity> entities = persistence.findAll();
+        LOGGER.info("Termina proceso de consultar todas las entidades de Mascota adoptada");
+        return entities;
+    }
+
+    /**
      * Obtiene los datos de una instancia de Mascota adoptada a partir de su ID.
      *
      * @param id Identificador de la instancia a consultar
-     * @return Instancia de MascotaAdoptadaEntity con los datos de la mascota consultada.
+     * @return Instancia de MascotaAdoptadaEntity con los datos de la mascota
+     * consultada.
      */
-     public MascotaAdoptadaEntity getById( Long id )
-     {
-	return persistence.findById( id );
-     }
-     
-     /**
-     * Obtiene los datos de una instancia de Mascota adoptada a partir de su nombre.
+    public MascotaAdoptadaEntity getById(Long id) {
+        return persistence.findById(id);
+    }
+
+    /**
+     * Obtiene los datos de una instancia de Mascota adoptada a partir de su
+     * nombre.
      *
-     * @param nombre nombre  de la instancia a consultar
-     * @return Instancia de MascotaAdoptadaEntity con los datos de la especie consultada.
+     * @param nombre nombre de la instancia a consultar
+     * @return Instancia de MascotaAdoptadaEntity con los datos de la especie
+     * consultada.
      */
-     public MascotaAdoptadaEntity getByName( String nombre )
-     {
-	return persistence.findByName(nombre );
-     }
-    
-     
-      /**
+    public MascotaAdoptadaEntity getByName(String nombre) {
+        return persistence.findByName(nombre);
+    }
+
+    /**
      * Actualiza la información de una instancia de Mascota adoptada.
      *
      * @param entity Instancia de MascotaAdoptadaEntity con los nuevos datos.
      * @return Instancia de MascotaAdoptadaEntity con los datos actualizados.
      */
-    public MascotaAdoptadaEntity update(MascotaAdoptadaEntity entity)
-    {
-        
-        return persistence.update(entity);
+    public MascotaAdoptadaEntity update(MascotaAdoptadaEntity entity) {
+//TODO: No hay ninguna regla de negocio? 
+       return persistence.update(entity);
     }
-    
+
     /**
      * Elimina una instancia de Mascota adoptada de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
      */
     public void delete(Long id) {
-        
+// TODO: Hay que validar que existe Mascota con ese id
         persistence.delete(id);
     }
 
-        
 }

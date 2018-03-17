@@ -28,10 +28,12 @@ public class ComprobanteLogic {
     public ComprobanteEntity create(ComprobanteEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de cración de una entidad de Comprobante");
-        
+        //TODO: No tiene sentido validar que existe la entidad con el id porque
+        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
         if(persistence.find(entity.getId()) != null)
             throw new BusinessLogicException("Ya existe una entidad Comprobante con e id dado: " + entity.getId());
-        
+          //TODO: NO hay ninguna regla de negocio? 
+
         persistence.create(entity);
         LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");
         
@@ -53,13 +55,15 @@ public class ComprobanteLogic {
     }
     
     public ComprobanteEntity update(ComprobanteEntity entity)
-    {
+    {  //TODO: NO hay ninguna regla de negocio? 
+
         return persistence.update(entity);
     }
     
     public void delete(Long id)
     {
         LOGGER.info("Inicia el proceso de borrar una entidad de Comprobante.");
+       //TODO: Hay que validar que existe Comprobante con ese id  
         persistence.delete(id);
         LOGGER.info("Termína el proceso de borrar una entidad de Comprobante.");
     }

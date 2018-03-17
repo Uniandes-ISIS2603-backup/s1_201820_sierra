@@ -101,7 +101,8 @@ public class AdquisicionLogic {
      */
     public void delete(AdquisicionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", ent.getId());
-        persistencia.delete(ent.getId());
+         //TODO: este método debe recibir un id y hay que validar que existe una Adquisicion con ese id
+         persistencia.delete(ent.getId());
     }
     
     

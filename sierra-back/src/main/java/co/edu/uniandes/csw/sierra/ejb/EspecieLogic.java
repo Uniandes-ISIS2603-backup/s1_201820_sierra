@@ -94,7 +94,7 @@ public class EspecieLogic
      * @return Instancia de EspecieEntity con los datos actualizados.
      */
     public EspecieEntity update(EspecieEntity entity)
-    {
+    {//TODO: NO hay ninguna regla de negocio? 
         return persistence.update(entity);
     }
     
@@ -104,7 +104,7 @@ public class EspecieLogic
      * @param id Identificador de la instancia a eliminar.
      */
     public void delete(Long id) {
-        
+        // TODO: Hay que validar que existe Especie con ese id
         persistence.delete(id);
     }
 
