@@ -21,11 +21,13 @@ package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+//TODO: Borrar lo que no se usa
 import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 
 /**
- * AdquisicionDTO es el objeto de transferencia de datos detallada de la entidad Adquisicion.
+ * AdquisicionDTO es el objeto de transferencia de datos detallada de la entidad
+ * Adquisicion.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
  * <pre>
@@ -54,7 +56,7 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
  *      },
  *      "factura":
  *      {
- *          "id": number, 
+ *          "id": number,
  *          "valorTotal": number,
  *          "fecha": date
  *      },
@@ -66,10 +68,11 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
  *          "telefono": number
  *      }
  *  }
- * </pre>
- * * Por ejemplo, una Adquisicion se representaria de la siguiente manera:<br>
+ * </pre> * Por ejemplo, una Adquisicion se representaria de la siguiente
+ * manera:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *  {
  *      "id":1,
  *      "valorTotal":10000,
@@ -89,8 +92,8 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
  *          "adquirido":false,
  *          "imagen":"https://c1.staticflickr.com/5/4174/33634058024_74d000546d_b.jpg"
  *          "tamano":"Grande",
-    *      "nacimiento": 03/10/2016,
- *          "muerte": 
+ *      "nacimiento": 03/10/2016,
+ *          "muerte":
  *      },
  *      "factura":
  *      {
@@ -107,63 +110,70 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
  *      }
  *  }
  * </pre>
+ *
  * @author Juan David Zambrano
  */
-public class AdquisicionDetailDTO extends AdquisicionDTO{
-    
+public class AdquisicionDetailDTO extends AdquisicionDTO {
+
     private CalificacionDTO calificacion;
-    
+
     private MascotaDTO mascota;
-    
+
     private FacturaDTO factura;
-    
+
     private ClienteDTO cliente;
-    
-    public AdquisicionDetailDTO(){
+
+    public AdquisicionDetailDTO() {
         super();
     }
+
     /**
      * Constructor que convierte un Entity a un DetailDTO
+     *
      * @param ent la entidad
      */
-    public AdquisicionDetailDTO(AdquisicionEntity ent){
+    public AdquisicionDetailDTO(AdquisicionEntity ent) {
         super(ent);
-        if(ent != null){
-            if(ent.getCalificacion() != null)
+        if (ent != null) {
+            if (ent.getCalificacion() != null) {
                 calificacion = new CalificacionDTO(ent.getCalificacion());
-            if(ent.getMascota() != null)
+            }
+            if (ent.getMascota() != null) {
                 mascota = new MascotaDTO(ent.getMascota());
-            if(ent.getFactura() != null)
+            }
+            if (ent.getFactura() != null) {
                 factura = new FacturaDTO(ent.getFactura());
-            if(ent.getCliente() != null)
+            }
+            if (ent.getCliente() != null) {
                 cliente = new ClienteDTO(ent.getCliente());
-            
+            }
+
         }
     }
+
     /**
      * Convierte una AdquisicionDetailDTO a una entidad de Adquisicion
+     *
      * @return la entidad creada
      */
     @Override
-    public AdquisicionEntity toEntity(){
+    public AdquisicionEntity toEntity() {
         AdquisicionEntity ent = super.toEntity();
-        if(calificacion != null){
-            //ent.setCalificacion(calificacion.toEntity());
+        if (calificacion != null) { //TODO: por qué en comentarios?
+            //ent.setCalificacion(calificacion.toEntity()); 
         }
-        if(mascota != null){
-            if (MascotaAdopcionDTO.class.isInstance(mascota))
-            {
-                 ent.setMascota(mascota.toEntity(new MascotaAdoptadaEntity() ));
+        if (mascota != null) {
+            if (MascotaAdopcionDTO.class.isInstance(mascota)) {
+                ent.setMascota(mascota.toEntity(new MascotaAdoptadaEntity()));
+            } else {
+                ent.setMascota(mascota.toEntity(new MascotaVentaEntity()));
             }
-            else{
-                  ent.setMascota(mascota.toEntity(new MascotaVentaEntity()));
-            }
-           
+
         }
-        if(cliente != null){
+        if (cliente != null) {
             ent.setCliente(cliente.toEntity());
         }
-        if(factura != null){
+        if (factura != null) {
             //ent.setFactura(factura.toEntity());
         }
         return ent;

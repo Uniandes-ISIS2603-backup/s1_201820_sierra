@@ -17,33 +17,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-
 package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 
 /**
- * EspecieDTO Objeto de transferencia de datos de la entidad de Especie. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el servidor.
+ * EspecieDTO Objeto de transferencia de datos de la entidad de Especie. Los DTO
+ * contienen las represnetaciones de los JSON que se transfieren entre el
+ * cliente y el servidor.
  * <p>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
  *      "id": number,
  *      "nombre": String,
- *      "caracteristicas": String, 
+ *      "caracteristicas": String,
  *      "clasificacion": String
- *    
+ *
  *   }
- * </pre>
- * Por ejemplo una entidad de Especie se representa asi:<br>
+ * </pre> Por ejemplo una entidad de Especie se representa asi:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *
  *   {
  *      "id": 1,
  *      "nombre": "Mamifero",
- *      "caracteristicas": " similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color", 
+ *      "caracteristicas": " similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color",
  *      "clasificacion": "Canino"
  *   }
  *
@@ -51,64 +51,61 @@ import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
  *
  * @author jc.sanchez12
  */
-
 public class EspecieDTO {
-    
-    
+
     /**
      * nombre de la especie
      */
     private String nombre;
     /**
-     * caracteristicas de la  especie
+     * caracteristicas de la especie
      */
     private String caracteristicas;
-    
+
     /**
-     * Clasificacion de la  especie
+     * Clasificacion de la especie
      */
     private String clasificacion;
-    
-    /**
-     * id  de la  especie
-     */
-    private Long  id;
-    
-      /**
-   *Constructor por defecto
-   */
-   public EspecieDTO()
-   {
-        //Constructor por defecto
-   }
-   
-         /**
-	 * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-	 * la entidad que viene de argumento.
-	 * @param especieEntity: Es la entidad que se va a convertir a DTO
-	 */
-	public EspecieDTO( EspecieEntity especieEntity )
-	{
-		this.id = especieEntity.getId( );
-		this.nombre = especieEntity.getNombre( );
-		this.clasificacion = especieEntity.getClasificacion( );
-                this.caracteristicas = especieEntity.getCaracteristicas( );
 
-	}
-       
-        /**
-         * Convertir un DTO a Entity 
-        * @return especieEntity es a entidad que  se crea a partir de DTO
-         */
-        public EspecieEntity toEntity()
-        {
-            EspecieEntity entity= new EspecieEntity();
-            entity.setId(id);
-            entity.setNombre(nombre);
-            entity.setCaracteristicas(caracteristicas);
-            entity.setClasificacion(clasificacion);
-            return entity;
-        }
+    /**
+     * id de la especie
+     */
+    private Long id;
+
+    /**
+     * Constructor por defecto
+     */
+    public EspecieDTO() {
+        //Constructor por defecto
+    }
+
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param especieEntity: Es la entidad que se va a convertir a DTO
+     */
+    public EspecieDTO(EspecieEntity especieEntity) {   //TODO: especieEntity puede ser null
+        this.id = especieEntity.getId();
+        this.nombre = especieEntity.getNombre();
+        this.clasificacion = especieEntity.getClasificacion();
+        this.caracteristicas = especieEntity.getCaracteristicas();
+
+    }
+
+    /**
+     * Convertir un DTO a Entity
+     *
+     * @return especieEntity es a entidad que se crea a partir de DTO
+     */
+    public EspecieEntity toEntity() {
+        EspecieEntity entity = new EspecieEntity();
+        entity.setId(id);
+        entity.setNombre(nombre);
+        entity.setCaracteristicas(caracteristicas);
+        entity.setClasificacion(clasificacion);
+        return entity;
+    }
 
     /**
      * @return the nombre
@@ -155,18 +152,15 @@ public class EspecieDTO {
     /**
      * @return the id
      */
-    public long  getId() {
+    public long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long  id) {
+    public void setId(long id) {
         this.id = id;
     }
-   
-   
-   
-    
+
 }

@@ -31,6 +31,7 @@ import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
  * 
  * @author de.gutierrez
  */
+//TODO falta public
 class MedioDePagoDTO 
 {
     private Long id;
@@ -116,10 +117,5 @@ class MedioDePagoDTO
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    
-   
-   
-    
+    }  
 }

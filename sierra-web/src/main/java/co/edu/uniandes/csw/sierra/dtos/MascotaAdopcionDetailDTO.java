@@ -15,121 +15,119 @@ import java.util.List;
  *
  * @author jd.zambrano
  */
-public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
-   
+public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
+
     /**
      * Lista de acontecimientos de una mascota adoptada
      */
     private List<AcontecimientoDTO> acontecimientos;
-    
+
     /**
      * Especie de la mascota
      */
     private EspecieDTO especie;
-    
+
     /**
-     * Raza de la  mascota
+     * Raza de la mascota
      */
     private RazaDTO raza;
-    
+
     /**
      * Publicaciones de la mascota
      */
-     private List<PublicacionDTO> publicaciones;
-     
-     /**
-      *  Adquisicion de a mascota
-      */
-      private AdquisicionDTO adquisicion;
+    private List<PublicacionDTO> publicaciones;
+
+    /**
+     * Adquisicion de a mascota
+     */
+    private AdquisicionDTO adquisicion;
+
     /**
      * Constructor por defecto
      */
-    public MascotaAdopcionDetailDTO(){
+    public MascotaAdopcionDetailDTO() {
         super();
     }
 
-     /** Crea un objeto MascotaAdopcionDetailDTO a partir de un objeto MascotaAdoptadaEntity
-     * incluyendo los atributos de EspecieDTO.
-     * @param entity Entidad MascotaAdoptadaEntity desde la cual se va a crear el nuevo
-     * objeto.
+    /**
+     * Crea un objeto MascotaAdopcionDetailDTO a partir de un objeto
+     * MascotaAdoptadaEntity incluyendo los atributos de EspecieDTO.
+     *
+     * @param entity Entidad MascotaAdoptadaEntity desde la cual se va a crear
+     * el nuevo objeto.
      *
      */
-    public MascotaAdopcionDetailDTO(MascotaAdoptadaEntity entity)
-    {
+    public MascotaAdopcionDetailDTO(MascotaAdoptadaEntity entity) {
         super(entity);
-        if (entity!=null) {
-            if (entity.getEspecie()!=null) {
-                this.especie= new EspecieDTO(entity.getEspecie());
-            }
-            else {
+        if (entity != null) {
+            if (entity.getEspecie() != null) {
+                this.especie = new EspecieDTO(entity.getEspecie());
+            } else {
                 entity.setEspecie(null);
             }
-            
-             if (entity.getRaza()!=null)
-             {
-                this.raza= new RazaDTO(entity.getRaza());
-             }
-             else
-             {
-               entity.setRaza(null);
-             }
-            if(entity.getAdquisicion()!=null){
-               this.adquisicion= new AdquisicionDTO(entity.getAdquisicion());
+
+            if (entity.getRaza() != null) {
+                this.raza = new RazaDTO(entity.getRaza());
+            } else {
+                entity.setRaza(null);
             }
-            else{
+            if (entity.getAdquisicion() != null) {
+                this.adquisicion = new AdquisicionDTO(entity.getAdquisicion());
+            } else {
                 entity.setAdquisicion(null);
             }
-            if (entity.getPublicaciones()!=null) {
-                publicaciones= new ArrayList<>();
+            if (entity.getPublicaciones() != null) {
+                publicaciones = new ArrayList<>();
                 for (PublicacionEntity entityPublicacion : entity.getPublicaciones()) {
-                publicaciones.add(new PublicacionDTO(entityPublicacion));
+                    publicaciones.add(new PublicacionDTO(entityPublicacion));
                 }
-            } 
-            if (entity.getAcontecimientos()!=null)
-            {
-                acontecimientos= new ArrayList<>();
-                for (AcontecimientoEntity entityAcontecimiento : entity.getAcontecimientos() ) {
-                acontecimientos.add(new AcontecimientoDTO(entityAcontecimiento));
+            }
+            if (entity.getAcontecimientos() != null) {
+                acontecimientos = new ArrayList<>();
+                for (AcontecimientoEntity entityAcontecimiento : entity.getAcontecimientos()) {
+                    acontecimientos.add(new AcontecimientoDTO(entityAcontecimiento));
                 }
             }
         }
-       
+
     }
-    
-     /**
+
+    /**
      * Transformar el DTO a una entidad
+     *
      * @return La entidad que representa la mascota.
      */
+    //TODO: Falta override
     public MascotaAdoptadaEntity toEntity() {
         MascotaAdoptadaEntity mascota = super.toEntity();
-        if (this.getEspecie()!= null) {
+        if (this.getEspecie() != null) {
             mascota.setEspecie(this.getEspecie().toEntity());
         }
-        if (this.getRaza()!= null) {
+        if (this.getRaza() != null) {
             mascota.setRaza(this.getRaza().toEntity());
         }
-        if (this.getAdquisicion()!= null) {
+        if (this.getAdquisicion() != null) {
             mascota.setAdquisicion(this.getAdquisicion().toEntity());
         }
         if (publicaciones != null) {
             List<PublicacionEntity> publicacionEnity = new ArrayList<>();
             for (PublicacionDTO dtopub : publicaciones) {
-               publicacionEnity.add(dtopub.toEntity());
+                publicacionEnity.add(dtopub.toEntity());
             }
             mascota.setPublicaciones(publicacionEnity);
         }
-        
-        if (acontecimientos!=null) {
-            List<AcontecimientoEntity> acontecimientoEntity=new ArrayList<>();
+
+        if (acontecimientos != null) {
+            List<AcontecimientoEntity> acontecimientoEntity = new ArrayList<>();
             for (AcontecimientoDTO acontecimientoDto : acontecimientos) {
-             acontecimientoEntity.add(acontecimientoDto.toEntity());            
+                acontecimientoEntity.add(acontecimientoDto.toEntity());
             }
             mascota.setAcontecimientos(acontecimientoEntity);
-        }   
+        }
         return mascota;
-        
+
     }
-    
+
     /**
      * @return the acontecimientos
      */
@@ -199,6 +197,5 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO{
     public void setAdquisicion(AdquisicionDTO adquisicion) {
         this.adquisicion = adquisicion;
     }
-    
-    
+
 }

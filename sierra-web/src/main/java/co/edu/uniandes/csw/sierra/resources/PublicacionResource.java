@@ -25,6 +25,7 @@ import javax.ws.rs.Produces;
  *@author Ja.penat
  *@version 1.0
  */
+//TODO HACER EL RECURSO!
 @Path("publicaciones")
 @Produces("application/json")
 @Consumes("application/json")

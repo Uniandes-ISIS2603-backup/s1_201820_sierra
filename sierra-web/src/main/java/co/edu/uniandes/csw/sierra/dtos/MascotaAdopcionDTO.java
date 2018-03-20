@@ -131,12 +131,14 @@ public class MascotaAdopcionDTO extends  MascotaDTO
      *
      * @return MascotaAdoptadaEntity: Es la entidad que se va a convertir a DTO
      */
+    
     public MascotaAdoptadaEntity toEntity() {
         MascotaAdoptadaEntity entity = new MascotaAdoptadaEntity();
         super.toEntity(entity);
         return entity;
     }
 
+    //TODO: set/get de los atributos heredados sobra aquí
     /**
      * @return the id
      */
