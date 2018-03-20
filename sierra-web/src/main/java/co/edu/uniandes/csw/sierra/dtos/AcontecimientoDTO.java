@@ -13,39 +13,37 @@ import java.util.Date;
  * @author jd.zambrano
  */
 public class AcontecimientoDTO {
-    
+
     private Long id;
-    
+
     private String nombre;
-    
+
     private String descripcion;
-    
+
     private Date fecha;
-    
+
     private Integer importancia;
-    
+
     private String tipo;
-    
+
     private String fotoURL;
-    
-    public AcontecimientoDTO()
-    {
-        
+
+    public AcontecimientoDTO() {
+
     }
-    
-       public AcontecimientoDTO(AcontecimientoEntity Entity)
-    {
+
+    public AcontecimientoDTO(AcontecimientoEntity Entity) {
+        //TODO: entity puede ser null
         this.descripcion = Entity.getDescripcion();
         this.fecha = Entity.getFecha();
         this.fotoURL = Entity.getFotoURL();
         this.id = Entity.getId();
         this.tipo = Entity.getTipo();
-        this.nombre=Entity.getNombre();
-        this.importancia=Entity.getImportancia();
-    } 
-     
-    public AcontecimientoEntity toEntity()
-    {
+        this.nombre = Entity.getNombre();
+        this.importancia = Entity.getImportancia();
+    }
+
+    public AcontecimientoEntity toEntity() {
         AcontecimientoEntity entity = new AcontecimientoEntity();
         entity.setFecha(fecha);
         entity.setTipo(tipo);
@@ -54,9 +52,9 @@ public class AcontecimientoDTO {
         entity.setId(id);
         entity.setImportancia(importancia);
         entity.setNombre(nombre);
-        
+
         return entity;
-                
+
     }
 
     /**
@@ -156,6 +154,5 @@ public class AcontecimientoDTO {
     public void setFotoURL(String fotoURL) {
         this.fotoURL = fotoURL;
     }
-    
-    
+
 }

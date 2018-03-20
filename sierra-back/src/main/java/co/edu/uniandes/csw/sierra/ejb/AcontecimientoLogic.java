@@ -87,6 +87,8 @@ public class AcontecimientoLogic
      * @param ent el acontecimiento que se desea eliminar
      */
     public void delete(AcontecimientoEntity ent){
+        //TODO: este método debe recibir un id y hay que validar que existe un acontecimeinto con ese id
+        
         LOGGER.log(Level.INFO, "Eliminando el Acontecimiento con id ={0}", ent.getId());
         persistencia.delete(ent.getId());
     }

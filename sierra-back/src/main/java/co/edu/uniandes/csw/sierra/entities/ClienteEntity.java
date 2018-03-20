@@ -43,7 +43,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
      * Lista de todos los medios de pago de un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.REMOVE)
     private List<MedioDePagoEntity> mediosDePago = new ArrayList<>();
     
     /**

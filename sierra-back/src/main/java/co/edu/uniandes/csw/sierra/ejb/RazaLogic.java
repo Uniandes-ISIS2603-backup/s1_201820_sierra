@@ -91,7 +91,7 @@ public class RazaLogic
      */
     public RazaEntity update(RazaEntity entity)
     {
-        
+        //TODO: No hay ninguna regla de negocio? 
         return persistence.update(entity);
     }
     
@@ -101,7 +101,7 @@ public class RazaLogic
      * @param id Identificador de la instancia a eliminar.
      */
     public void delete(Long id) {
-        
+        //TODO: este método debe recibir un id y hay que validar que existe Raza con ese id
         persistence.delete(id);
     }
 

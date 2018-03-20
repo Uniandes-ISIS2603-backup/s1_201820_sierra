@@ -34,11 +34,15 @@ public class ClienteLogic
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de creacion de un nuevo cliente");
+         //TODO: No tiene sentido validar que existe la entidad con el id porque
+        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
+ 
         ClienteEntity cliente = persistence.find(entity.getId());
         if(cliente != null)
         {
             throw new BusinessLogicException("Ya existe un cliente con el nombre:" + entity.getNombre());
         }
+        //TODO: NO hay ninguna regla de negocio? 
         persistence.create(entity);
         LOGGER.info("Termina el proceso de creacion del cliente");
         return entity;
@@ -86,6 +90,7 @@ public class ClienteLogic
         {
             LOGGER.log(Level.SEVERE, "El cliente con el id={0} no existe para ser actualizado", entity.getId());
         }
+        //TODO: NO hay ninguna regla de negocio? 
         persistence.update(entity);
         LOGGER.log(Level.SEVERE, "Termina el proceso de actualizar un cliente");
         return entity;

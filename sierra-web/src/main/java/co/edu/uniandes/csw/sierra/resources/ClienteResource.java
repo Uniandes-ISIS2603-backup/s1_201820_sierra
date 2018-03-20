@@ -101,6 +101,7 @@ public class ClienteResource
      * </pre>
      * @param id Identificador del cliente que se esta buscando. Este debe ser una cadena de digitos.
      * @return JSON {@link ClienteDetailDTO} - El cliente buscado.
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper}. no exite
      */
     @GET
     @Path("{id: \\d+}")
@@ -109,7 +110,7 @@ public class ClienteResource
         ClienteEntity entity = clienteLogic.getCliente(id);
         if(entity == null)
         {
-            throw new BusinessLogicException("El recurso /clientes/" + id + " no existe.");
+             throw new WebApplicationException("El recurso clientes " + id + " no existe.", 404);  
         }
         return new ClienteDetailDTO(entity);
     }

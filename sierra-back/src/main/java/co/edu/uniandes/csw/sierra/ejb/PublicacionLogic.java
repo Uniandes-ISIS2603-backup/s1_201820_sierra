@@ -39,6 +39,8 @@ public class PublicacionLogic
      */
     public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Publicacion");
+        
+//TODO: No hay ninguna regla de negocio? 
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Publicacion");
         return ent;
@@ -71,6 +73,8 @@ public class PublicacionLogic
     public PublicacionEntity update(PublicacionEntity ent) throws BusinessLogicException{
       
         LOGGER.log(Level.INFO, "Actualizando la entidad de Publicacion con el id={0}", ent.getId());
+        
+//TODO: No hay ninguna regla de negocio? 
         return persistencia.update(ent);
     }
     
@@ -80,6 +84,7 @@ public class PublicacionLogic
      */
     public void delete(PublicacionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la publicacion con id ={0}", ent.getId());
+        //TODO: este método debe recibir un id y hay que validar que existe Publicacion con ese id
         persistencia.delete(ent.getId());
     }
         

@@ -45,7 +45,6 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
     /**
      * Constructor por defecto
      */
-
     /**
      * COnstructor vacio por defecto
      */
@@ -61,30 +60,32 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
     public MascotaVentaDetailDTO(MascotaVentaEntity ent) {
         super(ent);
         if (ent != null) {
-            
-            this.certificados= new ArrayList<>();
+
+            this.certificados = new ArrayList<>();
             if (ent.getCertificados() != null) {
                 for (CertificadoEntity entCertificado : ent.getCertificados()) {
                     this.certificados.add(new CertificadoDTO(entCertificado));
                 }
             }
-            
+
             this.publicaciones = new ArrayList<>();
             if (ent.getPublicaciones() != null) {
                 for (PublicacionEntity entPublicacion : ent.getPublicaciones()) {
                     this.publicaciones.add(new PublicacionDTO(entPublicacion));
                 }
             }
-            
-            if(ent.getAdquisicion() != null)
+
+            if (ent.getAdquisicion() != null) {
                 this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
-            
-            if(ent.getEspecie() != null)
+            }
+
+            if (ent.getEspecie() != null) {
                 this.especie = new EspecieDTO(ent.getEspecie());
-            
-            if(ent.getRaza() != null){
+            }
+
+            if (ent.getRaza() != null) {
                 this.raza = new RazaDTO(ent.getRaza());
-            }   
+            }
         }
     }
 
@@ -104,20 +105,22 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
             }
             ent.setCertificados(listCertificados);
         }
-        if(adquisicion != null)
+        if (adquisicion != null) {
             ent.setAdquisicion(adquisicion.toEntity());
-        if(especie != null)
+        }
+        if (especie != null) {
             ent.setEspecie(especie.toEntity());
-        if(publicaciones != null){
-            List<PublicacionEntity> listPublicacion= new ArrayList<>();
-            for (PublicacionDTO publica : publicaciones){
+        }
+        if (publicaciones != null) {
+            List<PublicacionEntity> listPublicacion = new ArrayList<>();
+            for (PublicacionDTO publica : publicaciones) {
                 listPublicacion.add(publica.toEntity());
             }
             ent.setPublicaciones(listPublicacion);
         }
-        if(raza != null){
+        if (raza != null) {
             ent.setRaza(raza.toEntity());
-        }   
+        }
         return ent;
     }
 

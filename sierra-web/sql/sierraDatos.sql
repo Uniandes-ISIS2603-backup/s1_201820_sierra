@@ -6,8 +6,9 @@ delete from ClienteEntity;
 delete from ComprobanteEntity;
 delete from EspecieEntity;
 delete from FacturaEntity;
-/*delete from MascotaAdoptadaEntity;
-delete from MascotaVentaEntity;*/
+delete from MascotaEntity;
+delete from MascotaAdoptadaEntity;
+delete from MascotaVentaEntity;
 delete from MedioDePagoEntity;
 delete from PublicacionEntity;
 delete from RazaEntity;
@@ -49,10 +50,16 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (5, 'Go
 
 insert into ComprobanteEntity(id, valorTotal, fecha, clienteId) values (10, 120000, '01/01/2018', 10 );
 
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (1, 'mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (2, 'mamifero', 'Independientes y agiles', 'felino');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (1, 'Mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (2, 'Mamifero', 'Independientes y agiles', 'felino');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (5, 'Mamifero', 'Pequelos y tiernos', 'Hamnster');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (6, 'Mamifero', 'Bolas afelpadas de algodon', 'Conejo');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña');
+
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano,precio) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande',1321314); 
+
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');

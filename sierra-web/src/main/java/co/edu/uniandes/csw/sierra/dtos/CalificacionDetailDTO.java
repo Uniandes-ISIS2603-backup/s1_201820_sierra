@@ -22,7 +22,8 @@ package co.edu.uniandes.csw.sierra.dtos;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 
 /**
- * CalificacionDetailDTO es el objeto de transferencia de datos detallada de la entidad Calificacion.
+ * CalificacionDetailDTO es el objeto de transferencia de datos detallada de la
+ * entidad Calificacion.
  * <p>
  * Al serializarse como JSON, esta clase implementa el siguiente modelo:<br>
  * <pre>
@@ -38,10 +39,11 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  *          "fecha":date
  *          }
  *  }
- * </pre>
- * * Por ejemplo, una Calificacion detallada se representaria de la siguiente manera:<br>
+ * </pre> * Por ejemplo, una Calificacion detallada se representaria de la
+ * siguiente manera:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *  {
  *      "id":5,
  *      "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
@@ -55,35 +57,38 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  *          }
  *  }
  * </pre>
+ *
  * @author Juan David Zambrano
  */
-public class CalificacionDetailDTO extends CalificacionDTO{
-    
+public class CalificacionDetailDTO extends CalificacionDTO {
+
     private AdquisicionDTO adquisicion;
-    
-    public CalificacionDetailDTO(){
+
+    public CalificacionDetailDTO() {
         super();
     }
-    
+
     /**
      * constructor que convierte una Entity a un DetailDTO
+     *
      * @param ent la entidad que se quiere convertir
      */
-    public CalificacionDetailDTO(CalificacionEntity ent){
+    public CalificacionDetailDTO(CalificacionEntity ent) {
         super(ent);
-        if(ent != null && ent.getAdquisicion() != null){
+        if (ent != null && ent.getAdquisicion() != null) { //TODO mejor separar la condición 
             this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
         }
     }
-    
+
     /**
      * Metodo que convierte un DetailDTO a una entity
-     * @return 
+     *
+     * @return
      */
     @Override
-    public CalificacionEntity toEntity(){
+    public CalificacionEntity toEntity() {
         CalificacionEntity ent = super.toEntity();
-        if(adquisicion != null){
+        if (adquisicion != null) {
             ent.setAdquisicion(adquisicion.toEntity());
         }
         return ent;

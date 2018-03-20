@@ -106,6 +106,7 @@ public class MascotaVentaLogic {
      */
     public void delete(MascotaVentaEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la MascotaVenta con id ={0}", ent.getId());
+        //TODO: este método debe recibir un id y hay que validar que existe la MascotaVenta con ese id
         persistencia.delete(ent.getId());
     }
     

@@ -107,6 +107,7 @@ public class CalificacionLogic {
      */
     public void delete(CalificacionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la Calificacion con id ={0}", ent.getId());
+         //TODO: este método debe recibir un id y hay que validar que existe una Calificacion con ese id
         persistencia.delete(ent.getId());
     }
     
