@@ -43,7 +43,7 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
     /**
      * La adquisicion a la que esta referenciada la calificacion
      */
-    @OneToOne(mappedBy= "calificacion", cascade = CascadeType.PERSIST)
+    @OneToOne
     private AdquisicionEntity adquisicion;
     
     

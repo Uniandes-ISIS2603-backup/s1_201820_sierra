@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.sierra.entities;
 import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -60,7 +61,7 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     /**
      * Calificacion de la adquisicion
      */
-    @OneToOne
+    @OneToOne(mappedBy= "adquisicion", cascade = CascadeType.ALL)
     @PodamExclude
     private CalificacionEntity calificacion;
     

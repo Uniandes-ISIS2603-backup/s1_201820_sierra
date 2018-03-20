@@ -198,7 +198,7 @@ public class AdquisicionResource {
     {
     	AdquisicionEntity ent = adquisicionLogic.getById(id);
         if(ent == null)
-            throw new WebApplicationException("La adqusicicion con el id: " + id + " no existe", 404);
+            throw new WebApplicationException("404: La adqusicicion con el id: " + id + " no existe", 404);
         adquisicionLogic.delete(ent);
     }
 }

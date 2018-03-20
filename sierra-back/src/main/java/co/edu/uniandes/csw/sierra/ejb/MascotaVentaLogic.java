@@ -54,6 +54,7 @@ public class MascotaVentaLogic {
      * la crea
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public MascotaVentaEntity create(MascotaVentaEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de MascotaVenta");
@@ -107,6 +108,17 @@ public class MascotaVentaLogic {
         LOGGER.log(Level.INFO, "Eliminando la MascotaVenta con id ={0}", ent.getId());
         persistencia.delete(ent.getId());
     }
+    
+    /**
+     * Elimina una MascotaVenta
+     * @param id la mascota venta que se desea eliminar
+     */
+    public void delete(Long id){
+        LOGGER.log(Level.INFO, "Eliminando la MascotaVenta con id ={0}", id);
+        persistencia.delete(id);
+    }
+    
+    
     
 }
     
