@@ -4,15 +4,11 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.resources;
-//TODO: Borrar loq ue no se necesita
+
 
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
-import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
-import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;

@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.xml.ws.WebServiceException;
 
 /**
  * <pre>Clase que implementa el recurso "especie".
@@ -108,9 +109,8 @@ public class EspecieResource {
     @Path("{id: \\d+}")
     public EspecieDetailDTO getEspecie(@PathParam("id") Long id) throws BusinessLogicException {
         EspecieEntity especie = especieLogic.getById(id);
-        //TODO: disparar WebApplicationException
         if (especie == null) {
-            throw new BusinessLogicException("La especie que desea buscar no esta registrada en la base de datos.");
+            throw new WebServiceException("La especie que desea buscar no esta registrada en la base de datos.");
         }
         return new EspecieDetailDTO(especie);
     }
