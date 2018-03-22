@@ -100,8 +100,12 @@ public class RazaLogic
      *
      * @param id Identificador de la instancia a eliminar.
      */
-    public void delete(Long id) {
-        //TODO: este método debe recibir un id y hay que validar que existe Raza con ese id
+    public void delete(Long id) throws BusinessLogicException {
+        //TODO: este método debe recibir un id y hay que validar que existe Raza con ese id(corregido
+        if(persistence.find(id) == null)
+        {
+            throw new BusinessLogicException("El elemento que se desea eliminar no existe");
+        }
         persistence.delete(id);
     }
 
