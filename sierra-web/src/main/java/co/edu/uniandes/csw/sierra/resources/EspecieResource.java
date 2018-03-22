@@ -21,7 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.xml.ws.WebServiceException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre>Clase que implementa el recurso "especie".
@@ -110,7 +110,7 @@ public class EspecieResource {
     public EspecieDetailDTO getEspecie(@PathParam("id") Long id) throws BusinessLogicException {
         EspecieEntity especie = especieLogic.getById(id);
         if (especie == null) {
-            throw new WebServiceException("La especie que desea buscar no esta registrada en la base de datos.");
+            throw new WebApplicationException("La especie que desea buscar no esta registrada en la base de datos.");
         }
         return new EspecieDetailDTO(especie);
     }
@@ -167,9 +167,8 @@ public class EspecieResource {
         EspecieEntity entity = dDTO.toEntity();
         entity.setId(id);
         EspecieEntity oldEntity = especieLogic.getById(id);
-        //TODO: disparar WebApplicationException
         if (oldEntity == null) {
-            throw new BusinessLogicException("La especie no existe");
+            throw new WebApplicationException("La especie no existe");
         }
         entity.setMascotaS(oldEntity.getMascotas());
         entity.setRazas(oldEntity.getRazas());
@@ -197,9 +196,8 @@ public class EspecieResource {
     @Path("{id: \\d+}")
     public void deleteEspecie(@PathParam("id") Long id) throws BusinessLogicException {
         EspecieEntity entity = especieLogic.getById(id);
-        //TODO: disparar WebApplicationException
         if (entity == null) {
-            throw new BusinessLogicException("La especie que desea borrar no existe en la base de datos");
+            throw new WebApplicationException("La especie que desea borrar no existe en la base de datos");
         }
         especieLogic.delete(id);
     }
