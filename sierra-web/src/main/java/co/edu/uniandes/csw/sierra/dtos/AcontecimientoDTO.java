@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author jd.zambrano
+ * @author ja.penat
  */
 public class AcontecimientoDTO {
 
