@@ -30,6 +30,30 @@ package co.edu.uniandes.csw.sierra.dtos;
  *          "nacimiento": Date,
  *          "muerte": Date
  *      }
+ *  *  </pre> Por ejemplo una entidad Medio de pago se representa asi:<br>
+ * <p>
+ * <
+ * pre>
+ * {
+ * "id":01 ,
+ * "nombre": "Mi primer juguete",
+ * "comentario": "Mis dueños me han comprado mi primer juguete."
+ * "fecha": "20/06/2014",
+ * "tipo": "Feliz",
+ * "fotoURL": "data/imagen_Lemon_primer_juguete",
+ * "mascota":{
+ *          "id": 02,
+ *          "name: "Lemon",
+ *          "genero": "Macho"
+ *          "edad": 05,
+ *          "color": "Blanco con gris",
+ *          "esteril": true ,
+ *          "adquirido": true,
+ *          "imagen": "data/imagen_Lemon",
+ *          "tamano":"Pequeño",
+ *          "nacimiento": "20/08/2016",
+ *          "muerte": null,
+ * }
  * }
  *  </pre>
  * @author Ja.penat

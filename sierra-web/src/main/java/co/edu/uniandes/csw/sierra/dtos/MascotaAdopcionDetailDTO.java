@@ -97,7 +97,7 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
      *
      * @return La entidad que representa la mascota.
      */
-    //TODO: Falta override
+    @Override
     public MascotaAdoptadaEntity toEntity() {
         MascotaAdoptadaEntity mascota = super.toEntity();
         if (this.getEspecie() != null) {

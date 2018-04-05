@@ -153,7 +153,7 @@ public class EspecieDetailDTO extends EspecieDTO {
         if (razas != null) {
             List<RazaEntity> razasEntity = new ArrayList<>();
             for (RazaDTO razaDto : razas) {
-                //               razasEntity.add(razaDto.toEntity()); //TODO: aquí qué pasó?
+                 razasEntity.add(razaDto.toEntity()); 
             }
             entity.setRazas(razasEntity);
         }

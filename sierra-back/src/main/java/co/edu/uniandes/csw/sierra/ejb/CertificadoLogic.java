@@ -27,7 +27,7 @@ public class CertificadoLogic {
     public CertificadoEntity create(CertificadoEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Iniciando el proceso de creación de una entidad de certificado.");
-        //TODO: No tiene sentido validar que existe la entidad con el id porque
+        //TODO: No tiene sentido validar que existe la entidad con el id porque (preguntar)
         // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
         if(persistence.find(entity.getId()) != null)
             throw new BusinessLogicException("Ya existe una entidad de certificado con el mismo id: " + entity.getId());
@@ -56,10 +56,14 @@ public class CertificadoLogic {
         return persistence.update(entity);
     }
     
-    public void delete(Long id)
+    public void delete(Long id) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de certificado.");
-        // TODO: Hay que validar que existe Certificado con ese id
+        // TODO: Hay que validar que existe Certificado con ese id (corregido)
+        if(persistence.find(id) == null)
+        {
+            throw new BusinessLogicException("Ya existe una entidad de certificado con el mismo id: " + id);
+        }
         persistence.delete(id);
         LOGGER.info("Termína el proceso de eliminar una entidad de certificado.");
     }

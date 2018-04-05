@@ -18,7 +18,6 @@ package co.edu.uniandes.csw.sierra.dtos;
  * "importancia":number,
  * "tipo": String,
  * "fotoURL":String,
- },
  * "mascota":{
  *          "id": number,
  *          "name: String,
@@ -32,6 +31,30 @@ package co.edu.uniandes.csw.sierra.dtos;
  *          "nacimiento": Date,
  *          "muerte": Date
  *      }
+ *  </pre> Por ejemplo una entidad Medio de pago se representa asi:<br>
+ * <p>
+ * <
+ * pre>
+ * {
+ * "id":01 ,
+ * "nombre": "Mi primer baño",
+ * "descripcion": "De visita al veterinario debido a las pulgas he recibido un baño."
+ * "fecha": "20/05/2014",
+ * "importancia": 01,
+ * "tipo": "Primera vez",
+ * "fotoURL": "data/imagen_Lemon_primer_baño",
+ * "mascota":{
+ *          "id": 02,
+ *          "name: "Lemon",
+ *          "genero": "Macho"
+ *          "edad": 05,
+ *          "color": "Blanco con gris",
+ *          "esteril": true ,
+ *          "adquirido": true,
+ *          "imagen": "data/imagen_Lemon",
+ *          "tamano":"Pequeño",
+ *          "nacimiento": "20/08/2016",
+ *          "muerte": null,
  * }
  *  </pre>
  * @author Ja.penat

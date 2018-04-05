@@ -85,12 +85,14 @@ public class EspecieDTO {
      *
      * @param especieEntity: Es la entidad que se va a convertir a DTO
      */
-    public EspecieDTO(EspecieEntity especieEntity) {   //TODO: especieEntity puede ser null
+    public EspecieDTO(EspecieEntity especieEntity) {   
+        
+        if (especieEntity!=null) {
         this.id = especieEntity.getId();
         this.nombre = especieEntity.getNombre();
         this.clasificacion = especieEntity.getClasificacion();
         this.caracteristicas = especieEntity.getCaracteristicas();
-
+        }
     }
 
     /**

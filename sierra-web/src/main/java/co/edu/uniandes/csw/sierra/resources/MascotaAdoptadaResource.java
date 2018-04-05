@@ -4,15 +4,11 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.resources;
-//TODO: Borrar loq ue no se necesita
+
 
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
-import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
-import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre>Clase que implementa el recurso "mascotaAdoptada".
@@ -117,9 +114,8 @@ public class MascotaAdoptadaResource {
     @Path("{id: \\d+}")
     public MascotaAdopcionDetailDTO getMascotaAdoptada(@PathParam("id") Long id) throws BusinessLogicException {
         MascotaAdoptadaEntity mascota = mascotaAdoptadaLogica.getById(id);
-        //TODO: disparar WebApplicationException
         if (mascota == null) {
-            throw new BusinessLogicException("La compania no existe.");
+            throw new WebApplicationException("La compania no existe.");
         }
         return new MascotaAdopcionDetailDTO(mascota);
     }
@@ -181,9 +177,8 @@ public class MascotaAdoptadaResource {
         MascotaAdoptadaEntity entity = dDTO.toEntity();
         entity.setId(id);
         MascotaAdoptadaEntity oldEntity = mascotaAdoptadaLogica.getById(id);
-        //TODO: disparar WebApplicationException
         if (oldEntity == null) {
-            throw new BusinessLogicException("La la mascota adoptada no existe");
+            throw new WebApplicationException("La la mascota adoptada no existe");
         }
         entity.setAcontecimientos(oldEntity.getAcontecimientos());
         entity.setPublicaciones(oldEntity.getPublicaciones());
@@ -216,8 +211,8 @@ public class MascotaAdoptadaResource {
     @Path("{id: \\d+}")
     public void deleteMascotaAdoptada(@PathParam("id") Long id) throws BusinessLogicException {
         MascotaAdoptadaEntity entity = mascotaAdoptadaLogica.getById(id);
-        if (entity == null) {//TODO: disparar WebApplicationException
-            throw new BusinessLogicException("La mascota adoptada no existe");
+        if (entity == null) {
+            throw new WebApplicationException("La mascota adoptada no existe");
         }
         mascotaAdoptadaLogica.delete(id);
 
