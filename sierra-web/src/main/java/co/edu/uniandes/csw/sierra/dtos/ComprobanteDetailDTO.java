@@ -74,7 +74,7 @@ public class ComprobanteDetailDTO extends ComprobanteDTO{
     }
     
     /**
-     * Método que transforma la clase de DetailDTO a Entity y retorna el resultado.
+     * Transforma la clase de DetailDTO a Entity y retorna el resultado.
      * @return 
      */
     @Override
