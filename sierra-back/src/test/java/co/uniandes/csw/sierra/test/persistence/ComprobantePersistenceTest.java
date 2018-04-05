@@ -175,7 +175,7 @@ public class ComprobantePersistenceTest {
     }
     
     /**
-     * Prueba el método para retornar una factura con un id dado por parámetor.
+     * Prueba de retornar una factura con un id dado por parámetor.
      */
     @Test
     public void getFacturaTest()
@@ -190,7 +190,7 @@ public class ComprobantePersistenceTest {
     }
     
     /**
-     * Prueba el método para eliminar un comprobante.
+     * Prueba de eliminar un comprobante.
      */
     @Test
     public void deleteFacturaTest()
@@ -202,7 +202,7 @@ public class ComprobantePersistenceTest {
     }
     
     /**
-     * Prueba el método para actualizar la información concerniente a un Comprobante.
+     * Prueba de actualizar la información concerniente a un Comprobante.
      */
     @Test
     public void updateFacturaTest()

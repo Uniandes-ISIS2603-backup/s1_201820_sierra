@@ -5,10 +5,9 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 //TODO: Borrar loque no se usa
-import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
+
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
-import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;

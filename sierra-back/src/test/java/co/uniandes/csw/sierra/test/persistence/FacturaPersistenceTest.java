@@ -162,7 +162,7 @@ public class FacturaPersistenceTest {
     }
     
     /**
-     * Prueba el método para retornar una factura con un id dado por parámetor.
+     * Prueba de retornar una factura con un id dado por parámetor.
      */
     @Test
     public void getFacturaTest()
@@ -176,7 +176,7 @@ public class FacturaPersistenceTest {
     }
     
     /**
-     * Prueba el método para eliminar una factura.
+     * Prueba de eliminar una factura.
      */
     @Test
     public void deleteFacturaTest()
@@ -188,7 +188,7 @@ public class FacturaPersistenceTest {
     }
     
     /**
-     * Prueba el método para actualizar la información concerniente a una factura.
+     * Prueba de actualizar la información concerniente a una factura.
      */
     @Test
     public void updateFacturaTest()
