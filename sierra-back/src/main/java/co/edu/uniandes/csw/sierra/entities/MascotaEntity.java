@@ -28,6 +28,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -43,6 +45,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 //como es la implementación correcta
 //@MappedSuperclass
 @Entity
+@Inheritance( strategy = InheritanceType.JOINED )
 public abstract class MascotaEntity extends BaseEntity
 {
  

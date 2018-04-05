@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -16,6 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author jc.sanchez12
  */
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class MascotaAdoptadaEntity extends MascotaEntity
 {
     

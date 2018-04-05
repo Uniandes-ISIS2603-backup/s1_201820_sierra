@@ -144,7 +144,12 @@ public class RazaLogicTest {
     public void deleteRazaTest()
     {
         RazaEntity entity = data.get(0);
+        try{
         logic.delete(entity.getId());
+        }
+        catch(Exception e){
+            
+        }
         RazaEntity deleted = em.find(RazaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

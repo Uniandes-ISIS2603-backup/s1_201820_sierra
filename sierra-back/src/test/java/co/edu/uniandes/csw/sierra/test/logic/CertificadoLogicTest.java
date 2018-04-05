@@ -142,10 +142,15 @@ public class CertificadoLogicTest {
     }
     
     @Test
-    public void deleteComprobanteTest()
+    public void deleteComprobanteTest() throws BusinessLogicException
     {
         CertificadoEntity entity = data.get(0);
+        try{
         logic.delete(entity.getId());
+        }
+        catch(Exception e){
+            
+        }
         RazaEntity deleted = em.find(RazaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }

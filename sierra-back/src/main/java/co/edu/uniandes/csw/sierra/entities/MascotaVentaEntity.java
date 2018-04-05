@@ -11,6 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import uk.co.jemos.podam.common.PodamIntValue;
 
 /**
@@ -18,6 +21,7 @@ import uk.co.jemos.podam.common.PodamIntValue;
  * @author Juan David Zambrano
  */
 @Entity
+@PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class MascotaVentaEntity extends MascotaEntity
 {
 
