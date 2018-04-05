@@ -22,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * *<pre>Clase que implementa el recurso "Comprobantes". URL: /api/comprobantes
@@ -130,7 +131,7 @@ public class ComprobanteResource {
         ComprobanteEntity encontrado = logic.getById(id);
         //TODO: disparar WebApplicationException
         if(encontrado == null)
-            throw new BusinessLogicException("No existe un comprobante con el id dado por parámetro.");
+            throw new WebApplicationException("No existe un comprobante con el id dado por parámetro.");
         
         return new ComprobanteDetailDTO(encontrado);
     }
@@ -163,7 +164,7 @@ public class ComprobanteResource {
         ComprobanteEntity oldEntity = logic.getById(id);
         //TODO: disparar WebApplicationException
         if(oldEntity == null)
-            throw new BusinessLogicException("El comprobante no existe.");
+            throw new WebApplicationException("El comprobante no existe.");
         entity.setFactura(oldEntity.getFactura());
         entity.setMedioDePago(oldEntity.getMedioDePago());
         return new ComprobanteDetailDTO(logic.update(entity));
@@ -191,7 +192,7 @@ public class ComprobanteResource {
         ComprobanteEntity entity = logic.getById(id);
         //TODO: disparar WebApplicationException
         if(entity == null)
-            throw new BusinessLogicException("El comprobante buscado no existe.");
+            throw new WebApplicationException("El comprobante buscado no existe.");
         logic.delete(id);
     }
 }
