@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -61,7 +62,7 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     /**
      * Calificacion de la adquisicion
      */
-    @OneToOne(mappedBy= "adquisicion", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy= "adquisicion", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @PodamExclude
     private CalificacionEntity calificacion;
     

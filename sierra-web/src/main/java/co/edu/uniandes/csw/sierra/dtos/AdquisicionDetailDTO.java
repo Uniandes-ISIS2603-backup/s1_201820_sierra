@@ -21,8 +21,6 @@ package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-//TODO: Borrar lo que no se usa
-import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 
 /**
@@ -160,7 +158,7 @@ public class AdquisicionDetailDTO extends AdquisicionDTO {
     public AdquisicionEntity toEntity() {
         AdquisicionEntity ent = super.toEntity();
         if (calificacion != null) { //TODO: por qué en comentarios?
-            //ent.setCalificacion(calificacion.toEntity()); 
+            ent.setCalificacion(calificacion.toEntity()); 
         }
         if (mascota != null) {
             if (MascotaAdopcionDTO.class.isInstance(mascota)) {
@@ -174,7 +172,7 @@ public class AdquisicionDetailDTO extends AdquisicionDTO {
             ent.setCliente(cliente.toEntity());
         }
         if (factura != null) {
-            //ent.setFactura(factura.toEntity());
+            ent.setFactura(factura.toEntity());
         }
         return ent;
     }
