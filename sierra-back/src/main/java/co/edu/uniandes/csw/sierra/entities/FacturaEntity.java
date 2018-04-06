@@ -99,7 +99,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     
     /**
-     * Método que retorna el valor total de la factura.
+     *Retorna el valor total de la factura.
      * @return 
      */
     public Integer getPrecio() {
@@ -110,7 +110,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
    
     
     /**
-     * Método que recibe como parámetro el valor total de la factura.
+     * Recibe como parámetro el valor total de la factura.
      * @param valorTotal 
      */
     public void setPrecio(Integer valorTotal) {

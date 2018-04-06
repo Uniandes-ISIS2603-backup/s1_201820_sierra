@@ -56,7 +56,7 @@ public class ComprobanteDTO {
     }
     
     /**
-     * Método que transforma la clase de DTO a Entity y la retorna.
+     * Transforma la clase de DTO a Entity y la retorna.
      * @return 
      */
     public ComprobanteEntity toEntity()

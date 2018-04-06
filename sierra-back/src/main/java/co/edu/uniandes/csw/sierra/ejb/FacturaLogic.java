@@ -31,8 +31,6 @@ public class FacturaLogic {
        //TODO: No tiene sentido validar que existe la entidad con el id porque
         // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
   
-        if(persistence.find(entity.getId()) != null)
-            throw new BusinessLogicException("Ya existe una entidad de Factura con el mismo id: " + entity.getId());
         //TODO: No hay ninguna regla de negocio? 
         persistence.create(entity);
         LOGGER.info("Terminando el proceso de creación de una entidad de factura.");
@@ -52,15 +50,24 @@ public class FacturaLogic {
         return persistence.find(id);
     }
     
-    public FacturaEntity update(FacturaEntity entity)
+    public FacturaEntity update(FacturaEntity entity)throws BusinessLogicException
     {//TODO: No hay ninguna regla de negocio? 
+        
+        LOGGER.info("Comienza el proceso de actualizar una factura.");
+        if(persistence.find(entity.getId()) == null)
+            throw new BusinessLogicException("No existe una entidad con el id dado.");
+        LOGGER.info("Termína el proceso de actualizar un comprobante.");
         return persistence.update(entity);
     }
     
-    public void delete(Long id)
+    public void delete(Long id)throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de factura.");
        // TODO: Hay que validar que existe Factura con ese id 
+       
+       if(persistence.find(id) == null)
+           throw new BusinessLogicException("No existe una factura con el id dado.");
+       
         persistence.delete(id);
         LOGGER.info("Termína el proceso de eliminar una entidad de factura.");
     }
