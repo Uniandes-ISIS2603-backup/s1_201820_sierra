@@ -33,23 +33,25 @@ public class EspecieLogic
          * @return Objeto de  tipo EspecieEntity con los  datos nuevos  
          * @throws BusinessLogicException 
          */
-     public EspecieEntity create( EspecieEntity entity) throws BusinessLogicException
+     public EspecieEntity createEspecie(EspecieEntity entity) throws BusinessLogicException
      {
          LOGGER.info( "Inicia proceso de creación de una entidad de Especie" );
-         if (persistence.findByName(entity.getNombre())!=null)
+         if (persistence.findById(entity.getId())!=null)
          {
+             throw new BusinessLogicException( "Ya existe una entidad de Especie con ese id  \"" + entity.getName( ) + "\"" );
+         }
+         else if (persistence.findByName(entity.getNombre())!=null) {
              throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
          }
-         else{
-             //El nombre de la  especie no puede ser vacio
-             if (entity.getNombre().equals("")) {
-                  throw new BusinessLogicException( "El nombre de la  especie \"" + entity.getName( ) + " no es un nombre valido\"" );
-             }
-             else{
+         else if (entity.getNombre().equals("") ||entity.getClasificacion().equals(""))
+         {
+             throw new BusinessLogicException( "La informacion de la  especie \"" + entity.getName( ) + " no es un  valida\"" );
+         }
+         else
+         {
              persistence.create(entity);
              LOGGER.info( "Termina proceso de creación de una entidad de Especie" );
-             return entity;
-             } 
+             return entity;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
          }
      }
      
@@ -59,7 +61,7 @@ public class EspecieLogic
      * No existe  alguna  regla que  repercuta en la obtencion de todas las especies en la base de datos.
      * @return Colección de objetos de EspecieEntity.
      */
-     public List<EspecieEntity> getAll()
+     public List<EspecieEntity> getAllEspecies()
      {
                 LOGGER.info( "Inicia proceso de consultar todas las entidades de Especie" );
 		List<EspecieEntity> entities = persistence.findAll( );
@@ -73,7 +75,7 @@ public class EspecieLogic
      * @param id Identificador de la instancia a consultar
      * @return Instancia de EsoeciEntity con los datos de la especie consultada.
      */
-     public EspecieEntity getById( Long id )
+     public EspecieEntity getEspecieById( Long id )
      {
 	return persistence.findById(id );
      }
@@ -83,7 +85,7 @@ public class EspecieLogic
      * @param nombre nombre  de la instancia a consultar
      * @return Instancia de EspecieEntity con los datos de la especie consultada.
      */
-     public EspecieEntity getByName( String nombre )
+     public EspecieEntity getEspecieByName( String nombre )
      {
 	return persistence.findByName(nombre );
      }
@@ -93,9 +95,18 @@ public class EspecieLogic
      * @param entity Instancia de EspecieEntity con los nuevos datos.
      * @return Instancia de EspecieEntity con los datos actualizados.
      */
-    public EspecieEntity update(EspecieEntity entity)
-    {//TODO: NO hay ninguna regla de negocio? 
-        return persistence.update(entity);
+    public EspecieEntity updateEspecie(EspecieEntity entity)
+    {
+        EspecieEntity ent= persistence.findById(entity.getId());
+        if (ent!=null) {
+            if (entity.getNombre().equals("") || entity.getClasificacion().equals("")) {
+                return null;
+            }
+            else{
+                return  persistence.update(entity);
+            }
+        }  
+        return null;
     }
     
     /**
@@ -103,9 +114,11 @@ public class EspecieLogic
      *
      * @param id Identificador de la instancia a eliminar.
      */
-    public void delete(Long id) {
-        // TODO: Hay que validar que existe Especie con ese id
-        persistence.delete(id);
+    public void deleteEspecie(Long id) {
+        EspecieEntity ent= persistence.findById(id);
+        if (ent!=null) {
+             persistence.delete(id);
+        }  
     }
 
 }

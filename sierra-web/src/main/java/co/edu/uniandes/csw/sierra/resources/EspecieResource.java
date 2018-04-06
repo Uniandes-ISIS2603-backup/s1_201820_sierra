@@ -82,7 +82,7 @@ public class EspecieResource {
      */
     @GET
     public List<EspecieDetailDTO> getEspecies() {
-        return listEntity2DTO(especieLogic.getAll());
+        return listEntity2DTO(especieLogic.getAllEspecies());
     }
 
     /**
@@ -108,7 +108,7 @@ public class EspecieResource {
     @GET
     @Path("{id: \\d+}")
     public EspecieDetailDTO getEspecie(@PathParam("id") Long id) throws BusinessLogicException {
-        EspecieEntity especie = especieLogic.getById(id);
+        EspecieEntity especie = especieLogic.getEspecieById(id);
         if (especie == null) {
             throw new WebApplicationException("La especie que desea buscar no esta registrada en la base de datos.");
         }
@@ -137,7 +137,7 @@ public class EspecieResource {
      */
     @POST
     public EspecieDetailDTO createEspecie(EspecieDetailDTO dto) throws BusinessLogicException {
-        return new EspecieDetailDTO(especieLogic.create(dto.toEntity()));
+        return new EspecieDetailDTO(especieLogic.createEspecie(dto.toEntity()));
     }
 
     /**
@@ -166,13 +166,13 @@ public class EspecieResource {
     public EspecieDetailDTO updateEspecie(@PathParam("id") Long id, EspecieDetailDTO dDTO) throws BusinessLogicException {
         EspecieEntity entity = dDTO.toEntity();
         entity.setId(id);
-        EspecieEntity oldEntity = especieLogic.getById(id);
+        EspecieEntity oldEntity = especieLogic.getEspecieById(id);
         if (oldEntity == null) {
             throw new WebApplicationException("La especie no existe");
         }
         entity.setMascotaS(oldEntity.getMascotas());
         entity.setRazas(oldEntity.getRazas());
-        return new EspecieDetailDTO(especieLogic.update(entity));
+        return new EspecieDetailDTO(especieLogic.updateEspecie(entity));
     }
 
     /**
@@ -195,10 +195,10 @@ public class EspecieResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteEspecie(@PathParam("id") Long id) throws BusinessLogicException {
-        EspecieEntity entity = especieLogic.getById(id);
+        EspecieEntity entity = especieLogic.getEspecieById(id);
         if (entity == null) {
             throw new WebApplicationException("La especie que desea borrar no existe en la base de datos");
         }
-        especieLogic.delete(id);
+        especieLogic.deleteEspecie(id);
     }
 }
