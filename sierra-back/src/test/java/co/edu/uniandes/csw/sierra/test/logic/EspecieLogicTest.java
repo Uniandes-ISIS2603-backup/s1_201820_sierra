@@ -51,7 +51,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class EspecieLogicTest 
 {
-    private PodamFactory factory = new PodamFactoryImpl();
+    private final PodamFactory factory = new PodamFactoryImpl();
     
     /**
      * Inyección de la dependencia a la clase EspecieLogic cuyos métodos se van
@@ -151,7 +151,7 @@ public class EspecieLogicTest
     @Test
     public void createEspecieTest() throws BusinessLogicException {
         EspecieEntity newEntity= factory.manufacturePojo(EspecieEntity.class);
-        EspecieEntity result = especieLogic.create(newEntity);
+        EspecieEntity result = especieLogic.createEspecie(newEntity);
         Assert.assertNotNull(result);
         EspecieEntity entity = ent.find(EspecieEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
@@ -166,7 +166,7 @@ public class EspecieLogicTest
      */
     @Test
     public void getEspeciesTest() {
-        List<EspecieEntity> list = especieLogic.getAll();
+        List<EspecieEntity> list = especieLogic.getAllEspecies();
         Assert.assertEquals(data.size(), list.size());
         for (EspecieEntity entity : list) {
             boolean found = false;
@@ -185,7 +185,7 @@ public class EspecieLogicTest
     @Test
     public void getEspecieTest() {
         EspecieEntity entity = data.get(0);
-        EspecieEntity resultEntity = especieLogic.getById(entity.getId());
+        EspecieEntity resultEntity = especieLogic.getEspecieById(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
@@ -198,9 +198,9 @@ public class EspecieLogicTest
      *
      */
     @Test
-    public void deleteEditorialTest() {
+    public void deleteEspecieTest() {
         EspecieEntity entity = data.get(0);
-        especieLogic.delete(entity.getId());
+        especieLogic.deleteEspecie(entity.getId());
         EspecieEntity deleted = ent.find(EspecieEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -209,13 +209,13 @@ public class EspecieLogicTest
      * Prueba para actualizar un Especie
      */
     @Test
-    public void updateEditorialTest() {
+    public void updateEspecieTest() {
         EspecieEntity entity = data.get(0);
         EspecieEntity pojoEntity = factory.manufacturePojo(EspecieEntity.class);
 
         pojoEntity.setId(entity.getId());
 
-        especieLogic.update(pojoEntity);
+        especieLogic.updateEspecie(pojoEntity);
 
         EspecieEntity resp = ent.find(EspecieEntity.class, entity.getId());
 

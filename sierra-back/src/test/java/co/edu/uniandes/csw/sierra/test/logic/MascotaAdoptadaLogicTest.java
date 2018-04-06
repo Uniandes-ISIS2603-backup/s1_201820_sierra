@@ -150,7 +150,7 @@ public class MascotaAdoptadaLogicTest {
     @Test
     public void createMascotaAdoptadaTest() throws BusinessLogicException {
         MascotaAdoptadaEntity newEntity= factory.manufacturePojo(MascotaAdoptadaEntity.class);
-        MascotaAdoptadaEntity resultado= mascotaAdoptadaLogic.create(newEntity);
+        MascotaAdoptadaEntity resultado= mascotaAdoptadaLogic.createMascotaAdoptada(newEntity);
         Assert.assertNotNull(resultado);
         MascotaAdoptadaEntity entity= ent.find(MascotaAdoptadaEntity.class, resultado.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
@@ -164,7 +164,7 @@ public class MascotaAdoptadaLogicTest {
      */
     @Test
     public void getMascotasAdoptadasTest() {
-        List<MascotaAdoptadaEntity> list = mascotaAdoptadaLogic.getAll();
+        List<MascotaAdoptadaEntity> list = mascotaAdoptadaLogic.getAllMascotasAdoptadas();
         Assert.assertEquals(data.size(), list.size());
         for (MascotaAdoptadaEntity entity : list) {
             boolean found = false;
@@ -183,7 +183,7 @@ public class MascotaAdoptadaLogicTest {
     @Test
     public void getMascotaAdoptadaTest() {
         MascotaAdoptadaEntity entity = data.get(0);
-        MascotaAdoptadaEntity resultEntity = mascotaAdoptadaLogic.getById(entity.getId());
+        MascotaAdoptadaEntity resultEntity = mascotaAdoptadaLogic.getMascotaAdoptadaById(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
@@ -201,7 +201,7 @@ public class MascotaAdoptadaLogicTest {
     @Test
     public void deleteMascotaTest() {
         MascotaAdoptadaEntity entity = data.get(0);
-        mascotaAdoptadaLogic.delete(entity.getId());
+        mascotaAdoptadaLogic.deleteMascotaAdoptada(entity.getId());
         MascotaAdoptadaEntity deleted = ent.find(MascotaAdoptadaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -210,13 +210,17 @@ public class MascotaAdoptadaLogicTest {
      * Prueba para actualizar un MascotaAdoptada
      */
     @Test
-    public void updateMascotaTest() {
+    public void updateMascotaTest() throws BusinessLogicException {
         MascotaAdoptadaEntity entity = data.get(0);
         MascotaAdoptadaEntity pojoEntity = factory.manufacturePojo(MascotaAdoptadaEntity.class);
 
         pojoEntity.setId(entity.getId());
-
-        mascotaAdoptadaLogic.update(pojoEntity);
+        
+        try {
+            mascotaAdoptadaLogic.updateMascotaAdoptada(pojoEntity);
+        } catch (Exception e) {
+        }
+        
 
         MascotaAdoptadaEntity resp = ent.find(MascotaAdoptadaEntity.class, entity.getId());
 

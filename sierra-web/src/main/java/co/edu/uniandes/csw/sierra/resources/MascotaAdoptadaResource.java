@@ -85,7 +85,7 @@ public class MascotaAdoptadaResource {
      */
     @GET
     public List<MascotaAdopcionDetailDTO> getMascotasAdoptadas() {
-        return listEntity2DTO(mascotaAdoptadaLogica.getAll());
+        return listEntity2DTO(mascotaAdoptadaLogica.getAllMascotasAdoptadas());
     }
 
     /**
@@ -113,7 +113,7 @@ public class MascotaAdoptadaResource {
     @GET
     @Path("{id: \\d+}")
     public MascotaAdopcionDetailDTO getMascotaAdoptada(@PathParam("id") Long id) throws BusinessLogicException {
-        MascotaAdoptadaEntity mascota = mascotaAdoptadaLogica.getById(id);
+        MascotaAdoptadaEntity mascota = mascotaAdoptadaLogica.getMascotaAdoptadaById(id);
         if (mascota == null) {
             throw new WebApplicationException("La compania no existe.");
         }
@@ -144,7 +144,7 @@ public class MascotaAdoptadaResource {
     @POST
     public MascotaAdopcionDetailDTO createMascota(MascotaAdopcionDetailDTO dto) throws BusinessLogicException {
 
-        return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.create(dto.toEntity()));
+        return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.createMascotaAdoptada(dto.toEntity()));
     }
 
     /**
@@ -176,7 +176,7 @@ public class MascotaAdoptadaResource {
     public MascotaAdopcionDetailDTO updateMascotaAdoptada(@PathParam("id") Long id, MascotaAdopcionDetailDTO dDTO) throws BusinessLogicException {
         MascotaAdoptadaEntity entity = dDTO.toEntity();
         entity.setId(id);
-        MascotaAdoptadaEntity oldEntity = mascotaAdoptadaLogica.getById(id);
+        MascotaAdoptadaEntity oldEntity = mascotaAdoptadaLogica.getMascotaAdoptadaById(id);
         if (oldEntity == null) {
             throw new WebApplicationException("La la mascota adoptada no existe");
         }
@@ -186,7 +186,7 @@ public class MascotaAdoptadaResource {
         entity.setEspecie(oldEntity.getEspecie());
         entity.setRaza(oldEntity.getRaza());
 
-        return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.update(entity));
+        return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.updateMascotaAdoptada(entity));
     }
 
     /**
@@ -210,11 +210,11 @@ public class MascotaAdoptadaResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteMascotaAdoptada(@PathParam("id") Long id) throws BusinessLogicException {
-        MascotaAdoptadaEntity entity = mascotaAdoptadaLogica.getById(id);
+        MascotaAdoptadaEntity entity = mascotaAdoptadaLogica.getMascotaAdoptadaById(id);
         if (entity == null) {
             throw new WebApplicationException("La mascota adoptada no existe");
         }
-        mascotaAdoptadaLogica.delete(id);
+        mascotaAdoptadaLogica.deleteMascotaAdoptada(id);
 
     }
 
