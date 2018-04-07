@@ -175,7 +175,14 @@ public class FacturaLogicTest {
     public void deleteFacturaTest()
     {
         FacturaEntity entity = data.get(0);
-        logic.delete(entity.getId());
+        try
+        {
+            logic.delete(entity.getId());
+        }catch(Exception e )
+        {
+            Assert.fail("Error: " + e.getMessage());
+        }
+        
         FacturaEntity borrada = em.find(FacturaEntity.class, entity.getId());
         Assert.assertNull(borrada);
     }
@@ -187,8 +194,15 @@ public class FacturaLogicTest {
         FacturaEntity pojoEntity = factory.manufacturePojo(FacturaEntity.class);
 
         pojoEntity.setId(entity.getId());
-
-        logic.update(pojoEntity);
+        
+        try
+        {
+            logic.update(pojoEntity);
+        }catch(Exception e)
+        {
+            Assert.fail("Error: " + e.getMessage());
+        }
+        
 
         FacturaEntity respuesta = em.find(FacturaEntity.class, entity.getId());
 
