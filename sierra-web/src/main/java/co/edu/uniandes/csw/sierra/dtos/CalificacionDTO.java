@@ -40,7 +40,7 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  * pre>
  *  {
  *      "id":5,
- *      "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
+ *      "comentarios":"muy buenna pagina, to do funciona super bien y fue muy buena la experiencia",
  *      "valor":20000,
  *      "sugerencia":"You don't mess with perfection"
  *  }

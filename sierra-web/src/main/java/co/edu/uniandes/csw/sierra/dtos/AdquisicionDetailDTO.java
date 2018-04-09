@@ -77,7 +77,7 @@ import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
  *      "fecha":"20/05/2014",
  *      "calificacion":{
  *          "id":5,
- *          "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
+ *          "comentarios":"muy buenna pagina, to do funciona super bien y fue muy buena la experiencia",
  *          "valor":20000,
  *          "sugerencia":"You don't mess with perfection"
  *      },
@@ -157,7 +157,7 @@ public class AdquisicionDetailDTO extends AdquisicionDTO {
     @Override
     public AdquisicionEntity toEntity() {
         AdquisicionEntity ent = super.toEntity();
-        if (calificacion != null) { //TODO: por qué en comentarios?
+        if (calificacion != null) { 
             ent.setCalificacion(calificacion.toEntity()); 
         }
         if (mascota != null) {

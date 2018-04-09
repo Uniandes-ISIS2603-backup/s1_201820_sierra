@@ -192,7 +192,11 @@ public class CalificacionLogicTest {
     @Test
     public void deleteCalificacionTest(){
         CalificacionEntity ent = data.get(0);
-        calLogic.delete(ent);
+        try {
+            calLogic.delete(ent.getId());
+        } catch (Exception ex) {
+            fail();
+        }
         CalificacionEntity notFound = em.find(CalificacionEntity.class, ent.getId());
         Assert.assertNull(notFound);
         

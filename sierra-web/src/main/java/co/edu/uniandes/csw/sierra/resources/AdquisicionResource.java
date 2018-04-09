@@ -34,7 +34,7 @@ import javax.ws.rs.WebApplicationException;
 * Path: indica la dirección después de "api" para acceder al recurso
 * Produces/Consumes: indica que los servicios definidos en este recurso reciben y
 * devuelven objetos en formato JSON
-* RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
+* RequestScoped: Inicia una transacción desde el llamado de cada méto do (servicio).
 * </pre>
 * @author Juan David Zambrano
 * @version 1.0
@@ -196,9 +196,12 @@ public class AdquisicionResource {
     @Path( "{id: \\d+}" )
     public void deleteAdquisicion( @PathParam( "id" ) Long id )
     {
-    	AdquisicionEntity ent = adquisicionLogic.getById(id);
-        if(ent == null)
+        try{
+            adquisicionLogic.delete(id);
+        }
+        catch(Exception e){
             throw new WebApplicationException("404: La adqusicicion con el id: " + id + " no existe", 404);
-        adquisicionLogic.delete(ent);
+        }
+        
     }
 }

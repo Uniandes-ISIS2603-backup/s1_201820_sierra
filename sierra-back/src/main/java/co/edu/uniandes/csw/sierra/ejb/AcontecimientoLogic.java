@@ -82,15 +82,20 @@ public class AcontecimientoLogic
         return persistencia.update(ent);
     }
     
-    /**
+   /**
      * Elimina una Acontecimiento
-     * @param ent el acontecimiento que se desea eliminar
+     * @param id, el id del acontecimiento que se desea eliminar
      */
-    public void delete(AcontecimientoEntity ent){
-        //TODO: este método debe recibir un id y hay que validar que existe un acontecimeinto con ese id
-        
-        LOGGER.log(Level.INFO, "Eliminando el Acontecimiento con id ={0}", ent.getId());
-        persistencia.delete(ent.getId());
-    }
+    public void delete(Long id)
+    {
+      
+        AcontecimientoEntity eliminando = persistencia.find(id);
+        if(eliminando != null)
+        {
+        LOGGER.log(Level.INFO, "Eliminando el Acontecimiento con id ={0}", id);
+        persistencia.delete(id);
+        }
+    }   
+
     
 }
