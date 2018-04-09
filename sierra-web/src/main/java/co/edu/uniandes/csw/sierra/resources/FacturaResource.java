@@ -23,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *<pre>Clase que implementa el recurso "Facturas". URL: /api/facturas
@@ -121,12 +122,12 @@ public class FacturaResource {
     
     @GET
     @Path("{id: \\d+}")
-    public FacturaDetailDTO getFactura(@PathParam("id") Long id)throws BusinessLogicException
+    public FacturaDetailDTO getFactura(@PathParam("id") Long id)throws WebApplicationException
     {
         FacturaEntity encontrada = logic.getById(id);
         
         if(encontrada == null)
-            throw new BusinessLogicException("No existe una factura con el id dado por parámetro.");
+            throw new WebApplicationException("No existe una factura con el id dado por parámetro.");
         
         return new FacturaDetailDTO(encontrada);
     }
@@ -152,13 +153,13 @@ public class FacturaResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public FacturaDetailDTO updateFactura(@PathParam("id") Long id, FacturaDetailDTO infoFactura)throws BusinessLogicException
+    public FacturaDetailDTO updateFactura(@PathParam("id") Long id, FacturaDetailDTO infoFactura)throws BusinessLogicException, WebApplicationException
     {
         FacturaEntity entity = infoFactura.toEntity();
         entity.setId(id);
         FacturaEntity oldEntity = logic.getById(id);
         if(oldEntity == null)
-            throw new BusinessLogicException("El comprobante no existe.");
+            throw new WebApplicationException("El comprobante no existe.");
         entity.setAdquisicion(oldEntity.getAdquisicion());
         entity.setComprobantes(oldEntity.getComprobantes());
         return new FacturaDetailDTO(logic.update(entity));
@@ -180,12 +181,12 @@ public class FacturaResource {
     
     @DELETE
     @Path("(id: \\d+)")
-    public void deleteFactura(@PathParam("id") Long id)throws BusinessLogicException
+    public void deleteFactura(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
     {
         //process
         FacturaEntity entity = logic.getById(id);
         if(entity == null)
-            throw new BusinessLogicException("La factura buscada no existe.");
+            throw new WebApplicationException("La factura buscada no existe.");
         logic.delete(id);
     }
 }

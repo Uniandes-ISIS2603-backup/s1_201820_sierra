@@ -71,7 +71,7 @@ public class ComprobanteResource {
      *
      */
     @POST
-    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto) throws BusinessLogicException
+    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto) throws WebApplicationException, BusinessLogicException
     {
         return new ComprobanteDetailDTO(logic.create(dto.toEntity()));
     }
@@ -126,7 +126,7 @@ public class ComprobanteResource {
     
     @GET
     @Path("{id: \\d+}")
-    public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)throws BusinessLogicException
+    public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)throws WebApplicationException
     {
         ComprobanteEntity encontrado = logic.getById(id);
         //TODO: disparar WebApplicationException
@@ -157,7 +157,7 @@ public class ComprobanteResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public ComprobanteDetailDTO updateComprobante(@PathParam("id") Long id, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException
+    public ComprobanteDetailDTO updateComprobante(@PathParam("id") Long id, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException, WebApplicationException
     {
         ComprobanteEntity entity = infoComprobante.toEntity();
         entity.setId(id);
@@ -186,7 +186,7 @@ public class ComprobanteResource {
     
     @DELETE
     @Path("(id: \\d+)")
-    public void deleteComprobante(@PathParam("id") Long id)throws BusinessLogicException
+    public void deleteComprobante(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
     {
         //process
         ComprobanteEntity entity = logic.getById(id);

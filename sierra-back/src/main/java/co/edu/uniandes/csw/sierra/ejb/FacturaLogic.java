@@ -28,10 +28,10 @@ public class FacturaLogic {
     public FacturaEntity create(FacturaEntity entity)throws BusinessLogicException
     {
         LOGGER.info("Iniciando el proceso de creación de una entidad de Factura.");
-       //TODO: No tiene sentido validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
-  
-        //TODO: No hay ninguna regla de negocio? 
+       
+        if(entity.getPrecio() == null || entity.getIdCliente() == null || entity.getNombreCliente() == null)
+            throw new BusinessLogicException("La información suministrada para la creación de la factura está incompleta.");
+        
         persistence.create(entity);
         LOGGER.info("Terminando el proceso de creación de una entidad de factura.");
         return entity;
@@ -63,7 +63,6 @@ public class FacturaLogic {
     public void delete(Long id)throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de factura.");
-       // TODO: Hay que validar que existe Factura con ese id 
        
        if(persistence.find(id) == null)
            throw new BusinessLogicException("No existe una factura con el id dado.");
