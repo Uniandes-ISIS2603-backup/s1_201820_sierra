@@ -191,7 +191,12 @@ public class AdquisicionLogicTest {
     @Test
     public void deleteAdquisicionTest(){
         AdquisicionEntity ent = data.get(0);
-        calLogic.delete(ent);
+        try{
+        calLogic.delete(ent.getId());
+        }
+        catch(Exception e){
+            fail();
+        }
         AdquisicionEntity notFound = em.find(AdquisicionEntity.class, ent.getId());
         Assert.assertNull(notFound);
         

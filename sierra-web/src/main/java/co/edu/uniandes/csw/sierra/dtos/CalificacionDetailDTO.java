@@ -46,7 +46,7 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
  * pre>
  *  {
  *      "id":5,
- *      "comentarios":"muy buenna pagina, todo funciona super bien y fue muy buena la experiencia",
+ *      "comentarios":"muy buenna pagina, to do funciona super bien y fue muy buena la experiencia",
  *      "valor":20000,
  *      "sugerencia":"You don't mess with perfection",
  *      "adquisicion":
@@ -75,8 +75,10 @@ public class CalificacionDetailDTO extends CalificacionDTO {
      */
     public CalificacionDetailDTO(CalificacionEntity ent) {
         super(ent);
-        if (ent != null) { //TODO mejor separar la condición 
-            this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
+        if (ent != null) { 
+            if(ent.getAdquisicion() != null){
+                this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
+            }
         }
     }
 

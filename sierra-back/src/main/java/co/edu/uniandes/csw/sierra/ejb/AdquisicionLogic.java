@@ -99,10 +99,13 @@ public class AdquisicionLogic {
      * Elimina una Adquisicion
      * @param ent la adquiisicion que se desea eliminar
      */
-    public void delete(AdquisicionEntity ent){
-        LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", ent.getId());
-         //TODO: este método debe recibir un id y hay que validar que existe una Adquisicion con ese id
-         persistencia.delete(ent.getId());
+    public void delete(Long id) throws Exception{
+        LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", id);
+        if(persistencia.find(id) != null){ 
+            persistencia.delete(id);
+        }else{
+            throw new Exception("No existe una adquisicion con el id dado");
+        }
     }
     
     
