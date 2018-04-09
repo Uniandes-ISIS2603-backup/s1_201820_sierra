@@ -143,7 +143,14 @@ public class ComprobanteLogicTest {
     public void deleteComprobanteTest()
     {
         ComprobanteEntity entity = data.get(0);
-        logic.delete(entity.getId());
+        try
+        {
+            logic.delete(entity.getId());
+        }catch(Exception e)
+        {
+            Assert.fail("Error: " + e.getMessage());
+        }
+        
         ComprobanteEntity deleted = em.find(ComprobanteEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -155,8 +162,15 @@ public class ComprobanteLogicTest {
         ComprobanteEntity pojoEntity = factory.manufacturePojo(ComprobanteEntity.class);
 
         pojoEntity.setId(entity.getId());
-
-        logic.update(pojoEntity);
+        
+        try
+        {
+          logic.update(pojoEntity);  
+        }catch(Exception e)
+        {
+            Assert.fail("Error: " + e.getMessage());
+        }
+        
 
         ComprobanteEntity respuesta = em.find(ComprobanteEntity.class, entity.getId());
 

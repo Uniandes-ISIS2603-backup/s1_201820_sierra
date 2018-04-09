@@ -23,12 +23,12 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
-//TODO: Borrar lo que no se use
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
+import co.edu.uniandes.csw.sierra.persistence.RazaPersistence;
+import co.edu.uniandes.csw.sierra.persistence.EspeciePersistence;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -46,6 +46,12 @@ public class MascotaAdoptadaLogic {
     @Inject
     private MascotaAdoptadaPersistence persistence;
 
+    @Inject
+    private RazaPersistence razapersistence;
+    
+    @Inject
+    private EspeciePersistence especiepersistence;
+    
     /**
      * Crea una entity en la base de datos de tipo MascotaAdoptada
      *
@@ -53,12 +59,26 @@ public class MascotaAdoptadaLogic {
      * @return Objeto de tipo MascotaAdoptadaEntity con los datos nuevos
      * @throws BusinessLogicException
      */
-    public MascotaAdoptadaEntity create(MascotaAdoptadaEntity entity) throws BusinessLogicException {
+    public MascotaAdoptadaEntity createMascotaAdoptada(MascotaAdoptadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una entidad de Mascota adoptda");
         if (persistence.findByName(entity.getNombre()) != null) {
             throw new BusinessLogicException("Ya existe una entidad de Mascota adoptada con el nombre \"" + entity.getName() + "\"");
-        } else {
-
+        }
+       /** else if (entity.getRaza()==null) {
+            throw new BusinessLogicException("La mascota adoptada necesita tener una raza designada \"");
+        }
+        else if (entity.getEspecie()==null) {
+            throw new BusinessLogicException("La mascota adoptada necesita tener una especie designada \"");
+        }
+        * */
+        else {
+           /** if (razapersistence.findByName(entity.getRaza().getNombreRaza())==null) {
+                razapersistence.create(entity.getRaza());
+            }
+            else if (especiepersistence.findByName(entity.getEspecie().getNombre())==null) {
+                especiepersistence.create(entity.getEspecie());
+            }
+            * */
             persistence.create(entity);
             LOGGER.info("Termina proceso de creación de una entidad de Mascota adoptada");
             return entity;
@@ -70,7 +90,7 @@ public class MascotaAdoptadaLogic {
      *
      * @return Colección de objetos de MascotaAdoptadaEntity.
      */
-    public List<MascotaAdoptadaEntity> getAll() {
+    public List<MascotaAdoptadaEntity> getAllMascotasAdoptadas() {
         LOGGER.info("Inicia proceso de consultar todas las entidades de Mascota adoptada");
         List<MascotaAdoptadaEntity> entities = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las entidades de Mascota adoptada");
@@ -84,7 +104,7 @@ public class MascotaAdoptadaLogic {
      * @return Instancia de MascotaAdoptadaEntity con los datos de la mascota
      * consultada.
      */
-    public MascotaAdoptadaEntity getById(Long id) {
+    public MascotaAdoptadaEntity getMascotaAdoptadaById(Long id) {
         return persistence.findById(id);
     }
 
@@ -96,7 +116,7 @@ public class MascotaAdoptadaLogic {
      * @return Instancia de MascotaAdoptadaEntity con los datos de la especie
      * consultada.
      */
-    public MascotaAdoptadaEntity getByName(String nombre) {
+    public MascotaAdoptadaEntity getMascotaAdoptadaByName(String nombre) {
         return persistence.findByName(nombre);
     }
 
@@ -106,9 +126,14 @@ public class MascotaAdoptadaLogic {
      * @param entity Instancia de MascotaAdoptadaEntity con los nuevos datos.
      * @return Instancia de MascotaAdoptadaEntity con los datos actualizados.
      */
-    public MascotaAdoptadaEntity update(MascotaAdoptadaEntity entity) {
-//TODO: No hay ninguna regla de negocio? 
-       return persistence.update(entity);
+    public MascotaAdoptadaEntity updateMascotaAdoptada(MascotaAdoptadaEntity entity)throws BusinessLogicException 
+    {
+       MascotaAdoptadaEntity ent= persistence.findById(entity.getId());
+        if (ent !=null) {
+
+        return persistence.update(entity);
+        }
+         return null;     
     }
 
     /**
@@ -116,9 +141,11 @@ public class MascotaAdoptadaLogic {
      *
      * @param id Identificador de la instancia a eliminar.
      */
-    public void delete(Long id) {
-// TODO: Hay que validar que existe Mascota con ese id
-        persistence.delete(id);
+    public void deleteMascotaAdoptada(Long id) {
+        MascotaAdoptadaEntity ent=  persistence.findById(id);
+        if (ent!=null) {
+            persistence.delete(id);
+        }
     }
 
 }

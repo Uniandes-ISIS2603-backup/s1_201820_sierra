@@ -54,7 +54,7 @@ public class FacturaDTO {
     }
 
     /**
-     * Método que transforma la clase de un DTO a un Entity y retorna el
+     * Transforma la clase de un DTO a un Entity y retorna el
      * resultado.
      *
      * @return

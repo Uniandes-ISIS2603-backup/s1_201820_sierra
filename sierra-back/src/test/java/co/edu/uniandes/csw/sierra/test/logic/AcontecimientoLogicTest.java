@@ -173,7 +173,7 @@ public class AcontecimientoLogicTest
     @Test
     public void deleteAdquisicionTest(){
         AcontecimientoEntity ent = data.get(0);
-        calLogic.delete(ent);
+        calLogic.delete(ent.getId());
         AcontecimientoEntity notFound = em.find(AcontecimientoEntity.class, ent.getId());
         Assert.assertNull(notFound);
         

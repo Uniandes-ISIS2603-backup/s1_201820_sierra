@@ -92,7 +92,7 @@ public class FacturaDetailDTO extends FacturaDTO {
     }
 
     /**
-     * Mëtodo que transforma la clase de un DetailDTO a un Entity y retora el
+     * Transforma la clase de un DetailDTO a un Entity y retora el
      * resultado.
      *
      * @return

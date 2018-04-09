@@ -7,12 +7,9 @@ package co.edu.uniandes.csw.sierra.entities;
 
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import uk.co.jemos.podam.common.PodamIntValue;
 

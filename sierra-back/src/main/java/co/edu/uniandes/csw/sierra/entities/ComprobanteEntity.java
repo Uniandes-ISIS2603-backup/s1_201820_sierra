@@ -50,7 +50,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     
     
     /**
-     * Método que retorna el valor total del comprobante.
+     * Retorna el valor total del comprobante.
      * @return valorTotal
      */
     public Integer getValorTotal() {
@@ -58,7 +58,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * Método que retorna la fecha en que se genero el comprobante.
+     * Retorna la fecha en que se genero el comprobante.
      * @return fecha
      */
     public Date getFecha() {
@@ -66,7 +66,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * Método que retorna el id del cliente ligado al comprobante.
+     *Retorna el id del cliente ligado al comprobante.
      * @return clienteId
      */
     public Long getClienteId() {
@@ -75,7 +75,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
   
     
     /**
-     * Método que recibe el valor total del comprobante como parametro.
+     * Recibe el valor total del comprobante como parametro.
      * @param valorTotal 
      */
     public void setValorTotal(Integer valorTotal) {
@@ -83,7 +83,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * Método que recibe la fecha del comprobante como parametro.
+     * Recibe la fecha del comprobante como parametro.
      * @param fecha
      */ 
     public void setFecha(Date fecha) {
@@ -91,7 +91,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * Método que retorna el id del cliente como parametro.
+     * Retorna el id del cliente como parametro.
      * @param clienteId 
      */
     public void setClienteId(Long clienteId) {
@@ -99,7 +99,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * Método que retorna la factura ligada al c omprobante.
+     * Retorna la factura ligada al c omprobante.
      * @return factura
      */ 
   public FacturaEntity getFactura()    
@@ -107,7 +107,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
       return this.factura;
   }
     /**
-     * Método que recibe a la factura ligada al comprobante actual como parámetro.
+     * Recibe a la factura ligada al comprobante actual como parámetro.
      * @param factura
      */
   public void setFactura(FacturaEntity factura)
@@ -115,7 +115,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
       this.factura = factura;
   }
     /**
-     * Método que retorna al medio de pago usad en el comprobante actual.
+     *Retorna al medio de pago usad en el comprobante actual.
      * return medio de pago usado en el comprobante actual.
      * @return 
      */ 
@@ -124,7 +124,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
       return this.medioDePago;
   }
     /**
-     * Método que recibe al medio de pago usado en el comprobante actual como parametro.
+     * Recibe al medio de pago usado en el comprobante actual como parametro.
      * @param medioDePago
      */ 
   public void setMedioDePago(MedioDePagoEntity medioDePago)
