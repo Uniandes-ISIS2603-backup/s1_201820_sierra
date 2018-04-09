@@ -5,8 +5,13 @@
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
+import co.edu.uniandes.csw.sierra.persistence.MascotaVentaPersistence;
 import co.edu.uniandes.csw.sierra.persistence.PublicacionPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,20 +36,61 @@ public class PublicacionLogic
     @Inject
     private PublicacionPersistence persistencia;
     
+    
+    @Inject
+    private MascotaAdoptadaPersistence mascotaAdoptadaPersistencia;
+        
+     @Inject
+    private MascotaVentaPersistence mascotaVentaPersistencia;
+    
     /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
      * la crea
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
      */
-    public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException{
-        LOGGER.info("Creando una entidad de Publicacion");
+    public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException
+    {
         
-//TODO: No hay ninguna regla de negocio? 
+
+
+ LOGGER.info("Creando una entidad de Publicacion");
+        //TODO: No hay ninguna regla de negocio? 
+        if (mascotaAdoptadaPersistencia.findById(ent.getId()) != ent.getMascota() && mascotaAdoptadaPersistencia.findById(ent.getId()) != null)
+         {
+             throw new BusinessLogicException( "No existe la Mascota asociada a la Publicación \"" + ent.getId( ) + "\"" );
+         }
+         else
+        {
+         if(ent.getMascota().getNacimiento().after(ent.getFecha()))
+         {
+              throw new BusinessLogicException( "La fecha de la Publicación no es válida\""  );
+         }
+         else
+         {
+        List<PublicacionEntity> listaPub = mascotaAdoptadaPersistencia.findById(ent.getMascota().getId()).getPublicaciones();
+        listaPub.add(ent);
+        MascotaEntity nuevo = ent.getMascota();
+        nuevo.setPublicaciones(listaPub);
+        if(nuevo.getClass().getName() =="MascotaAdopatada")
+        {
+        mascotaAdoptadaPersistencia.update((MascotaAdoptadaEntity) nuevo);
+         persistencia.create(ent);
+        LOGGER.info("Termina la creacion de la entidad de Publicacion");
+        return ent;
+        }
+        else
+        {
+        mascotaVentaPersistencia.update((MascotaVentaEntity) nuevo);
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Publicacion");
         return ent;
+         }
+         }
     }
+        //Falta probar.
+    }
+    
     
     /**
      * Obtiene todas las entidades de Publicacion

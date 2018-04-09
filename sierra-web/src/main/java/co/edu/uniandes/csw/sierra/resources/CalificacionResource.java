@@ -12,6 +12,8 @@ import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -34,13 +36,13 @@ import javax.ws.rs.WebApplicationException;
 * Path: indica la dirección después de "api" para acceder al recurso
 * Produces/Consumes: indica que los servicios definidos en este recurso reciben y
 devuelven objetos en formato JSON
-* RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
+* RequestScoped: Inicia una transacción desde el llamado de cada mét odo (servicio).
 * </pre>
 * @author Juan David Zambrano
 * @version 1.0
 */
-//TODO: Revisar el path para llegar a este recurso
-@Path( "calificaciones" )
+//TODO: Modificar el recurso para adaptarse al nuevo path
+@Path( "adquisiciones/{adquisicionesId: \\d}/calificaciones" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
@@ -192,10 +194,11 @@ public class CalificacionResource {
     @Path( "{id: \\d+}" )
     public void deleteCalificacion( @PathParam( "id" ) Long id )
     {
-    	CalificacionEntity ent = calificacionLogic.getById(id);
-        if(ent == null)
+        try {
+            calificacionLogic.delete(id);
+        } catch (Exception ex) {
             throw new WebApplicationException("La calificacion con el id: " + id + " no existe", 404);
-        calificacionLogic.delete(ent);
+        }
     }
     
 }

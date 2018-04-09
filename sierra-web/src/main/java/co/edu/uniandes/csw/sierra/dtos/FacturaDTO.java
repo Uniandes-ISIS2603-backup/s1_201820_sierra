@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
-import java.util.Date;
+
 
 /**
  * FacturaDTO, objeto de transferencia de datos de la entidad Factura
