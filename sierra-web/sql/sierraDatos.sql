@@ -59,7 +59,14 @@ insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (6,
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña');
 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande'); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (2,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Pepa','grande'); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (3,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Zeus','grande'); 
+
 insert into MascotaAdoptadaEntity(id) values (1);
+insert into MascotaAdoptadaEntity(id) values (2);
+insert into MascotaAdoptadaEntity(id) values (3);
+ 
+
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
