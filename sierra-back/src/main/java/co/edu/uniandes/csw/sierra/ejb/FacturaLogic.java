@@ -29,7 +29,7 @@ public class FacturaLogic {
     {
         LOGGER.info("Iniciando el proceso de creación de una entidad de Factura.");
        
-        if(entity.getPrecio() == null || entity.getIdCliente() == null || entity.getNombreCliente() == null)
+        if(entity.getValorTotal() == null || entity.getIdCliente() == null || entity.getNombreCliente() == null)
             throw new BusinessLogicException("La información suministrada para la creación de la factura está incompleta.");
         
         persistence.create(entity);

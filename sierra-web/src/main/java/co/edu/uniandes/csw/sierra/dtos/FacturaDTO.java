@@ -35,9 +35,10 @@ import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 public class FacturaDTO {
 
     private Long id;
-    private Integer precio;
+    private Integer valorTotal;
     private String nombreCliente;
     private Long idCliente;
+    private String animalAdquirido;
 
     public FacturaDTO() {
     }
@@ -45,10 +46,11 @@ public class FacturaDTO {
     public FacturaDTO(FacturaEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
-            this.precio = entity.getPrecio();
+            this.valorTotal = entity.getValorTotal();
             this.nombreCliente = entity.getNombreCliente();
             this.idCliente = entity.getIdCliente();
             this.id = entity.getId();
+            this.animalAdquirido = entity.getAnimalAdquirido();
         }
 
     }
@@ -62,7 +64,7 @@ public class FacturaDTO {
     public FacturaEntity toEntity() {
         FacturaEntity entity = new FacturaEntity();
         entity.setId(id);
-        entity.setPrecio(precio);
+        entity.setValorTotal(valorTotal);
         entity.setNombreCliente(nombreCliente);
         entity.setIdCliente(idCliente);
         return entity;
@@ -76,8 +78,8 @@ public class FacturaDTO {
         this.id = id;
     }
 
-    public void setValorTotal(Integer precio) {
-        this.precio = precio;
+    public void setValorTotal(Integer valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public void setNombreCliente(String nombreCliente) {
@@ -85,7 +87,7 @@ public class FacturaDTO {
     }
 
     public Integer getValorTotal() {
-        return precio;
+        return valorTotal;
     }
 
     public String getNombreCliente() {
@@ -98,6 +100,16 @@ public class FacturaDTO {
 
     public Long getIdCliente() {
         return idCliente;
+    }
+    
+    public void setAnimalAdquirido(String animalAdquirido)
+    {
+        this.animalAdquirido = animalAdquirido;
+    }
+    
+    public String getAnimalAdquirido()
+    {
+        return animalAdquirido;
     }
 
 }

@@ -27,7 +27,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     private Long idCliente;
     private String nombreCliente;
-    private Integer precio;
+    private Integer valorTotal;
     private String animalAdquirido;
     
      /**
@@ -102,8 +102,8 @@ public class FacturaEntity extends BaseEntity implements Serializable{
      *Retorna el valor total de la factura.
      * @return 
      */
-    public Integer getPrecio() {
-        return precio;
+    public Integer getValorTotal() {
+        return valorTotal;
     }
     
 
@@ -113,8 +113,8 @@ public class FacturaEntity extends BaseEntity implements Serializable{
      * Recibe como parámetro el valor total de la factura.
      * @param valorTotal 
      */
-    public void setPrecio(Integer valorTotal) {
-        this.precio = valorTotal;
+    public void setValorTotal(Integer valorTotal) {
+        this.valorTotal = valorTotal;
     }
     
     
