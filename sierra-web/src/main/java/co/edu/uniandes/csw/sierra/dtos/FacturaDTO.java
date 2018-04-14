@@ -35,10 +35,10 @@ import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 public class FacturaDTO {
 
     private Long id;
-    private Integer valorTotal;
-    private String nombreCliente;
     private Long idCliente;
-    private String animalAdquirido;
+    private String nombreCliente;
+    private Integer valor;
+   
 
     public FacturaDTO() {
     }
@@ -46,11 +46,9 @@ public class FacturaDTO {
     public FacturaDTO(FacturaEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
-            this.valorTotal = entity.getValorTotal();
+            this.valor = entity.getValor();
             this.nombreCliente = entity.getNombreCliente();
             this.idCliente = entity.getIdCliente();
-            this.id = entity.getId();
-            this.animalAdquirido = entity.getAnimalAdquirido();
         }
 
     }
@@ -64,7 +62,7 @@ public class FacturaDTO {
     public FacturaEntity toEntity() {
         FacturaEntity entity = new FacturaEntity();
         entity.setId(id);
-        entity.setValorTotal(valorTotal);
+        entity.setValor(valor);
         entity.setNombreCliente(nombreCliente);
         entity.setIdCliente(idCliente);
         return entity;
@@ -78,16 +76,16 @@ public class FacturaDTO {
         this.id = id;
     }
 
-    public void setValorTotal(Integer valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValor(Integer valorTotal) {
+        this.valor = valorTotal;
     }
 
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
     }
 
-    public Integer getValorTotal() {
-        return valorTotal;
+    public Integer getValor() {
+        return valor;
     }
 
     public String getNombreCliente() {
@@ -100,16 +98,5 @@ public class FacturaDTO {
 
     public Long getIdCliente() {
         return idCliente;
-    }
-    
-    public void setAnimalAdquirido(String animalAdquirido)
-    {
-        this.animalAdquirido = animalAdquirido;
-    }
-    
-    public String getAnimalAdquirido()
-    {
-        return animalAdquirido;
-    }
-
+    }   
 }
