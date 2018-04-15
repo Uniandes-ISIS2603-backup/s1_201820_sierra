@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
@@ -53,6 +54,8 @@ public class CalificacionResource {
      */
     @Inject
     private CalificacionLogic calificacionLogic;
+    @Inject
+    private AdquisicionLogic adqLogic;
     
     /**
      * Metodo que convierte una lista de entidades a una lista de DetailDTO
