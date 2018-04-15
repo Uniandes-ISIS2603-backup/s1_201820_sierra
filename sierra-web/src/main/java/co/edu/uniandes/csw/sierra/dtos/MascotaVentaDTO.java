@@ -83,4 +83,9 @@ public class MascotaVentaDTO extends MascotaDTO {
         ent.setPrecio(this.precio);
         return ent;
     }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nPrecio: " + precio;
+    }
 }

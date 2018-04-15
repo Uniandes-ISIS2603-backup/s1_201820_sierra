@@ -48,6 +48,8 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (3, 'Ba
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (4, 'Hollis', 'Gair', 1069654987, 3125489699);
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (5, 'Goodby', 'Knapp', 39265488, 3215448500);
 
+insert into facturaEntity(id, precio, nombreCliente, idCliente) values (1,20000,'Andres', 1);
+
 insert into ComprobanteEntity(id, valorTotal, fecha, clienteId) values (10, 120000, '01/01/2018', 10 );
 
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (1, 'Mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino');

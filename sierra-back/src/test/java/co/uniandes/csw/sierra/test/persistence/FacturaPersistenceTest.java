@@ -136,7 +136,7 @@ public class FacturaPersistenceTest {
         
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getPrecio(), entity.getPrecio());
+        Assert.assertEquals(newEntity.getValor(), entity.getValor());
     }
     
     /**
@@ -172,7 +172,7 @@ public class FacturaPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getId(), newEntity.getId());
         Assert.assertEquals(entity.getName(), newEntity.getName());
-        Assert.assertEquals(entity.getPrecio(), newEntity.getPrecio());
+        Assert.assertEquals(entity.getValor(), newEntity.getValor());
     }
     
     /**
@@ -204,6 +204,6 @@ public class FacturaPersistenceTest {
         FacturaEntity resp = em.find(FacturaEntity.class, entity.getId());
         Assert.assertEquals(newEntity.getId(), resp.getId());
         Assert.assertEquals(newEntity.getName(), resp.getName());
-        Assert.assertEquals(newEntity.getPrecio(), resp.getPrecio());
+        Assert.assertEquals(newEntity.getValor(), resp.getValor());
     }
 }

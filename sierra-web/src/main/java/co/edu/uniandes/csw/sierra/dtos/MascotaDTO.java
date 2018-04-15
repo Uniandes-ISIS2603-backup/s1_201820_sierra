@@ -324,5 +324,9 @@ public class MascotaDTO {
     public void setMuerte(Date muerte) {
         this.muerte = muerte;
     }
-
+    
+    @Override
+    public String toString(){
+        return "\nNombre: " + nombre + "\nedad" + edad;
+    }
 }

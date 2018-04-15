@@ -166,8 +166,7 @@ public class FacturaLogicTest {
         Assert.assertNotNull(resultado);
         Assert.assertEquals(entity.getId(), resultado.getId());
         Assert.assertEquals(entity.getName(), resultado.getName());
-        Assert.assertEquals(entity.getAnimalAdquirido(), resultado.getAnimalAdquirido());
-        Assert.assertEquals(entity.getPrecio(), resultado.getPrecio());
+        Assert.assertEquals(entity.getValor(), resultado.getValor());
         
     }
     
@@ -208,8 +207,7 @@ public class FacturaLogicTest {
 
         Assert.assertEquals(pojoEntity.getId(), respuesta.getId());
         Assert.assertEquals(pojoEntity.getName(), respuesta.getName());
-        Assert.assertEquals(pojoEntity.getAnimalAdquirido(), respuesta.getAnimalAdquirido());
-        Assert.assertEquals(pojoEntity.getPrecio(), respuesta.getPrecio());
+        Assert.assertEquals(pojoEntity.getValor(), respuesta.getValor());
     }
     
     

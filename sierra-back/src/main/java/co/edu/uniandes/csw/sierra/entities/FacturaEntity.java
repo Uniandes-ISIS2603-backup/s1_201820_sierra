@@ -6,14 +6,11 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -27,8 +24,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     private Long idCliente;
     private String nombreCliente;
-    private Integer precio;
-    private String animalAdquirido;
+    private Integer valor;
     
      /**
      * Adquisición ligada a la factura.
@@ -61,13 +57,6 @@ public class FacturaEntity extends BaseEntity implements Serializable{
         return nombreCliente;
     }
     
-    /**
-     * 
-     * @return 
-     */
-    public String getAnimalAdquirido() {
-        return animalAdquirido;
-    }
     
     /**
      * 
@@ -86,24 +75,11 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     }
     
     /**
-     * 
-     * @param animalAdquirido 
-     */
-    public void setAnimalAdquirido(String animalAdquirido) {
-        this.animalAdquirido = animalAdquirido;
-    }
-    
-    
-    
-   
-    
-    
-    /**
      *Retorna el valor total de la factura.
      * @return 
      */
-    public Integer getPrecio() {
-        return precio;
+    public Integer getValor() {
+        return valor;
     }
     
 
@@ -113,8 +89,8 @@ public class FacturaEntity extends BaseEntity implements Serializable{
      * Recibe como parámetro el valor total de la factura.
      * @param valorTotal 
      */
-    public void setPrecio(Integer valorTotal) {
-        this.precio = valorTotal;
+    public void setValor(Integer valorTotal) {
+        this.valor = valorTotal;
     }
     
     
@@ -131,7 +107,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
 
     /**
      * Asigna una adquisición a la Factura.
-     * @Param adquisicion
+     * @param adquisicion. La adquisición ligada a la factura.
      */
    public void setAdquisicion(AdquisicionEntity adquisicion) 
    {

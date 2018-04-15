@@ -70,7 +70,7 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * edad de la mascota
      */
-    private int edad;
+    private Integer edad;
     
     /**
      * color de la  mascota
@@ -80,12 +80,12 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * verificacion si la mascota es esteril
      */
-    private boolean esteril;
+    private Boolean esteril;
     
     /**
      * verificacion si esta  adquirida la mascota
      */
-    private boolean adquirido;
+    private Boolean adquirido;
     
     /**
      * imagen de la mascota
@@ -183,14 +183,14 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * @return the edad
      */
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
     /**
      * @param edad the edad to set
      */
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
@@ -211,28 +211,28 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * @return the esteril
      */
-    public boolean isEsteril() {
+    public Boolean isEsteril() {
         return esteril;
     }
 
     /**
      * @param esteril the esteril to set
      */
-    public void setEsteril(boolean esteril) {
+    public void setEsteril(Boolean esteril) {
         this.esteril = esteril;
     }
 
     /**
      * @return the adquirida
      */
-    public boolean isAdquirido() {
+    public Boolean isAdquirido() {
         return adquirido;
     }
 
     /**
      * @param adquirido the adquirida to set
      */
-    public void setAdquirido(boolean adquirido) {
+    public void setAdquirido(Boolean adquirido) {
         this.adquirido = adquirido;
     }
 
