@@ -1,0 +1,13 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+     <div class="row">
+        <div class="col-sm-6 col-md-2" ng-repeat="especie in especiesRecords">
+            <div class="thumbnail">
+                <img class="img-responsive" ng-src='{{especie.image}}' alt="{{especie.name}}" />  
+                <div><label> Nombre: {{especie.name}} </div>
+                <div>  <label> Edad: {{especie.edad}}</div>
+                <div> <label>Fecha de nacimiento:  {{especie.nacimiento}}</div>
+            </div>
+        </div>
+    </div>
+</div>

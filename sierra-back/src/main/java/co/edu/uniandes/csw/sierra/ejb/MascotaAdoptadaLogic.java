@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import co.edu.uniandes.csw.sierra.persistence.RazaPersistence;
@@ -96,6 +97,20 @@ public class MascotaAdoptadaLogic {
         LOGGER.info("Termina proceso de consultar todas las entidades de Mascota adoptada");
         return entities;
     }
+    
+    
+     /**
+     * Obtiene la lista de los registros de Mascotas .
+     *
+     * @return Colección de objetos de Mascota.
+     */
+    public List<MascotaEntity> getAllMascotas() {
+        LOGGER.info("Inicia proceso de consultar todas las entidades de Mascota");
+        List<MascotaEntity> entities = persistence.findAllMascotas();
+        LOGGER.info("Termina proceso de consultar todas las entidades de Mascota ");
+        return entities;
+    }
+    
 
     /**
      * Obtiene los datos de una instancia de Mascota adoptada a partir de su ID.

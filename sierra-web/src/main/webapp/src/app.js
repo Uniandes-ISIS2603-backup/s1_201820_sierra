@@ -5,7 +5,7 @@
        
         // Internal modules dependencies       
         'sierraModule',
-        
+        'especieModule',
 
     ]);
     // Resuelve problemas de las promesas

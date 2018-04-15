@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,6 +78,22 @@ public class MascotaAdoptadaPersistence
         TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("select u from MascotaAdoptadaEntity u", MascotaAdoptadaEntity.class);
         return query.getResultList();
 	}
+    
+    
+    
+       /**
+     * Devuelve todas las mascotas de la base de datos.
+     * @return una lista con todas las mascotas que encuentre en la base de
+     * datos, "select u from MascotaEntity u" es como un "select * from
+     * MascotaAdoptadaEntity;" - "SELECT * FROM table_name" en SQL.
+     */
+    public List<MascotaEntity> findAllMascotas( )
+	{
+        LOGGER.info("Consultando todas las entidades de Mascota");
+        TypedQuery<MascotaEntity> query = em.createQuery("select u from Mascota u", MascotaEntity.class);
+        return query.getResultList();
+	}
+    
     
      /**
      * Busca si hay alguna mascota adoptada con el id que se envía de argumento
