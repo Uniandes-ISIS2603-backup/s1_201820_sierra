@@ -8,7 +8,10 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
@@ -24,6 +27,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -60,6 +64,11 @@ public class FacturaResource {
     @Inject
     private AdquisicionLogic logicAdquisicion;
     
+    /**
+     * Inyección de la lógica de la entidad Comprobante.
+     */
+    @Inject
+    private ComprobanteLogic logicComprobante;
     
     /**
      * <h1> POST /api/factura : Crea una factura. </h1>
@@ -91,6 +100,8 @@ public class FacturaResource {
         List<FacturaDetailDTO> dtos = new ArrayList<>();
         for(FacturaEntity entityActual : entities)
             dtos.add(new FacturaDetailDTO(entityActual));
+        
+        
         return dtos;
     }
     
@@ -102,14 +113,21 @@ public class FacturaResource {
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve todas las facturas de la aplicación.</code>
      * </pre>
-     * 
+     * @param adquisicionId, el id de la adquisición ligada a la factura.
      * @return JSONArray {@link FacturaDetailDTO} - las facturas encontradas en la aplicación. Si no hay ninguna retorna vacio.
      */
     
     @GET
-    public List<FacturaDetailDTO> getFacturas()
+    public FacturaDetailDTO getFacturas(@PathParam("adquisicionesId") Long adquisicionId)throws WebApplicationException
     {
-        return listEntity2DTO(logicFactura.getAll());
+        System.out.println("-->> El id: " + adquisicionId);
+        AdquisicionEntity adquisicion = logicAdquisicion.getById(adquisicionId);
+        if(adquisicion == null)
+            throw new WebApplicationException("La adquisición con el id dado no existe.");
+        
+        
+        return new FacturaDetailDTO(adquisicion.getFactura());
+        
     }
     
     /**
