@@ -62,9 +62,6 @@ public class MascotaAdoptadaLogic {
      */
     public MascotaAdoptadaEntity createMascotaAdoptada(MascotaAdoptadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una entidad de Mascota adoptda");
-        if (persistence.findById(entity.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una entidad de Mascota adoptada con ese id \"" + entity.getName() + "\"");
-        }
        /** else if (entity.getRaza()==null) {
             throw new BusinessLogicException("La mascota adoptada necesita tener una raza designada \"");
         }
@@ -72,7 +69,7 @@ public class MascotaAdoptadaLogic {
             throw new BusinessLogicException("La mascota adoptada necesita tener una especie designada \"");
         }
         * */
-        else {
+        
            /** if (razapersistence.findByName(entity.getRaza().getNombreRaza())==null) {
                 razapersistence.create(entity.getRaza());
             }
@@ -83,7 +80,7 @@ public class MascotaAdoptadaLogic {
             persistence.create(entity);
             LOGGER.info("Termina proceso de creación de una entidad de Mascota adoptada");
             return entity;
-        }
+        
     }
 
     /**
