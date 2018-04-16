@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div ng-repeat="review in reviews">
+        <div class="center">
+            <div class="row-lg-2">
+                <div class="row">
+                    <h3>Puntaje: {{review.valor}}/5</h3>
+                </div>
+                <div class="row">
+                    <b>Comentarios:</b>
+                    <p>{{review.comentarios}}</p>
+                </div>
+                <div class="row">
+                    <b>Sugerencias:</b>
+                    <p>{{review.sugerencia}}</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

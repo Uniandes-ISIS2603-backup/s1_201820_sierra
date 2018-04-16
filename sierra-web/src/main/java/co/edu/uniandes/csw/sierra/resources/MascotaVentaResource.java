@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 
+import co.edu.uniandes.csw.sierra.dtos.MascotaVentaDTO;
 import co.edu.uniandes.csw.sierra.dtos.MascotaVentaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.MascotaVentaLogic;
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
@@ -108,14 +109,14 @@ public class MascotaVentaResource
      * 200 OK Creo la mascota Venta  .
      * </code>
      * </pre>
-     * @param dto {@link MascotaVentaDetailDTO} -La mascota Venta  que se desea guardar.
-     * @return JSON {@link MascotaVentaDetailDTO}  - La mascotaVenta se a guardado con el atributo id autogenerado.
+     * @param dto {@link MascotaVentaDTO} -La mascota Venta  que se desea guardar.
+     * @return JSON {@link MascotaVentaDTO}  - La mascotaVenta se a guardado con el atributo id autogenerado.
      * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     @POST
-    public MascotaVentaDetailDTO createMascota(MascotaVentaDetailDTO dto) throws BusinessLogicException{
+    public MascotaVentaDTO createMascota(MascotaVentaDTO dto) throws BusinessLogicException{
  
-        return new MascotaVentaDetailDTO(mascotaVentaLogica.create(dto.toEntity()));
+        return new MascotaVentaDTO(mascotaVentaLogica.create(dto.toEntity()));
     }
     
    /**

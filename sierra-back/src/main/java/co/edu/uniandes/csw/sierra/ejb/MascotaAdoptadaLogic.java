@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import co.edu.uniandes.csw.sierra.persistence.RazaPersistence;
@@ -61,8 +62,8 @@ public class MascotaAdoptadaLogic {
      */
     public MascotaAdoptadaEntity createMascotaAdoptada(MascotaAdoptadaEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de una entidad de Mascota adoptda");
-        if (persistence.findByName(entity.getNombre()) != null) {
-            throw new BusinessLogicException("Ya existe una entidad de Mascota adoptada con el nombre \"" + entity.getName() + "\"");
+        if (persistence.findById(entity.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una entidad de Mascota adoptada con ese id \"" + entity.getName() + "\"");
         }
        /** else if (entity.getRaza()==null) {
             throw new BusinessLogicException("La mascota adoptada necesita tener una raza designada \"");
@@ -96,6 +97,20 @@ public class MascotaAdoptadaLogic {
         LOGGER.info("Termina proceso de consultar todas las entidades de Mascota adoptada");
         return entities;
     }
+    
+    
+     /**
+     * Obtiene la lista de los registros de Mascotas .
+     *
+     * @return Colección de objetos de Mascota.
+     */
+    public List<MascotaEntity> getAllMascotas() {
+        LOGGER.info("Inicia proceso de consultar todas las entidades de Mascota");
+        List<MascotaEntity> entities = persistence.findAllMascotas();
+        LOGGER.info("Termina proceso de consultar todas las entidades de Mascota ");
+        return entities;
+    }
+    
 
     /**
      * Obtiene los datos de una instancia de Mascota adoptada a partir de su ID.

@@ -9,6 +9,7 @@ package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,8 @@ public class MascotaAdoptadaResource {
         }
         return list;
     }
-
+    
+  
     /**
      * <h1>GET /api/mascotasAdoptadas : Obtener todos las mascotas
      * adoptadas.</h1>
@@ -88,6 +90,8 @@ public class MascotaAdoptadaResource {
         return listEntity2DTO(mascotaAdoptadaLogica.getAllMascotasAdoptadas());
     }
 
+    
+    
     /**
      * <h1>GET /api/mascotasAdoptadas/{id} : Obtener mascota adoptada por
      * id.</h1>
@@ -115,7 +119,7 @@ public class MascotaAdoptadaResource {
     public MascotaAdopcionDetailDTO getMascotaAdoptada(@PathParam("id") Long id) throws BusinessLogicException {
         MascotaAdoptadaEntity mascota = mascotaAdoptadaLogica.getMascotaAdoptadaById(id);
         if (mascota == null) {
-            throw new WebApplicationException("La compania no existe.");
+            throw new WebApplicationException("La mascota  no se encuentra  registrada para ser adoptada.");
         }
         return new MascotaAdopcionDetailDTO(mascota);
     }

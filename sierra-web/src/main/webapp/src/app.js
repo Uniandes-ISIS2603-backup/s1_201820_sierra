@@ -4,8 +4,9 @@
         'ui.router',
        
         // Internal modules dependencies       
+        'calificacionModule',
         'sierraModule',
-        
+        'especieModule'
 
     ]);
     // Resuelve problemas de las promesas

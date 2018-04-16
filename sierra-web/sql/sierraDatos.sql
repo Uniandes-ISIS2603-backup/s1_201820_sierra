@@ -6,8 +6,8 @@ delete from ClienteEntity;
 delete from ComprobanteEntity;
 delete from EspecieEntity;
 delete from FacturaEntity;
-delete from MascotaEntity;
 delete from MascotaAdoptadaEntity;
+delete from MascotaEntity;
 delete from MascotaVentaEntity;
 delete from MedioDePagoEntity;
 delete from PublicacionEntity;
@@ -58,7 +58,16 @@ insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (5,
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (6, 'Mamifero', 'Bolas afelpadas de algodon', 'Conejo');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña');
 
-insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano,precio) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande',1321314); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande'); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (2,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Pepa','grande'); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (3,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Zeus','grande'); 
+insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (4,0,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Petreo','grande'); 
+
+insert into MascotaAdoptadaEntity(id) values (1);
+insert into MascotaAdoptadaEntity(id) values (2)
+insert into MascotaAdoptadaEntity(id) values (3);
+
+ 
 
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
