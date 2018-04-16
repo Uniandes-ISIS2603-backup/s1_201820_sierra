@@ -6,7 +6,8 @@
         // Internal modules dependencies       
         'sierraModule',
         'especieModule',
-        'mascotaaModule'
+        'mascotaaModule',
+        'calificacionModule'
 
     ]);
     // Resuelve problemas de las promesas
@@ -14,4 +15,3 @@
             $qProvider.errorOnUnhandledRejections(false);
         }]);
 })(window.angular);
-
