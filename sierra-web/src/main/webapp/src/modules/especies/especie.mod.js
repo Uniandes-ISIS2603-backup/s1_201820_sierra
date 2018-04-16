@@ -5,13 +5,13 @@
  mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
          var basePath = 'src/modules/especies/';
          $urlRouterProvider.otherwise("/especiesList");
-         $stateProvider.state( 'epeciesList',{
+         $stateProvider.state('especiesList',{
                url: '/especie ',
                views:{
                    mainView:{
-                       controller:'especie.Ctrl',
-                       controllerAs: 'Crtl',
-                       templatUrl: basePath+"especie.list.html"
+                       templateUrl: basePath+"especie.list.html",
+                       controller:'especieCtrl',
+                       controllerAs: 'Crtl'
                    }
                }
          });

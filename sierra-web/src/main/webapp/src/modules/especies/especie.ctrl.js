@@ -2,14 +2,10 @@
     
     var mod=ng.module('especieModule');
     mod.constant('especieContext','api/especies');
-    mod.controller('especieCtrl',['$scope','$state','$stateParams', '$http','especieContext', 
-            function($scope, $state, $stateParams, $http, especieContext){
-           
-             // inicialmente el listado de entidades de especies está vacio   
-             $scope.records={};
-            
+    mod.controller('especieCtrl',['$scope','$http','especieContext', 
+            function($scope, $http, especieContext){
             // carga las entidades de especie
-            $http.get('data/especie.json').then(function (response) {
+            $http.get("data/especie.json").then(function (response) {
                 $scope.especiesRecords = response.data;
             });
     }]);
