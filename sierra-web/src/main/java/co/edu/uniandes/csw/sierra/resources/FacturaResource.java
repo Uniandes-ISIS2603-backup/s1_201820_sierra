@@ -7,7 +7,11 @@ package co.edu.uniandes.csw.sierra.resources;
 //TODO: Borrar loque no se usa
 
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
@@ -23,6 +27,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -48,10 +53,23 @@ import javax.ws.rs.WebApplicationException;
 public class FacturaResource {
     
     /**
-     * Injección de la lógica.
+     * Inyección de la lógica de la entidad Factura.
      */
     @Inject
-    private FacturaLogic logic;
+    private FacturaLogic logicFactura;
+    
+    /**
+     * Inyección de la lógica de la entidad Adquisición.
+     */
+    @Inject
+    private AdquisicionLogic logicAdquisicion;
+    
+    /**
+     * Inyección de la lógica de la entidad Comprobante.
+     */
+    @Inject
+    private ComprobanteLogic logicComprobante;
+    
     /**
      * <h1> POST /api/factura : Crea una factura. </h1>
      * <pre>
@@ -74,7 +92,7 @@ public class FacturaResource {
     @POST
     public FacturaDetailDTO createFactura(FacturaDetailDTO dto) throws BusinessLogicException
     {
-        return new FacturaDetailDTO(logic.create(dto.toEntity()));
+        return new FacturaDetailDTO(logicFactura.create(dto.toEntity()));
     }
     
     private List<FacturaDetailDTO> listEntity2DTO(List<FacturaEntity> entities)
@@ -82,6 +100,8 @@ public class FacturaResource {
         List<FacturaDetailDTO> dtos = new ArrayList<>();
         for(FacturaEntity entityActual : entities)
             dtos.add(new FacturaDetailDTO(entityActual));
+        
+        
         return dtos;
     }
     
@@ -93,14 +113,21 @@ public class FacturaResource {
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve todas las facturas de la aplicación.</code>
      * </pre>
-     * 
+     * @param adquisicionId, el id de la adquisición ligada a la factura.
      * @return JSONArray {@link FacturaDetailDTO} - las facturas encontradas en la aplicación. Si no hay ninguna retorna vacio.
      */
     
     @GET
-    public List<FacturaDetailDTO> getFacturas()
+    public FacturaDetailDTO getFacturas(@PathParam("adquisicionesId") Long adquisicionId)throws WebApplicationException
     {
-        return listEntity2DTO(logic.getAll());
+        System.out.println("-->> El id: " + adquisicionId);
+        AdquisicionEntity adquisicion = logicAdquisicion.getById(adquisicionId);
+        if(adquisicion == null)
+            throw new WebApplicationException("La adquisición con el id dado no existe.");
+        
+        
+        return new FacturaDetailDTO(adquisicion.getFactura());
+        
     }
     
     /**
@@ -124,7 +151,7 @@ public class FacturaResource {
     @Path("{id: \\d+}")
     public FacturaDetailDTO getFactura(@PathParam("id") Long id)throws WebApplicationException
     {
-        FacturaEntity encontrada = logic.getById(id);
+        FacturaEntity encontrada = logicFactura.getById(id);
         
         if(encontrada == null)
             throw new WebApplicationException("No existe una factura con el id dado por parámetro.");
@@ -157,12 +184,12 @@ public class FacturaResource {
     {
         FacturaEntity entity = infoFactura.toEntity();
         entity.setId(id);
-        FacturaEntity oldEntity = logic.getById(id);
+        FacturaEntity oldEntity = logicFactura.getById(id);
         if(oldEntity == null)
             throw new WebApplicationException("El comprobante no existe.");
         entity.setAdquisicion(oldEntity.getAdquisicion());
         entity.setComprobantes(oldEntity.getComprobantes());
-        return new FacturaDetailDTO(logic.update(entity));
+        return new FacturaDetailDTO(logicFactura.update(entity));
     }
     
     /**
@@ -184,9 +211,9 @@ public class FacturaResource {
     public void deleteFactura(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
     {
         //process
-        FacturaEntity entity = logic.getById(id);
+        FacturaEntity entity = logicFactura.getById(id);
         if(entity == null)
             throw new WebApplicationException("La factura buscada no existe.");
-        logic.delete(id);
+        logicFactura.delete(id);
     }
 }
