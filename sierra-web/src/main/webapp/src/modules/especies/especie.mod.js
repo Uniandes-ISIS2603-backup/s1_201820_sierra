@@ -6,7 +6,7 @@
          var basePath = 'src/modules/especies/';
          $urlRouterProvider.otherwise("/especiesList");
          $stateProvider.state('especiesList',{
-               url: '/especie ',
+               url: '/especie',
                views:{
                    mainView:{
                        templateUrl: basePath+"especie.list.html",
