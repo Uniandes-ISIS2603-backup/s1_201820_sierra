@@ -10,6 +10,12 @@
         "idCliente":1,
         "nombreCliente":"Arnulfo",
         "valor":40000
+    },
+    {
+        "id":3,
+        "idCliente":2,
+        "nombreCliente":"Jorge",
+        "valor":35000
     }
     
 ]
