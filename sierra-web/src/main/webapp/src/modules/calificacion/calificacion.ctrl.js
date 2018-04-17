@@ -11,9 +11,8 @@
             $http.get('data/calificaciones.json').then(function (response) {
                 $scope.reviews = response.data;
             });
-            
-
-
+           
+           
         }
     ]);
 

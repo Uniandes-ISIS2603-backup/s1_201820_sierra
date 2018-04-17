@@ -5,7 +5,8 @@
  mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
          var basePath = 'src/modules/especies/';
          $urlRouterProvider.otherwise("/especiesList");
-         $stateProvider.state('especiesList',{
+         $stateProvider
+               .state('especiesList',{
                url: '/especie',
                views:{
                    mainView:{
@@ -14,7 +15,20 @@
                        controllerAs: 'Crtl'
                    }
                }
-         });
+         })
+             .state('especiecreate', {
+             url:'especies/create',
+             views:
+              {
+               mainView:
+                {
+                   templateUrl: basePath + "especie.create.html",
+                   controller:'especieCtrl',
+                   controllerAs: 'Crtl'
+                }
+              }
+         })
+         
         }
  
     ]);
