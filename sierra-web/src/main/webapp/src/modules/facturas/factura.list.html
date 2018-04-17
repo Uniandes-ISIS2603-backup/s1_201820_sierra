@@ -11,15 +11,14 @@
     <div class="row" style=" margin:1%" >
 
         <!--Lista de Facturas-->
-        <div class="col -lg-12" ng-repeat="factura in facturaRecords" >
-            <div class="thumbnail " style="max-width: 33%; border-radius: 5%">
+        <div class="col-sm-6 col-lg-6 col-md-6" ng-repeat="factura in facturaRecords" >
+            <div class="thumbnail " style=" border-radius: 5%">
                 <h3 style="margin:5%">
                     Factura Adquisición
                 </h3>
-
                 <div class="container-fluid" >
                     <div class ="row" style="padding-left:5%">
-                        <div class = "col -lg-12">
+                        <div class = "col-sm-6">
                             <label>id Factura: &nbsp; </label><label>{{factura.id}}</label><br>
                             <label>id Cliente:  &nbsp;</label><label> {{factura.idCliente}}</label><br>
                             <label>nombre Cliente:  &nbsp;</label><label>{{factura.nombreCliente}}</label><br>
