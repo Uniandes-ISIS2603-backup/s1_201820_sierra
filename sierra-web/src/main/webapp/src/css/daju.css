@@ -7,8 +7,10 @@ and open the template in the editor.
     Created on : 16/04/2018, 06:59:02 PM
     Author     : jc.sanchez12
 */
-h2{
-    color: white;
-    background-color: black;
+.TituloTablaCentrado{
+    text-align: center;
+    border-bottom-color: #000;
+    border-bottom-style: solid;
+    
 }
 
