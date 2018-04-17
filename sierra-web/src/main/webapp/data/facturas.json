@@ -1,5 +1,15 @@
 [
     {
+        "id":1,
+        "idCliente":1,
+        "nombreCliente":"Arnulfo",
+        "valor":20000
+    },
+    {
+        "id":2,
+        "idCliente":1,
+        "nombreCliente":"Arnulfo",
+        "valor":40000
     }
     
 ]
