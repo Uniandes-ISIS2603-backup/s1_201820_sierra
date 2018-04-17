@@ -1,16 +1,26 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs" >
+            <li style="background-color:beige"><a ui-sref="especiesList">Lista</a></li>
+    </ul>
+</div>
+</div>
+<!--LiSTA DE  ESPECIES -->
 <div class="container-fluid">
-    <h1>Especies registradas en la tienda: </h1> 
-     <div  class="row">
-        <div class="col-sm-4 col-md-6" ng-repeat="especie in especiesRecords">
-            <div class="thumbnail" style="background-color: gray">
-            <div><label> Nombre: <a href="https://drive.google.com/open?id=1bNdSfkMZeYIaHVVqBL8UzO_z0fbiKFNHIZ0g0fS8994"> {{especie.nombre}}</a>  </div>
-            <div  class="thumbnail" >
-                <div>  <label> Caracteristicas: {{especie.caracteristicas}}</div>
-                <div> <label> Clasificacion:  {{especie.clasificacion}}</div>
-            </div>
-            </div>
+    <div> <h1 style="text-align: center">Especies registradas en la tienda: </h1> </div>
+    <div  class="row">
+        <div class="col-sm-8 col-md-8" ng-repeat="especie in especiesRecords">
             
+            <div class="thumbnail" style="background-color: gray">
+                <div style="text-align: center"><label>{{especie.nombre}}</label></div>
+                <div  class="thumbnail" >
+                    <div>  <label> Caracteristicas: </label> {{especie.caracteristicas}}</div>
+                    <div> <label> Clasificacion: </label> {{especie.clasificacion}}</div>
+                </div>
+            </div>
+              
+                     
         </div>
     </div>
 </div>

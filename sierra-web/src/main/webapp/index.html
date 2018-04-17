@@ -4,9 +4,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Sierra</title>
-
-        <!-- Dependencias Externas -->
+        <title>AmigosPeludos</title>
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoUniandes.jpg">
+         <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -23,7 +23,7 @@
         <script src="src/modules/mascotasadoptadas/mascotaa.mod.js" type="text/javascript"></script>
         <script src="src/modules/mascotasadoptadas/mascotaa.ctrl.js" type="text/javascript"></script>
         
-         <!--Mascota Adoptada-->
+         <!--Calificacion-->
         <script src="src/modules/calificacion/calificacion.mod.js" type="text/javascript"></script>
         <script src="src/modules/calificacion/calificacion.ctrl.js" type="text/javascript"></script>
         
@@ -33,20 +33,23 @@
 
       
     </head>
-
-    <body style="padding-top: 20px;">
-        <div class="container-fluid col-md-12" >
-            
-                    <ul class="nav nav-tabs">
-                        <li><h4>Sierra</h4></li> 
+     <body style="padding-top: 20px;" >
+         
+         <div class="container-fluid col-md-12"  >
+            <ul class="nav nav-tabs" style="background-color: lightblue">
+                <li> <img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="65"></li>
+                <li><h3 style="font-style: italic"><b>Sierra App</b></h3></li>
+                        <br>
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li style="margin-left: 200px"><a ui-sref="sierraList">Sierra</a></li>
-                        <li><a ui-sref='especiesList'>Especie</a></li>
-                        <li><a ui-sref='mascotasaList'> Mascotas</a></li>
-                        <li><a ui-sref='calificacionList'> Calificaciones</a></li>
-                    </ul>
-   
+                        <li style="margin-left:50px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
+                        <li><a ui-sref='especiesList'><b>Especies</b></a></li>
+                        <li><a ui-sref='mascotasaList'><b> Mascotas</b></a></li>
+                        <li><a ui-sref='calificacionList'><b> Calificaciones</b></a></li>
+                        <hr>
+            </ul>
+            <hr>
             <div ui-view="mainView"></div> 
         </div>
+       
     </body>
 </html>
