@@ -1,8 +1,8 @@
 [
     {
-       "id":5,
+       "id":1,
        "comentarios":"muy buenna pagina, to do funciona super bien y fue muy buena la experiencia",
-       "valor":5,
+       "valor":1,
        "sugerencia":"You don't mess with perfection",
        "adquisicion":
            {
@@ -11,9 +11,9 @@
            "fecha":"10/5/1973"
            }
    },{
-       "id":6,
+       "id":2,
        "comentarios":"pagina, funciona la experiencia",
-       "valor":3,
+       "valor":2,
        "sugerencia":"aja",
        "adquisicion":
            {
@@ -22,9 +22,45 @@
            "fecha":"10/5/2011"
            }
    },{
+       "id":3,
+       "comentarios":"comentario generico",
+       "valor":3,
+       "sugerencia":"sugerencia generica",
+       "adquisicion":
+           {
+           "id":3,
+           "valorTotal":12300,
+           "fecha":"30/1/1999"
+           }
+   },
+   {
+       "id":4,
+       "comentarios":"comentario generico",
+       "valor":4,
+       "sugerencia":"sugerencia generica",
+       "adquisicion":
+           {
+           "id":3,
+           "valorTotal":12300,
+           "fecha":"30/1/1999"
+           }
+   },
+   {
        "id":5,
        "comentarios":"comentario generico",
-       "valor":2.5,
+       "valor":5,
+       "sugerencia":"sugerencia generica",
+       "adquisicion":
+           {
+           "id":3,
+           "valorTotal":12300,
+           "fecha":"30/1/1999"
+           }
+   },
+   {
+       "id":6,
+       "comentarios":"comentario generico",
+       "valor":6,
        "sugerencia":"sugerencia generica",
        "adquisicion":
            {

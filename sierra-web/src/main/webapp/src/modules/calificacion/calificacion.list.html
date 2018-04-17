@@ -7,21 +7,25 @@
         </ul>
     </div>
 </div>
-
+<br>
 <div class="container-fluid">
-    <div ng-repeat="review in reviews">
-        <div class="center">
-            <div class="row-lg-2">
+    <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12"ng-repeat="review in reviews">
+        <div class="thumbnail" style="max-width: 100%; border-radius: 5%">
+            <div>
                 <div class="row">
-                    <h3>Puntaje: {{review.valor}}/5</h3>
+                    <h3 style="margin:5%">Puntaje: {{review.valor}}/5</h3>
                 </div>
                 <div class="row">
-                    <b>Comentarios:</b>
-                    <p>{{review.comentarios}}</p>
+                    <b style="margin:5%">Comentarios:</b>
+                    <p style="margin:5%">{{review.comentarios}}</p>
                 </div>
                 <div class="row">
-                    <b>Sugerencias:</b>
-                    <p>{{review.sugerencia}}</p>
+                    <b style="margin:5%">Sugerencias:</b>
+                    <p style="margin:5%">{{review.sugerencia}}</p>
+                </div>
+                <div class="row">
+                    <b style="margin:5%">Fecha:</b>
+                    <p style="margin:5%">{{review.adquisicion.fecha}}</p>
                 </div>
             </div>
         </div>
