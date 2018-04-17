@@ -8,7 +8,8 @@
         'especieModule',
         'mascotaaModule',
         'calificacionModule',
-        'facturaModule'
+        'facturaModule',
+        'adquisicionModule'
 
     ]);
     // Resuelve problemas de las promesas
