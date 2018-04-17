@@ -18,7 +18,9 @@
                         controllerAs: 'ctrl'
                     }
                 }
-            }).state('calificacionCreate', 
+                
+            })
+            .state('calificacionCreate', 
             {
                 url:'/calificacion/create',
                 views: {
