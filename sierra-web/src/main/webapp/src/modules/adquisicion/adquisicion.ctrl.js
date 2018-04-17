@@ -9,7 +9,7 @@
             $scope.reviews = {};
             //llena reviews con los datos del response
             $http.get('data/adquisiciones.json').then(function (response) {
-                $scope.reviews = response.data;
+                $scope.adquisiciones = response.data;
             });
            
            

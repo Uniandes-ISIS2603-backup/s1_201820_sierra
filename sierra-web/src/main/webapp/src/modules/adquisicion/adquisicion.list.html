@@ -8,24 +8,22 @@
     </div>
 </div>
 <br>
-<div class="container-fluid">
-    <div class="row">
-        <h3>Id: {{id}}</h3>
-    </div>
+<div class="container-fluid col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="adquisicion in adquisiciones">
+    
     <div class="row">
         <div class="col-lg-4">
-            <img-src"{{imagen}} class="img-fluid" alt="imagenMascota">
+            <img-src"{{adqisicion.mascota.imagen}} class="img-fluid" alt="{{adqisicion.mascota.imagen}}">
         </div>
         <div class="col-lg-4">
             <table class="table table-hover">
                 <tbody>
                     <tr>
-                        <td>Mascota: {{mascotName}}</td>
-                        <td>Raza: {{mascotRace}}</td>
+                        <td>Id: {{adquisicion.id}}</td>
+                        <td>Mascota: {{adquisicion.mascota.name}}</td>
                     </tr>
                     <tr>
-                        <td>Valor Total: {{valorTotal}}</td>
-                        <td>Fecha: {{fecha}}</td>
+                        <td>Valor Total: {{adquisicion.valorTotal}}</td>
+                        <td>Fecha: {{adquisicion.fecha}}</td>
                     </tr>
                     <tr>
                         <td><ui-sref="algunaFactura">Facturas</td>
