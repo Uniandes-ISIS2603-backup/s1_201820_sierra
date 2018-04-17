@@ -7,7 +7,8 @@
         'sierraModule',
         'especieModule',
         'mascotaaModule',
-        'calificacionModule'
+        'calificacionModule',
+        'facturaModule'
 
     ]);
     // Resuelve problemas de las promesas
