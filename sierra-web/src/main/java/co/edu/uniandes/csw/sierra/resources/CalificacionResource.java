@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
@@ -43,7 +44,7 @@ devuelven objetos en formato JSON
 * @version 1.0
 */
 //TODO: Modificar el recurso para adaptarse al nuevo path
-@Path( "adquisiciones/{adquisicionesId: \\d}/calificaciones" )
+@Path( "/calificaciones" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
