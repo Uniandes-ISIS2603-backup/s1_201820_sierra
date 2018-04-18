@@ -103,13 +103,15 @@ public class CalificacionLogic {
     
     /**
      * Elimina una Calificacion
-     * @param ent la calificacion que se desea eliminar
+     * @param id el id de la calificacion que se desea eliminar
+     * @throws java.lang.Exception si no existe la calificacion
      */
     public void delete(Long id)throws Exception{
         LOGGER.log(Level.INFO, "Eliminando la Calificacion con id ={0}", id);
         if(persistencia.find(id) != null){
             persistencia.delete(id);
         }else{
+            LOGGER.log(Level.WARNING, "No se borra la calificacion con id={0}", id);
             throw new Exception("No existe la calificacion");
         }
     }

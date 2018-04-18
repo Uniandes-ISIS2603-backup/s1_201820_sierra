@@ -24,9 +24,11 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -48,6 +50,9 @@ public class AdquisicionLogic {
      */
     @Inject
     private AdquisicionPersistence persistencia;
+    
+    @Inject
+    private CalificacionLogic calLogic;
     
     /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
@@ -106,6 +111,15 @@ public class AdquisicionLogic {
         }else{
             throw new Exception("No existe una adquisicion con el id dado");
         }
+    }
+
+    public CalificacionEntity addCalificacion(Long adqId, Long calId) {
+        System.out.println("adqId: " + adqId + "\ncalId: " + calId);
+        AdquisicionEntity adqEntity = getById(adqId);
+        CalificacionEntity calEntity = calLogic.getById(calId);
+        calEntity.setAdquisicion(adqEntity);
+        adqEntity.setCalificacion(calEntity);
+        return calEntity;
     }
     
     
