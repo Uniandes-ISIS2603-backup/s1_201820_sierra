@@ -1,19 +1,19 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
-     <h1 style='text-align: center'>ADQUIERA UNA MASCOTA</h1> 
-     <div style="background-color:lightgray">
-                <ul class="nav nav-tabs"> 
-                    <li> <a ui-sref="mascotasadopList">Adopccion </a></li>
-                </ul>
-         </div>
-     <div  class="row">
-        <div class="col-sm-2" ng-repeat="mascota in mascotaRecords">
+    <h1 class="TituloAdopcion">ADOPCION</h1> 
+      <div  class="row">
+        <div class="col-sm-2" ng-repeat="mascota in mascotaadopRecords">
             <br>
             <div  class="thumbnail" >
                 <div><center>
                     <img  src="{{mascota.imagen}}" class="ImagenMascotas" >
                     </center></div>
                 <div style="text-align: center">  <label> Nombre:  {{mascota.name}}</div>
+                <div style="text-align: center">  <label> Edad : {{mascota.edad}}</div>
+                <div style="text-align: center">  <label> Tamaño : {{mascota.tamano}}</div>
+                <center>
+                    <div><a ui-sref="#"> Ver </a> </div>
+                </center>
             </div>
         </div>
             

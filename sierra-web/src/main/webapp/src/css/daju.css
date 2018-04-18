@@ -13,4 +13,20 @@ and open the template in the editor.
     border-bottom-style: solid;
     
 }
-
+.grupoDesarrollo{
+    background-color: black;
+    color: white;
+}
+.ImagenMascotas{
+    width: 230px;
+    height: 400px;
+}
+.TituloAdopcion{
+    text-align: center;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    background-color: lightskyblue;
+    
+}

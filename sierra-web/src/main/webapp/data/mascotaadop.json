@@ -1,0 +1,35 @@
+[
+    {
+       "id": 1,
+       "name": "Kiba",
+       "edad": 2,
+       "color":"negro",
+       "esteril":true,
+       "adquirido":false,
+       "imagen":"imagenes/siberiano.jpg",
+      "tamano":"Grande",
+       "nacimiento": "03/10/2016"
+    },
+    {
+       "id": 2,
+       "name": "Jaco",
+       "edad": 2,
+       "color":"Blanco",
+       "esteril":true,
+       "adquirido":false,
+       "imagen":"imagenes/samoyedo.jpg",
+       "tamano":"Grande",
+       "nacimiento": "03/10/2016"
+    },
+     {
+       "id": 3,
+       "name": "Luna",
+       "edad": 2,
+       "color":"Blanco",
+       "esteril":true,
+       "adquirido":true,
+       "imagen":"imagenes/FPoodle.jpg",
+       "tamano":"pequeño",
+       "nacimiento": "03/10/2015"
+    }
+]
