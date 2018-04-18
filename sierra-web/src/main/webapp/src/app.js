@@ -6,7 +6,7 @@
         // Internal modules dependencies       
         'sierraModule',
         'especieModule',
-        'mascotaaModule',
+        'mascotaModule',
         'calificacionModule',
         'facturaModule',
         'adquisicionModule'

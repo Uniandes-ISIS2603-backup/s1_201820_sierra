@@ -6,28 +6,30 @@
          var basePath = 'src/modules/especies/';
          $urlRouterProvider.otherwise("/especiesList");
          $stateProvider
-               .state('especiesList',{
-               url: '/especie',
+               
+                 .state('especiesList',{
+               url: '/especies',
                views:{
-                   mainView:{
+                   'mainView':{
                        templateUrl: basePath+"especie.list.html",
                        controller:'especieCtrl',
                        controllerAs: 'Crtl'
                    }
                }
          })
-             .state('especiecreate', {
-             url:'especies/create',
+             .state('especiecreate', 
+            {
+             url:'/especies/registrar',
              views:
               {
-               mainView:
+               'mainView':
                 {
                    templateUrl: basePath + "especie.create.html",
                    controller:'especieCtrl',
                    controllerAs: 'Crtl'
                 }
               }
-         })
+         });
          
         }
  
