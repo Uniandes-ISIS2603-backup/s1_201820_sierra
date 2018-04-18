@@ -198,6 +198,7 @@ public class CalificacionResource {
     @Path( "{id: \\d+}" )
     public void deleteCalificacion( @PathParam( "id" ) Long id )
     {
+        System.out.println("Resourse: Eliminando calificacion: " + id);
         try {
             calificacionLogic.delete(id);
         } catch (Exception ex) {
