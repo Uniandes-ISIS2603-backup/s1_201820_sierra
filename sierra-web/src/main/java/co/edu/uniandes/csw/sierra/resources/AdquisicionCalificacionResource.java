@@ -72,7 +72,7 @@ public class AdquisicionCalificacionResource {
      * </pre>
      * @param adqId Identificador de la adquisicion que se esta buscando. Este debe ser una cadena de dígitos.
      * @param calId Identificador de la calificacion que se desea guardar. Este debe ser una cadena de dígitos.
-     * @return JSON {@link BookDetailDTO} - El libro guardado en la editorial.
+     * @return JSON {@link CalificacionDetailDTO} - La calificacion guardada en la adquisicion
      */
     @POST
     @Path("{calificacionId: \\d+}")
