@@ -8,7 +8,11 @@
        "adquirido":false,
        "imagen":"imagenes/siberiano.jpg",
       "tamano":"Grande",
-       "nacimiento": "03/10/2016"
+       "nacimiento": "03/10/2016",
+       "raza":{
+            "nombre":"Siberian",
+            "cuidados":"Ejercicio"
+          }
     },
     {
        "id": 2,
@@ -19,7 +23,11 @@
        "adquirido":false,
        "imagen":"imagenes/samoyedo.jpg",
        "tamano":"Grande",
-       "nacimiento": "03/10/2016"
+       "nacimiento": "03/10/2016",
+         "raza":{
+            "nombre": "Samoyedo",
+            "cuidados": "Ejercicio"
+       }
     },
      {
        "id": 3,
@@ -30,6 +38,10 @@
        "adquirido":true,
        "imagen":"imagenes/FPoodle.jpg",
        "tamano":"pequeño",
-       "nacimiento": "03/10/2015"
+       "nacimiento": "03/10/2015",
+       "raza":{
+            "nombre": "French Poodle",
+            "cuidados": "Ejercicio"
+       }
     }
 ]

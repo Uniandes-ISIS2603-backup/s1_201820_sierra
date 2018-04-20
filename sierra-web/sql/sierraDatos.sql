@@ -50,13 +50,13 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono) values (5, 'Go
 
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (1,1,'Andres', 20000);
 
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (1, 'Mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (2, 'Mamifero', 'Independientes y agiles', 'felino');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (5, 'Mamifero', 'Pequelos y tiernos', 'Hamnster');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (6, 'Mamifero', 'Bolas afelpadas de algodon', 'Conejo');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (1, 'Mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (2, 'Mamifero', 'Independientes y agiles', 'felino','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (5, 'Mamifero', 'Pequelos y tiernos', 'Hamnster','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (6, 'Mamifero', 'Bolas afelpadas de algodon', 'Conejo','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña','general');
 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande'); 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (2,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Pepa','grande'); 

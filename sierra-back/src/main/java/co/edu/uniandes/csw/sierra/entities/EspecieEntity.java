@@ -59,6 +59,11 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     private String clasificacion;
     
+    /**
+     * Imagen de la especie
+     */
+    private String imagen;
+    
     //---------------RELACIONES-----------------//
     
     /**
@@ -116,6 +121,24 @@ public class EspecieEntity extends BaseEntity implements Serializable
         this.clasificacion = clasificacion;
     }
 
+    /**
+     * 
+     * @return returna la imagen
+     */
+    public String getImagen()
+    {
+        return imagen;
+    }
+    
+    /**
+     * Cambia la imagen por la entrada por parametro
+     * @param imagen 
+     */
+    public void setImagen(String imagen)
+    {
+        this.imagen=imagen;
+    }
+    
     /**
      * @return the razas
      */

@@ -39,8 +39,7 @@ import java.util.Date;
  *      "adquirido":boolean,
  *      "imagen":String,
  *      "tamano":String,
- *      "nacimiento": Date,
- *      "muerte": Date
+ *      "nacimiento": Date
  *   }
  * </pre> Por ejemplo una entidad de Mascota se representa asi:<br>
  * <p>
@@ -116,10 +115,6 @@ public class MascotaDTO {
      */
     private Date nacimiento;
 
-    /**
-     * Fecha dela muerte de la amscota
-     */
-    private Date muerte;
 
     /**
      * Constructor por defecto
@@ -145,7 +140,6 @@ public class MascotaDTO {
         this.imagen = mascotaEntity.getImagen();
         this.tamano = mascotaEntity.getTamano();
         this.nacimiento = mascotaEntity.getNacimiento();
-        this.muerte = mascotaEntity.getMuerte();
 
     }
 
@@ -167,7 +161,6 @@ public class MascotaDTO {
         entity.setImagen(imagen);
         entity.setTamano(tamano);
         entity.setNacimiento(nacimiento);
-        entity.setMuerte(muerte);
         return entity;
     }
 
@@ -311,19 +304,7 @@ public class MascotaDTO {
         this.nacimiento = nacimiento;
     }
 
-    /**
-     * @return the muerte
-     */
-    public Date getMuerte() {
-        return muerte;
-    }
 
-    /**
-     * @param muerte the muerte to set
-     */
-    public void setMuerte(Date muerte) {
-        this.muerte = muerte;
-    }
     
     @Override
     public String toString(){
