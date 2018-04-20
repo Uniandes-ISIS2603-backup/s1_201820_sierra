@@ -9,12 +9,11 @@
         'mascotaModule',
         'calificacionModule',
         'facturaModule',
-<<<<<<< HEAD
-        'mascotaadopModule'
-=======
-        'adquisicionModule'
->>>>>>> b72ec8ebbb20e94f4d2bdf71d46565c4911e4ec4
 
+        'mascotaadopModule',
+
+        'adquisicionModule',
+        'clienteModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

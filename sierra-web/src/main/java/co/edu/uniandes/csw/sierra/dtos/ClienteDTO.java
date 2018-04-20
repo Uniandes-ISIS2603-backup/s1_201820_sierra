@@ -19,7 +19,9 @@ import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
  * "apellido": string,
  * "cedula": number,
  * "id": number,
- * "telefono": number
+ * "telefono": number,
+ * "correo":string,
+ * "contrasenia":string
  *  }
  * </pre> Por ejemplo una entidad Cliente se representa asi:<br>
  * <p>
@@ -30,7 +32,9 @@ import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
  * "apellido": "Castro",
  * "cedula": 1072548232,
  * "id": 001,
- * "telefono": 3182564852
+ * "telefono": 3182564852,
+ * "correo": "andresCastro@gmail.com",
+ * "contrasenia": "123456789"
  *   }
  * </pre>
  *
@@ -43,6 +47,8 @@ public class ClienteDTO {
     private String apellido;
     private Long cedula;
     private Long telefono;
+    private String correo;
+    private String contrasenia;
 
     /**
      * Constructor por defecto.
@@ -63,6 +69,8 @@ public class ClienteDTO {
             this.apellido = entity.getApellido();
             this.cedula = entity.getCedula();
             this.telefono = entity.getTelefono();
+            this.correo = entity.getCorreo();
+            this.contrasenia = entity.getContrasenia();
         }
     }
 
@@ -78,6 +86,8 @@ public class ClienteDTO {
         entity.setApellido(this.apellido);
         entity.setCedula(this.cedula);
         entity.setTelefono(this.telefono);
+        entity.setCorreo(this.correo);
+        entity.setContrasenia(this.contrasenia);
         return entity;
     }
 
@@ -135,6 +145,7 @@ public class ClienteDTO {
         this.cedula = cedula;
     }
 
+    
     /**
      * Obtiene el id del cliente.
      *
@@ -162,11 +173,45 @@ public class ClienteDTO {
         return telefono;
     }
 
-    /*
+    /**
      * Asigna el telefono al cliente.
      * @param telefono El nuevo telefono.
      */
     public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
+
+    /**
+     * Obtiene el correo electronico del cliente.
+     * @return El telefono del cliente.
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * Asigna el correo electronico al cliente.
+     * @param correo El nuevo telefono.
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * Obtiene la contrasenia del cliente.
+     * @return La contrasenia del cliente.
+     */
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    /**
+     * Asigna la contrasenia al cliente.
+     * @param contrasenia La nueva contrasenia del cliente.
+     */
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+    
+    
 }
