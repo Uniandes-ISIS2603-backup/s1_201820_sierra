@@ -1,0 +1,32 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="row" style="background-color: lightgray">
+    <hr>
+    
+    <div class="TitEspDel">
+        <center> <label style="font-size:50px">{{currentEspecie.nombre}}</label> </center>
+    </div>
+    <div class="row" >
+        <div class="col-sm-3">
+            
+        </div>
+        <div class="col-sm-3">
+          <div class="thumb">
+                    <img class="imagenEspecieDetail img-responsive" ng-src="{{currentEspecie.imagen}}"/>
+          </div>
+        </div> 
+        <div class="col-sm-2">
+            <h4>CARACTERISTICAS:</h4> 
+            <div class="thumb">
+                <p>{{currentEspecie.caracteristicas}}</p>
+            </div>
+            <h4>CLASIFICACION:</h4>
+            <div>
+                <p>{{currentEspecie.clasificacion}}</p>
+            </div>
+            <h4>RAZAS:</h4>
+            <ul ng-repeat="raza in currentEspecie.razas">
+                <li>{{raza.nombre}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.MedioDePagoDetailDTO;
+import co.edu.uniandes.csw.sierra.dtos.MedioDePagoDTO;
 import co.edu.uniandes.csw.sierra.ejb.MedioDePagoLogic;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
@@ -118,7 +119,7 @@ public class MedioDePagoResource {
     public MedioDePagoDetailDTO getMedio(@PathParam("id") Long id) throws BusinessLogicException {
         MedioDePagoEntity entity = medioDePagoLogic.getMedioDePago(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso clientes " + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso mediosDePago " + id + " no existe.", 404);
         }
         return new MedioDePagoDetailDTO(entity);
     }

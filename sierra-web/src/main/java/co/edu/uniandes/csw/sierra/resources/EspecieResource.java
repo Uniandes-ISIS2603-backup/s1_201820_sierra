@@ -200,5 +200,6 @@ public class EspecieResource {
             throw new WebApplicationException("La especie que desea borrar no existe en la base de datos");
         }
         especieLogic.deleteEspecie(id);
+        
     }
 }

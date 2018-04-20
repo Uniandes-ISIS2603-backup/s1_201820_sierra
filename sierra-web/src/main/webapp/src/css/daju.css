@@ -28,5 +28,20 @@ and open the template in the editor.
     border-right-style: solid;
     border-left-style: solid;
     background-color: lightskyblue;
-    
+}
+.ImagenEspecie{
+    width: 100%;
+    height: 250px;
+}
+
+.FormularioEspecie{
+    background-color: lightgray;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid
+}
+.imagenEspecieDetail{
+    width: 400px;
+    height: 400px;
 }

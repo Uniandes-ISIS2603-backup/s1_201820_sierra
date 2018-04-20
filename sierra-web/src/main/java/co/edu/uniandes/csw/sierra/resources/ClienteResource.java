@@ -62,11 +62,11 @@ public class ClienteResource
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de logica que se genera cuando ya existe un cliente.
      */
     @POST
-    public ClienteDetailDTO createCliente(ClienteDetailDTO cliente) throws BusinessLogicException
+    public ClienteDTO createCliente(ClienteDTO cliente) throws BusinessLogicException
     {
         ClienteEntity clienteEntity = cliente.toEntity();
         ClienteEntity nuevoCliente = clienteLogic.createCliente(clienteEntity);
-        return new ClienteDetailDTO(nuevoCliente);
+        return new ClienteDTO(nuevoCliente);
     }
    
     /**
@@ -135,14 +135,14 @@ public class ClienteResource
      */
     @PUT 
     @Path( "{id: \\d+}")
-    public ClienteDetailDTO updateCliente (@PathParam ("id") Long id, ClienteDetailDTO infoCliente) throws BusinessLogicException
+    public ClienteDTO updateCliente (@PathParam ("id") Long id, ClienteDTO infoCliente) throws BusinessLogicException
     {
         infoCliente.setId(id);
         ClienteEntity entity = clienteLogic.getCliente(id);
         if(entity == null){
              throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
         }
-        return new ClienteDetailDTO(clienteLogic.updateCliente(id, infoCliente.toEntity()));
+        return new ClienteDTO(clienteLogic.updateCliente(id, infoCliente.toEntity()));
     }
     
     /**

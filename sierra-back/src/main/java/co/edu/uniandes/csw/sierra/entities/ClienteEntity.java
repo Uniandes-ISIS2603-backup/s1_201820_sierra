@@ -24,6 +24,8 @@ public class ClienteEntity extends BaseEntity implements Serializable
     private String apellido; //Atributo que contiene el apellido de un cliente.
     private Long cedula; //Atributo que contiene el numero de cedula del cliente.
     private Long telefono; // Atributo que contiene el numero telefonico del cliente.
+    private String correo;// Atributo que contiene el correo electronico  del cliente.
+    private String contrasenia;  //Atributo que contiene la cotrasenia asociada del cliente.
 
     /**
      * Lista de las mascotas que deseadas por un cliente.
@@ -110,6 +112,39 @@ public class ClienteEntity extends BaseEntity implements Serializable
         this.telefono = telefono;
     }
 
+    /**
+     * Obtiene el correo electronico del cliente.
+     * @return El correo electronico.
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * Asigna el correo electronico al cliente.
+     * @param correo El nuevo correo del cliente.
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+     /**
+     * Obtiene el la contrasenia del cliente.
+     * @return La contrasenia.
+     */
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    /**
+     * Asigna una contrasenia asociada a un correo electronico.
+     * @param contrasenia La contrasenia del cliente.
+     */
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    
     /**
      * Obtiene todos animales que desea un cliente.
      * @return Lista de las mascotas deseadas.

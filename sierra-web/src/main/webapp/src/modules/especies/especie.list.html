@@ -1,22 +1,15 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="row">
-    <div class="col-md-12">
-        <ul class="nav nav-tabs" >
-            <li style="background-color:beige"><a ui-sref="especiecreate"> Registrar</a></li>
-        </ul>
-</div>
-</div>
 <!--LiSTA DE  ESPECIES -->
-<div class="container-fluid">
+<div class="container-fluid" >
     <div> <h1 style="text-align: center">Especies registradas en la tienda: </h1> </div>
     <div class="row" >
-        <div class="col-sm-6" ng-repeat="especie in especiesRecords">
+        <div class="col-md-3" ng-repeat="especie in especiesRecords">
             <div class="thumbnail" style="background-color: gray">
+                <div class="container-fluid"><center>
+                    <img  ng-src="{{especie.imagen}}" class="ImagenEspecie img-responsive" >
+                 </center></div>
                 <div style="text-align: center"><label>{{especie.nombre}}</label></div>
-                <div  class="thumbnail" >
-                    <div>  <label> Caracteristicas: </label> {{especie.caracteristicas}}</div>
-                    <div> <label> Clasificacion:  </label> {{especie.clasificacion}}</div>
-                </div>
+                <center> <a ui-sref="especieDetail({especieId: especie.id})"><input type="button" value="ver"></a></center>
             </div>
         </div>        
     </div>
