@@ -1,5 +1,25 @@
 [
-    {
- 
-}
+  {
+  "id": 1,
+  "nombre": "Pepe la Salamandra vuelve a casa",
+  "descripcion":"Pepe la Salamdra es dado de alta despues de pasar dos meses en el hospital.",
+  "fecha": "20/05/2014",
+  "importancia":1,
+  "tipo": "Informativo",
+  "fotoURL":"imagenes/salamandra.jpg",
+  "mascota":{
+           "id": 1,
+           "name": "Pepe la Salamandra",
+           "genero": "Masculino",
+           "edad": 3,
+           "color": "Negro con naranja",
+           "esteril": true,
+           "adquirido": true,
+           "imagen":"imagenes/salamandra.jpg",
+           "tamano":"Mediana",
+           "nacimiento": "20/05/2011",
+           "muerte": null
+       }  
+  }
 ]
+      
