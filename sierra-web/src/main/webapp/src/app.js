@@ -6,10 +6,12 @@
         // Internal modules dependencies       
         'sierraModule',
         'especieModule',
-        'mascotaaModule',
+        'mascotaModule',
+        'mascotaadopModule',
         'calificacionModule',
-        'facturaModule'
-
+        'facturaModule',
+        'adquisicionModule',
+        'clienteModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

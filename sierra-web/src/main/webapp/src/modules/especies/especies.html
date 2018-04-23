@@ -1,0 +1,15 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class="container-fluid">
+    <div class="row">
+        <div>
+            <ul class="nav nav-tabs" style="background-color: lightblue">
+                <li style="background-color:beige"><a ui-sref="especiesList"> Especies</a></li>
+                 <li style="background-color:beige"><a ui-sref="especiecreate"> Registrar</a></li>
+            </ul>
+        </div>
+        <div ui-view="listView"></div>
+    </div>
+    <div class="row">
+        <div ui-view="detailView"></div>
+    </div>
+</div>

@@ -32,7 +32,7 @@ import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
  * @author de.gutierrez
  */
 //TODO falta public
-class MedioDePagoDTO 
+public class MedioDePagoDTO 
 {
     private Long id;
     private Long numeroReferencia;

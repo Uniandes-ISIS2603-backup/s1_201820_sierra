@@ -33,6 +33,7 @@ import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
  *      "nombre": String,
  *      "caracteristicas": String,
  *      "clasificacion": String
+ *      "imagen": String
  *
  *   }
  * </pre> Por ejemplo una entidad de Especie se representa asi:<br>
@@ -45,6 +46,7 @@ import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
  *      "nombre": "Mamifero",
  *      "caracteristicas": " similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color",
  *      "clasificacion": "Canino"
+ *      "imagen": especieCanino.jpg
  *   }
  *
  * </pre>
@@ -67,6 +69,11 @@ public class EspecieDTO {
      */
     private String clasificacion;
 
+    /**
+     * Imagen de la especie
+     */
+    private String imagen;
+    
     /**
      * id de la especie
      */
@@ -92,6 +99,7 @@ public class EspecieDTO {
         this.nombre = especieEntity.getNombre();
         this.clasificacion = especieEntity.getClasificacion();
         this.caracteristicas = especieEntity.getCaracteristicas();
+        this.imagen=especieEntity.getImagen();
         }
     }
 
@@ -106,6 +114,7 @@ public class EspecieDTO {
         entity.setNombre(nombre);
         entity.setCaracteristicas(caracteristicas);
         entity.setClasificacion(clasificacion);
+        entity.setImagen(imagen);
         return entity;
     }
 
@@ -150,6 +159,22 @@ public class EspecieDTO {
     public void setClasificacion(String calificacion) {
         this.clasificacion = calificacion;
     }
+    
+    
+        /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the calificacion to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
 
     /**
      * @return the id

@@ -128,6 +128,8 @@ public class ClientePersistenceTest
         Assert.assertEquals(newEntity.getApellido(), entity.getApellido());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
         Assert.assertEquals(newEntity.getTelefono(), entity.getTelefono());
+        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
+         Assert.assertEquals(newEntity.getContrasenia(), entity.getContrasenia());
     }
     
     /**
@@ -165,6 +167,9 @@ public class ClientePersistenceTest
         Assert.assertEquals(entity.getApellido(), newEntity.getApellido());
         Assert.assertEquals(entity.getCedula(), newEntity.getCedula());
         Assert.assertEquals(entity.getTelefono(), newEntity.getTelefono());
+        Assert.assertEquals(entity.getCorreo(), newEntity.getCorreo());
+        Assert.assertEquals(entity.getContrasenia(), newEntity.getContrasenia());
+      
     }
     
     /**
@@ -186,6 +191,8 @@ public class ClientePersistenceTest
      Assert.assertEquals(newEntity.getApellido(), res.getApellido());
      Assert.assertEquals(newEntity.getCedula(), res.getCedula());
      Assert.assertEquals(newEntity.getTelefono(), res.getTelefono());
+     Assert.assertEquals(newEntity.getCorreo(), res.getCorreo());
+     Assert.assertEquals(newEntity.getContrasenia(), res.getContrasenia());
     }
     
     /**

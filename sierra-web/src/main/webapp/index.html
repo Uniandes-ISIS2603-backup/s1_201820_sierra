@@ -20,18 +20,29 @@
         <!--Especie-->
         <script src="src/modules/especies/especie.mod.js" type="text/javascript"></script>
         <script src="src/modules/especies/especie.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/especies/especieDetail.ctrl.js" type="text/javascript"></script>
         
         <!--Mascota Adoptada-->
-        <script src="src/modules/mascotasadoptadas/mascotaa.mod.js" type="text/javascript"></script>
-        <script src="src/modules/mascotasadoptadas/mascotaa.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotas/mascota.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mascotas/mascota.ctrl.js" type="text/javascript"></script>
         
-         <!--Calificacion-->
+         <!--Adquisicion-->
+         <script src="src/modules/adquisicion/adquisicion.mod.js" type="text/javascript"></script>
+         <script src="src/modules/adquisicion/adquisicion.ctrl.js" type="text/javascript"></script>
+        
+        <!--Calificacion-->
         <script src="src/modules/calificacion/calificacion.mod.js" type="text/javascript"></script>
         <script src="src/modules/calificacion/calificacion.ctrl.js" type="text/javascript"></script>
         <!--Factura-->
         <script src="src/modules/facturas/factura.mod.js" type="text/javascript"></script>
         <script src="src/modules/facturas/factura.ctrl.js" type="text/javascript"></script>
         
+        <!--MascotaAdop-->
+        <script src="src/modules/mascotasadop/mascotaadop.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasadop/mascotaadop.ctrl.js" type="text/javascript"></script>
+        
+        <script src="src/modules/clientes/clientes.mod.js" type="text/javascript"></script>
+        <script src="src/modules/clientes/clientes.ctrl.js" type="text/javascript"></script>
         
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -48,10 +59,12 @@
                         <br>
                         <!-- Enlace al estado de listar las entidades de Sierra -->
                         <li style="margin-left:50px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
-                        <li><a ui-sref='especiesList'><b>Especies</b></a></li>
-                        <li><a ui-sref='mascotasaList'><b> Mascotas</b></a></li>
-                        <li><a ui-sref='calificacionList'><b> Calificaciones</b></a></li>
+                        <li><a ui-sref='especies'><b>Especies</b></a></li>
+                        <li><a ui-sref='mascotasList'><b>Mascotas</b></a></li>
+                        <li><a ui-sref='calificacionList'><b>Calificaciones</b></a></li>
                         <li><a ui-sref='facturasList'><b>Facturas</b></a></li>
+                        <li><a ui-sref='adquisicionList'><b>Adquisiciones</b></a></li>
+                        <li><a ui-sref='clientes'><b>Clientes</b></a></li>
                         <hr>
             </ul>
             <hr>
@@ -59,7 +72,7 @@
         </div>
          <div class="col-lg-12" >
              <h3 style="text-align: center"> INTEGRANTES DEL EQUIPO</h3>
-             <h2 style="text-align: center">Grupo Desarrollo 2018-1 Uniandes Proyecto Sierra</h2>
+             <h2 style="text-align: center"  class="grupoDesarrollo">Grupo Desarrollo 2018-1 Uniandes Proyecto Sierra</h2>
             
          </div>
          

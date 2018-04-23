@@ -104,12 +104,6 @@ public abstract class MascotaEntity extends BaseEntity
     @PodamStrategyValue(DateStrategy.class)
     private Date nacimiento;
     
-     /**
-     * Fecha dela muerte de la amscota
-     */
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
-    private Date muerte;
     
     //---------------RELACIONES-------------------//
    
@@ -286,20 +280,7 @@ public abstract class MascotaEntity extends BaseEntity
         this.nacimiento = nacimiento;
     }
 
-    /**
-     * 
-     * @return the muerte
-     */
-    public Date getMuerte() {
-        return muerte;
-    }
-
-    /**
-     * @param muerte the muerte to set
-     */
-    public void setMuerte(Date muerte) {
-        this.muerte = muerte;
-    }    
+  
 
     /**
      * @return the especie

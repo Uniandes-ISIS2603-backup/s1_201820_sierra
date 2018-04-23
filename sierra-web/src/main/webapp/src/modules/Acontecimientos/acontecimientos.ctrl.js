@@ -7,6 +7,7 @@
             // carga las entidades de acontecimientos
             $http.get("data/acontecimientos.json").then(function (response) {
                 $scope.acontecimientosRecords = response.data;
+           
             });
     }]);
     

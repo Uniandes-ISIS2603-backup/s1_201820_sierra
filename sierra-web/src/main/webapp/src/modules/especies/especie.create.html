@@ -1,37 +1,36 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="row">
-    <div class="col-md-12">
-        <ul class="nav nav-tabs" >
-            <li style="background-color:beige"><a ui-sref="especiesList">Lista</a></li>
-            <li style="background-color: beige"><a ui-sref="especiecreate">Registrar</a></li>
-    </ul>
-</div>
-</div>
 <hr>
-<div class="container-fluid">
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="nombreEspecie" class="col-sm-2">Nombre:</label>
-            <input type="text" id="nombreEspecie" required ng-model="especie.nombre" class="col-sm-6"  placeholder="nombreEspecie" maxlength="15"/>
+<div class="container-fluid" >
+    
+    <h4 style="text-align: center"> Registro de una nueva Especie</h4>
+    <br>
+    <div class="col-sm-4" >
+        <form  class="FormularioEspecie">   
+            <br>
+        <div>
+            <center>
+            <lable>Nombre:</lable>&nbsp;<input type="text" class="nombreEspecie" required ng-model="especie.nombre" placeholder="nombre">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+            <lable>Clasificacion:</lable>&nbsp;<input type="text" class="ClasificacionEspecie" required ng-model="especie.clasificacion" placeholder="clasificacion">  
+           </center>
         </div>
+             <br>
+        <div>
+            <center>
+            <lable>Caracteristticas:</lable>&nbsp;<input type="text" class="CaracteristicasEspecie" requiere ng-model="especie.caracteristicas" placeholder="carracteristicas" >
+            </center>
+        </div> 
+             <br>
+             <center>
+             <input type="submit">
+             </center>
+    </form>
     </div>
-
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="clasificacionEspecie" class="col-sm-2">Clasificacion: </label>
-            <input type="text" id="clasificacionEspecie" required ng-model="especie.clasificacion" class="col-sm-6" placeholder="ej: Mamifero" >
-        </div>
-    </div>  
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="caracteristicasEspepecie" class="col-sm-2">Caracteristicas</label>
-            <input type="text" id="caracteristicasEspepecie" required ng-model="especie.caracteristicas" class="col-sm-6" placeholder="Caracteristicas">
-        </div>
-    </div>  
-    <div class="form-group row">
-        <div class="form-group col-sm-12">
-            <input type="button" value="Registrar">
-            <input type="button" value="cancelar">
-        </div>
+    <div class="col-sm-6">
+        <img src="imagenes/registro.jpg" width="800">
     </div>
 </div>

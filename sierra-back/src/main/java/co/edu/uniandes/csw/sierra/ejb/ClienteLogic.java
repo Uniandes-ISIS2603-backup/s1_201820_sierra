@@ -34,15 +34,24 @@ public class ClienteLogic
     public ClienteEntity createCliente(ClienteEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de creacion de un nuevo cliente");
-         //TODO: No tiene sentido validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
- 
-        ClienteEntity cliente = persistence.find(entity.getId());
-        if(cliente != null)
-        {
-            throw new BusinessLogicException("Ya existe un cliente con el nombre:" + entity.getNombre());
-        }
-        //TODO: NO hay ninguna regla de negocio? 
+//         
+//        ClienteEntity cliente = persistence.find(entity.getId());
+//        if(cliente.getId() != null)
+//        {
+//            throw new BusinessLogicException("Ya existe un cliente con ese id:" + entity.getId());
+//        }
+//        if(cliente.getCedula() != null)
+//        {
+//            throw new BusinessLogicException("Ya existe un cliente con ese numero de cedula:" + entity.getCedula());
+//        }
+//        else if(cliente.getCorreo() != null)
+//        {
+//            throw new BusinessLogicException("Ya existe un cliente con ese correo electronico:" + entity.getCorreo());
+//        }
+//        else if(cliente.getTelefono()!= null)
+//        {
+//            throw new BusinessLogicException("Ya existe un cliente con ese numero de telefono:" + entity.getTelefono());
+//        }
         persistence.create(entity);
         LOGGER.info("Termina el proceso de creacion del cliente");
         return entity;
@@ -90,12 +99,14 @@ public class ClienteLogic
         {
             LOGGER.log(Level.SEVERE, "El cliente con el id={0} no existe para ser actualizado", entity.getId());
         }
-        //TODO: NO hay ninguna regla de negocio? 
+       
         persistence.update(entity);
         LOGGER.log(Level.SEVERE, "Termina el proceso de actualizar un cliente");
         return entity;
     }
  
+    
+    
     /***
      * Elimina un cliente segun el id.
      * @param id Identificador del cliente a eliminar.
@@ -104,11 +115,13 @@ public class ClienteLogic
     {
         LOGGER.log(Level.SEVERE, "Inicia el proceso de eliminar un cliente");
         ClienteEntity cliente = persistence.find(id);
-        if(cliente == null)
+        if(cliente != null)
         {
-            LOGGER.log(Level.SEVERE, "El cliente con el id={0} no existe para ser eliminado", id);
+        //    LOGGER.log(Level.SEVERE, "El cliente con el id={0} no existe para ser eliminado", id);
+             persistence.delete(id);
         }
-        persistence.delete(id);
+       
         LOGGER.log(Level.SEVERE, "Termina el proceso de eliminar un cliente");
     }
+
 }

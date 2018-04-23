@@ -37,6 +37,8 @@ import java.util.List;
  *      "cedula": 1072548232,
  *      "id": 001,
  *      "telefono": 3182564852,
+ *      "correo": "andresCastro@gmail.com",
+ *      "contrasenia": "123456789"
  *      "mediosPago":[
  *                  {
  *                      "id": 1,
@@ -167,7 +169,7 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * Agrega medios de pago de un cliente a una lista.
      *
-     * @param medioPago El que se desea agregar.
+     * @param mediosPago El que se desea agregar.
      */
     public void setMediosPago(List<MedioDePagoDTO> mediosPago) {
         this.mediosPago = mediosPago;
@@ -185,7 +187,7 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * Agrega una nueva adquisicion a la lista de un cliente.
      *
-     * @param aquisiciones Las nuevas adquisiciones.
+     * @param adquisiciones Las nuevas adquisiciones.
      */
     public void setAquisiciones(List<AdquisicionDTO> adquisiciones) {
         this.adquisiciones = adquisiciones;

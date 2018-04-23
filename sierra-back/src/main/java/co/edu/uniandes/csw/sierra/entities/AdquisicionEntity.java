@@ -62,7 +62,7 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     /**
      * Calificacion de la adquisicion
      */
-    @OneToOne(mappedBy= "adquisicion", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy= "adquisicion", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @PodamExclude
     private CalificacionEntity calificacion;
     

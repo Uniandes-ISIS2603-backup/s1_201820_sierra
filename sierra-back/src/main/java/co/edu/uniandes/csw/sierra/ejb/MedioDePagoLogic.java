@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author jc.sanchez12
+ * @author de.gutierrez
  */
 @Stateless
 public class MedioDePagoLogic {
@@ -36,12 +36,10 @@ public class MedioDePagoLogic {
      */
     public MedioDePagoEntity createMedioDePago(MedioDePagoEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia el proceso de creacion de un nuevo medio de pago");
-        //TODO: No tiene sentido validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
-
+      
         MedioDePagoEntity medio = persistence.find(entity.getId());
-        if (medio != null) {
-            throw new BusinessLogicException("Ya existe un medio de pago con el nombre:" + entity.getName());
+        if (medio.getNumeroReferencia()!= null) {
+            throw new BusinessLogicException("Ya existe un medio de pago con el numero de referencia:" + entity.getNumeroReferencia());
         }
         persistence.create(entity);
         LOGGER.info("Termina el proceso de creacion del medio de pago");
@@ -90,7 +88,6 @@ public class MedioDePagoLogic {
             LOGGER.log(Level.SEVERE, "El medio de pago con el id={0} no existe para ser actualizado", entity.getId());
         }
 
-//TODO: No hay ninguna regla de negocio? 
         persistence.update(entity);
         LOGGER.log(Level.SEVERE, "Termina el proceso de actualizar un medio de pago");
         return entity;
