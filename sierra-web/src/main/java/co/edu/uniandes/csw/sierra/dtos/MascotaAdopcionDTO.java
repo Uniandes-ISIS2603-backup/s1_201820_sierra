@@ -49,7 +49,7 @@ import java.util.Date;
  *
  * @author Juan Camilo Sanchez
  */
-public class MascotaAdopcionDTO extends  MascotaDTO
+public class MascotaAdopcionDTO
 {
 
     /**
@@ -117,7 +117,19 @@ public class MascotaAdopcionDTO extends  MascotaDTO
      * @param mascotaAdoptadaEntity: Es la entidad que se va a convertir a DTO
      */
     public MascotaAdopcionDTO(MascotaAdoptadaEntity mascotaAdoptadaEntity) {
-        super(mascotaAdoptadaEntity);
+        if (mascotaAdoptadaEntity!=null) {
+         this.id = mascotaAdoptadaEntity.getId();
+        this.nombre = mascotaAdoptadaEntity.getNombre();
+        this.genero = mascotaAdoptadaEntity.getGenero();
+        this.edad = mascotaAdoptadaEntity.getEdad();
+        this.color = mascotaAdoptadaEntity.getColor();
+        this.esteril = mascotaAdoptadaEntity.isEsteril();
+        this.adquirido = mascotaAdoptadaEntity.isAdquirido();
+        this.imagen = mascotaAdoptadaEntity.getImagen();
+        this.tamano = mascotaAdoptadaEntity.getTamano();
+        this.nacimiento = mascotaAdoptadaEntity.getNacimiento();
+        }
+
     }
 
     /**
@@ -129,14 +141,22 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     
     public MascotaAdoptadaEntity toEntity() {
         MascotaAdoptadaEntity entity = new MascotaAdoptadaEntity();
-        super.toEntity(entity);
+        entity.setNombre(nombre);
+        entity.setId(id);
+        entity.setAdquirido(adquirido);
+        entity.setGenero(genero);
+        entity.setEdad(edad);
+        entity.setColor(color);
+        entity.setEsteril(esteril);
+        entity.setImagen(imagen);
+        entity.setTamano(tamano);
+        entity.setNacimiento(nacimiento);
         return entity;
     }
 
     /**
      * @return the id
      */
-    @Override
     public Long getId() {
         return id;
     }
@@ -144,7 +164,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @param id the id to set
      */
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -152,7 +171,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @return the nombre
      */
-    @Override
     public String getNombre() {
         return nombre;
     }
@@ -160,7 +178,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @param nombre the nombre to set
      */
-    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -196,7 +213,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @return the color
      */
-    @Override
     public String getColor() {
         return color;
     }
@@ -204,7 +220,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @param color the color to set
      */
-    @Override
     public void setColor(String color) {
         this.color = color;
     }
@@ -240,7 +255,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @return the imagen
      */
-    @Override
     public String getImagen() {
         return imagen;
     }
@@ -248,7 +262,6 @@ public class MascotaAdopcionDTO extends  MascotaDTO
     /**
      * @param imagen the imagen to set
      */
-    @Override
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
@@ -279,7 +292,5 @@ public class MascotaAdopcionDTO extends  MascotaDTO
      */
     public void setNacimiento(Date nacimiento) {
         this.nacimiento = nacimiento;
-    }
-    
-    
+    }    
 }

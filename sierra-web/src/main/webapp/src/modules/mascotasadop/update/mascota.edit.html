@@ -1,0 +1,64 @@
+  <div  class="container-fluid">      
+      
+    <hr> 
+    <h3>ID:{{currentMascota.id}}</h3>
+    <h4 >Editando la informacion de: {{currentMascota.nombre}}  </h4>
+    <br>
+     <center>
+    <div class="col-sm-10" >
+       
+        <form  class="FormularioEspecie" name="Mascota" ng-submit="createMascota()">   
+            <br>
+        <div>
+            <center>
+                <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreMascota" id="nombreMascota" placeholder="nombre">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+                <lable>Edad</lable>&nbsp;<input type="text" class="edadMascota" required ng-model="edadMascota" id="edadMascota" placeholder="Edad">  
+           </center>
+        </div>
+              <br>
+        <div>
+            <center>
+                <lable>Tamaño:</lable>&nbsp;<input type="text" class="tamanoMascota" required ng-model="tamanoMascota" id="tamanoMascota" placeholder="tamaño">  
+           </center>
+        </div>
+                 <br>
+        <div>
+            <center>
+                <lable>Esteril</lable>&nbsp;<input type="text" class="esteril" required ng-model="esterilMascota" id="esterilMascota" placeholder="esteril">  
+           </center>
+        </div>
+                       <br>
+        <div>
+            <center>
+                <lable>Adquirido</lable>&nbsp;<input type="text" class="adquirido" required ng-model="adquiridoMascota" id="adquiridoMascota" placeholder="adquirido">  
+           </center>
+        </div>   
+                 
+             <br>
+             <div>
+            <center>
+                <lable>Imagen:</lable>&nbsp;<input type="text" class="imagenMascota" required ng-model="imagenMascota" id="imagenMascota" placeholder="Imagen">  
+           </center>
+        </div>  
+             <br>
+        <div>
+            <center>
+                <lable>Color</lable>&nbsp;<input type="text" class="color" requiere ng-model="colorMascota" id="colorMascota" placeholder="Color" >
+            </center>
+            <br>
+            <center>
+                <center> <a ng-click="createMascota()"  ui-sref="mascotasList"><input type="button" value="Editar"></a></center>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="mascotasList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+              
+     </div>
+          </center>

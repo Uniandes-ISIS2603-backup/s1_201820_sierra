@@ -1,0 +1,50 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<hr>
+<div class="container-fluid" >    
+    <h4 style="text-align: center"> Registro de una nueva mascota Adopcion</h4>
+    <br>
+    <div class="col-sm-4" >
+        <form  class="FormularioEspecie" name="MascotaAdop">   
+            <br>
+        <div>
+            <center>
+            <lable>Nombre:</lable>&nbsp;<input type="text" class="nombreMascota" required ng-model="data.nombre" placeholder="nombre">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+            <lable>EDAD:</lable>&nbsp;<input type="text" class="edadMascota" required ng-model="data.edad" placeholder="edad">  
+           </center>
+        </div>
+             <br>
+             <div>
+            <center>
+            <lable>COLOR:</lable>&nbsp;<input type="text" class="color" required ng-model="data.color" placeholder="color">  
+           </center>
+             </div>  
+             <br>
+                <div>
+               <center>
+               <lable>IMAGEN:</lable>&nbsp;<input type="text" class="imagenMascota" required ng-model="data.imagen" placeholder="color">  
+              </center>
+                </div> 
+             <br>
+            <div>
+            <center>
+            <lable>TAMAÑO:</lable>&nbsp;<input type="text" class="tamanoMascota" requiere ng-model="data.tamano" placeholder="tamano" >
+            </center>
+            <br>
+            <center>
+                <button  ng-click="createMascota()" ui-sref="mascotasaList" >Registrar</button>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="mascotasaList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+    </div>
+    <div class="col-sm-6">
+        <img src="imagenes/registro.jpg" width="800">
+    </div>
+</div>

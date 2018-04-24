@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("especieModule");
-    mod.constant("especieContext", "api/sports");
+    mod.constant("especieContext", "api/especies");
     mod.controller('especieDetailCtrl', ['$scope', '$http', 'especieContext', '$state', '$filter',
         function ($scope, $http, especieContext, $state, $filter) {
             if (($state.params.especieId !== undefined) && ($state.params.especieId !== null)) {

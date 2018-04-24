@@ -9,7 +9,7 @@
             $scope.data = {};
             $scope.createEspecie = function () {
                 $http.post(especiesContext, $scope.data).then(function (response) {
-                    $state.go('especiessList', {especieId: response.data.id}, {reload: true});
+                    $state.go('especiesList', {especieId: response.data.id}, {reload: true});
                 });
             };
         }

@@ -25,7 +25,6 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.List;
@@ -102,12 +101,12 @@ public class MascotaAdoptadaLogic {
      *
      * @param entity Instancia de MascotaAdoptadaEntity con los nuevos datos.
      * @return Instancia de MascotaAdoptadaEntity con los datos actualizados.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public MascotaAdoptadaEntity updateMascotaAdoptada(MascotaAdoptadaEntity entity)throws BusinessLogicException 
     {
        MascotaAdoptadaEntity ent= persistence.findById(entity.getId());
         if (ent !=null) {
-
         return persistence.update(entity);
         }
          return null;     

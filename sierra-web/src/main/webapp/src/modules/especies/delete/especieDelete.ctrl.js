@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("especieModule");
-    mod.constant("especiesContext", "api/authors");
+    mod.constant("especiesContext", "api/especies");
     mod.controller('especieDeleteCtrl', ['$scope', '$http', 'especiesContext', '$state',
 
         function ($scope, $http, especiesContext, $state) {

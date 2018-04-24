@@ -1,7 +1,6 @@
 (function (ng) {
     var mod = ng.module("especieModule");
     mod.constant("especiesContext", "api/especies");
-    mod.constant("especiesContext", "api/especies");
     mod.controller('especieeditCtrl', ['$scope', '$http', 'especiesContext', '$state', '$rootScope', '$filter',
 
       function ($scope, $http, especiesContext, $state, $rootScope, $filter) {
