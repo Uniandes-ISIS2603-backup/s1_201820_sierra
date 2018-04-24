@@ -29,9 +29,6 @@ public class CertificadoLogic {
         LOGGER.info("Iniciando el proceso de creación de una entidad de certificado.");
         //TODO: No tiene sentido validar que existe la entidad con el id porque (preguntar)
         // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
-        if(persistence.find(entity.getId()) != null)
-            throw new BusinessLogicException("Ya existe una entidad de certificado con el mismo id: " + entity.getId());
-        
         persistence.create(entity);
         LOGGER.info("Terminando el proceso de creación de una entidad de certificado.");
         return entity;

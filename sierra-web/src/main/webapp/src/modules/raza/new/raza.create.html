@@ -1,0 +1,44 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<hr>
+<div class="container-fluid" >    
+    <h4 style="text-align: center"> Registro de una nueva Especie</h4>
+    <br>
+    <div class="col-sm-4" >
+        <form  class="FormularioEspecie" name="Especie">   
+            <br>
+        <div>
+            <center>
+            <lable>Nombre:</lable>&nbsp;<input type="text" class="nombreRaza" required ng-model="data.nombreRaza" placeholder="nombreRaza">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+            <lable>Cuidados:</lable>&nbsp;<input type="text" class="ClasificacionEspecie" required ng-model="data.cuidados" placeholder="cuidados">  
+           </center>
+        </div>
+             <br>
+             <div>
+            <center>
+            <lable>Destacable:</lable>&nbsp;<input type="text" class="Imagen" required ng-model="data.destacable" placeholder="destacable">  
+           </center>
+        </div>  
+             <br>
+        <div>
+            <center>
+            <lable>Caracteristticas:</lable>&nbsp;<input type="text" class="CaracteristicasEspecie" requiere ng-model="data.caracteristicas" placeholder="caracteristicas" >
+            </center>
+            <br>
+            <center>
+                <button  ng-click="createRaza()" ui-sref="razasList" >Registrar</button>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="razasList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+    </div>
+    <div class="col-sm-6">
+        <img src="imagenes/registro.jpg" width="800">
+    </div>
+</div>

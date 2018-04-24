@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
-import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.RazaPersistence;

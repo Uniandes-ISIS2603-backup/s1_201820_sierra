@@ -1,0 +1,42 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="panel-group">
+    <div class="panel-primary">
+    <div class="panel-heading"><label>Certificados</label></div>
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearmensaje" ui-sref="certificadoCreate" class="btn btn-info">Crear Certificado</a></td>
+            <br>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>    
+                    <th>titulo</th>  
+                    <th>asunto</th> 
+                    <th>mensaje</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="certificado in certificadosRecords">
+                    <td id="{{$index}}-fecha">{{certificado.fecha}}</td>
+                    <td id="{{$index}}-descripcion">{{mensaje.descrpcion}}</td>  
+                    <td id="{{$index}}-imagen">{{mensaje.imagen}}</td>  
+                    <td><a id="boton-irdetailmensaje" ui-sref="certificadoDetail({certificadoId: certificado.id})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
+                    <a id="boton-iractualizarmensaje" ui-sref="certificadoUpdate({cartificadoId: certificado.id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>
+                
+                </tr>
+            </tbody>
+        </table>
+       <div class="btn-group mr-2" role="group" aria-label="First group">
+            <br>
+            <td><a id="boton-ircrearmensaje" ui-sref="certificadoCreate" class="btn btn-info">Crear Certificado</a></td>
+            <br>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    
+</div>
