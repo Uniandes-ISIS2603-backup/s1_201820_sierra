@@ -11,7 +11,9 @@
         'calificacionModule',
         'facturaModule',
         'adquisicionModule',
-        'clienteModule'
+        'clienteModule',
+        'acontecimientoModule',
+        'publicacionModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
