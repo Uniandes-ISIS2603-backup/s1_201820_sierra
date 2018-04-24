@@ -7,18 +7,45 @@
             $urlRouterProvider.otherwise("/clientesList");
             
             $stateProvider.state('clientes', {
-                url:'/clientes',
+                url: '/clientes',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'clientes.list.html',
                         controller: 'clienteCtrl',
-                        controllerAs:'ctrl'
+                        controllerAs: 'ctrl'
                     }
                 }
-           
+               
+            }).state ('clienteCreate', {
+                url:'/cliente/create',
+                views: {
+                    'mainView':{
+                        controller: 'clienteNewCtrl',
+                        templateUrl: basePath + 'cliente.create.html'
+                    }
+                }
+            }).state('clienteDetail', {
+                url: '{clienteId:int}/detail',
+                parent: 'clientes',
+                param: {
+                    clienteId: 1
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'clientes.list.html',
+                        controller: 'clienteCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'clientes.detail.html',
+                        controller: 'clienteDetailCtrl',
+                        controllerAs:"ctrl"
+                    }
+
+                }
+
             });
-    }]);
-}
-)(window.angular);
+        }]);
+})(window.angular);
 
 
