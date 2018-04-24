@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <li><a ui-sref="clientes">Lista</a></li>
+            <li><a ui-sref="clienteCreate">Crear</a></li>
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="Nombre" class="col-sm-2">Nombre</label>
+            <input id="Nombre" required ng-model="data.nombre" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="Apellido" class="col-sm-2">Apellido</label>
+            <textarea id="Apellido" required ng-model="data.apellido" class="col-sm-6"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="Cedula" class="col-sm-2">Cedula</label>
+            <textarea id="Cedula" required ng-model="data.cedula" class="col-sm-6"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="Telefono" class="col-sm-2">Telefono</label>
+            <textarea id="Telefono" required ng-model="data.telefono" class="col-sm-6"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="correo" class="col-sm-2">Correo</label>
+            <textarea id="Correoelectronico" required ng-model="data.correo" class="col-sm-6"></textarea>
+        </div>
+    </div>  
+     <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="Contrasenia" class="col-sm-2">Contraseña</label>
+            <textarea id="Contrasenia" required ng-model="data.contrasenia" class="col-sm-6"></textarea>
+        </div>
+    </div>
+   
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <input  ng-click="createCliente()"value="Save" class="btn btn-success"/>
+            <a class="btn btn-info" ui-sref="clientes">Cancel</a>
+        </div>
+    </div>
+</div>
