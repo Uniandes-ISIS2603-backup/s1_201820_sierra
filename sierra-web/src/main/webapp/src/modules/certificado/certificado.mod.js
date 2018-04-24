@@ -1,70 +1,116 @@
-(function (ng) {
-    // Definición del módulo
-    var mod = ng.module("certificadoModule", ['ui.router']);
-
-    // Configuración de los estados del módulo
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
-            var basePath = 'src/modules/certificado/';
-            // Mostrar la lista de autores será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/certificadoList");
-            // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('certificado', {
-                // Url que aparecerá en el browser
-                url: '/certificados',
-                abstract: true,
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'certificado.html',
-                        controller: 'certificadoCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            }).state('certificadoCreate', {
-                url: '/create',
-                parent: 'certificado',
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'certificado.new.html',
-                        controller: 'certificadoNewCtrl'
-                    }
-                }
-            }).state('certificadoUpdate', {
-                url: '/update/{certificadoId:int}',
-                parent: 'certificado',
-                param: {
-                    certificadoId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'certificado.new.html',
-                        controller: 'certificadoUpdateCtrl'
-                    }
-                }
-            }).state('certificadoList', {
-                url: '/list',
-                parent: 'certificado',
-                views: {
-                    'listView': {
-                        templateUrl: basePath + 'certificado.list.html',
-                        controller: 'certificadoCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            }).state('certificadoDetail', {
-                url: '/{cerificadoId:int}/detail',
-                parent: 'certificado',
-                param: {
-                    mensajeId: null
-                },
-                views: {
-                    'detailView': {
-                        templateUrl: basePath + 'certificado.detail.html',
-                        controller: 'certificadoCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
+(function(ng){
+ 
+ var mod=ng.module('certificadoModule',[]);
+ mod.constant('certificadoContext','api/certificados');
+ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+         var basePath = 'src/modules/certificado/';
+         $urlRouterProvider.otherwise("/certificadosList");
+         $stateProvider.state('certificados',{
+             url:'/certificados',
+             abstrac:true,
+             views:
+                     {
+                       mainView:{
+                       templateUrl: basePath+"certificado.html",
+                       controller:'certificadoCtrl',
+                       controllerAs: 'Crtl'
+                         }
+                     }
+             })
+                     
+               //Estado de lista
+                .state('certificadosList',{
+               url: '/list',
+               parent: 'certificados',
+               views:{
+                   'listView':{
+                       templateUrl: basePath+"certificado.list.html",
+                       controller:'certificadoCtrl',
+                       controllerAs: 'Crtl'
+                   }
+               }
+             })
+            //EstadoDetail
+            .state('certificadoDetail',{
+              url:'/{certificadoId:int}/detail',
+              parent:'certificados',
+              param:{
+                  certificadoId:null
+              },
+              views:{
+                  'listView':{
+                       templateUrl: basePath+"certificado.list.html"
+                   }
+                   ,detailView:{
+                       templateUrl: basePath+"certificadoDetail.html",
+                       controller:'certificadoDetailCtrl',
+                       controllerAs: 'Crtl'
+                   }
+              }
+              
             })
+              .state('certificadoEdit',
+            {
+               url:'/edit/{certificadoId:int}',
+              parent:'certificados',
+              param:{
+                  especieId:null
+              },
+               views:
+               {
+                   'listView':{
+                      templateUrl: basePath+"certificado.list.html"
+                   },
+                   detailView:{
+                   templateUrl: basePath + "/update/certificado.edit.html",
+                   controller:'certificadoeditCtrl',
+                   controllerAs: 'Crtl'
+                   }
+                           
+               }
+     
+         })
+           .state('certificadoDelete',
+            {
+               url:'/delete/{certificadoId:int}',
+              parent:'certificados',
+              param:{
+                  certificadoId:null
+              },
+               views:
+               {
+                   'listView':{
+                      templateUrl: basePath+"certificado.list.html"
+                   },
+                   detailView:{
+                   templateUrl: basePath + "/delete/certificado.delete.html",
+                   controller:'certificadoDeleteCtrl',
+                   controllerAs: 'Crtl'
+                   }
+                           
+               }
+     
+         })         
+            //Estado de registro 
+             .state('certificadocreate', 
+            {
+             url:'/registrar',
+             parent:'certificados',
+             views:
+              {
+                'listView':{
+                       templateUrl: basePath+"certificado.list.html"
+                   },  
+               'detailView':
+                {
+                   templateUrl: basePath + "/new/certificado.create.html",
+                   controller:'certificadocreateCtrl',
+                   controllerAs: 'Crtl'
+                }
+              }
+         });
+         
         }
+ 
     ]);
 })(window.angular);
