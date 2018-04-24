@@ -1,1 +1,16 @@
-<h1>Ultimas Publicaciones</h1>
+<h1>Últimas Publicaciones:</h1>
+<div class="container-fluid">
+        <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="publicacion in publicaciones">
+           <div class="thumbnail">
+                <img class="img-responsive" ng-src='{{publicacion.fotoURL}}' alt="{{publicacion.nombre}}" />  
+                <div class="caption text-center">{{publicacion.nombre}}</div>
+            </div>
+            <div class ="row">
+                <b>Fecha:</b>
+                <p>{{publicacion.fecha}}</p>
+            </div>
+            <div class ="row">
+                <b>Comentario:</b>
+                <p>{{publicacion.comentario}}</p>
+            </div>
+          </div>          
