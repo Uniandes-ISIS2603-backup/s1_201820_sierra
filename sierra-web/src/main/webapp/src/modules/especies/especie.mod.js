@@ -49,6 +49,48 @@
               }
               
             })
+              .state('especieEdit',
+            {
+               url:'/edit/{especieId:int}',
+              parent:'especies',
+              param:{
+                  especieId:null
+              },
+               views:
+               {
+                   'listView':{
+                      templateUrl: basePath+"especie.list.html"
+                   },
+                   detailView:{
+                   templateUrl: basePath + "/update/especie.edit.html",
+                   controller:'especieeditCtrl',
+                   controllerAs: 'Crtl'
+                   }
+                           
+               }
+     
+         })
+           .state('especieDelete',
+            {
+               url:'/delete/{especieId:int}',
+              parent:'especies',
+              param:{
+                  especieId:null
+              },
+               views:
+               {
+                   'listView':{
+                      templateUrl: basePath+"especie.list.html"
+                   },
+                   detailView:{
+                   templateUrl: basePath + "/delete/especie.delete.html",
+                   controller:'especieDeleteCtrl',
+                   controllerAs: 'Crtl'
+                   }
+                           
+               }
+     
+         })         
             //Estado de registro 
              .state('especiecreate', 
             {
@@ -67,7 +109,7 @@
                 }
               }
          });
-
+         
         }
  
     ]);
