@@ -61,15 +61,12 @@
                    },  
                'detailView':
                 {
-                   templateUrl: basePath + "especie.create.html",
-                   controller:'especieCtrl',
+                   templateUrl: basePath + "/new/especie.create.html",
+                   controller:'especiecreateCtrl',
                    controllerAs: 'Crtl'
                 }
               }
-         })
-         
-       
- 
+         });
 
         }
  
