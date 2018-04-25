@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>AmigosPeludos</title>
+        <title>MascotaSierra</title>
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoUniandes.jpg">
          <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -79,31 +79,32 @@
 
       
     </head>
-     <body style="padding-top: 20px;" >
-         
+    <!-- Aca se comienza a mostrar la pagina-->
+     <body style="padding-top: 20px;" >         
          <div class="container-fluid col-md-12"  >
-            <ul class="nav nav-tabs" style="background-color: lightblue">
-                <li> <img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="65"></li>
-                <li><h3 style="font-style: italic"><b>Sierra App</b></h3></li>
+            <ul class="nav nav-tabs" style="background-color: lightcyan">
+                <li> <img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="110" height="105"></li>
+                
+                <li style="margin-left: 10px ; margin-top: 20px"><h3 style="font-style: italic"><b>Sierra App</b></h3></li>
                         <br>
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li style="margin-left:50px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
-                        <li><a ui-sref='especies'><b>Especies</b></a></li>
-                        <li><a ui-sref='mascotasList'><b>Mascotas</b></a></li>
-                        <li><a ui-sref='calificacionList'><b>Calificaciones</b></a></li>
-                        <li><a ui-sref='facturasList'><b>Facturas</b></a></li>
-                        <li><a ui-sref='adquisicionList'><b>Adquisiciones</b></a></li>
-                        <li><a ui-sref='clientes'><b>Clientes</b></a></li>
-                        <li><a ui-sref='acontecimientoList'><b>Acontecimientos</b></a></li>
-                        <li><a ui-sref='publicacionList'><b>Publicacion</b></a></li>
-                         <li><a ui-sref='certificadosList'><b>certificado</b></a></li>
-                          <li><a ui-sref='razasList'><b>raza</b></a></li>
-                        <hr>
+                        <li style="margin-left:50px ; margin-top: 35px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
+                        <li style=" margin-top: 40px"><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='clientes' style="color: black"><b>Clientes</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>
+                        <li  style=" margin-top: 40px"><a ui-sref='razasList' style="color: black"><b>raza</b></a></li>
+                        
             </ul>
             <hr>
             <div ui-view="mainView" ></div> 
         </div>
-         <div class="col-lg-12" >
+         <div class="col-sm-12" >
         
              <h2 style="text-align: center"  class="grupoDesarrollo">Grupo Desarrollo 2018-1 Uniandes Proyecto Sierra</h2>
                  <h3 style="text-align: center"> INTEGRANTES DEL EQUIPO</h3>
