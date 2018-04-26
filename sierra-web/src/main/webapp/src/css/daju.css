@@ -53,4 +53,5 @@ and open the template in the editor.
     font-family: serif;
     text-decoration-line: overline underline;
     text-decoration-style: wavy;
+    flex-grow: 3;
 }

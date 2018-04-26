@@ -81,28 +81,45 @@
     </head>
     <!-- Aca se comienza a mostrar la pagina-->
     <body>         
-         <div class="row" style="background-color: lightyellow">
-             <div class="col-sm-3"><img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="400" height="300"  class="img-rounded"></div>
-             <div style="background-color: lightyellow;"> <h1  class=" Titular"><b>ADOPCION Y COMPRA DE MASCOTAS</b></h1></div>
+         <div class="row " style="background-color: lightyellow">
+             <div class="col-sm-3"><img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="400" height="200"  class="img-rounded  img-responsive"></div>
+             <div style="background-color: lightyellow;" class="col-sm-9"> 
+                 <h1  class=" Titular"><b>ADOPCION Y COMPRA DE MASCOTAS</b></h1>
+                 <br>
+                 <br>
+                 <h4 style="margin-left: 450px">Desarrollado por:</h4>
+                 <img src="imagenes/sierrita.jpg" width="50" style="margin-left: 500px" class="img-responsive"> 
+                 
+             </div>
          </div>
-         <div>
-                 <ul class="nav nav-tabs" style="background-color: lightcyan">
-                        <br>
-                        <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li style="margin-left:50px ; margin-top: 35px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
-                        <li style=" margin-top: 40px"><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='clientes' style="color: black"><b>Clientes</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>
-                        <li  style=" margin-top: 40px"><a ui-sref='razasList' style="color: black"><b>raza</b></a></li>
-                        
+        <!-- Uso del  Menu izquierdo
+        <div class="col-sm-1 " style="background-color: lightcyan">
+            <h3> <strong>FILTROS:</strong></h3>
+            <br>
+            <br>
+            <ul>
+                <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
+                <br>
+                 <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
+                 <br>
+                 <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
             </ul>
-            <hr>
+        </div>
+        -->
+        <div class="col-sm-11 container-fluid">
+                 <ul class="nav nav-tabs" style="background-color: lightsteelblue">
+                        <!-- Enlace al estado de listar las entidades de Sierra -->
+                        <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
+                        <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
+                        <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
+                        <li><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
+                        <li><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
+                        <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
+                        <li><a ui-sref='clientes' style="color: black"><b>Clientes</b></a></li>
+                        <li><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
+                        <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
+                        <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>                                     
+                 </ul>
             <div ui-view="mainView" ></div> 
         </div>  
     </body>
