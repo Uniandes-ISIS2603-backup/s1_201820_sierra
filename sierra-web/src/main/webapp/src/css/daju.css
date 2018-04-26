@@ -45,3 +45,12 @@ and open the template in the editor.
     width: 400px;
     height: 400px;
 }
+.Titular{
+    margin-top: 100px;
+    letter-spacing: 5px;
+    font-size: 60px;
+    margin-left: 10px;
+    font-family: serif;
+    text-decoration-line: overline underline;
+    text-decoration-style: wavy;
+}

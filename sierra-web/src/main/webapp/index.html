@@ -80,12 +80,13 @@
       
     </head>
     <!-- Aca se comienza a mostrar la pagina-->
-     <body style="padding-top: 20px;" >         
-         <div class="container-fluid col-md-12"  >
-            <ul class="nav nav-tabs" style="background-color: lightcyan">
-                <li> <img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="110" height="105"></li>
-                
-                <li style="margin-left: 10px ; margin-top: 20px"><h3 style="font-style: italic"><b>Sierra App</b></h3></li>
+    <body>         
+         <div class="row" style="background-color: lightyellow">
+             <div class="col-sm-3"><img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="400" height="300"  class="img-rounded"></div>
+             <div style="background-color: lightyellow;"> <h1  class=" Titular"><b>ADOPCION Y COMPRA DE MASCOTAS</b></h1></div>
+         </div>
+         <div>
+                 <ul class="nav nav-tabs" style="background-color: lightcyan">
                         <br>
                         <!-- Enlace al estado de listar las entidades de Sierra -->
                         <li style="margin-left:50px ; margin-top: 35px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
@@ -103,12 +104,6 @@
             </ul>
             <hr>
             <div ui-view="mainView" ></div> 
-        </div>
-         <div class="col-sm-12" >
-        
-             <h2 style="text-align: center"  class="grupoDesarrollo">Grupo Desarrollo 2018-1 Uniandes Proyecto Sierra</h2>
-                 <h3 style="text-align: center"> INTEGRANTES DEL EQUIPO</h3>
-         </div>
-         
+        </div>  
     </body>
 </html>
