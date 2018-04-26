@@ -1,0 +1,39 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<hr>
+<div class="container-fluid" >    
+    <h4 style="text-align: center"> Registro de un nuevo certificado</h4>
+    <br>
+    <div class="col-sm-4" >
+        <form  class="FormularioEspecie" name="Especie">   
+            <br>
+        <div>
+            <center>
+            <lable>Fecha:</lable>&nbsp;<input type="date" class="nombreRaza" required ng-model="data.fecha" placeholder="fecha">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+            <lable>Descripcion:</lable>&nbsp;<input type="text" class="ClasificacionEspecie" required ng-model="data.descripción" placeholder="cuidados">  
+           </center>
+        </div>
+             <br> 
+             <br>
+        <div>
+            <center>
+            <lable>Imagen:</lable>&nbsp;<input type="text" class="CaracteristicasEspecie" requiere ng-model="data.imagen" placeholder="destacable" >
+            </center>
+            <br>
+            <center>
+                <button  ng-click="createCertificado()" ui-sref="certificadosList" >Registrar</button>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="certificadosList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+    </div>
+    <div class="col-sm-6">
+        <img src="imagenes/registro.jpg" width="800">
+    </div>
+</div>

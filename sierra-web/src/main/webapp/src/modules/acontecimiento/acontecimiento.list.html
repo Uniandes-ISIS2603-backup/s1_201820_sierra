@@ -1,15 +1,16 @@
-<h1>Ultimos Acontecimientos </h1>
+<h1>Últimos Acontecimientos: </h1>
 <div class="container-fluid">
         <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="acontecimiento in acontecimientos">
-            <div class = "row">
-                <h3>{{acontecimiento.nombre}}</h3>
+           <div class="thumbnail">
+                <img class="img-responsive" ng-src='{{acontecimiento.fotoURL}}' alt="{{acontecimiento.nombre}}" />  
+                <div class="caption text-center">{{acontecimiento.nombre}}</div>
             </div>
             <div class ="row">
                 <b>Fecha:</b>
                 <p>{{acontecimiento.fecha}}</p>
             </div>
             <div class ="row">
-                <b>Descripcion:</b>
+                <b>Descripción:</b>
                 <p>{{acontecimiento.descripcion}}</p>
             </div>
-          
+          </div>          

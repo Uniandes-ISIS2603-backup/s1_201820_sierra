@@ -2,7 +2,7 @@
 {
     var modulo = ng.module("acontecimientoModule");
     modulo.constant("acontecimientoContext", "api/acontecimientos");
-    modulo.controller('acontecimientoCtrl', ['$scope', '$http', 'sportContext',
+    modulo.controller('acontecimientoCtrl', ['$scope', '$http', 'acontecimientoContext',
                       function($scope, $http, acontecimientoContext)
                       {
                        $scope.acontecimientos = {};
@@ -14,5 +14,5 @@
 } 
 ]);
 }
-)
+)(window.angular);
 

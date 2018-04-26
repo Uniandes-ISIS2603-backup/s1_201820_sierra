@@ -5,7 +5,7 @@
             <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
         </div>
     </div>
-    <table class="table table-striped col-md-4">
+    <table class="table table-striped col-md-5">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -13,14 +13,12 @@
                 <th>Cedula </th>
                 <th>Telefono</th>
                 <th>Correo electronico</th>
-                <th ng-if="isAuthenticated() && hasPermissions()">Actions</th>  
-
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="cliente in clienteRecords">
 
-                <td id="{{$index}}-Nombre"><a ui-sret="clientes.detail({clienteId:cliente.id})">{{cliente.nombre}}</a></td>
+                <td id="{{$index}}-Nombre"><a ui-sret="clienteDetail({clienteId:clientes.id})">{{cliente.nombre}}</a></td>
                 <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
                 <td id="{{$index}}-Cedula">{{cliente.cedula}}</td>
                 <td id="{{$index}}-Telefono">{{cliente.telefono}}</td>

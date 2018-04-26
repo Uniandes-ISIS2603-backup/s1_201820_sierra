@@ -11,8 +11,13 @@
         'calificacionModule',
         'facturaModule',
         'adquisicionModule',
-        'clienteModule'
+        'clienteModule',
+        'acontecimientoModule',
+        'publicacionModule',
+         'certificadoModule',
+         'razaModule',
     ]);
+     
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);

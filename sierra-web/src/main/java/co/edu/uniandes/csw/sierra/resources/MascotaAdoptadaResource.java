@@ -9,7 +9,6 @@ package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
-import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -147,7 +146,6 @@ public class MascotaAdoptadaResource {
      */
     @POST
     public MascotaAdopcionDetailDTO createMascota(MascotaAdopcionDetailDTO dto) throws BusinessLogicException {
-
         return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.createMascotaAdoptada(dto.toEntity()));
     }
 
@@ -219,7 +217,6 @@ public class MascotaAdoptadaResource {
             throw new WebApplicationException("La mascota adoptada no existe");
         }
         mascotaAdoptadaLogica.deleteMascotaAdoptada(id);
-
     }
 
 }
