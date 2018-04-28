@@ -12,6 +12,17 @@
                         controllerAs: 'ctrl'
                        }
               }
+          })
+                  .state('publicacionCreate',{
+                      url: '/publicacion/create',
+              views:{
+                  'mainView':{
+                      templateUrl: basePath + 'publicacion.create.html',
+                      controller:'publicacionCtrl',
+                      controllerAs:'ctrl'
+                  }
+              }
+                      
           });
   }
   ]);
