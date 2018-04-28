@@ -46,12 +46,10 @@ and open the template in the editor.
     height: 400px;
 }
 .Titular{
-    margin-top: 100px;
-    letter-spacing: 5px;
+    margin-top: 60px;
+    letter-spacing: 4px;
     font-size: 60px;
-    margin-left: 10px;
-    font-family: serif;
-    text-decoration-line: overline underline;
-    text-decoration-style: wavy;
-    flex-grow: 3;
+    font-family: monospace;
+    text-align: center;
+    
 }
