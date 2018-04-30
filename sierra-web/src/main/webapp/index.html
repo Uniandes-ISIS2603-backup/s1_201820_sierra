@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>AmigosPeludos</title>
+        <title>MascotaSierra</title>
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoUniandes.jpg">
          <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -51,10 +51,10 @@
         <!--MascotaAdop-->
         <script src="src/modules/mascotasadop/mascotaadop.mod.js" type="text/javascript"></script>
         <script src="src/modules/mascotasadop/mascotaadop.ctrl.js" type="text/javascript"></script>
-         <script src="src/modules/mascotasadop/mascotaDetail.ctrl.js" type="text/javascript"></script>
-          <script src="src/modules/mascotasadop/new/mascotaCreate.ctrl.js" type="text/javascript"></script>
-          <script src="src/modules/mascotasadop/update/mascotaEdit.ctrl.js" type="text/javascript"></script>
-           <script src="src/modules/mascotasadop/delete/mascotaDelete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasadop/mascotaDetail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasadop/new/mascotaCreate.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasadop/update/mascotaEdit.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasadop/delete/mascotaDelete.ctrl.js" type="text/javascript"></script>
         
            <!--CLIENTES-->
         <script src="src/modules/clientes/clientes.mod.js" type="text/javascript"></script>
@@ -66,10 +66,10 @@
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
        
         <!-- Certificado -->
-       <script src="src/modules/certificado/certificado.mod.js" type="text/javascript"></script>
-       <script src="src/modules/certificado/certificado.ctrl.js" type="text/javascript"></script>
-       <script src="src/modules/certificado/certificado.new.ctrl.js" type="text/javascript"></script>
-       <script src="src/modules/certificado/certificado.update.ctrl.js" type="text/javascript"></script>
+     <script src="src/modules/certificado/certificado.mod.js" type="text/javascript"></script>
+        <script src="src/modules/certificado/certificado.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/certificado/certificadoDetail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/certificado/new/certificadoCreate.ctrl.js" type="text/javascript"></script>
          <!-- Raza -->
          <script src="src/modules/raza/raza.mod.js" type="text/javascript"></script>
         <script src="src/modules/raza/raza.ctrl.js" type="text/javascript"></script>
@@ -79,35 +79,44 @@
 
       
     </head>
-     <body style="padding-top: 20px;" >
-         
-         <div class="container-fluid col-md-12"  >
-            <ul class="nav nav-tabs" style="background-color: lightblue">
-                <li> <img src="imagenes/logoSierra.jpg"  alt="Logo Sierra" width="65"></li>
-                <li><h3 style="font-style: italic"><b>Sierra App</b></h3></li>
-                        <br>
-                        <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li style="margin-left:50px" ><a ui-sref="sierraList"><b>Sierra</b></a></li>
-                        <li><a ui-sref='especies'><b>Especies</b></a></li>
-                        <li><a ui-sref='mascotasList'><b>Mascotas</b></a></li>
-                        <li><a ui-sref='calificacionList'><b>Calificaciones</b></a></li>
-                        <li><a ui-sref='facturasList'><b>Facturas</b></a></li>
-                        <li><a ui-sref='adquisicionList'><b>Adquisiciones</b></a></li>
-                        <li><a ui-sref='clientes'><b>Clientes</b></a></li>
-                        <li><a ui-sref='acontecimientoList'><b>Acontecimientos</b></a></li>
-                        <li><a ui-sref='publicacionList'><b>Publicacion</b></a></li>
-                         <li><a ui-sref='certificadoList'><b>certificado</b></a></li>
-                          <li><a ui-sref='razasList'><b>raza</b></a></li>
-                        <hr>
-            </ul>
-            <hr>
-            <div ui-view="mainView" ></div> 
+    <!-- Aca se comienza a mostrar la pagina-->
+    <body>         
+         <div class="  container-fluid col-sm-12 row" style="background-color: yellow">
+             <div class="col-sm-2 container-fluid"><img src="imagenes/logoSierra.jpg" alt="Logo Sierra" width="335" height="200" class="img-rounded"></div>
+             <div style=" height: 200px; margin-left: 50px" class="col-sm-8 col-md-8"> 
+                 <h1  class=" Titular"><b>ADOPCION Y COMPRA DE MASCOTAS</b></h1>
+             </div>
+             
         </div>
-         <div class="col-lg-12" >
-        
-             <h2 style="text-align: center"  class="grupoDesarrollo">Grupo Desarrollo 2018-1 Uniandes Proyecto Sierra</h2>
-                 <h3 style="text-align: center"> INTEGRANTES DEL EQUIPO</h3>
-         </div>
-         
+        <!-- Uso del  Menu izquierdo
+        <div class="col-sm-1 " style="background-color: lightcyan">
+            <h3> <strong>FILTROS:</strong></h3>
+            <br>
+            <br>
+            <ul>
+                <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
+                <br>
+                 <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
+                 <br>
+                 <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
+            </ul>
+        </div>
+        -->
+        <div class=" row col-sm-12 container-fluid">
+                 <ul class="nav nav-tabs" style="background-color: lightsteelblue">
+                        <!-- Enlace al estado de listar las entidades de Sierra -->
+                        <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
+                        <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
+                        <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
+                        <li><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
+                        <li><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
+                        <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
+                        <li><a ui-sref='clientes' style="color: black"><b>Clientes</b></a></li>
+                        <li><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
+                        <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
+                        <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>                                     
+                 </ul>
+            <div ui-view="mainView" ></div> 
+        </div>  
     </body>
 </html>

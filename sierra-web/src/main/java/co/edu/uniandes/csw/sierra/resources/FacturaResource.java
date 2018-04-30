@@ -46,7 +46,7 @@ import javax.ws.rs.WebApplicationException;
  * @author ja.amortegui10
  */
 //TODO: Revisar el path para llegar a este recurso
-@Path( "adquisiciones/{adquisicionesId: \\d}/facturas" )
+@Path( "adquisiciones/{adquisicionId: \\d}/facturas" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
@@ -118,7 +118,7 @@ public class FacturaResource {
      */
     
     @GET
-    public FacturaDetailDTO getFacturas(@PathParam("adquisicionesId") Long adquisicionId)throws WebApplicationException
+    public FacturaDetailDTO getFacturas(@PathParam("adquisicionId") Long adquisicionId)throws WebApplicationException
     {
         System.out.println("-->> El id: " + adquisicionId);
         AdquisicionEntity adquisicion = logicAdquisicion.getById(adquisicionId);

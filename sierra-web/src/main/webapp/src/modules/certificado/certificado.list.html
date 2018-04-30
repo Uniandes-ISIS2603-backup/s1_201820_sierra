@@ -1,42 +1,16 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div id="alertPanel" style="text-align: center"></div>
-<div class="container-fluid">
-    <div class="panel-group">
-    <div class="panel-primary">
-    <div class="panel-heading"><label>Certificados</label></div>
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-            <br>
-            <td><a id="boton-ircrearmensaje" ui-sref="certificadoCreate" class="btn btn-info">Crear Certificado</a></td>
-            <br>
-        </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>    
-                    <th>titulo</th>  
-                    <th>asunto</th> 
-                    <th>mensaje</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="certificado in certificadosRecords">
-                    <td id="{{$index}}-fecha">{{certificado.fecha}}</td>
-                    <td id="{{$index}}-descripcion">{{mensaje.descrpcion}}</td>  
-                    <td id="{{$index}}-imagen">{{mensaje.imagen}}</td>  
-                    <td><a id="boton-irdetailmensaje" ui-sref="certificadoDetail({certificadoId: certificado.id})" class="btn btn-info"><span class="glyphicon glyphicon-plus">Ver</a>
-                    <a id="boton-iractualizarmensaje" ui-sref="certificadoUpdate({cartificadoId: certificado.id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit">Editar</a>
-                
-                </tr>
-            </tbody>
-        </table>
-       <div class="btn-group mr-2" role="group" aria-label="First group">
-            <br>
-            <td><a id="boton-ircrearmensaje" ui-sref="certificadoCreate" class="btn btn-info">Crear Certificado</a></td>
-            <br>
-        </div>
-        </div>
-        </div>
-        </div>
-
+<!--LiSTA DE  CERTIFICADOS -->
+<div class="container-fluid" >
+    <div> <h1 style="text-align: center">Certificados registrados en la tienda: </h1> </div>
+    <div class="row" >
+        <div class="col-md-3" ng-repeat="certificado in certificadosRecords">
+            <div class="thumbnail" style="background-color: gray">
+                 <div>  <label> Fecha: </label> {{certificado.fecha}}</div>
+                    <div> <label> Descripción: </label> {{certificado.descripcion}}</div>
+                    <div> <label> Imagen: </label> {{certificado.imagen}}</div>
+                <center> <a ui-sref="certificadoDetail({certificadoId: certificado.id})"><input type="button" value="ver"></a></center>
+            </div>
+        </div>        
+    </div>
     
 </div>
