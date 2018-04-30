@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -45,7 +46,7 @@ public class ClienteEntity extends BaseEntity implements Serializable
      * Lista de todos los medios de pago de un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente", cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy="clientes")
     private List<MedioDePagoEntity> mediosDePago = new ArrayList<>();
     
     /**

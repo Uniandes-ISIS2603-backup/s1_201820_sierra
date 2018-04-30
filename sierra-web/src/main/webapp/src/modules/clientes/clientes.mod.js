@@ -8,14 +8,14 @@
             
             $stateProvider.state('clientes', {
                 url: '/clientes',
+                  abstrac:true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'clientes.list.html',
+                        templateUrl: basePath + 'clientes.html',
                         controller: 'clienteCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
-               
+                }   
             }).state ('clienteCreate', {
                 url:'/cliente/create',
                 views: {
@@ -25,17 +25,15 @@
                     }
                 }
             }).state('clienteDetail', {
-                url: '{clienteId:int}/detail',
+                url: '/{clienteId:int}/detail',
                 parent: 'clientes',
                 param: {
-                    clienteId: 1
+                    clienteId: null
                 },
                 views: {
-                    'mainView': {
-                        templateUrl: basePath + 'clientes.list.html',
-                        controller: 'clienteCtrl',
-                        controllerAs: 'ctrl'
-                    },
+                    'listView':{
+                       templateUrl: basePath+"clientes.list.html"
+                   },
                     'detailView': {
                         templateUrl: basePath + 'clientes.detail.html',
                         controller: 'clienteDetailCtrl',

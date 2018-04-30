@@ -1,15 +1,16 @@
+delete from ClienteEntity;
+delete from MedioDePagoEntity;
+delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
 delete from AcontecimientoEntity;
 delete from AdquisicionEntity;
 delete from CalificacionEntity;
 delete from CertificadoEntity;
-delete from ClienteEntity;
 delete from ComprobanteEntity;
 delete from EspecieEntity;
 delete from FacturaEntity;
 delete from MascotaAdoptadaEntity;
 delete from MascotaEntity;
 delete from MascotaVentaEntity;
-delete from MedioDePagoEntity;
 delete from PublicacionEntity;
 delete from RazaEntity;
 delete from SierraEntity;
@@ -64,10 +65,13 @@ insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimien
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (4,0,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Petreo','grande'); 
 
 insert into MascotaAdoptadaEntity(id) values (1);
-insert into MascotaAdoptadaEntity(id) values (2)
+insert into MascotaAdoptadaEntity(id) values (2);
 insert into MascotaAdoptadaEntity(id) values (3);
-
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (3, 30, 'tarjeta credito');
+
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (2,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,2);

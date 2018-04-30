@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package co.uniandes.csw.sierra.test.persistence;
-import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
+
+import co.edu.uniandes.csw.sierra.entities.*;
 import co.edu.uniandes.csw.sierra.persistence.MedioDePagoPersistence;
 import java.util.*;
 import javax.inject.Inject;
@@ -119,11 +120,9 @@ public class MedioDePagoPersistenceTest
     {
         PodamFactory factory = new PodamFactoryImpl();
         MedioDePagoEntity newEntity = factory.manufacturePojo(MedioDePagoEntity.class);
-        MedioDePagoEntity result = medioDePagoPersistence.create(newEntity);
-        
+        MedioDePagoEntity result = medioDePagoPersistence.create(newEntity);      
         Assert.assertNotNull(result);
-        MedioDePagoEntity entity = em.find(MedioDePagoEntity.class, result.getId());
-        
+        MedioDePagoEntity entity = em.find(MedioDePagoEntity.class, result.getId());      
         Assert.assertEquals(newEntity.getNumeroReferencia(), entity.getNumeroReferencia());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
     }

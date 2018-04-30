@@ -119,11 +119,9 @@ public class ClientePersistenceTest
     {
         PodamFactory factory = new PodamFactoryImpl();
         ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
-        ClienteEntity result = clientePersistence.create(newEntity);
-        
+        ClienteEntity result = clientePersistence.create(newEntity);       
         Assert.assertNotNull(result);
-        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());
-        
+        ClienteEntity entity = em.find(ClienteEntity.class, result.getId());       
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getApellido(), entity.getApellido());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());

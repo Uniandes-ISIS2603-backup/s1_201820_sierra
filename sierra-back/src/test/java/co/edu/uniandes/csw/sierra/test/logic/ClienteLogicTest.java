@@ -37,8 +37,6 @@ public class ClienteLogicTest {
     @Inject
     private ClienteLogic clienteLogic;
     
-    @Inject
-    private ClientePersistence persistence;
     @PersistenceContext
     private EntityManager em;
     
@@ -155,16 +153,14 @@ public class ClienteLogicTest {
     }
     /**
      * Prueba para actualizar un cliente.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      **/
     @Test
-    public void updateClienteTest() {
+    public void updateClienteTest() throws BusinessLogicException{
         ClienteEntity entity = data.get(0);
         ClienteEntity pojoEntity = factory.manufacturePojo(ClienteEntity.class);
-        
         pojoEntity.setId(entity.getId());
-        
         clienteLogic.updateCliente(pojoEntity.getId(), pojoEntity);
-        
         ClienteEntity resp = em.find(ClienteEntity.class, entity.getId());
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
