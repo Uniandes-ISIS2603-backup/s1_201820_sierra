@@ -6,7 +6,6 @@ delete from ClienteEntity;
 delete from ComprobanteEntity;
 delete from EspecieEntity;
 delete from FacturaEntity;
-delete from MascotaAdoptadaEntity;
 delete from MascotaEntity;
 delete from MascotaVentaEntity;
 delete from MedioDePagoEntity;
@@ -50,11 +49,13 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contra
 
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (1,1,'Andres', 20000);
 
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (1, 'Canino', 'Amigables  y amistosos, similares a los lobos', 'Mamifero','imagenes/caninos.jpg');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (2, 'Felino', 'Independientes y agiles', 'Mamifero','imagenes/felinos.jpg');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (3, 'Salamandra', 'Verde es su color favoorito', 'Reptil','imagenes/salamanadra.png');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (4, 'Perico', 'Voladores hermosos con un gran impacto  visual', 'Ave','imagenes/perico.jpg');
-
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (1, 'Canino', 'Descendientes de los lobos, fieles, amorosos y el mejor amigo del hombre', 'Mamifero','recursos/img/siluetaPerro.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (2, 'Felino', 'Independientes agiles, un poco destructivos pero te otorgaran cariño', 'Mamifero','recursos/img/siluetaGato.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (3, 'Repitles', 'Curiososs, inpredesibles son un misterio llamativo', 'Reptil','recursos/img/siluetaReptil.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (4, 'Loro',' Grandes conversadores  coloridos y divertidos', 'Ave','recursos/img/siluetaAve.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (5, 'Pez','Coloridos acuaticos ', 'Pez','recursos/img/siluetaPez.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (6, 'Conejo','Bolas de algodon tiernas y apachurrables', 'Mamifero','recursos/img/siluetaConejo.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (7, 'Hamnster','Pequeños deportistas resuelve laberintos, divertidos de observar por su actividad', 'Mamifero','recursos/img/siluetaHamnster.jpg');
 
 
 
@@ -63,9 +64,7 @@ insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimien
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (3,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Zeus','grande'); 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (4,0,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Petreo','grande'); 
 
-insert into MascotaAdoptadaEntity(id) values (1);
-insert into MascotaAdoptadaEntity(id) values (2)
-insert into MascotaAdoptadaEntity(id) values (3);
+
 
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');

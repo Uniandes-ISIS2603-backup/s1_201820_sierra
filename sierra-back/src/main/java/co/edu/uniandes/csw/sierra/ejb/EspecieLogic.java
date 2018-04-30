@@ -36,7 +36,8 @@ public class EspecieLogic
      public EspecieEntity createEspecie(EspecieEntity entity) throws BusinessLogicException
      {
          LOGGER.info( "Inicia proceso de creación de una entidad de Especie" );
-         if (persistence.findByName(entity.getNombre())!=null) {
+         if (persistence.findByName(entity.getNombre())!=null)
+         {
              throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getNombre() + "\"" );
          }
              persistence.create(entity);
