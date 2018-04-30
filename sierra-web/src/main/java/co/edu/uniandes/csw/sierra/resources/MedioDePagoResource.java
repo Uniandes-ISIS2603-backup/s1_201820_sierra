@@ -33,7 +33,7 @@ import javax.ws.rs.core.MediaType;
  * @author de.gutierrez
  */
 //TODO: Revisar el path para llegar a este recurso
-@Path("mediosDePago")
+@Path("/mediosDePago")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequestScoped
@@ -61,6 +61,7 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
+     * @param idCliente
      * @param medio {@link MedioDePagoDetailDTO} - El medio de pago que se desea
      * guardar.
      * @return JSON {@link MedioDePagoDetailDTO}- El medio de pago guardado con
@@ -69,10 +70,9 @@ public class MedioDePagoResource {
      * logica que se genera cuando ya existe un medio de pago.
      */
     @POST
-    public MedioDePagoDetailDTO createMedioDePago(MedioDePagoDetailDTO medio) throws BusinessLogicException {
-        MedioDePagoEntity medioEntity = medio.toEntity();
-        MedioDePagoEntity nuevoMedio = medioDePagoLogic.createMedioDePago(medioEntity);
-        return new MedioDePagoDetailDTO(nuevoMedio);
+    public MedioDePagoDTO createMedioDePago(MedioDePagoDTO medio) throws BusinessLogicException {
+     
+        return new MedioDePagoDTO(medioDePagoLogic.createMedioDePago(medio.toEntity()));
     }
 
     /**
@@ -86,12 +86,14 @@ public class MedioDePagoResource {
      * 200 OK Devuelve todos los medioDePago de la aplicacion.</code>
      * </pre>
      *
+     * @param idCliente
      * @return JSONArray {@link  MedioDePagoDetailDTO} - Los medios de pago en la
      * aplicacion. Si no hay ninguno retorna vacio.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     @GET
-    public List<MedioDePagoDetailDTO> getMediosDePago() {
-        return listEntityDetailDTO(medioDePagoLogic.getMediosDePago());
+    public List<MedioDePagoDTO> getMediosDePago() throws BusinessLogicException{
+        return listEntity2DTO(medioDePagoLogic.getMediosDePago());
     }
 
     /**
@@ -108,14 +110,16 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
+     * @param idCliente
      * @param id Identificador del medioDePago que se esta buscando. Este debe
      * ser una cadena de digitos.
      * @return JSON {@link MedioDePagoDetailDTO} - El medioDePago buscado.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}. no
      * exite
      */
     @GET
-    @Path("{id: \\d+}")
+    @Path("{id: \\d++}")
     public MedioDePagoDetailDTO getMedio(@PathParam("id") Long id) throws BusinessLogicException {
         MedioDePagoEntity entity = medioDePagoLogic.getMedioDePago(id);
         if (entity == null) {
@@ -137,6 +141,7 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
+     * @param idCliente
      * @param id Identificador de la entidad medio de pago que se desea
      * actualizar. Este debe ser una cadena de digitos.
      * @param medio {@link MedioDePagoDetailDTO} La entidad de medio de pago que
@@ -149,13 +154,13 @@ public class MedioDePagoResource {
      */
     @PUT
     @Path("{id: \\d++}")
-    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("id") Long id, MedioDePagoDetailDTO medio) throws WebApplicationException {
+    public MedioDePagoDTO updateMedioDePago(@PathParam("id") Long id, MedioDePagoDTO medio) throws BusinessLogicException{
         medio.setId(id);
         MedioDePagoEntity entity = medioDePagoLogic.getMedioDePago(id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /mediosDePago/" + id + " no existe.", 404);
+           throw new WebApplicationException("El recurso /medios/" + id + " no existe.", 404);
         }
-        return new MedioDePagoDetailDTO(medioDePagoLogic.updateMedioDePago(id, medio.toEntity()));
+        return new MedioDePagoDTO(medioDePagoLogic.updateMedioDePago(id, medio.toEntity()));
     }
 
     /**
@@ -170,6 +175,7 @@ public class MedioDePagoResource {
      * 404 Not Found. No existe una entidad de medioDePago con el id dado. </code>
      * </pre>
      *
+     * @param idCliente
      * @param id Identificador de la entidad de medioDePago que se desea borrar.
      * Este debe ser una cadena de digitos.
      */
@@ -197,6 +203,14 @@ public class MedioDePagoResource {
         List<MedioDePagoDetailDTO> list = new ArrayList<>();
         for (MedioDePagoEntity entity : medioList) {
             list.add(new MedioDePagoDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    private List<MedioDePagoDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
+        List<MedioDePagoDTO> list = new ArrayList<>();
+        for (MedioDePagoEntity entity : entityList) {
+            list.add(new MedioDePagoDTO(entity));
         }
         return list;
     }

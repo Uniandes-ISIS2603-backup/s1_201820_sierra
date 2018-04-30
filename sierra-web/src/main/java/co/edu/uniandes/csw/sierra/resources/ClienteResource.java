@@ -166,7 +166,7 @@ public class ClienteResource
         if(entity == null){
             throw new WebApplicationException("El recurso /clientes/" + id + " no existe.", 404);
         }
-        clienteLogic.deleteCliente(id);
+    clienteLogic.deleteCliente(id);
     }
     public List<ClienteDetailDTO> listEntityDetailDTO(List<ClienteEntity> clienteList)
     {

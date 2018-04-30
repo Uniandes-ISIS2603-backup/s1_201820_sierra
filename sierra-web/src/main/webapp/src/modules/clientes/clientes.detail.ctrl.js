@@ -4,13 +4,13 @@
     mod.controller('clienteDetailCtrl', ['$scope', '$http', 'clienteContext', '$state',
         
         function ($scope, $http, clienteContext, $state) {
-            
-            
+            if (($state.params.clienteId !== undefined) && ($state.params.clienteId !== null)) {
+                
                 $http.get(clienteContext + '/' + $state.params.clienteId).then(function (response) {
                     
-                    $scope.clienteCurrent = response.data;
+                    $scope.currentCliente = response.data;
                 });
-            
+            }
         }
     ]);
 }

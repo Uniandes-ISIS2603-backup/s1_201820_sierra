@@ -1,11 +1,28 @@
-<div class="thumbnail">
-	<div class="panel panel-default"> 
-		<div class="panel-body">
-                        <h2>Cliente {{clienteCurrent.name}}</h2>
-			<br>
-                        <p><b>Apellido: </b>${{clienteCurrent.apellido}}</p>
-                        
-			<p><b>Telefono: </b>${{clienteCurrent.telefono}}</p>
-                        
-                     </div>
+<div class="panel panel-default"> 
+    <p>
+        asdajksndjkasnd
+    </p>
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="{{currentCliente.image}}"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <dl>     
+                <dt>{{currentCliente.nombre}}</dt>
+                
+                <hr>
+                <dt>Apellido</dt>
+                <dd>{{currentCliente.apellido}}</dd>
+          
+                <hr>
+                <dt>cedula</dt>
+                <dd>{{currentCliente.cedula}}</dd>
+
+            </dl>
+        </div>
+    </div>
+        </div>
 </div>

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.MedioDePagoLogic;
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MedioDePagoPersistence;
@@ -96,9 +97,10 @@ public class MedioDePagoLogicTest {
      * pruebas.
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
+        
+        for(int i=0;i<3;i++)
+        {
             MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
-
             em.persist(entity);
             data.add(entity);
         }
@@ -108,73 +110,68 @@ public class MedioDePagoLogicTest {
      * @throws BusinessLogicException Si ya existe un cliente.
      */
     @Test
-    public void createMedioDePagoTest () throws BusinessLogicException{
+    public void createMedioDePagoTest () throws BusinessLogicException{ 
         MedioDePagoEntity newEntity = factory.manufacturePojo(MedioDePagoEntity.class);
         MedioDePagoEntity result = medioDePago.createMedioDePago(newEntity);
         Assert.assertNotNull(result);
-        MedioDePagoEntity entity = em.find(MedioDePagoEntity.class, result.getId());
+        MedioDePagoEntity entity = em.find(MedioDePagoEntity.class,result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
         Assert.assertEquals(newEntity.getNumeroReferencia(), entity.getNumeroReferencia());
-        Assert.assertEquals(newEntity.getTipo(), entity.getTipo());        
+        
     }
     /**
      * Prueba para consultar la lista de MedioDePago.
      */
     @Test
     public void geMediosDePagoTest(){
-        List<MedioDePagoEntity> list = medioDePago.getMediosDePago();
-        Assert.assertEquals(data.size(), list.size());
-        for(MedioDePagoEntity entity : list){
-            boolean found = false;
-            for(MedioDePagoEntity storeEntity : data){
-                if(entity.getId().equals(storeEntity.getId())){
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
+       List<MedioDePagoEntity> list = medioDePago.getMediosDePago();
+       Assert.assertEquals(data.size(), list.size());
+       for(MedioDePagoEntity entity : list){
+           boolean found = false;
+           for(MedioDePagoEntity storeEntity : data){
+               if(entity.getId().equals(storeEntity.getId())){
+                   found = true;
+               }
+           }
+           Assert.assertTrue(found);
+       }
     }
      /**
      * Prueba consultar un MedioDePago.
      */
     @Test
     public void getMedioDePagoTest(){
-        MedioDePagoEntity entity = data.get(0);
-        MedioDePagoEntity result = medioDePago.getMedioDePago(entity.getId());
-        Assert.assertNotNull(result);
-        Assert.assertEquals(entity.getId(), result.getId());
-        Assert.assertEquals(entity.getName(), result.getName());
-        Assert.assertEquals(entity.getNumeroReferencia(), result.getNumeroReferencia());
-        Assert.assertEquals(entity.getTipo(), result.getTipo());    
+       MedioDePagoEntity entity = data.get(0);
+       MedioDePagoEntity result = medioDePago.getMedioDePago(entity.getId());
+       Assert.assertNotNull(result);
+       Assert.assertEquals(entity.getId(), result.getId());
+       Assert.assertEquals(entity.getTipo(), result.getTipo());
+       Assert.assertEquals(entity.getNumeroReferencia(), result.getNumeroReferencia());
     }
     
     /**
      * Prueba para actualizar un MedioDePago.
      **/
     @Test
-    public void updateMedioDePagoTest() {
-        MedioDePagoEntity entity = data.get(0);
-        MedioDePagoEntity pojoEntity = factory.manufacturePojo(MedioDePagoEntity.class);
-        
-        pojoEntity.setId(entity.getId());
-        
-        medioDePago.updateMedioDePago(pojoEntity.getId(), pojoEntity);
-        
-        MedioDePagoEntity resp = em.find(MedioDePagoEntity.class, entity.getId());
-        Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getName(), resp.getName());
-        Assert.assertEquals(pojoEntity.getNumeroReferencia(), resp.getNumeroReferencia());
-        Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
+    public void updateMedioDePagoTest() throws BusinessLogicException {
+      MedioDePagoEntity entity = data.get(0);
+      MedioDePagoEntity pojoEntity = factory.manufacturePojo(MedioDePagoEntity.class);
+      pojoEntity.setId(entity.getId());
+      medioDePago.updateMedioDePago(pojoEntity.getId(), pojoEntity);
+      MedioDePagoEntity resp = em.find(MedioDePagoEntity.class, entity.getId());
+      Assert.assertEquals(pojoEntity.getId(), resp.getId());
+      Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
+      Assert.assertEquals(pojoEntity.getNumeroReferencia(), resp.getNumeroReferencia());
     }
      /**
      * Prueba para eliminar un MedioDePago.
      */
     @Test
     public void deleteMedioDePagoTest(){
-        MedioDePagoEntity entity = data.get(0);
-        medioDePago.deleteMedioDePago(entity.getId());
-        MedioDePagoEntity deleted = em.find(MedioDePagoEntity.class, entity.getId());
-        Assert.assertNull(deleted );
+       MedioDePagoEntity entity = data.get(0);
+       medioDePago.deleteMedioDePago(entity.getId());
+       MedioDePagoEntity deleted = em.find(MedioDePagoEntity.class, entity.getId());
+       Assert.assertNull(deleted);
     }
 }

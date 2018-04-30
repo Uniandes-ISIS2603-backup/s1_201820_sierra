@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -23,8 +25,8 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     private String tipo; //Atributo que contiene el tipo del medio de pago. Efectivo o tarjeta.
 
     @PodamExclude
-    @ManyToOne
-    private ClienteEntity cliente;
+    @ManyToMany
+    private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
     
     @PodamExclude
     @OneToOne(mappedBy="medioDePago", cascade = CascadeType.PERSIST)
@@ -62,21 +64,21 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     } 
 
     /**
-     * Devuelve el cliente al que pertenece el medio con el que se pago.
-     * @return El cliente asociado al medio de pago.
+     * Obtiene todos los clientes que pagan con determinado medio de pago.
+     * @return Los clientes que tienen asociado el medio de pago.
      */
-    public ClienteEntity getCliente() {
-        return cliente;
+    public List<ClienteEntity> getClientes() {
+        return clientes;
     }
 
     /**
-     * Modifica el cliente al que pertenece el medio de pago.
-     * @param cliente Nuevo cliente a modificar.
+     * Asigna clientes a un medio de pago.
+     * @param clientes Lista de clientes para asignar  a un cliente.
      */
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
+    public void setClientes(List<ClienteEntity> clientes) {
+        this.clientes = clientes;
     }
-
+    
     /**
      * Obtiene un comprobante asociado al cuando se pago con el medio especifico.
      * @return El comprobante cuando se pago.
