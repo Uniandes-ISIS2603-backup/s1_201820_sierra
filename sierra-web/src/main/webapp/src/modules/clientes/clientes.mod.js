@@ -16,7 +16,19 @@
                         controllerAs: 'ctrl'
                     }
                 }   
-            }).state ('clienteCreate', {
+            }).state('clientesList',{
+               url: '/List',
+               parent: 'clientes',
+               views:{
+                   'listView':{
+                       templateUrl: basePath+"clientes.list.html",
+                       controller:'clienteCtrl',
+                       controllerAs: 'Crtl'
+                   }
+               }
+             })
+            //EstadoDetail
+            .state ('clienteCreate', {
                 url:'/cliente/create',
                 views: {
                     'mainView':{
