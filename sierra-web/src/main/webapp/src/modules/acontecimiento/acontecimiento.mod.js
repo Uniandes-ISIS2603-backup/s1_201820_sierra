@@ -20,7 +20,18 @@
                         controllerAs: 'ctrl'
                        }
                 }
-            });
+            })
+                    .state('acontecimientoCreate',{
+                        url:'/acontecimiento/create',
+                views:{
+                    'mainView':{
+                        templateUrl: basePath + 'acontecimiento.create.html',
+                        controller: 'acontecimientoCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+                    }
+                    );
         }
     ]);
 })(window.angular);
