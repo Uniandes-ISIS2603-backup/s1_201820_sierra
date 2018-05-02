@@ -36,23 +36,13 @@ public class EspecieLogic
      public EspecieEntity createEspecie(EspecieEntity entity) throws BusinessLogicException
      {
          LOGGER.info( "Inicia proceso de creación de una entidad de Especie" );
-         if (persistence.findById(entity.getId())!=null)
+         if (persistence.findByName(entity.getNombre())!=null)
          {
-             throw new BusinessLogicException( "Ya existe una entidad de Especie con ese id  \"" + entity.getName( ) + "\"" );
+             throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getNombre() + "\"" );
          }
-         else if (persistence.findByName(entity.getNombre())!=null) {
-             throw new BusinessLogicException( "Ya existe una entidad de Especie con el nombre \"" + entity.getName( ) + "\"" );
-         }
-         else if (entity.getNombre().equals("") ||entity.getClasificacion().equals(""))
-         {
-             throw new BusinessLogicException( "La informacion de la  especie \"" + entity.getName( ) + " no es un  valida\"" );
-         }
-         else
-         {
              persistence.create(entity);
              LOGGER.info( "Termina proceso de creación de una entidad de Especie" );
-             return entity;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-         }
+             return entity;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
      }
      
      

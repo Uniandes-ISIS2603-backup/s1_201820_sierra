@@ -1,15 +1,15 @@
+delete from ClienteEntity;
+delete from MedioDePagoEntity;
+delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
 delete from AcontecimientoEntity;
 delete from AdquisicionEntity;
 delete from CalificacionEntity;
 delete from CertificadoEntity;
-delete from ClienteEntity;
 delete from ComprobanteEntity;
 delete from EspecieEntity;
 delete from FacturaEntity;
-delete from MascotaAdoptadaEntity;
 delete from MascotaEntity;
 delete from MascotaVentaEntity;
-delete from MedioDePagoEntity;
 delete from PublicacionEntity;
 delete from RazaEntity;
 delete from SierraEntity;
@@ -50,26 +50,33 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contra
 
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (1,1,'Andres', 20000);
 
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (1, 'Mamifero', 'Amigables  y amistosos, similares a los lobos', 'canino','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (2, 'Mamifero', 'Independientes y agiles', 'felino','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (3, 'Ave', 'Su voz es un extasis a los oidos', 'ave','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (4, 'Pez', 'Nadadores hermosos con un gran impacto  visual', 'Pez','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (5, 'Mamifero', 'Pequelos y tiernos', 'Hamnster','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (6, 'Mamifero', 'Bolas afelpadas de algodon', 'Conejo','general');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (7, 'Aracmidos', 'Terrorificas y grandes pero agradables', 'Araña','general');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (1, 'Canino', 'Descendientes de los lobos, fieles, amorosos y el mejor amigo del hombre', 'Mamifero','recursos/img/siluetaPerro.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (2, 'Felino', 'Independientes agiles, un poco destructivos pero te otorgaran cariño', 'Mamifero','recursos/img/siluetaGato.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (3, 'Repitles', 'Curiososs, inpredesibles son un misterio llamativo', 'Reptil','recursos/img/siluetaReptil.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (4, 'Loro',' Grandes conversadores  coloridos y divertidos', 'Ave','recursos/img/siluetaAve.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (5, 'Pez','Coloridos acuaticos ', 'Pez','recursos/img/siluetaPez.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (6, 'Conejo','Bolas de algodon tiernas y apachurrables', 'Mamifero','recursos/img/siluetaConejo.png');
+insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (7, 'Hamnster','Pequeños deportistas resuelve laberintos, divertidos de observar por su actividad', 'Mamifero','recursos/img/siluetaHamnster.jpg');
+
+
 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (1,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','jacobo','grande'); 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (2,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Pepa','grande'); 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (3,1,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Zeus','grande'); 
 insert into MascotaEntity(id,adquirido,color,edad,esteril,genero,imagen,nacimiento,nombre,tamano) values (4,0,'Negro',1,1,'Masculino','imagen.jpg', '7/23/2016','Petreo','grande'); 
 
+<<<<<<< HEAD
+
+=======
 insert into MascotaAdoptadaEntity(id) values (1);
-insert into MascotaAdoptadaEntity(id) values (2)
+insert into MascotaAdoptadaEntity(id) values (2);
 insert into MascotaAdoptadaEntity(id) values (3);
-
- 
-
+>>>>>>> 76ba8dae9a7186d77acd60fbacfec2621fc6fda1
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (3, 30, 'tarjeta credito');
+
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (2,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,2);

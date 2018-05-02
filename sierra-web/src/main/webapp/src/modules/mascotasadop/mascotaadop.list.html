@@ -1,21 +1,26 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
     <h1 class="TituloAdopcion">ADOPCION</h1> 
-     <div  class="row">
-        <div class="col-sm-2" ng-repeat="mascota in mascotaadopRecords">
+    <div  class="row">
+        <div class="col-sm-2" ng-repeat="mascota in mascotaaRecords">
             <br>
             <div  class="container-fluid" >
                 <div><center>
                     <img  src="{{mascota.imagen}}" class="ImagenMascotas img-responsive" >
                     </center></div>
-                <div style="text-align: center">  <label> Nombre:</label>{{mascota.name}}</div>
+                <div style="text-align: center">  <label> Nombre:</label>{{mascota.nombre}}</div>
                 <!--Ejemplo para detail   
                 <div style="text-align: center"><label> Raza:</label>{{mascota.raza.nombre}}</div>
                 -->
                 <div>
                     <center>
-                        <input type="button" value="Ver" >
+                         <center> <a ui-sref="mascotaaDetail({mascotaId: mascota.id})"><input type="button" value="ver"></a></center>
+                         
                     </center>
                 </div>
             </div>
- </div>
+         </div>
+          </div>
+    <br>
+    
+    </div>

@@ -8,8 +8,6 @@ package co.edu.uniandes.csw.sierra.persistence;
 
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;

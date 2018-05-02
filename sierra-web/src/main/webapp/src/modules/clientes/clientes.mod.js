@@ -7,18 +7,55 @@
             $urlRouterProvider.otherwise("/clientesList");
             
             $stateProvider.state('clientes', {
-                url:'/clientes',
+                url: '/clientes',
+                  abstrac:true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'clientes.list.html',
+                        templateUrl: basePath + 'clientes.html',
                         controller: 'clienteCtrl',
-                        controllerAs:'ctrl'
+                        controllerAs: 'ctrl'
+                    }
+                }   
+            }).state('clientesList',{
+               url: '/List',
+               parent: 'clientes',
+               views:{
+                   'listView':{
+                       templateUrl: basePath+"clientes.list.html",
+                       controller:'clienteCtrl',
+                       controllerAs: 'Crtl'
+                   }
+               }
+             })
+            //EstadoDetail
+            .state ('clienteCreate', {
+                url:'/cliente/create',
+                views: {
+                    'mainView':{
+                        controller: 'clienteNewCtrl',
+                        templateUrl: basePath + 'cliente.create.html'
                     }
                 }
-           
+            }).state('clienteDetail', {
+                url: '/{clienteId:int}/detail',
+                parent: 'clientes',
+                param: {
+                    clienteId: null
+                },
+                views: {
+                    'listView':{
+                       templateUrl: basePath+"clientes.list.html"
+                   },
+                    'detailView': {
+                        templateUrl: basePath + 'clientes.detail.html',
+                        controller: 'clienteDetailCtrl',
+                        controllerAs:"ctrl"
+                    }
+
+                }
+
             });
-    }]);
-}
-)(window.angular);
+        }]);
+})(window.angular);
 
 
