@@ -69,7 +69,8 @@ insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquir
 insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (119,'MascotaAdoptadaEntity','Turron','Pequeño','Masculino',1,'recursos/img/pixieBob.jpg','Blanco naranja y negro',0,0,'6/23/2017',112);
 
 
-insert into MascotaAdoptadaEntity(id) values (111);
+
+insert into MascotaAdoptadaEntity(id) values(111);
 insert into MascotaAdoptadaEntity(id) values(112);
 insert into MascotaAdoptadaEntity(id) values(113);
 insert into MascotaAdoptadaEntity(id) values(114);

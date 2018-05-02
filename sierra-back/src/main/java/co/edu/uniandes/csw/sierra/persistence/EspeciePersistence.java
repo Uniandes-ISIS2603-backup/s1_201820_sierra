@@ -94,19 +94,16 @@ public class EspeciePersistence
 
     /**
      * Busca si hay alguna entidad de Especie con el nombre que se envía de argumento
-     * @param name: Nombre de la entidad de Especie que se está buscando
+     * @param nombre: Nombre de la entidad de Especie que se está buscando
      * @return null si no existe ninguna entidad Especie con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-	public EspecieEntity findByName( String name )
+	public EspecieEntity findByName( String nombre )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Especie por nombre ", name );
+		LOGGER.log( Level.INFO, "Consultando entidades de Especie por nombre ", nombre );
 
-		// Se crea un query para buscar entidades de especie con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-		TypedQuery<EspecieEntity> query = em.createQuery( "Select e From EspecieEntity e where e.name = :name", EspecieEntity.class );
-		// Se remplaza el placeholder ":name" con el valor del argumento
-		query = query.setParameter( "name", name );
-		// Se invoca el query se obtiene la lista resultado
+		TypedQuery<EspecieEntity> query = em.createQuery( "Select e From EspecieEntity e where e.nombre = :nombre", EspecieEntity.class );
+		query = query.setParameter( "nombre", nombre );
 		List<EspecieEntity> sameName = query.getResultList( );
 		if( sameName.isEmpty( ) )
 		{
