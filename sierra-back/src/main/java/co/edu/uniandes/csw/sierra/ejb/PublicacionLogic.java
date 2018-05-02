@@ -51,9 +51,7 @@ public class PublicacionLogic
      */
     public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException
     {
-        
-
-
+       
  LOGGER.info("Creando una entidad de Publicacion");
         //TODO: No hay ninguna regla de negocio? 
         if (mascotaAdoptadaPersistencia.findById(ent.getId()) != ent.getMascota() && mascotaAdoptadaPersistencia.findById(ent.getId()) != null)
