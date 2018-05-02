@@ -6,7 +6,7 @@
   "fecha": "20/05/2014",
   "importancia":1,
   "tipo": "Informativo",
-  "fotoURL":"imagenes/salamanadra.png",
+  "fotoURL":"imagenes/salamandraBronceada.jpg",
   "mascota":{
            "id": 1,
            "name": "Pepe la Salamanadra",

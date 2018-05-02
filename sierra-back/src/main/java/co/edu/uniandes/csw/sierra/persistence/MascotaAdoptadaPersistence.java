@@ -109,19 +109,16 @@ public class MascotaAdoptadaPersistence
      
     /**
      * Busca si hay alguna entidad de Mascota Adoptada con el nombre que se envía de argumento
-     * @param name: Nombre de la entidad de Mascota  adoptada  que se está buscando
+     * @param nombre: Nombre de la entidad de Mascota  adoptada  que se está buscando
      * @return null si no existe ninguna entidad Mascota adoptada con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */
-	public MascotaAdoptadaEntity findByName( String name )
+	public MascotaAdoptadaEntity findByName( String nombre )
 	{
-		LOGGER.log( Level.INFO, "Consultando entidades de Mascota adoptada por nombre ", name );
+		LOGGER.log( Level.INFO, "Consultando entidades de Mascota adoptada por nombre ", nombre );
 
-		// Se crea un query para buscar entidades de especie con el nombre que recibe el método como argumento. ":name" es un placeholder que debe ser remplazado
-		TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("Select e From MascotaEntity e where e.name = :name", MascotaAdoptadaEntity.class );
-		// Se remplaza el placeholder ":name" con el valor del argumento
-		query = query.setParameter( "name", name );
-		// Se invoca el query se obtiene la lista resultado
+		TypedQuery<MascotaAdoptadaEntity> query = em.createQuery("Select e From MascotaEntity e where e.nombre = :nombre", MascotaAdoptadaEntity.class );
+		query = query.setParameter( "nombre", nombre );
 		List<MascotaAdoptadaEntity> sameName = query.getResultList( );
 		if( sameName.isEmpty( ) )
 		{
