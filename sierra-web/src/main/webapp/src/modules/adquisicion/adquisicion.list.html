@@ -21,11 +21,16 @@
                 </div>
                 <div class="row">
                     <b style="margin:7%">Mascota:</b>
-                    <a ui-sref="mascotaaDetail({mascotaId: adquisicion.mascota.id})" style="margin:7%">{{adquisicion.mascota.name}}</a>
+                    <!--a ui-sref="mascotaaDetail({mascotaId: adquisicion.mascota.id})" style="margin:7%">{{adquisicion.mascota.name}}</a-->
+                     <a ui-sref="mascotasadoptadas)" style="margin:7%">{{adquisicion.mascota.name}}</a>                                                                                                                   
                     <p></p>
                 </div>
                 <div class="row">
                     <b style="margin:7%">Fecha: </b>  {{adquisicion.fecha}}
+                </div>
+                <div class="row">
+                    <br>
+                    <b style="margin:7%">Factura Num: </b>  {{adquisicion.factura.id}}
                 </div>
             </div>
         </div>
