@@ -9,7 +9,7 @@
          <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="src/css/daju.css">
-        
+
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         
@@ -110,11 +110,17 @@
         </div>
           <!--Menu de busqueda-->
         <div class=" row container-fluid">
-                 <ul class="nav nav-tabs" style="background-color: green">
+                 <ul class="nav nav-tabs col-lg-12" style="background-color: green">
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
-                        <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
-                        <li><a ui-sref='mascotasadoptadas' style="color: black "><b>Mascotas</b></a></li>
+                        <li class="col-lg-2"><a ui-sref='especies' style="color: black"><b>Especies &nbsp; &nbsp;</b></a></li>
+                        <li class="col-lg-2"><a ui-sref='razasList' style="color: black"><b>Razas &nbsp; &nbsp;</b></a></li>
+                        <li class="col-lg-2"><div class="dropdown">
+                             <button class="dropbtn"><b>Mascotas</b></button>
+                        <div class="dropdown-content">
+                          <a ui-sref='mascotasadoptadas'>Adopccion</a>
+                          <a href="#">Compra</a>
+                        </div>
+                      </div></li>
                         <li ><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
                         <li><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
                         <li><a ui-sref='comprobantesList'style="color: black"><b>Comprobantes</b></a></li>
@@ -124,6 +130,7 @@
                         <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
                         <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
                         <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
+                        
                  </ul>
             <div ui-view="mainView" ></div> 
         </div>  
