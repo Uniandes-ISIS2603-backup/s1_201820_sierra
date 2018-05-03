@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.sierra.dtos.PublicacionDTO;
 import co.edu.uniandes.csw.sierra.dtos.PublicacionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.PublicacionLogic;
 import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.WebApplicationExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,11 +74,30 @@ public class PublicacionResource
         }
         return nuevo;
     }
-    
+ 
+    /** <h1>POST /api/publicaciones : Crear una publicacion.</h1>
+     *
+     * <pre>Cuerpo de petición: JSON {@link PublicacionDetailDTO}.
+     *
+     * Crea una nueva publicacion con la informacion que se recibe en el cuerpo
+     * de la petición y se regresa un objeto identico con un id auto-generado
+     * por la base de datos.
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Creo la publicacion  .
+     * </code>
+     * </pre>
+     *  @param id Identificador de la publicacion que se desea actualizar. Este debe ser una cadena de digitos.
+     * @param puDto {@link PublicacionDetailDTO} -La publicacion  que se
+     * desea guardar.
+     * @return JSON {@link PublicacionDetailDTO} -La publicacion se a
+     * guardado con el atributo id autogenerado.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
+     */
 @POST
-public PublicacionDTO createPublicacion(PublicacionDTO puDto)
+public PublicacionDTO createPublicacion(@PathParam("id") Long id,PublicacionDTO puDto)throws  BusinessLogicException
 {
-  return puDto;
+ return new PublicacionDTO(publicacionLogica.create(puDto.toEntity()));
 }
 
     /**
@@ -107,7 +127,7 @@ return listEntityToDTO(publicacionLogica.getAll());
      * 404 Not Found No existe una publicacion con el id dado.
      * </code>
      * </pre>
-     * @param idCliente(No)
+     * @param idMascota(No)
      * @param id Identificador de la publicacion que se esta buscando. Este debe ser una cadena de digitos.
      * @return JSON {@link PublicacionDetailDTO} - La publicacion buscada.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}. 
@@ -123,15 +143,71 @@ public PublicacionDTO getPublicacion(@PathParam("id") long id)throws WebApplicat
         }
         return new PublicacionDTO(entity);
 }
+ /**
+     * <h1>PUT /api/publicaciones/{id} : Actualizar la publicacion con el
+     * id dado.</h1>
+     * <pre>Cuerpo de petición: JSON {@link PublicacionDetailDTO}.
+     *
+     * Actualiza la publicacion  con el id recibido en la URL con la información que se recibe en el cuerpo de la petición.
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Actualiza la publicacion  con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found. No existe la publicacion con el id dado.
+     * </code>
+     * </pre>
+     * @param id Identificador de la publicacion  que se desea actualizar.
+     * Este debe ser una cadena de dígitos.
+     * @param puDto {@link PublicacionDetailDTO} La publicacion que se
+     * desea guardar.
+     * @return JSON {@link PublicacionDetailDTO} - La publicacion
+     * guardada.
+     * @throws BusinessLogicException {@link BusinessLogicException} - Error de
+     * lógica
+     */
 @PUT
 @Path("{id: \\d+}")
-public void updatePublicacion(@PathParam("id") long id, PublicacionDTO puDto) 
+public PublicacionDTO updatePublicacion(@PathParam("id") long id, PublicacionDTO puDto) throws WebApplicationException, BusinessLogicException
 {
-
+puDto.setId(id);
+PublicacionEntity actualizado = publicacionLogica.getById(id);
+if(actualizado == null)
+{
+       throw new WebApplicationException("El recurso /publicacion/" + id + " no existe.", 404);
 }
+else 
+{
+    return  new PublicacionDTO(publicacionLogica.update(actualizado));
+}
+}
+
+  /**
+     * <h1> DELETE /api/publicaciones{id} : Borra una publicacion</h1>
+     * <p>
+     * <
+     * pre> Borra la entidad de publicacion con el id asociado recibido en la URL.
+     * Codigos de respuesta:<br>
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Elimina la entidad de publicacion correspondiente al id dado.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found. No existe una entidad de publicacion con el id dado. </code>
+     * </pre>
+     * @param idMascota
+     * @param id Identificador de la entidad de publicacion que se desea borrar.
+     * Este debe ser una cadena de digitos.
+     */
 @DELETE
 @Path("{id:\\d+}")
-public void deletePublicacion(@PathParam("id") long id)
+public void deletePublicacion(@PathParam("id") long id)throws WebApplicationException
 {
+    PublicacionEntity eliminado = publicacionLogica.getById(id);
+    if(eliminado == null)
+    {
+           throw new WebApplicationException("El recurso /publicacion/" + id + " no existe.", 404);
+    }
+    else
+    {
+        publicacionLogica.delete(eliminado);
+    }
 }
 }
