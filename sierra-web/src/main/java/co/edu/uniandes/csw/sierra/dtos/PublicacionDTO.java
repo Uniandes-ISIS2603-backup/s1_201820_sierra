@@ -43,7 +43,7 @@ public class PublicacionDTO {
         PublicacionEntity entity = new PublicacionEntity();
         entity.setFecha(fecha);
         entity.setTipo(tipo);
-        entity.setDescripcion(comentario);
+        entity.setComentario(comentario);
         entity.setFotoURL(fotoURL);
         entity.setId(id);
         
