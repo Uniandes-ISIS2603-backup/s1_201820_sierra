@@ -97,23 +97,29 @@
     <body>
          <!-- Parte superior Imagen y  Titulo de la pagina-->
          <!--Se genera una row para insertar la imagen y un titulo con un color de fondo-->
-         <div class="row" style= "background-color: yellowgreen" >
+         <div class="row" style= "background-color: #2B4679" >
              <!-- Imagen Logo de  la pagina imagen circular y con fondo negro  -->
-             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-3 " style="background-color: black ">
+             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-2 " style="background-color: black ">
                  <img src="recursos/img/imagenTitular.png" alt="ImagenMascotas" class="img-circle img-responsive" style=" height: 150px ; width: 250px">
              </div>    
-             <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-9  row  container-fluid"style="background-color: yellowgreen; height: 150px">
+             <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-10"style="background-color: #2B4679">
                  <h1  class="Titular" ><p> <strong>TIENDA DE MASCOTAS MI MEJOR AMIGO</strong></p></h1>
              </div> 
-             <br>
-            <div style="background-color: lightgoldenrodyellow" class="  row">
-                <h4 style="text-align: center ; color: black"> ADOPCION Y COMPRA DE MASCOTAS ONLINE</h4>
-            </div>
+   
+            
         </div>
+         <div style="background-color: white" class="row">
+                <div class="container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-2" style="background-color: black ">
+                    <h4 style="text-align: center ; color: white">SIERRA DEVELOPING</h4>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                     <h4 style=" color: black ; text-align: center; font-family: cursive "> La felicidad siempre viene cuando tienes alguien que te acompañe </h4>
+                </div>    
+            </div>
           <!--Menu de busqueda Inicial-->
-        <div class=" container-fluid" style="background-color: yellowgreen" >
-            <div class="container-fluid" >
-                 <ul class="nav nav-tabs " >
+        <div class=" container-fluid" >
+            <div class="row" style="background-color: #2B4679" >
+                 <ul class="nav nav-tabs " 
                         <!-- Enlace al estado de listar las entidades de Sierra -->
                         <li><a ui-sref='especies' style="color: black"><b>Especies </b></a></li>
                         <li><a ui-sref='razasList' style="color: black"><b>Razas </b></a></li>
@@ -126,8 +132,7 @@
                       </div></li>   
                  </ul>
             </div> 
-               
-            
+                           
             <div class=" row">
                   <ul class="nav nav-tabs col-lg-12" style="background-color: green">
                         <li ><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
