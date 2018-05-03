@@ -78,5 +78,53 @@ public class ClientePersistence {
         ClienteEntity entity = find(id);  
         em.remove(entity);
     }
+    
+    public ClienteEntity findByCedula(Long cedula )
+    {
+	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.cedula = :cedula", ClienteEntity.class );	
+	query = query.setParameter( "cedula", cedula );
+        List<ClienteEntity> sameName = query.getResultList( );
+        ClienteEntity result = null; 
+        if (sameName == null ) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+             result = null;
+        } else {
+            result =  sameName.get(0);
+        }
+        return result;
+    }
+    
+    public ClienteEntity findByCorreo(String correo )
+    {
+	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.correo = :correo", ClienteEntity.class );	
+	query = query.setParameter( "correo", correo );
+        List<ClienteEntity> sameName = query.getResultList( );
+        ClienteEntity result = null; 
+        if (sameName == null ) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+             result = null;
+        } else {
+            result =  sameName.get(0);
+        }
+        return result;
+    }
+    
+    public ClienteEntity findByTelefono(Long telefono )
+    {
+	TypedQuery<ClienteEntity> query = em.createQuery( "Select e From ClienteEntity e where e.telefono = :telefono", ClienteEntity.class );	
+	query = query.setParameter( "telefono", telefono );
+        List<ClienteEntity> sameName = query.getResultList( );
+        ClienteEntity result = null; 
+        if (sameName == null ) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+             result = null;
+        } else {
+            result =  sameName.get(0);
+        }
+        return result;
+    }
 }
 

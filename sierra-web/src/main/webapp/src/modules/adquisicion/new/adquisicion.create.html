@@ -1,0 +1,44 @@
+
+<hr>
+<div class="container-fluid" >    
+    <h4 style="text-align: center"> Registro de una nueva Especie</h4>
+    <br>
+    <div class="col-sm-4" >
+        <form  class="FormularioEspecie" name="Especie">   
+            <br>
+            <div>
+                <center>
+                    <lable>Nombre:</lable>&nbsp;<input type="text" class="nombreEspecie" required ng-model="data.nombre" placeholder="nombre">
+                </center>
+            </div>    
+            <br>
+            <div>
+                <center>
+                    <lable>Clasificacion:</lable>&nbsp;<input type="text" class="ClasificacionEspecie" required ng-model="data.clasificacion" placeholder="clasificacion">  
+                </center>
+            </div>
+            <br>
+            <div>
+                <center>
+                    <lable>Imagen:</lable>&nbsp;<input type="text" class="Imagen" required ng-model="data.imagen" placeholder="urlImagen">  
+                </center>
+            </div>  
+            <br>
+            <div>
+                <center>
+                    <lable>Caracteristticas:</lable>&nbsp;<input type="text" class="CaracteristicasEspecie" requiere ng-model="data.caracteristicas" placeholder="carracteristicas" >
+                </center>
+                <br>
+                <center>
+                    <button  ng-click="createEspecie()" ui-sref="especiesList" >Registrar</button>
+                </center>
+                <center>
+                    <a class="btn btn-info" ui-sref="especiesList">Cancel</a>
+                </center>
+            </div> 
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <img src="imagenes/registro.jpg" width="800">
+    </div>
+</div>

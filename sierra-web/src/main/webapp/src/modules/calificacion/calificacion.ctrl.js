@@ -8,7 +8,7 @@
             //reviews comienza vacio
             $scope.reviews = {};
             //llena reviews con los datos del response
-            $http.get('data/calificaciones.json').then(function (response) {
+            $http.get(calificacionContext).then(function (response) {
                 $scope.reviews = response.data;
             });
            

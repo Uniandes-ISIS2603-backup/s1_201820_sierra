@@ -44,6 +44,7 @@
         <!--Calificacion-->
         <script src="src/modules/calificacion/calificacion.mod.js" type="text/javascript"></script>
         <script src="src/modules/calificacion/calificacion.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/calificacion/calificacion.create.ctrl.js" type="text/javascript"></script>
         <!--Factura-->
         <script src="src/modules/facturas/factura.mod.js" type="text/javascript"></script>
         <script src="src/modules/facturas/factura.ctrl.js" type="text/javascript"></script>
@@ -65,12 +66,20 @@
         <script src="src/modules/clientes/clientes.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/clientes/clientes.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/clientes/clientes.detail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/clientes/clientes.delete.ctrl.js" type="text/javascript"></script>
+        
+        <!--MEDIOS DE PAGO-->
+        <script src="src/modules/mediosDePago/mediosDePago.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mediosDePago.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mediosDePago.create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mediosDePago.detail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mediosDePago.delete.ctrl.js" type="text/javascript"></script>
         
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
        
         <!-- Certificado -->
-     <script src="src/modules/certificado/certificado.mod.js" type="text/javascript"></script>
+        <script src="src/modules/certificado/certificado.mod.js" type="text/javascript"></script>
         <script src="src/modules/certificado/certificado.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/certificado/certificadoDetail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/certificado/new/certificadoCreate.ctrl.js" type="text/javascript"></script>
@@ -84,42 +93,36 @@
       
     </head>
     <!-- Aca se comienza a mostrar la pagina-->
-    <body>         
-         <div class="  container-fluid col-sm-12 row" style="background-color: yellow">
-             <div class="col-sm-2 container-fluid"><img src="imagenes/logoSierra.jpg" alt="Logo Sierra" width="335" height="200" class="img-rounded"></div>
-             <div style=" height: 200px; margin-left: 50px" class="col-sm-8 col-md-8"> 
-                 <h1  class=" Titular"><b>ADOPCION Y COMPRA DE MASCOTAS</b></h1>
-             </div>
-             
+    <body>
+         <!-- Parte superior Imagen y  Titulo de la pagina-->
+         <div class="row" style="background-color: green">
+             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-3" style="background-color: black ">
+                 <img src="recursos/img/imagenTitular.png" alt="ImagenMascotas" class="img-circle img-responsive" style=" margin-left: 20px; height: 150px ; width: 200px">
+             </div>    
+             <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-9  row "style="background-color: green; height: 150px">
+                 <h1  class="Titular container-fluid" ><p> <strong>TIENDA DE MASCOTAS MI MEJOR AMIGO</strong></p></h1>
+             </div> 
+             <br>
+            <div style="background-color: lightgoldenrodyellow" class="  row container-fluid">
+                <h4 style="text-align: center ; color: black"> ADOPCION Y COMPRA DE MASCOTAS ONLINE</h4>
+            </div>
         </div>
-        <!-- Uso del  Menu izquierdo
-        <div class="col-sm-1 " style="background-color: lightcyan">
-            <h3> <strong>FILTROS:</strong></h3>
-            <br>
-            <br>
-            <ul>
-                <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
-                <br>
-                 <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
-                 <br>
-                 <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
-            </ul>
-        </div>
-        -->
-        <div class=" row col-sm-12 container-fluid">
-                 <ul class="nav nav-tabs" style="background-color: lightsteelblue">
+          <!--Menu de busqueda-->
+        <div class=" row container-fluid">
+                 <ul class="nav nav-tabs" style="background-color: green">
                         <!-- Enlace al estado de listar las entidades de Sierra -->
                         <li><a ui-sref='especies' style="color: black"><b>Especies</b></a></li>
                         <li><a ui-sref='razasList' style="color: black"><b>Razas</b></a></li>
-                        <li><a ui-sref='mascotasList' style="color: black"><b>Mascotas</b></a></li>
+                        <li><a ui-sref='mascotasadoptadas' style="color: black "><b>Mascotas</b></a></li>
                         <li><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
                         <li><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
                         <li><a ui-sref='comprobantesList'style="color: black"><b>Comprobantes</b></a></li>
                         <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
-                        <li><a ui-sref='clientes' style="color: black"><b>Clientes</b></a></li>
+                        <li><a ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
                         <li><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
                         <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
-                        <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>                                     
+                        <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
+                        <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
                  </ul>
             <div ui-view="mainView" ></div> 
         </div>  

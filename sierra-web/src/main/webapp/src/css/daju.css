@@ -7,6 +7,29 @@ and open the template in the editor.
     Created on : 16/04/2018, 06:59:02 PM
     Author     : jc.sanchez12
 */
+
+
+/*
+DIVISION DEL TITULAR DEL INDEX
+*/
+.Titular{
+    letter-spacing: 5px;
+    font-size: 40px;
+    text-align: center;
+    font-family: fantasy,monospace;
+    margin-top: 50px;
+    color: white;
+}
+
+.SubTitular{
+    letter-spacing: 3px;
+    font-size: 40px;
+    text-align: center;
+    font-family: cursive;
+    margin-bottom: 30px;
+    color: whitesmoke;
+}
+
 .TituloTablaCentrado{
     text-align: center;
     border-bottom-color: #000;
@@ -44,12 +67,4 @@ and open the template in the editor.
 .imagenEspecieDetail{
     width: 400px;
     height: 400px;
-}
-.Titular{
-    margin-top: 60px;
-    letter-spacing: 4px;
-    font-size: 60px;
-    font-family: monospace;
-    text-align: center;
-    
 }

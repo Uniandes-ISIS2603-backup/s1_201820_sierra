@@ -26,8 +26,7 @@
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'calificacion.create.html',
-                        controller: 'calificacionCtrl',
-                        controllerAs: 'ctrl'
+                        controller: 'calificacionCreateCtrl'
                     }
                 }
             });

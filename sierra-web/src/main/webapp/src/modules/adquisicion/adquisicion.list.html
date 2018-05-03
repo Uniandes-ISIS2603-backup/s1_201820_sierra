@@ -2,38 +2,39 @@
     <div class="col-lg-12">
         <ul class="nav nav-tabs">
             <!-- Enlace al estado de listar las entidades de Sierra -->
-            <li><a ui-sref="calificacionList">Lista</a></li>
-            <li><a ui-sref="calificacionCreate">Crear</a></li>
+            <li><a ui-sref="adquisicionList">Lista</a></li>
+            <li><a ui-sref="adquisicionCreate">Crear</a></li>
         </ul>
     </div>
 </div>
 <br>
-<div class="container-fluid col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="adquisicion in adquisiciones">
-    
-    <div class="row">
-        <div class="col-lg-4">
-            <img-src"{{adqisicion.mascota.imagen}} class="img-fluid" alt="{{adqisicion.mascota.imagen}}">
+<div class="container-fluid">
+    <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12"ng-repeat="adquisicion in adquisiciones">
+        <div class="thumbnail" style="max-width: 100%; border-radius: 5%">
+            <div>
+                <div class="row">
+                    <h3 style="margin:7%">Identificador: {{adquisicion.id}}</h3>
+                </div>
+                <div class="row">
+                    <b style="margin:7%">Valor total:</b>
+                    <p style="margin:7%">{{adquisicion.valorTotal}}</p>
+                </div>
+                <div class="row">
+                    <b style="margin:7%">Mascota:</b>
+                    <!--a ui-sref="mascotaaDetail({mascotaId: adquisicion.mascota.id})" style="margin:7%">{{adquisicion.mascota.name}}</a-->
+                     <a ui-sref="mascotasadoptadas)" style="margin:7%">{{adquisicion.mascota.name}}</a>                                                                                                                   
+                    <p></p>
+                </div>
+                <div class="row">
+                    <b style="margin:7%">Fecha: </b>  {{adquisicion.fecha}}
+                </div>
+                <div class="row">
+                    <br>
+                    <b style="margin:7%">Factura Num: </b>  {{adquisicion.factura.id}}
+                </div>
+            </div>
         </div>
-        <div class="col-lg-4">
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>Id: {{adquisicion.id}}</td>
-                        <td>Mascota: {{adquisicion.mascota.name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Valor Total: {{adquisicion.valorTotal}}</td>
-                        <td>Fecha: {{adquisicion.fecha}}</td>
-                    </tr>
-                    <tr>
-                        <td><ui-sref="algunaFactura">Facturas</td>
-                        <td><ui-sref="calItem">Calificacion</td>
-                    </tr>
-                    
-                    
-                </tbody>
-            </table>
-        </div>
+        <hr>
     </div>
 </div>
 <hr>

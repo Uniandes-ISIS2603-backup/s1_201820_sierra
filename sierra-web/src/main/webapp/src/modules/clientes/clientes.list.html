@@ -18,7 +18,7 @@
         <tbody>
             <tr ng-repeat="cliente in clienteRecords">
 
-                <td id="{{$index}}-Nombre"><a ui-sret="clienteDetail({clienteId:clientes.id})">{{cliente.nombre}}</a></td>
+                <td id="{{$index}}-Nombre"><a ui-sref="clienteDetail({clienteId:cliente.id})">{{cliente.nombre}}</a></td>
                 <td id="{{$index}}-Apellido">{{cliente.apellido}}</td>
                 <td id="{{$index}}-Cedula">{{cliente.cedula}}</td>
                 <td id="{{$index}}-Telefono">{{cliente.telefono}}</td>

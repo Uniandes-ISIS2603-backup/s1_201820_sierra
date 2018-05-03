@@ -5,15 +5,11 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-import co.edu.uniandes.csw.sierra.ejb.*;
 import co.edu.uniandes.csw.sierra.entities.*;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
+import java.util.logging.*;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 /**
  *
@@ -82,4 +78,41 @@ public class MedioDePagoPersistence
         MedioDePagoEntity entity = find(id);
         em.remove(entity);
     }
-}
+   
+    public MedioDePagoEntity findByTipo (String tipo)
+    {
+        TypedQuery query = em.createQuery("Select e From MedioDePagoEntity e where e.tipo = :tipo", MedioDePagoEntity.class);
+        query = query.setParameter("tipo", tipo);
+        List<MedioDePagoEntity> sameName = query.getResultList();
+        MedioDePagoEntity result; 
+        result = null;
+        if (sameName == null ) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+             result = null;
+        } else {
+            result =  sameName.get(0);
+        }
+        return result;
+    }
+    
+    public MedioDePagoEntity findByReferencia (Long numeroReferencia)
+    {
+        TypedQuery query = em.createQuery("Select e From MedioDePagoEntity e where e.numeroReferencia = :numeroReferencia", MedioDePagoEntity.class);
+        // Se remplaza el placeholder ":name" con el valor del argumento 
+        query = query.setParameter("numeroReferencia", numeroReferencia);
+        // Se invoca el query se obtiene la lista resultado
+        List<MedioDePagoEntity> sameName = query.getResultList();
+        MedioDePagoEntity result; 
+        result = null;
+        if (sameName == null ) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+             result = null;
+        } else {
+            result =  sameName.get(0);
+        }
+        return result;
+    }
+ }
+

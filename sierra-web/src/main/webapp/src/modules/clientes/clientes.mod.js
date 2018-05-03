@@ -8,15 +8,26 @@
             
             $stateProvider.state('clientes', {
                 url: '/clientes',
+                  abstrac:true,
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'clientes.list.html',
+                        templateUrl: basePath + 'clientes.html',
                         controller: 'clienteCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
-               
-            }).state ('clienteCreate', {
+                }   
+            }).state('clientesList',{
+               url: '/List',
+               parent: 'clientes',
+               views:{
+                   'listView':{
+                       templateUrl: basePath+"clientes.list.html",
+                       controller:'clienteCtrl',
+                       controllerAs: 'Crtl'
+                   }
+               }
+             })
+            .state ('clienteCreate', {
                 url:'/cliente/create',
                 views: {
                     'mainView':{
@@ -25,17 +36,15 @@
                     }
                 }
             }).state('clienteDetail', {
-                url: '{clienteId:int}/detail',
+                url: '/{clienteId:int}/detail',
                 parent: 'clientes',
                 param: {
-                    clienteId: 1
+                    clienteId: null
                 },
                 views: {
-                    'mainView': {
-                        templateUrl: basePath + 'clientes.list.html',
-                        controller: 'clienteCtrl',
-                        controllerAs: 'ctrl'
-                    },
+                    'listView':{
+                       templateUrl: basePath+"clientes.list.html"
+                   },
                     'detailView': {
                         templateUrl: basePath + 'clientes.detail.html',
                         controller: 'clienteDetailCtrl',
@@ -44,6 +53,19 @@
 
                 }
 
+            }).state('clienteDelete', {
+                url:'/{clienteId:int}/delete',
+                parent:'clientes',
+                param:{
+                    clienteId:null
+                },
+                views:{
+                    'listView':{
+                      templateUrl: basePath+"clientes.list.html",
+                      controller:'deleteClienteCtrl',
+                    controllerAs: 'Crtl'
+                   }
+                }
             });
         }]);
 })(window.angular);

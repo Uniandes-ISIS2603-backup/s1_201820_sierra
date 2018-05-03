@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * MedioDePagoDTO Objeto de transferencia de datos datallada de la entidad Medio
@@ -51,7 +55,7 @@ import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
  */
 public class MedioDePagoDetailDTO extends MedioDePagoDTO {
 
-    private ClienteDTO cliente;
+    private List<ClienteDTO> clientes;
     private ComprobanteDTO comprobante;
 
     /**
@@ -63,24 +67,25 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
 
     public MedioDePagoDetailDTO(MedioDePagoEntity entity) {
         super(entity);
-        if (entity != null) {
-            if (entity.getCliente() != null) {
-                cliente = new ClienteDTO(entity.getCliente());
-            }
-
-            if (entity.getComprobante() != null) {
-                comprobante = new ComprobanteDTO(entity.getComprobante());
+        if(entity != null){
+            if(entity.getClientes() != null){
+                clientes = new ArrayList<>();
+                for(ClienteEntity cliente : entity.getClientes()){
+                    clientes.add(new ClienteDTO(cliente));
+                }
             }
         }
-
     }
 
     @Override
     public MedioDePagoEntity toEntity() {
-        MedioDePagoEntity medio = new MedioDePagoEntity();
-        if (cliente != null) {
-            medio.setCliente(cliente.toEntity());
-            medio.setComprobante(comprobante.toEntity());
+        MedioDePagoEntity medio = super.toEntity();
+        if (clientes != null) {
+           List<ClienteEntity> clienteEntity = new ArrayList<>();
+           for(ClienteDTO dtoCliente : clientes){
+            clienteEntity.add(dtoCliente.toEntity());
+             }
+           medio.setClientes(clienteEntity);
         }
         return medio;
     }
@@ -90,8 +95,8 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
      *
      * @return El cliente que selecciono un medio de pago.
      */
-    public ClienteDTO getCliente() {
-        return cliente;
+    public List<ClienteDTO> getClientes() {
+        return clientes;
     }
 
     /**
@@ -99,8 +104,8 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
      *
      * @param cliente El nuevo cliente.
      */
-    public void setCliente(ClienteDTO cliente) {
-        this.cliente = cliente;
+    public void setCliente(List<ClienteDTO> clientes) {
+        this.clientes = clientes;
     }
 
 }
