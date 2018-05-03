@@ -96,31 +96,40 @@
     <!-- Aca se comienza a mostrar la pagina-->
     <body>
          <!-- Parte superior Imagen y  Titulo de la pagina-->
-         <div class="row" style="background-color: green">
-             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-3" style="background-color: black ">
-                 <img src="recursos/img/imagenTitular.png" alt="ImagenMascotas" class="img-circle img-responsive" style=" margin-left: 20px; height: 150px ; width: 200px">
+         <!--Se genera una row para insertar la imagen y un titulo con un color de fondo-->
+         <div class="row" style= "background-color: yellowgreen" >
+             <!-- Imagen Logo de  la pagina imagen circular y con fondo negro  -->
+             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-3 " style="background-color: black ">
+                 <img src="recursos/img/imagenTitular.png" alt="ImagenMascotas" class="img-circle img-responsive" style=" height: 150px ; width: 250px">
              </div>    
-             <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-9  row "style="background-color: green; height: 150px">
-                 <h1  class="Titular container-fluid" ><p> <strong>TIENDA DE MASCOTAS MI MEJOR AMIGO</strong></p></h1>
+             <div class=" col-lg-10 col-md-10 col-sm-10 col-xs-9  row  container-fluid"style="background-color: yellowgreen; height: 150px">
+                 <h1  class="Titular" ><p> <strong>TIENDA DE MASCOTAS MI MEJOR AMIGO</strong></p></h1>
              </div> 
              <br>
-            <div style="background-color: lightgoldenrodyellow" class="  row container-fluid">
+            <div style="background-color: lightgoldenrodyellow" class="  row">
                 <h4 style="text-align: center ; color: black"> ADOPCION Y COMPRA DE MASCOTAS ONLINE</h4>
             </div>
         </div>
-          <!--Menu de busqueda-->
-        <div class=" row container-fluid">
-                 <ul class="nav nav-tabs col-lg-12" style="background-color: green">
+          <!--Menu de busqueda Inicial-->
+        <div class=" container-fluid" style="background-color: yellowgreen" >
+            <div class="container-fluid" >
+                 <ul class="nav nav-tabs " >
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li class="col-lg-2"><a ui-sref='especies' style="color: black"><b>Especies &nbsp; &nbsp;</b></a></li>
-                        <li class="col-lg-2"><a ui-sref='razasList' style="color: black"><b>Razas &nbsp; &nbsp;</b></a></li>
-                        <li class="col-lg-2"><div class="dropdown">
+                        <li><a ui-sref='especies' style="color: black"><b>Especies </b></a></li>
+                        <li><a ui-sref='razasList' style="color: black"><b>Razas </b></a></li>
+                        <li><div class="dropdown">
                              <button class="dropbtn"><b>Mascotas</b></button>
                         <div class="dropdown-content">
                           <a ui-sref='mascotasadoptadas'>Adopccion</a>
                           <a href="#">Compra</a>
                         </div>
-                      </div></li>
+                      </div></li>   
+                 </ul>
+            </div> 
+               
+            
+            <div class=" row">
+                  <ul class="nav nav-tabs col-lg-12" style="background-color: green">
                         <li ><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
                         <li><a ui-sref='facturasList'style="color: black"><b>Facturas</b></a></li>
                         <li><a ui-sref='comprobantesList'style="color: black"><b>Comprobantes</b></a></li>
@@ -132,7 +141,8 @@
                         <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
                         
                  </ul>
-            <div ui-view="mainView" ></div> 
+            </div>
         </div>  
+            <div ui-view="mainView" ></div> 
     </body>
 </html>
