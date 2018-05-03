@@ -27,7 +27,6 @@
                    }
                }
              })
-            //EstadoDetail
             .state ('clienteCreate', {
                 url:'/cliente/create',
                 views: {
@@ -54,6 +53,19 @@
 
                 }
 
+            }).state('clienteDelete', {
+                url:'/{clienteId:int}/delete',
+                parent:'clientes',
+                param:{
+                    clienteId:null
+                },
+                views:{
+                    'listView':{
+                      templateUrl: basePath+"clientes.list.html",
+                      controller:'deleteClienteCtrl',
+                    controllerAs: 'Crtl'
+                   }
+                }
             });
         }]);
 })(window.angular);

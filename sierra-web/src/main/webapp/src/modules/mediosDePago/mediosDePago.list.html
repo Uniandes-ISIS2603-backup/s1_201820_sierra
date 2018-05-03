@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+       
+    </div>
+    <table class="table table-striped col-md-5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TIPO</th>
+                <th>NumeroDeReferencia </th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="medioDePago in mediosDePagoRecords">
+
+                <td id="{{$index}}-ID"><a ui-sref="mediosDePagoDetail({mediosDePagoId:medioDePago.id})">{{medioDePago.id}}</a></td>
+                <td id="{{$index}}-TIPO">{{medioDePago.tipo}}</td>
+                <td id="{{$index}}-NumeroDeReferencia">{{medioDePago.numeroReferencia}}</td>
+                
+                <td id="{{$index}}-Borrar"><a ui-sref="mediosDePagoDelete({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="deleteMediosDePago()" value="Borrar"></a></td>              
+            </tr>
+        </tbody>
+    </table>
+</div>
+
