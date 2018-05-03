@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.resources;
 
+import co.edu.uniandes.csw.sierra.dtos.CalificacionDTO;
 import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
@@ -12,6 +13,7 @@ import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -91,7 +93,8 @@ public class CalificacionResource {
      * @throws BusinessLogicException Error de logica: ya existe una calificacion asociada a la calificacion dada
      */
     @POST
-    public CalificacionDetailDTO createCalificacion(CalificacionDetailDTO dto) throws BusinessLogicException{
+    public CalificacionDetailDTO createCalificacion(CalificacionDTO dto) throws BusinessLogicException{
+        System.out.println(dto);
         return new CalificacionDetailDTO(calificacionLogic.create(dto.toEntity()));
     }
     

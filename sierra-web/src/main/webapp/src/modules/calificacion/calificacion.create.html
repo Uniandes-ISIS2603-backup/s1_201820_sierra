@@ -10,28 +10,31 @@
 </div>
 <hr>
 <div class="container-fluid">
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="calificaiconValor" class="col-sm-2">Calificacion:</label>
-            <input id="calificacionValor" required ng-model="calificacion.valor" class="col-sm-6"/>
+    <form name="calificacion">
+        <div class="form-group row">
+            <div class="form-group col-md-6">
+                <label for="calificaiconValor" class="col-sm-2">Calificacion:</label>
+                <input id="calificacionValor" required ng-model="data.valor" class="col-sm-6"/>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="calificacionComentarios" class="col-sm-2">Comentarios</label>
-            <textarea id="calificacionComentarios" required ng-model="calificion.comentarios" class="col-sm-6"></textarea>
+        <div class="form-group row">
+            <div class="form-group col-md-6">
+                <label for="calificacionComentarios" class="col-sm-2">Comentarios</label>
+                <textarea id="calificacionComentarios" required ng-model="data.comentarios" class="col-sm-6"></textarea>
+            </div>
+        </div>  
+        <div class="form-group row">
+            <div class="form-group col-md-6">
+                <label for="calificacionSugerencia" class="col-sm-2">Sugerencias</label>
+                <textarea id="calificacionSugerencia" required ng-model="data.sugerencia" class="col-sm-6"></textarea>
+            </div>
+        </div>  
+        <div class="form-group row">
+            <div class="form-group col-sm-12">
+                <a class="btn btn-info" ui-sref="calificacionList">Cancel</a> <input  ng-click="createCalificacion()"value="Agregar Calificacion" class="btn btn-success"/>
+            </div>
         </div>
-    </div>  
-    <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="calificacionSugerencia" class="col-sm-2">Sugerencias</label>
-            <textarea id="calificacionSugerencia" required ng-model="calificion.sugerencia" class="col-sm-6"></textarea>
-        </div>
-    </div>  
-    <div class="form-group row">
-        <div class="form-group col-sm-12">
-            <a class="btn btn-info" ui-sref="sierraList">Cancel</a>
-        </div>
-    </div>
+        
+    </form>
 </div>
