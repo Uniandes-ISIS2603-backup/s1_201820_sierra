@@ -54,7 +54,7 @@
                url:'/edit/{razaId:int}',
               parent:'razas',
               param:{
-                  especieId:null
+                  razaId:null
               },
                views:
                {

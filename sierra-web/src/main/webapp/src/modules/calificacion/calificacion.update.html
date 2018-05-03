@@ -14,6 +14,12 @@
     <form name="calificacion">
         <div class="form-group row">
             <div class="form-group col-md-6">
+                <label for="calificaiconId" class="col-sm-2">ID:</label>
+                <input id="calificacionId" required ng-model="data.id" class="col-sm-6"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-6">
                 <label for="calificaiconValor" class="col-sm-2">Calificacion:</label>
                 <input id="calificacionValor" required ng-model="data.valor" class="col-sm-6"/>
             </div>
@@ -33,7 +39,7 @@
         </div>  
         <div class="form-group row">
             <div class="form-group col-sm-12">
-                <a class="btn btn-info" ui-sref="calificacionList">Cancel</a> <input  ng-click="createCalificacion()"value="Agregar Calificacion" class="btn btn-success"/>
+                <a class="btn btn-info" ui-sref="calificacionList">Cancel</a> <input  ng-click="updateCalificacion()"value="Agregar Calificacion" class="btn btn-success"/>
             </div>
         </div>
         

@@ -29,6 +29,16 @@
                         controller: 'calificacionCreateCtrl'
                     }
                 }
+            })
+            .state('calificacionUpdate', 
+            {
+                url:'/calificacion/update',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'calificacion.update.html',
+                        controller: 'calificacionCreateCtrl'
+                    }
+                }
             });
         }
     ]);

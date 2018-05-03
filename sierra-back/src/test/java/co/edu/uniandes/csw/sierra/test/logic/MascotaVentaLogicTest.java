@@ -191,7 +191,7 @@ public class MascotaVentaLogicTest {
     @Test
     public void deleteMascotaVentaTest(){
         MascotaVentaEntity ent = data.get(0);
-        calLogic.delete(ent);
+        calLogic.delete(ent.getId());
         MascotaVentaEntity notFound = em.find(MascotaVentaEntity.class, ent.getId());
         Assert.assertNull(notFound);
         
