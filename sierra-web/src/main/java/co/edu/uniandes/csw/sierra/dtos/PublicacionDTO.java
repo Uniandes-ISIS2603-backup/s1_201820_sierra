@@ -31,24 +31,24 @@ public class PublicacionDTO {
     
      public PublicacionDTO(PublicacionEntity Entity)
     {
+        if(Entity != null)
+        {
         this.comentario = Entity.getComentario();
         this.fecha = Entity.getFecha();
         this.fotoURL = Entity.getFotoURL();
         this.id = Entity.getId();
         this.tipo = Entity.getTipo();
     } 
-     
+    }
     public PublicacionEntity toEntity()
     {
         PublicacionEntity entity = new PublicacionEntity();
         entity.setFecha(fecha);
         entity.setTipo(tipo);
-        entity.setDescripcion(comentario);
+        entity.setComentario(comentario);
         entity.setFotoURL(fotoURL);
         entity.setId(id);
-        
         return entity;
-                
     }
     
     /**

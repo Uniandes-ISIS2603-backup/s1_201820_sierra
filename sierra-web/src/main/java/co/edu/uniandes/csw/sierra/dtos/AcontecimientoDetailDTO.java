@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+
 /**
  * AcontecimientoDTO es el objeto de transferencia de datos detallada de la entidad Acontecimiento.
  * <p>
@@ -61,7 +64,7 @@ package co.edu.uniandes.csw.sierra.dtos;
  **/
 public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     
-    private MascotaDTO mascota;
+    private MascotaAdopcionDTO mascota;
     
     public AcontecimientoDetailDTO()
     {
@@ -71,7 +74,7 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
      /**
      * @return the mascota
      */
-    public MascotaDTO getMascota() 
+    public MascotaAdopcionDTO getMascota() 
     {
         return mascota;
     }
@@ -79,10 +82,41 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
     /**
      * @param mascota the mascota to set
      */
-    public void setMascota(MascotaDTO mascota)
+    public void setMascota(MascotaAdopcionDTO mascota)
     {
         this.mascota = mascota;
     }
-    
-       //TODO: Falta el constructor que recibve un entity y falta el método toEntity 
+     /**
+     * Crea un objeto AcontecimientoDetailDTO a partir de un objeto
+     * AcontecimientoEntity incluyendo los atributos de AcontecimientoDTO.
+     * @param entity Entidad AcontecimientoEntity desde la cual se va a crear
+     * el nuevo objeto.
+     */
+    public AcontecimientoDetailDTO(AcontecimientoEntity entity) {
+        super(entity);
+        if (entity != null)
+          {
+            if (entity.getMascota() != null) {
+               this.mascota = new MascotaAdopcionDTO(entity.getMascota());
+            } else {
+                entity.setMascota(null);
+            }
+    }
+    }
+     /**
+     * Transformar el DTO a una entidad
+     * @return 
+     */
+    @Override
+    public AcontecimientoEntity toEntity()
+    {
+       AcontecimientoEntity acontecimiento = super.toEntity();
+        if (this.getMascota() != null)
+        {
+           MascotaAdoptadaEntity  nuevo = new MascotaAdoptadaEntity();
+            acontecimiento.setMascota(this.getMascota().toEntity());
+        }
+        return acontecimiento;
+    }
+       
 }

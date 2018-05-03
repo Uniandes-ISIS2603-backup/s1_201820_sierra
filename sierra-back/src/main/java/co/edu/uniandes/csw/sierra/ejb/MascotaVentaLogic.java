@@ -61,7 +61,6 @@ public class MascotaVentaLogic {
         if(ent.getPrecio() < 0){
             throw new BusinessLogicException("El precio no debe ser negativo y fue: " + ent.getPrecio());
         }
-        //TODO: Definir reglas de negocio
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de MascotaVenta");
         return ent;
@@ -90,11 +89,11 @@ public class MascotaVentaLogic {
      * Actualiza una MascotaVenta 
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
+     * @throws BusinessLogicException si el precio es menor o igual a 0
      */
     public MascotaVentaEntity update(MascotaVentaEntity ent) throws BusinessLogicException{
-        //TODO: Agregar reglas de negocio
         LOGGER.log(Level.INFO, "Actualizando la entidad de MascotaVenta con el id={0}", ent.getId());
-        if(ent.getPrecio() < 0){
+        if(ent.getPrecio() <= 0){
             throw new BusinessLogicException("El precio no debe ser negativo y fue: " + ent.getPrecio());
         }
         return persistencia.update(ent);
@@ -103,13 +102,15 @@ public class MascotaVentaLogic {
     /**
      * Elimina una MascotaVenta
      * @param ent la mascota venta que se desea eliminar
-     */
+     
     public void delete(MascotaVentaEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la MascotaVenta con id ={0}", ent.getId());
-        //TODO: este método debe recibir un id y hay que validar que existe la MascotaVenta con ese id
+        if(persistencia.find(ent.getId()) == null){
+            throw new 
+        }
         persistencia.delete(ent.getId());
     }
-    
+    */
     /**
      * Elimina una MascotaVenta
      * @param id la mascota venta que se desea eliminar

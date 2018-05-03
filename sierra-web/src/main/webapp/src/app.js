@@ -10,6 +10,7 @@
         'mascotaadopModule',
         'calificacionModule',
         'facturaModule',
+        'comprobanteModule',
         'adquisicionModule',
         'clienteModule',
         'acontecimientoModule',

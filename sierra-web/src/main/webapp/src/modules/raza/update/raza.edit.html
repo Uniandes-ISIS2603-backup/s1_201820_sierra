@@ -1,0 +1,45 @@
+  <div  class="container-fluid">      
+      
+    <hr> 
+    <h3>ID:{{currentRaza.id}}</h3>
+    <h4 >Editando la informacion de: {{currentRaza.nombre}}  </h4>
+    <br>
+     <center>
+    <div class="col-sm-10" >
+       
+        <form  class="FormularioEspecie" name="Raza" ng-submit="createRaza()">   
+            <br>
+        <div>
+            <center>
+                <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreRaza" id="nombreRaza" placeholder="nombre">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+                <lable>Cuidados:</lable>&nbsp;<input type="text" class="cuidados" required ng-model="CuidadosRaza" id="CuidadosRaza" placeholder="cuidados">  
+           </center>
+        </div>
+             <br>
+             <div>
+            <center>
+                <lable>Destacable:</lable>&nbsp;<input type="text" class="destacable" required ng-model="DesacableRaza" id="DestacableRaza" placeholder="destacable">  
+           </center>
+        </div>  
+             <br>
+        <div>
+            <center>
+                <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasRaza" id="CaracteristicasRaza" placeholder="carracteristicas" >
+            </center>
+            <br>
+            <center>
+                <center> <a ng-click="createRaza()"  ui-sref="razasList"><input type="button" value="Editar"></a></center>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="razasList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+              
+     </div>
+            </center>

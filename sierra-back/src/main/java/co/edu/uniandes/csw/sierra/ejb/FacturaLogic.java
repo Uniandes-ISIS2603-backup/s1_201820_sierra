@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
+import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
 import co.edu.uniandes.csw.sierra.persistence.FacturaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -23,7 +25,15 @@ public class FacturaLogic {
     private final static Logger LOGGER = Logger.getLogger(FacturaLogic.class.getName());
     
     @Inject
-    private FacturaPersistence persistence;
+    private FacturaPersistence facturaPersistence;
+    
+    @Inject 
+    private AdquisicionPersistence adquisicionPersistence;
+    
+    @Inject
+    private ComprobantePersistence comprobantePersistence;
+    
+    
     
     public FacturaEntity create(FacturaEntity entity)throws BusinessLogicException
     {
@@ -32,7 +42,7 @@ public class FacturaLogic {
         if(entity.getValor() == null || entity.getIdCliente() == null || entity.getNombreCliente() == null)
             throw new BusinessLogicException("La información suministrada para la creación de la factura está incompleta.");
         
-        persistence.create(entity);
+        facturaPersistence.create(entity);
         LOGGER.info("Terminando el proceso de creación de una entidad de factura.");
         return entity;
     }
@@ -40,34 +50,34 @@ public class FacturaLogic {
     public List<FacturaEntity> getAll()
     {
         LOGGER.info("Comienza el proceso de consultar todas las entidaddes de Factura existentes.");
-        List<FacturaEntity> entities = persistence.findAll();
+        List<FacturaEntity> entities = facturaPersistence.findAll();
         LOGGER.info("Termína el proceso de consultar todas las entidades de Factura existentes.");
         return entities;
     }
     
     public FacturaEntity getById(Long id)
     {
-        return persistence.find(id);
+        return facturaPersistence.find(id);
     }
     
     public FacturaEntity update(FacturaEntity entity)throws BusinessLogicException
     {//TODO: No hay ninguna regla de negocio? 
         
         LOGGER.info("Comienza el proceso de actualizar una factura.");
-        if(persistence.find(entity.getId()) == null)
+        if(facturaPersistence.find(entity.getId()) == null)
             throw new BusinessLogicException("No existe una entidad con el id dado.");
         LOGGER.info("Termína el proceso de actualizar un comprobante.");
-        return persistence.update(entity);
+        return facturaPersistence.update(entity);
     }
     
     public void delete(Long id)throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de factura.");
        
-       if(persistence.find(id) == null)
+       if(facturaPersistence.find(id) == null)
            throw new BusinessLogicException("No existe una factura con el id dado.");
        
-        persistence.delete(id);
+        facturaPersistence.delete(id);
         LOGGER.info("Termína el proceso de eliminar una entidad de factura.");
     }
 }
