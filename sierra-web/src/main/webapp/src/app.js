@@ -16,6 +16,7 @@
         'publicacionModule',
          'certificadoModule',
          'razaModule',
+         'mediosDePagoModule'
     ]);
      
     // Resuelve problemas de las promesas
