@@ -117,20 +117,31 @@
                 </div>    
             </div>
           <!--Menu de busqueda Inicial-->
-        <div class=" container-fluid" >
+        <div class=" container-fluid ">
             <div class="row" style="background-color: #2B4679" >
-                 <ul class="nav nav-tabs " 
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                    <ul class="nav nav-tabs">
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li><a ui-sref='especies' style="color: black"><b>Especies </b></a></li>
-                        <li><a ui-sref='razasList' style="color: black"><b>Razas </b></a></li>
-                        <li><div class="dropdown">
+                        <li style="background-color:#2B4679 " class="col-lg-1"><a ui-sref='especies' style="color: black"><b>Especies </b></a></li>
+                        <li style="background-color:#2B4679 " class="col-lg-1 "><a ui-sref='razasList' style="color: black"><b>Razas </b></a></li>
+                        <li style="background-color:#2B4679 " class="col-lg-1"><div class="dropdown row" >
                              <button class="dropbtn"><b>Mascotas</b></button>
                         <div class="dropdown-content">
                           <a ui-sref='mascotasadoptadas'>Adopccion</a>
                           <a href="#">Compra</a>
-                        </div>
-                      </div></li>   
+                        </div>     
+                      </div></li>  
                  </ul>
+                </div>
+                <div class="container-fluid col-lg-1 col-md-1 col-sm-1 col-xs-2" style="background-color: #2B4679 ">
+                    <center>
+                        <ul class="nav nav-tabs" >
+                        <!-- Enlace al estado de listar las entidades de Sierra -->
+                        <li style="background-color:#2B4679 "> <a style=" color: black" ><strong >Log In</strong></a></li>
+                        </ul> 
+                    </center> 
+                </div>
+                
             </div> 
                            
             <div class=" row">
