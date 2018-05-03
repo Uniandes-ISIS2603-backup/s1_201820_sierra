@@ -68,7 +68,7 @@ public class MascotaVentaPersistence {
          * @param name nombre de la mascota
          * @return la mascota encontrada. Null si no se encuetra
          */
-        public MascotaVentaEntity findByName(String name){
+        public List<MascotaVentaEntity> findByName(String name){
             LOGGER.log(Level.INFO, "Consultando MacotaVenta con el nombre :", name);
             
             TypedQuery<MascotaVentaEntity> query = em.createQuery("Select e from MascotaVentaEntity e where e.name = :name", MascotaVentaEntity.class);
@@ -77,12 +77,10 @@ public class MascotaVentaPersistence {
             
             List<MascotaVentaEntity> list = query.getResultList();
             
-            //TODO: preguntar si esto devuelve una lista o solo el primero
-            
             if(list.isEmpty()){
                 return null;
             }else{
-                return list.get(0);
+                return list;
             }
         }   
         
