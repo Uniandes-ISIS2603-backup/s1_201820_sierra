@@ -13,6 +13,12 @@
                     $state.go('calificacinoesList', {reload: true});
                 });
             };
+            
+            $scope.updateCalificacion = function() {
+                $http.put(calificacionContext + '/' + $scope.data.id, $scope.data).then(function (response){
+                    $state.go('calificacionesList', {reload: true});
+                });
+            };
         }
     ]);
 }
