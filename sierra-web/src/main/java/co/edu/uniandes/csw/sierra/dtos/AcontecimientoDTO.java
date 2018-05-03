@@ -28,12 +28,14 @@ public class AcontecimientoDTO {
 
     private String fotoURL;
 
-    public AcontecimientoDTO() {
+    public AcontecimientoDTO() 
+    {
 
     }
 
-    public AcontecimientoDTO(AcontecimientoEntity Entity) {
-        //TODO: entity puede ser null
+    public AcontecimientoDTO(AcontecimientoEntity Entity)
+    { 
+       if(Entity != null){
         this.descripcion = Entity.getDescripcion();
         this.fecha = Entity.getFecha();
         this.fotoURL = Entity.getFotoURL();
@@ -41,6 +43,7 @@ public class AcontecimientoDTO {
         this.tipo = Entity.getTipo();
         this.nombre = Entity.getNombre();
         this.importancia = Entity.getImportancia();
+    }
     }
 
     public AcontecimientoEntity toEntity() {

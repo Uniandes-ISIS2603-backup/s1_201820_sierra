@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.sierra.dtos;
 
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
+import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
+
 /**
  * PublicacionDTO es el objeto de transferencia de datos detallada de la entidad Publicacion.
  * <p>
@@ -64,6 +67,39 @@ public class PublicacionDetailDTO extends PublicacionDTO{
     
     public PublicacionDetailDTO(){
         super();
+    }
+    
+    /**
+     * Crea un objeto PublicacionDetailDTO a partir de un objeto
+     * PublicacionEntity incluyendo los atributos de MascotaDTO.
+     * @param entity Entidad PublicacionEntity desde la cual se va a crear
+     * el nuevo objeto.
+     */
+    public PublicacionDetailDTO(PublicacionEntity entity) {
+        super(entity);
+        if (entity != null)
+          {
+            if (entity.getMascota() != null) {
+               this.mascota = new MascotaDTO(entity.getMascota());
+            } else {
+                entity.setMascota(null);
+            }
+    }
+    }
+     /**
+     * Transformar el DTO a una entidad
+     * @return 
+     */
+    @Override
+    public PublicacionEntity toEntity()
+    {
+       PublicacionEntity publicacion = super.toEntity();
+        if (this.getMascota() != null)
+        {
+  //          MascotaEntity nuevo = null ;
+    //Problemas con el to entity de mascotaDto        publicacion.setMascota(this.getMascota().toEntity(nuevo));
+        }
+        return publicacion;
     }
      /**
      * @return the mascota
