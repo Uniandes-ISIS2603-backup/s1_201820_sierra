@@ -122,7 +122,7 @@ public class PublicacionLogicTest
      * Prueba para crear una Publicacion
      */
     @Test
-    public void createAdquisicionTest(){
+    public void createPublicacionTest(){
         PublicacionEntity newEntity = factory.manufacturePojo(PublicacionEntity.class);
         try{
             PublicacionEntity result = calLogic.create(newEntity);
@@ -142,7 +142,7 @@ public class PublicacionLogicTest
      * Prueba que se pueden recuperar los objetos de la base de datos
      */
     @Test
-    public void getAdquisicionesTest(){
+    public void getPublicacionesTest(){
         List<PublicacionEntity> list =  calLogic.getAll();
         //Revisa que ambas listas tengan el mismo tamano
         Assert.assertEquals(data.size(), list.size());
@@ -161,7 +161,7 @@ public class PublicacionLogicTest
      * test para obtener una Publicacion en especifico
      */
     @Test
-    public void getAdquisicionTest(){
+    public void getPublicacionTest(){
         PublicacionEntity ent = data.get(0);
         PublicacionEntity ent2 = calLogic.getById(ent.getId());
         Assert.assertNotNull(ent2);
@@ -172,7 +172,7 @@ public class PublicacionLogicTest
      * Prueba para borrar una Publicacion
      */
     @Test
-    public void deleteAdquisicionTest(){
+    public void deletePublicacionTest(){
         PublicacionEntity ent = data.get(0);
         calLogic.delete(ent);
        PublicacionEntity notFound = em.find(PublicacionEntity.class, ent.getId());
@@ -183,7 +183,7 @@ public class PublicacionLogicTest
      * Test para actualizar una Publicacion
      */
     @Test
-    public void updateAdquisicionTest(){
+    public void updatePublicacionTest(){
         PublicacionEntity ent = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         PublicacionEntity newEnt = factory.manufacturePojo(PublicacionEntity.class);

@@ -122,7 +122,7 @@ public class PublicacionEntity extends BaseEntity implements Serializable
      * Metodo que se encarga de cambiar el comentario de la actual publicacion.
      * @param pComentario,nuevo comentario.
      */
-    public void setDescripcion(String pComentario)
+    public void setComentario(String pComentario)
     {
         this.comentario = pComentario;
     }

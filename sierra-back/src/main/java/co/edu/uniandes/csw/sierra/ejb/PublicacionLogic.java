@@ -51,45 +51,24 @@ public class PublicacionLogic
      */
     public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException
     {
-       
- LOGGER.info("Creando una entidad de Publicacion");
-        //TODO: No hay ninguna regla de negocio? 
-        if (mascotaAdoptadaPersistencia.findById(ent.getId()) != ent.getMascota() && mascotaAdoptadaPersistencia.findById(ent.getId()) != null)
-         {
-             throw new BusinessLogicException( "No existe la Mascota asociada a la Publicación \"" + ent.getId( ) + "\"" );
-         }
-         else
+        LOGGER.info("Creando una entidad de Publicacion");
+        //Verifica las reglas de publicacion
+
+       if(persistencia.find(ent.getId())!= null)
         {
-         if(ent.getMascota().getNacimiento().after(ent.getFecha()))
-         {
-              throw new BusinessLogicException( "La fecha de la Publicación no es válida\""  );
-         }
-         else
-         {
-        List<PublicacionEntity> listaPub = mascotaAdoptadaPersistencia.findById(ent.getMascota().getId()).getPublicaciones();
-        listaPub.add(ent);
-        MascotaEntity nuevo = ent.getMascota();
-        nuevo.setPublicaciones(listaPub);
-        if(nuevo.getClass().getName() =="MascotaAdopatada")
-        {
-        mascotaAdoptadaPersistencia.update((MascotaAdoptadaEntity) nuevo);
-         persistencia.create(ent);
-        LOGGER.info("Termina la creacion de la entidad de Publicacion");
-        return ent;
+             throw new BusinessLogicException( "La publicacion con el id suministrado ya existe\"" );
         }
+       else if(ent.getFecha() == null  || ent.getTipo()== null || ent.getFotoURL() == null || ent.getComentario() == null )
+       {
+             throw new BusinessLogicException( "La publicacion no cuenta con los datos necesarios para crearse\"" );
+       }
         else
         {
-        mascotaVentaPersistencia.update((MascotaVentaEntity) nuevo);
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Publicacion");
         return ent;
-         }
-         }
-    }
-        //Falta probar.
-    }
-    
-    
+        }
+    }  
     /**
      * Obtiene todas las entidades de Publicacion
      * @return 
@@ -117,9 +96,18 @@ public class PublicacionLogic
     public PublicacionEntity update(PublicacionEntity ent) throws BusinessLogicException{
       
         LOGGER.log(Level.INFO, "Actualizando la entidad de Publicacion con el id={0}", ent.getId());
-        
-//TODO: No hay ninguna regla de negocio? 
-        return persistencia.update(ent);
+       if(persistencia.find(ent.getId())== null)
+       {
+            throw new BusinessLogicException( "La publicacion con el id suministrado no  existe\"" + ent.getId( ) + "\"" );
+       }
+    //   else if(ent.getMascota().getNacimiento().after(ent.getFecha()))
+       //{
+      //       throw new BusinessLogicException( "La fecha de la publicación no es valida \"" );
+       //}
+       else
+       {
+            return persistencia.update(ent);
+       }
     }
     
     /**
@@ -128,7 +116,6 @@ public class PublicacionLogic
      */
     public void delete(PublicacionEntity ent){
         LOGGER.log(Level.INFO, "Eliminando la publicacion con id ={0}", ent.getId());
-        //TODO: este método debe recibir un id y hay que validar que existe Publicacion con ese id
         persistencia.delete(ent.getId());
     }
         
