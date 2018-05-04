@@ -41,7 +41,10 @@ public class FacturaLogic {
        
         if(entity.getValor() == null || entity.getIdCliente() == null || entity.getNombreCliente() == null)
             throw new BusinessLogicException("La información suministrada para la creación de la factura está incompleta.");
-        
+        System.out.println("Factura Entity: "
+        +"\nNombre Cliente:"+entity.getNombreCliente()
+        +"\nId Cliente: "+entity.getIdCliente()
+        +"\nValor: " + entity.getValor());
         facturaPersistence.create(entity);
         LOGGER.info("Terminando el proceso de creación de una entidad de factura.");
         return entity;
