@@ -1,4 +1,4 @@
-{function(ng){
+(function(ng){
         var mod = ng.module('comprobanteModule');
         mod.constant=('comprobanteContext','api/comprobantes');
         mod.controller('comprobanteCtrl',['$scope','$http','comprobanteContext',
@@ -9,5 +9,5 @@
             });
         }
     ]);
-}}(window.angular);
+})(window.angular);
 

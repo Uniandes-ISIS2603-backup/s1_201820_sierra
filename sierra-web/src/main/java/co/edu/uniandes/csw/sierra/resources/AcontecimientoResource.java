@@ -9,6 +9,7 @@ package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.*;
 import co.edu.uniandes.csw.sierra.ejb.AcontecimientoLogic;
 import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.*;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -119,19 +120,92 @@ public class AcontecimientoResource
         }
         return new AcontecimientoDTO(entity);
     }
-
+/**
+     * <h1>POST /api/acontecimientos : Crear un acontecimiento.</h1>
+     *
+     * <pre>Cuerpo de petición: JSON {@link AcontecimientoDetailDTO}.
+     *
+     * Crea una nuevo acontecimiento con la informacion que se recibe en el cuerpo
+     * de la petición y se regresa un objeto identico con un id auto-generado
+     * por la base de datos.
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Creo el acontecimiento  .
+     * </code>
+     * </pre>
+     * @param acDto {@link AcontecimientoDetailDTO} -El acontecimiento que se
+     * desea guardar.
+     * @return JSON {@link AcontecimientoDetailDTO} -El acontecimiento se a
+     * guardado con el atributo id autogenerado.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
+     */
     @POST
-    public AcontecimientoDTO createAcontecimiento(AcontecimientoDTO acDto) {
-        return acDto;
+    public AcontecimientoDTO createAcontecimiento(AcontecimientoDTO acDto)throws BusinessLogicException
+    {
+        return new AcontecimientoDTO(acontecimientoLogica.create(acDto.toEntity())); 
     }
+     /**
+     * <h1>PUT /api/acontecimientos/{id} : Actualizar el acontecimiento con el
+     * id dado.</h1>
+     * <pre>Cuerpo de petición: JSON {@link AcontecimientoDetailDTO}.
+     *
+     * Actualiza el acontecimiento  con el id recibido en la URL con la información que se recibe en el cuerpo de la petición.
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Actualiza el acontecimiento  con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found. No existe el acontecimiento con el id dado.
+     * </code>
+     * </pre>
+     * @param id Identificador del acontecimiento que se desea actualizar. Este debe ser una cadena de digitos.
+     * Este debe ser una cadena de dígitos.
+     * @param acDto {@link AcontecimientoDetailDTO} El acontecimiento que se
+     * desea guardar.
+     * @return JSON {@link AcontecimientoDetailDTO} - El acontecimiento
+     * guardado.
+     * @throws BusinessLogicException {@link BusinessLogicException} - Error de
+     * lógica
+     */
     @PUT
     @Path("{id: \\d+}")
-    public void updateAcontecimiento(@PathParam("id") long id, AcontecimientoDTO acDto) {
-
+    public AcontecimientoDTO updateAcontecimiento(@PathParam("id") long id, AcontecimientoDTO acDto) throws WebApplicationException, BusinessLogicException
+    {
+         acDto.setId(id);
+         AcontecimientoEntity actualizada = acontecimientoLogica.getById(id);
+         if(actualizada == null)
+         {
+             throw new WebApplicationException("El recurso /acontecimiento/" + id + " no existe.", 404);
+         }
+         else 
+         {
+             return new AcontecimientoDTO(acontecimientoLogica.update(acDto.toEntity()));
+         }
     }
 
+      /**
+     * <h1> DELETE /api/acontecimientos{id} : Borra un acontecimiento.</h1>
+     * <p>
+     * <
+     * pre> Borra la entidad medioDePago con el id asociado recibido en la URL.
+     * codigos de respuesta:<br>
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Elimina la entidad de acontecimiento correspondiente al id dado.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found. No existe una entidad de acontecimiento con el id dado. </code>
+     * </pre>
+     * @param idMascota(No)
+     * @param id Identificador de la entidad de acontecimiento que se desea borrar.
+     * Este debe ser una cadena de digitos.
+     */
     @DELETE
     @Path("{id:\\d+}")
-    public void deleteAcontecimiento(@PathParam("id") long id) {
+    public void deleteAcontecimiento(@PathParam("id") long id) throws WebApplicationException
+    { 
+       AcontecimientoEntity eliminado = acontecimientoLogica.getById(id);
+        if (eliminado == null) 
+        {
+            throw new WebApplicationException("El recurso /acontecimiento/" + id + " no existe.", 404);
+        }
+        acontecimientoLogica.delete(id);
     }
 }
