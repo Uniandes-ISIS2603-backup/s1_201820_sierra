@@ -18,7 +18,6 @@ delete from EspecieEntity;
 insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL) values (10,'Adopcion', 'Dia en el que se adopto la mascota', '01/01/2018', 1, 'historico', 'https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg');
 
 
-
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (1, 'Open-source modular help-desk', 'Statistician I', 3.41);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (2, 'Multi-channelled full-range knowledge base', 'Systems Administrator I', 3.83);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (3, 'Operative coherent matrix', 'Editor', 1.53);
@@ -51,25 +50,41 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contra
 
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (1,1,'Andres', 20000);
 
+/**
+*INSERCION DE LAS  ESPECIES INICIALES DENTRO DE LA  BASE DE DATOS
+**/
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (111, 'Canino', 'Descendientes de los lobos, fieles, amorosos y el mejor amigo del hombre', 'Mamifero','recursos/img/siluetaPerro.png');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (112, 'Felino', 'Independientes agiles, un poco destructivos pero te otorgaran cariño', 'Mamifero','recursos/img/siluetaGato.png');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (113, 'Repitles', 'Curiososs, inpredesibles son un misterio llamativo', 'Reptil','recursos/img/siluetaReptil.png');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (114, 'Loro',' Grandes conversadores  coloridos y divertidos', 'Ave','recursos/img/siluetaAve.png');
 insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (115, 'Pez','Coloridos acuaticos ', 'Pez','recursos/img/siluetaPez.png');
-insert into EspecieEntity(id, nombre, caracteristicas, clasificacion,imagen) values (116, 'Conejo','Bolas de algodon tiernas y apachurrables', 'Mamifero','recursos/img/siluetaConejo.png');
-
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (111,'MascotaAdoptadaEntity','Zeus','Grande','Masculino',1,'recursos/img/samoyedo.jpg','Blanco',0,0,'6/23/2017',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (112,'MascotaAdoptadaEntity','Kiba','Grande','Femenino',3,'recursos/img/siberiano.jpg','Negro y Blanco',0,1,'1/05/2015',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (113,'MascotaAdoptadaEntity','Luna','Pequeña','Femenino',2,'recursos/img/FPoodle.jpg','Blanco',1,0,'6/23/2016',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (114,'MascotaAdoptadaEntity','Shiba','Mediana','Femenino',2,'recursos/img/labrador.jpg','Amarillo Dorado',0,1,'6/23/2016',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (115,'MascotaAdoptadaEntity','Dacota','Pequeña','Femenino',5,'recursos/img/ShibaInu.jpg','Dorada',1,0,'6/23/2013',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (116,'MascotaAdoptadaEntity','Jacob','Grande','Masculino',3,'recursos/img/Siberiano2.jpg','Blanco',0,1,'6/23/2015',111);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (117,'MascotaAdoptadaEntity','Mishu','Pequeño','Masculino',2,'recursos/img/gatoSiames.jpg','Blanco y negro',0,0,'6/23/2016',112);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (118,'MascotaAdoptadaEntity','Yasha','Pequeño','Femenino',2,'recursos/img/Korat.jpg','Gris',0,0,'6/23/2016',112);
-insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id) values (119,'MascotaAdoptadaEntity','Turron','Pequeño','Masculino',1,'recursos/img/pixieBob.jpg','Blanco naranja y negro',0,0,'6/23/2017',112);
 
 
+/**
+**INSERCION DE LAS  RAZAS INICIALES DENTRO DE LA BASE DE DATOS
+**/
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(111,'Lobo Siberiano','Perros con rasgos de sus ancestros los lobos con un pelaje de color combinado','Su pelaje y cadera','fieles, activos y juguetones',111);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(112,'Labrador','Pelo dorado, amigables','Ninguno','consentidos, tiernos y juguetones',111);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(113,'Samoyedo','Pelaje blanco y apachurrable','Su pelaje','Tiernos  y tienen un animo agradable',111);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(114,'Shiba Inu','Pequeños parecidos a los zorros','Su tamaño','Independiente',111);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(115,'Gato Siames','Rostro peculiar y colorido','Araña todo','Independiente',112);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(116,'Korat','Gordos y grises','Poco activo','Independiente',112);
+insert into RazaEntity(id,nombreraza, caracteristicas,cuidados,destacable,especie_id)values(117,'Pixie Bob','Multicolor y agradable','Super','Independiente',112);
 
+/**
+*INSERCION DE LAS MASCOTAS DENTRO DE LA BASE DE DATOS
+**/
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (111,'MascotaAdoptadaEntity','Zeus','Grande','Masculino',1,'recursos/img/samoyedo.jpg','Blanco',0,0,'6/23/2017',111,113);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (112,'MascotaAdoptadaEntity','Kiba','Grande','Femenino',3,'recursos/img/siberiano.jpg','Negro y Blanco',0,1,'1/05/2015',111,111);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (113,'MascotaAdoptadaEntity','Shiba','Mediana','Femenino',2,'recursos/img/labrador.jpg','Amarillo Dorado',0,1,'6/23/2016',111,112);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (114,'MascotaAdoptadaEntity','Dacota','Pequeña','Femenino',5,'recursos/img/ShibaInu.jpg','Dorada',1,0,'6/23/2013',111,114);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (115,'MascotaAdoptadaEntity','Jacob','Grande','Masculino',3,'recursos/img/Siberiano2.jpg','Blanco',0,1,'6/23/2015',111,111);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (116,'MascotaAdoptadaEntity','Mishu','Pequeño','Masculino',2,'recursos/img/gatoSiames.jpg','Blanco y negro',0,0,'6/23/2016',112,115);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (117,'MascotaAdoptadaEntity','Yasha','Pequeño','Femenino',2,'recursos/img/Korat.jpg','Gris',0,0,'6/23/2016',112,116);
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (118,'MascotaAdoptadaEntity','Turron','Pequeño','Masculino',1,'recursos/img/pixieBob.jpg','Blanco naranja y negro',0,0,'6/23/2017',112,117);
+
+/*
+*INSERCION EN LA  CLASIFICACION DE  MASCOTAS PARA ADOPCION DE LA BASE DE DATOS
+*/
 insert into MascotaAdoptadaEntity(id) values(111);
 insert into MascotaAdoptadaEntity(id) values(112);
 insert into MascotaAdoptadaEntity(id) values(113);
@@ -78,7 +93,7 @@ insert into MascotaAdoptadaEntity(id) values(115);
 insert into MascotaAdoptadaEntity(id) values(116);
 insert into MascotaAdoptadaEntity(id) values(117);
 insert into MascotaAdoptadaEntity(id) values(118);
-insert into MascotaAdoptadaEntity(id) values(119);
+
 
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');
