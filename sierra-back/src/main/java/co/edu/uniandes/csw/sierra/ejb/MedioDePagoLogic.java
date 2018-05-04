@@ -122,7 +122,7 @@ public class MedioDePagoLogic {
         MedioDePagoEntity medio = persistence.find(id); 
         if(medio == null)
         {
-            LOGGER.log(Level.SEVERE, "El medio de pago con el id={0} no existe para ser elimiado", medio.getId());
+            LOGGER.log(Level.SEVERE, "El medio de pago con el id={0} no existe para ser elimiado", id);
         }
         persistence.delete(id);
         LOGGER.log(Level.SEVERE, "Termina el proceso de eliminar un medui de pago");    
@@ -163,6 +163,7 @@ public class MedioDePagoLogic {
    public void removeCliente(Long id, Long clienteId){
        MedioDePagoEntity medio = getMedioDePago(id);
        ClienteEntity cliente = new ClienteEntity();
+       cliente.setId(clienteId);
        medio.getClientes().remove(cliente);
    }
 }
