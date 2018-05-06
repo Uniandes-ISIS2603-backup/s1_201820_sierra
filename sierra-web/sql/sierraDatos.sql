@@ -48,7 +48,7 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contra
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contrasenia) values (4, 'Hollis', 'Gair', 1069654987, 3125489699, 'gairhollis@hotmail.com', 'mascotas123');
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contrasenia) values (5, 'Goodby', 'Knapp', 39265488, 3215448500, 'hnap2018@yahoo.com', 'perros2018');
 
-insert into facturaEntity(id, idCliente, nombreCliente, valor) values (1,1,'Andres', 20000);
+insert into facturaEntity(id, idCliente, nombreCliente, valor) values (100,1,'Andres', 20000);
 
 /**
 *INSERCION DE LAS  ESPECIES INICIALES DENTRO DE LA  BASE DE DATOS
