@@ -21,7 +21,6 @@ import uk.co.jemos.podam.common.PodamIntValue;
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class MascotaVentaEntity extends MascotaEntity
 {
-
     private static final long serialVersionUID = 1L;
     
     /**
@@ -38,28 +37,32 @@ public class MascotaVentaEntity extends MascotaEntity
     private List<CertificadoEntity> certificados;
 
     /**
-     * @return the precio
+     * Obtiene el precio de la mascota que se va vender.
+     * @return the precio de la mascota en venta.
      */
     public Integer getPrecio() {
         return precio;
     }
 
     /**
-     * @param precio the precio to set
+     * Asigna el precio de una mascota en venta.
+     * @param precio the precio de una mascota.
      */
     public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 
     /**
-     * @return the certificados
+     * Obtiene los certificados de la mascota en venta.
+     * @return the certificados de la mascota.
      */
     public List<CertificadoEntity> getCertificados() {
         return certificados;
     }
 
     /**
-     * @param certificados the certificados to set
+     * Asigna certificados a una mascota en venta.
+     * @param certificados the certificados de una mascota en venta.
      */
     public void setCertificados(List<CertificadoEntity> certificados) {
         this.certificados = certificados;

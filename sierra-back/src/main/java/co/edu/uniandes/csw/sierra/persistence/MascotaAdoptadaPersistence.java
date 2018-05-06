@@ -33,7 +33,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-
 /**
  *
  * @author jc.sanchez12
@@ -79,9 +78,7 @@ public class MascotaAdoptadaPersistence
         return query.getResultList();
 	}
     
-    
-    
-       /**
+    /**
      * Devuelve todas las mascotas de la base de datos.
      * @return una lista con todas las mascotas que encuentre en la base de
      * datos, "select u from MascotaEntity u" es como un "select * from
@@ -94,7 +91,6 @@ public class MascotaAdoptadaPersistence
         return query.getResultList();
 	}
     
-    
      /**
      * Busca si hay alguna mascota adoptada con el id que se envía de argumento
      *
@@ -105,7 +101,6 @@ public class MascotaAdoptadaPersistence
         LOGGER.log(Level.INFO, "Consultando especie con id={0}", id);
         return em.find(MascotaAdoptadaEntity.class, id);
     }
-     
      
     /**
      * Busca si hay alguna entidad de Mascota Adoptada con el nombre que se envía de argumento
@@ -134,7 +129,6 @@ public class MascotaAdoptadaPersistence
      *
      * Borra una mascota  adoptada de la base de datos recibiendo como argumento el id
      * de la mascota adoptada 
-     *
      * @param id: id correspondiente a la mascota a borrar.
      */
     public void delete(Long id) {
@@ -152,6 +146,5 @@ public class MascotaAdoptadaPersistence
     public MascotaAdoptadaEntity update(MascotaAdoptadaEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando mascota adoptada  con id={0}", entity.getId());
         return em.merge(entity);
-    }
-        
+    }     
 }

@@ -172,7 +172,5 @@ public class RazaPersistenceTest {
         Assert.assertEquals(newEnt.getName(), retrievedEnt.getName());
         
     }
-    
-    
-    
+   
 }

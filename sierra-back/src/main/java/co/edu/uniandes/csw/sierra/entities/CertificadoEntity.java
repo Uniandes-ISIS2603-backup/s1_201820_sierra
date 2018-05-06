@@ -34,40 +34,65 @@ public class CertificadoEntity extends BaseEntity implements Serializable {
     @PodamExclude
     private MascotaVentaEntity mascotaVenta;
 
-
+    /**
+     * Obtiene la fecha en la que se realizo el certificado.
+     * @return Fecha del certificado.
+     */
     public Date getFecha() {
         return fecha;
     }
 
+    /**
+     * Asigna la fecha al certificado.
+     * @param fecha 
+     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     * Obtiene la descripcion del certificado.
+     * @return Descripcion del cerificado.
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * Asigna la descripcion del certificado.
+     * @param descripcion Nueva descripcion del certificado.
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * Obtiene la url de la imagen de la mascota del certificado.
+     * @return Url de la imagen de la mascota.
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * Asigna direccion url de la imagen de la mascota.
+     * @param imagen Url de la mascota del certificado.
+     */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
     /**
-     * @return the mascotaVenta
+     * Obtiene la mascota que se vendio.
+     * @return the mascotaVenta a la que pertenece el certificado.
      */
     public MascotaVentaEntity getMascotaVenta() {
         return mascotaVenta;
     }
 
     /**
-     * @param mascotaVenta the mascotaVenta to set
+     * Asigna la mascota en venta del certificado
+     * @param mascotaVenta the mascotaVenta por asignar al certificado.
      */
     public void setMascotaVenta(MascotaVentaEntity mascotaVenta) {
         this.mascotaVenta = mascotaVenta;

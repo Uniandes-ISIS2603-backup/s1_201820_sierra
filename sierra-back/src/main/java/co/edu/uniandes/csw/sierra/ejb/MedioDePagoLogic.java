@@ -29,8 +29,6 @@ public class MedioDePagoLogic {
 
     /**
      * Crea una nueva entidad MedioDePago.
-     *
-     * @param idCliente
      * @param entity La entidad de tipo MedioDePago que se va a persistir.
      * @return La entidad luego de persistirla.
      * @throws BusinessLogicException Si ya existe un MedioDePago con esa
@@ -54,7 +52,6 @@ public class MedioDePagoLogic {
     /**
      * *
      * Obtiene todos los MedioDePago que hay en la base de datos.
-     *
      * @return Lista de la entidades de tipo MedioDePago.
      */
     public List<MedioDePagoEntity> getMediosDePago()  {
@@ -66,12 +63,9 @@ public class MedioDePagoLogic {
 
     /**
      * Obtiene un MedioDePago con el id especificado.
-     * @param id
-     * @param clienteId
-     * @param medioId
+     * @param id  Identificador del medio de pago.
      * @return El MedioDePago correspondiente a el id.
      */
-    
     public MedioDePagoEntity getMedioDePago(Long id) {
         LOGGER.log(Level.INFO,"Inicia el proceso de consultar un medio de pago con id={0}", id);
         MedioDePagoEntity medio = persistence.find(id);
@@ -80,18 +74,15 @@ public class MedioDePagoLogic {
             LOGGER.log(Level.SEVERE, "El medio de pago con el id={0} no existe", id);
         }
         return  medio;
-        
     }
 
     /**
      * Actualiza un MedioDePago con el id dado.
-     *
-     * @param idCliente
+     * @param id Identificador del medio de pago.
      * @param entity Nueva informacion del MedioDePago.
      * @return La entidad MedioDePago con la nueva informacion.
-     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
-     */
-    
+     * @throws BusinessLogicException Excepciones por reglas de negocio.
+     */   
     public MedioDePagoEntity updateMedioDePago(Long id, MedioDePagoEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.SEVERE, "Inicia el proceso de actualizar un medio de pago");
         MedioDePagoEntity medio = persistence.find(id);
@@ -114,7 +105,6 @@ public class MedioDePagoLogic {
     /**
      * *
      * Elimina un MedioDePago segun el id.
-     *
      * @param id Identificador del MedioDePago a eliminar.
      */
     public void deleteMedioDePago( Long id) {
@@ -128,13 +118,24 @@ public class MedioDePagoLogic {
         LOGGER.log(Level.SEVERE, "Termina el proceso de eliminar un medui de pago");    
     }
 
+    /**
+     * Obtiene una coleccion de las instacias de cliente asociadas a un medio de pago.
+     * @param id Identificador del medio pago.
+     * @return Coleccion de las instacias de clientes asociadas a un medio de pago.
+     */
     public List<ClienteEntity> listClientes (Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los clientes del medio de pago con id = {0}", id);
         return getMedioDePago(id).getClientes();
     }
     
-   public ClienteEntity getCliente (Long id, Long clienteId){
+    /**
+     * Obtiene un cliente existente asociado a un medio de pago especifico.
+     * @param id Identificador del medio de pago.
+     * @param clienteId Identificador del cliente.
+     * @return La instancia de cliente asociado al medio de pago.
+     */
+    public ClienteEntity getCliente (Long id, Long clienteId){
        LOGGER.log(Level.INFO, "Inicia proceso de consultar un cliente que utiliza el medio de pago con id = {0}", id);
        List<ClienteEntity> list = getMedioDePago(id).getClientes();
        ClienteEntity clientesEntity = new ClienteEntity();
@@ -146,6 +147,12 @@ public class MedioDePagoLogic {
         return null;
    }
    
+    /**
+     * Asocia un cliente a un medio de pago especifico.
+     * @param id Identificador del medio de pago.
+     * @param clienteId Identificador del cliente a asociar.
+     * @return El cliente ahora asociado al medio de pago.
+     */
    public ClienteEntity addCliente(Long id, Long clienteId){
        MedioDePagoEntity medio = getMedioDePago(id);
        ClienteEntity cliente = new ClienteEntity();
@@ -154,12 +161,24 @@ public class MedioDePagoLogic {
        return getCliente(id, clienteId);
    }
    
+   /**
+    * Reeplaza la informacion de los clientes asociados al medio de pago.
+    * @param id Identificador del medio de pago.
+    * @param  list Coleccion de clientes con la nueva informacion a actualizar
+     * respecto a los clientes asociados.
+    * @return Los clientes asociados al medio de pago.
+    */
    public List<ClienteEntity> replaceCliente (Long id, List<ClienteEntity> list){
        MedioDePagoEntity medio = getMedioDePago(id);
        medio.setClientes(list);
        return medio.getClientes();
    }
    
+   /**
+    * Desasocia un cliente existente de un medio de pago.
+    * @param id Identificador del medio de pago
+    * @param clienteId Identificador del cliente a retirar.
+    */
    public void removeCliente(Long id, Long clienteId){
        MedioDePagoEntity medio = getMedioDePago(id);
        ClienteEntity cliente = new ClienteEntity();

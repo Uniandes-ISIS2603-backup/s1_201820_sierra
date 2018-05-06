@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-import co.edu.uniandes.csw.sierra.ejb.*;
 import co.edu.uniandes.csw.sierra.entities.CertificadoEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -80,7 +79,6 @@ public class CertificadoPersistence {
     {
         LOGGER.log(Level.INFO,"Eliminando certificado", CertificadoEntity.class);
         CertificadoEntity entity = find(id);
-        
         em.remove(entity);
     }
 

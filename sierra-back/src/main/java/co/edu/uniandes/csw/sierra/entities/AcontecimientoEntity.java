@@ -18,8 +18,6 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class AcontecimientoEntity extends BaseEntity implements Serializable
 {
-
-    
     @ManyToOne// Indica que la relacion es de varios acontecimientos a una mascota.
     private MascotaAdoptadaEntity mascotaAdopcion;
     
@@ -57,8 +55,6 @@ public class AcontecimientoEntity extends BaseEntity implements Serializable
      * Url de la foto asociada al evento
      */
     private String fotoURL;
-    
-    
     
     /**
      * Metodo que se encarga de retornar el nombre del acontecimiento.

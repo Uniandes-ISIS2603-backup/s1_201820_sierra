@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
@@ -23,7 +22,6 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class ComprobanteEntity extends BaseEntity implements Serializable{
     
-    
     private Integer valorTotal;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -31,8 +29,6 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     private Date fecha;
     
     private Long clienteId;
-    
- 
     
     /**
      * Factura ligada al comprobante actual.
@@ -47,8 +43,7 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
     @OneToOne
     @PodamExclude
    private MedioDePagoEntity medioDePago;    
-    
-    
+       
     /**
      * Retorna el valor total del comprobante.
      * @return valorTotal
@@ -102,33 +97,33 @@ public class ComprobanteEntity extends BaseEntity implements Serializable{
      * Retorna la factura ligada al c omprobante.
      * @return factura
      */ 
-  public FacturaEntity getFactura()    
-  {
+     public FacturaEntity getFactura()    
+    {
       return this.factura;
-  }
+    }
     /**
      * Recibe a la factura ligada al comprobante actual como parámetro.
      * @param factura
      */
-  public void setFactura(FacturaEntity factura)
-  {
+    public void setFactura(FacturaEntity factura)
+    {
       this.factura = factura;
-  }
+     }
     /**
      *Retorna al medio de pago usad en el comprobante actual.
      * return medio de pago usado en el comprobante actual.
      * @return 
      */ 
-  public MedioDePagoEntity getMedioDePago()
-  {
+    public MedioDePagoEntity getMedioDePago()
+     {
       return this.medioDePago;
-  }
+    }
     /**
      * Recibe al medio de pago usado en el comprobante actual como parametro.
      * @param medioDePago
      */ 
-  public void setMedioDePago(MedioDePagoEntity medioDePago)
-  {  
-      this.medioDePago = medioDePago;
-  }
+    public void setMedioDePago(MedioDePagoEntity medioDePago)
+    {  
+        this.medioDePago = medioDePago;
+    }
 }

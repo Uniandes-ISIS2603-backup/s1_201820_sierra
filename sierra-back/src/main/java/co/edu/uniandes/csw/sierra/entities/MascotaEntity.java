@@ -48,14 +48,10 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Inheritance( strategy = InheritanceType.JOINED )
 public abstract class MascotaEntity extends BaseEntity
 {
- 
-    //--------------------ATRIBUTOS--------------//
-    
     /**
      * Codigo serializable por SA
      */
     private static final long serialVersionUID = 1L;
-    
     
      /**
      * nombre de la  mascota
@@ -103,9 +99,6 @@ public abstract class MascotaEntity extends BaseEntity
     @Temporal(javax.persistence.TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date nacimiento;
-    
-    
-    //---------------RELACIONES-------------------//
    
     /**
      * Especie  de la mascota
@@ -141,125 +134,138 @@ public abstract class MascotaEntity extends BaseEntity
     @PodamExclude
     @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST)
     private List<PublicacionEntity> publicaciones;
-
-    
-    //---------------METODOS---------------------//
-
-    
+ 
     /**
-     * @return the nombre
+     * Obtiene el nombre de la mascota.
+     * @return the nombre de la mascota.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * Asigna el nombre a la mascota.
+     * @param nombre the nombre por asignarle a la mascota.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the genero
+     * Obtiene el genero de la mascota.
+     * @return the genero de una mascota.
      */
     public String getGenero() {
         return genero;
     }
 
     /**
-     * @param genero the genero to set
+     * Asigna el genero de la mascota.
+     * @param genero the genero de una mascota.
      */
     public void setGenero(String genero) {
         this.genero = genero;
     }
 
     /**
-     * @return the edad
+     * Obtiene la edad de la mascota.
+     * @return the edad de una mascota.
      */
     public Integer getEdad() {
         return edad;
     }
 
     /**
-     * @param edad the edad to set
+     * Asigna la edad a la mascota.
+     * @param edad the edad por asignar a una mascota.
      */
     public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
     /**
-     * @return the color
+     * Obtiene el color de la mascota.
+     * @return the color de la mascota.
      */
     public String getColor() {
         return color;
     }
 
     /**
-     * @param color the color to set
+     * Asigna el color a una mascota.
+     * @param color the color por asignarle a una mascota.
      */
     public void setColor(String color) {
         this.color = color;
     }
 
     /**
-     * @return the esteril
+     * Obtiene si la mascota esta esterilizada o no.
+     * @return the esteril true si esta esterizada o false sino lo esta.
      */
     public Boolean isEsteril() {
         return esteril;
     }
 
     /**
-     * @param esteril the esteril to set
+     * Asigna a la mascota si esta o no esterilizada.
+     * @param esteril the esteril si esta o no esterilizada.
      */
     public void setEsteril(Boolean esteril) {
         this.esteril = esteril;
     }
 
     /**
-     * @return the adquirida
+     * Obtiene el estado de adquisicion de la mascota.
+     * @return the adquirida si esta o no adquirida la mascota.
      */
     public Boolean isAdquirido() {
         return adquirido;
     }
 
     /**
-     * @param adquirido the adquirida to set
+     * Asigna el estado a la mascota si esta o no adquirido.
+     * @param adquirido the adquirida si esta o no adquirida.
      */
     public void setAdquirido(Boolean adquirido) {
         this.adquirido = adquirido;
     }
 
     /**
-     * @return the imagen
+     * Obtiene la imagen de la mascota.
+     * @return the imagen url de la mascota.
      */
     public String getImagen() {
         return imagen;
     }
 
     /**
-     * @param imagen the imagen to set
+     * Asigna la  url de la imagen de la mascota.
+     * @param imagen the imagen de la mascota.
      */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
     /**
-     * @return the tamano
+     * Obtiene el tamaño de la mascota.
+     * @return the tamano de la mascota.
      */
     public String getTamano() {
         return tamano;
     }
 
     /**
-     * @param tamano the tamano to set
+     * Asigna el tamaño a una mascota.
+     * @param tamano the tamano de una mascota.
      */
     public void setTamano(String tamano) {
         this.tamano = tamano;
     }
 
     /**
-     * @return the nacimiento
+     * Obtiene el formato de la fecha de nacimiento de la mascota.
+     * @return the nacimiento de la mascota.
      */
     @SuppressWarnings("deprecation")
     public  String  getNacimientoFecha() {
@@ -267,89 +273,98 @@ public abstract class MascotaEntity extends BaseEntity
     }
 
     /**
-     * @return the nacimiento
+     * Obtiene la fecha de nacimiento de una mascota.
+     * @return the nacimiento de la mascota.
      */
     public  Date  getNacimiento() {
        return nacimiento;
     }
     
     /**
-     * @param nacimiento the nacimiento to set
+     * Asigna la fecha de nacimiento a una mascota.
+     * @param nacimiento la fecha de nacimiento de una mascota.
      */
     public void setNacimiento(Date nacimiento) {
         this.nacimiento = nacimiento;
     }
-
-  
-
+    
     /**
-     * @return the especie
+     * Obtiene la especie de la mascota.
+     * @return the especie de la mascota.
      */
     public EspecieEntity getEspecie() {
         return especie;
     }
 
     /**
-     * @param especie the especie to set
+     * Asigna la especie de una mascota.
+     * @param especie the especie de una mascota.
      */
     public void setEspecie(EspecieEntity especie) {
         this.especie = especie;
     }
 
     /**
-     * @return the cliente
+     * Obtiene el cliente dueño de la mascota.
+     * @return the cliente dueño de la mascota.
      */
     public ClienteEntity getCliente() {
         return cliente;
     }
 
     /**
-     * @param cliente the cliente to set
+     * Asigna el cliente que es dueno de una mascota.
+     * @param cliente the cliente nuevo dueno de la mascota.
      */
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
 
     /**
-     * @return the adquisicion
+     * Obtiene la adquisicion a la que pertenece la mascota.
+     * @return the adquisicion de mascota.
      */
     public AdquisicionEntity getAdquisicion() {
         return adquisicion;
     }
 
     /**
-     * @param adquisicion the adquisicion to set
+     * Asigna la adquisicion de una mascota.
+     * @param adquisicion the adquisicion de una mascota.
      */
     public void setAdquisicion(AdquisicionEntity adquisicion) {
         this.adquisicion = adquisicion;
     }
 
     /**
-     * @return the raza
+     * Obtiene la raza de la mascota.
+     * @return the raza de la mascota.
      */
     public RazaEntity getRaza() {
         return raza;
     }
 
     /**
-     * @param raza the raza to set
+     * Asigna la raza de una mascota.
+     * @param raza the raza de una mascota.
      */
     public void setRaza(RazaEntity raza) {
         this.raza = raza;
     }
 
     /**
-     * @return the publicaciones
+     * Obtiene las publicacion realidas a la mascota.
+     * @return the publicaciones de la mascota.
      */
     public List<PublicacionEntity> getPublicaciones() {
         return publicaciones;
     }
 
     /**
-     * @param publicaciones the publicaciones to set
+     * Asigna publicaciones a una mascota.
+     * @param publicaciones the publicaciones de una mascota.
      */
     public void setPublicaciones(List<PublicacionEntity> publicaciones) {
         this.publicaciones = publicaciones;
-    }
-    
+    }   
 }

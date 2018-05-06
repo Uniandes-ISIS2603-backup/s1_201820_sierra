@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import java.util.List;
 import javax.persistence.EntityManager;

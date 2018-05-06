@@ -28,7 +28,6 @@ import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -59,6 +58,7 @@ public class AdquisicionLogic {
      * la crea
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public AdquisicionEntity create(AdquisicionEntity ent) throws BusinessLogicException{
         LOGGER.info("Creando una entidad de Adquisicion");
@@ -92,6 +92,7 @@ public class AdquisicionLogic {
      * Actualiza una Adquisicion 
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public AdquisicionEntity update(AdquisicionEntity ent) throws BusinessLogicException{
         if(ent.getValorTotal() < 0)
@@ -102,7 +103,7 @@ public class AdquisicionLogic {
     
     /**
      * Elimina una Adquisicion
-     * @param ent la adquiisicion que se desea eliminar
+     * @param id
      */
     public void delete(Long id) throws Exception{
         LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", id);

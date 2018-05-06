@@ -12,7 +12,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Entidad que representa una calificacion.
- * 
  * @author Juan David Zambrano
  */
 @Entity
@@ -35,11 +34,6 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
     */
     private String sugerencia;
 
-    
-    //----------------
-    //Asociaciones
-    //---------------
-    
     /**
      * La adquisicion a la que esta referenciada la calificacion
      */
@@ -47,60 +41,65 @@ public class CalificacionEntity extends BaseEntity implements Serializable{
     @PodamExclude
     private AdquisicionEntity adquisicion;
     
-    
-    
-    
     /**
-     * @return the comentarios
+     * Obtiene los comentarios que acompañan una calificacion.
+     * @return the comentarios de una calificacion.
      */
     public String getComentarios() {
         return comentarios;
     }
 
     /**
-     * @param comentarios the comentarios to set
+     * Asigna los comentarios a una calificacion.
+     * @param comentarios the comentarios realizados junto con la calificacion.
      */
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
 
     /**
-     * @return the valor
+     * Obtiene el valor por el que se realizo la calificacion.
+     * @return the valor de la calificacion realizada.
      */
     public Double getValor() {
         return valor;
     }
 
     /**
-     * @param valor the valor to set
+     * Asigna el valor de la calificacion.
+     * @param valor the valor de la nueva calificacion.
      */
     public void setValor(Double valor) {
         this.valor = valor;
     }
 
     /**
-     * @return the sugerencia
+     * Obtiene las sugerencias realizadas junto con la calificacion.
+     * @return the sugerencia realizada para mejorar el servicio.
      */
     public String getSugerencia() {
         return sugerencia;
     }
 
     /**
-     * @param sugerencia the sugerencia to set
+     * Asigna una sugerencia por el servicio.
+     * @param sugerencia the sugerencia para mejorar el sevicio.
      */
     public void setSugerencia(String sugerencia) {
         this.sugerencia = sugerencia;
     }
 
     /**
-     * @return the adquisicion
+     * Obtiene la adquisicion a la que se realiza la calificacion.
+     * @return the adquisicion a la que pertenece la calificacion.
      */
     public AdquisicionEntity getAdquisicion() {
         return adquisicion;
     }
 
     /**
-     * @param adquisicion the adquisicion to set
+     * Asocia la adquisicion a la calificacion.
+     * @param adquisicion the adquisicion a la que pertenece la calificacion.
      */
     public void setAdquisicion(AdquisicionEntity adquisicion) {
         this.adquisicion = adquisicion;

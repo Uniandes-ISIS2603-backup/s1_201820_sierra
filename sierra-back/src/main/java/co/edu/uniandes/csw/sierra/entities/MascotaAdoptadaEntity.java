@@ -23,21 +23,21 @@ public class MascotaAdoptadaEntity extends MascotaEntity
     
     private static final long serialVersionUID = 1L;
     
-    //----------------Relaciones--------------//
     @PodamExclude
     @OneToMany(mappedBy = "mascotaAdopcion", cascade = CascadeType.PERSIST)
     private List<AcontecimientoEntity> acontecimientos;
-    //---------------METODOS---------------//
-
+   
     /**
-     * @return the acontecimientos
+     * Obtiene los acontecimientos de la mascotada adoptada.
+     * @return the acontecimientos de la mascota.
      */
     public List<AcontecimientoEntity> getAcontecimientos() {
         return acontecimientos;
     }
 
     /**
-     * @param acontecimientos the acontecimientos to set
+     * Asigna acontecimientos a una mascota adoptada.
+     * @param acontecimientos the acontecimientos de la mascota.
      */
     public void setAcontecimientos(List<AcontecimientoEntity> acontecimientos) {
         this.acontecimientos = acontecimientos;

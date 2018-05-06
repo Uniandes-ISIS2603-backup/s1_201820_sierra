@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.sierra.entities;
-
-
 import co.edu.uniandes.csw.sierra.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
@@ -52,10 +50,7 @@ public class PublicacionEntity extends BaseEntity implements Serializable
      */
     private String comentario;
     
-    
-    
-    
-      /**
+     /**
      * Metodo que se encarga de retornar el tipo de la publicacion.
      * @return el tipo  de la publicacion.
      */
