@@ -6,11 +6,11 @@
 package co.edu.uniandes.csw.sierra.resources;
 //TODO: Borrar loque no se usa
 
+import co.edu.uniandes.csw.sierra.dtos.FacturaDTO;
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
-import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
@@ -184,9 +184,6 @@ public class FacturaResource {
         FacturaEntity entity = infoFactura.toEntity();
         entity.setId(id);
         FacturaEntity oldEntity = logicFactura.getById(id);
-        if(oldEntity == null)
-            throw new WebApplicationException("El comprobante no existe.");
-        entity.setAdquisicion(oldEntity.getAdquisicion());
         entity.setComprobantes(oldEntity.getComprobantes());
         return new FacturaDetailDTO(logicFactura.update(entity));
     }
@@ -203,16 +200,14 @@ public class FacturaResource {
      * </pre>
      * 
      * @param id Identificar de la entidad de la factura que se desea borrar. Este debe ser una cadena de digitos.
+     * @return la factura que se eliminó.
      */
     
     @DELETE
-    @Path("(id: \\d+)")
-    public void deleteFactura(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
+    @Path("{id: \\d+}")
+    public FacturaDTO deleteFactura(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
     {
         //process
-        FacturaEntity entity = logicFactura.getById(id);
-        if(entity == null)
-            throw new WebApplicationException("La factura buscada no existe.");
-        logicFactura.delete(id);
+        return new FacturaDTO(logicFactura.delete(id));
     }
 }

@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.ComprobanteDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
+import co.edu.uniandes.csw.sierra.ejb.MedioDePagoLogic;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -46,11 +49,16 @@ import javax.ws.rs.WebApplicationException;
 public class ComprobanteResource {
     
     /**
-     * Injección de la lógica.
+     * Injección de la lógica del comprobante.
      */
     @Inject
-    private ComprobanteLogic logic;
+    private ComprobanteLogic comprobanteLogic;
     
+    /**
+     *Inyección de la lógica del medio de pago.
+     */
+    @Inject
+    private MedioDePagoLogic medioDePagoLogic;
     /**
      * <h1> POST /api/comprobantes : Crea un comprobante. </h1>
      * <pre>
@@ -66,14 +74,22 @@ public class ComprobanteResource {
      * </code>
      *  </pre>
      * @param dto {@link ComprobanteDetailDTO} - El comprobante que se desea guardar
+     * @param  idMedioDePago
      * @return JSON {@link ComprobanteDetailDTO} - El comprobante guardado con el atributo id generado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de logica que se genera cuando ya existe un comprobante.
      *
      */
     @POST
-    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto) throws WebApplicationException, BusinessLogicException
+    @Path("/postComprobante")
+    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto, @QueryParam(value="idMedioDePago") Long idMedioDePago) throws WebApplicationException, BusinessLogicException
     {
-        return new ComprobanteDetailDTO(logic.create(dto.toEntity()));
+        MedioDePagoEntity mdpEntity = medioDePagoLogic.getMedioDePago(idMedioDePago);
+        if(mdpEntity == null)
+            throw new WebApplicationException("El medio de pago con el id dado por parámetro no existe.");
+        
+        ComprobanteEntity compEntity = comprobanteLogic.create(dto.toEntity());
+        compEntity = comprobanteLogic.addMedioDePago(compEntity.getId(), idMedioDePago);
+        return new ComprobanteDetailDTO(compEntity);
     }
     
     
@@ -104,8 +120,11 @@ public class ComprobanteResource {
     @GET
     public List<ComprobanteDetailDTO> getComprobantes()
     {
-        return listEntity2DTO(logic.getAll());
+        return listEntity2DTO(comprobanteLogic.getAll());
     }
+    
+    
+ 
     
     /**
      * <h1>GET /api/comprobantes/{id} : Obtener un comprobante por id.</h1>
@@ -120,15 +139,15 @@ public class ComprobanteResource {
      * 404 Not Found No existe un comprobante con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador del comprobante que se está buscando. Este debe ser una cadena de digitos.
+     * @param  comprobanteId Identificador del comprobante que se está buscando. Este debe ser una cadena de digitos.
      * @return JSON {@link ComprobanteDetailDTO} - El comprobante buscada.
      */
     
     @GET
-    @Path("{id: \\d+}")
-    public ComprobanteDetailDTO getComprobante(@PathParam("id") Long id)throws WebApplicationException
+    @Path("{comprobanteId: \\d+}")
+    public ComprobanteDetailDTO getComprobante(@PathParam("comprobanteId") Long comprobanteId)throws WebApplicationException
     {
-        ComprobanteEntity encontrado = logic.getById(id);
+        ComprobanteEntity encontrado = comprobanteLogic.getById(comprobanteId);
         //TODO: disparar WebApplicationException
         if(encontrado == null)
             throw new WebApplicationException("No existe un comprobante con el id dado por parámetro.");
@@ -149,25 +168,25 @@ public class ComprobanteResource {
      * 404 Not Found. No existe una entidad de Comprobante con el id dado.
      * </code>
      * </pre>
-     * @param id Identificador de la entidad de comprobante que se desea actualizar. Este debe ser una cadena de digitos.
+     * @param comprobanteId el id del comprobante.
      * @param infoComprobante {@link ComprobanteDetailDTO} la entidad de comprobante que se desea guardar.
      * @return JSON {@link ComprobanteDetailDTO} - La entidad de comprobante guardada.
      * @throws BusinessLogicException {@link BusinessLogicException}  Error de logica que se genera al no poder actualizar la entidad de Comprobante porque ya existe una con ese nombre.
      */
     
     @PUT
-    @Path("{id: \\d+}")
-    public ComprobanteDetailDTO updateComprobante(@PathParam("id") Long id, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException, WebApplicationException
+    @Path("{comprobanteId: \\d+}")
+    public ComprobanteDetailDTO updateComprobante(@PathParam("comprobanteId") Long comprobanteId, ComprobanteDetailDTO infoComprobante)throws BusinessLogicException, WebApplicationException
     {
         ComprobanteEntity entity = infoComprobante.toEntity();
-        entity.setId(id);
-        ComprobanteEntity oldEntity = logic.getById(id);
+        entity.setId(comprobanteId);
+        ComprobanteEntity oldEntity = comprobanteLogic.getById(comprobanteId);
         //TODO: disparar WebApplicationException
         if(oldEntity == null)
             throw new WebApplicationException("El comprobante no existe.");
         entity.setFactura(oldEntity.getFactura());
         entity.setMedioDePago(oldEntity.getMedioDePago());
-        return new ComprobanteDetailDTO(logic.update(entity));
+        return new ComprobanteDetailDTO(comprobanteLogic.update(entity));
     }
     
     /**
@@ -181,18 +200,19 @@ public class ComprobanteResource {
      * 404 Not Found. No existe una entidad de Comprobante con el id dado. </code>
      * </pre>
      * 
-     * @param id Identificar de la entidad del comprobante que se desea borrar. Este debe ser una cadena de digitos.
+     * @param comprobanteId Identificar de la entidad del comprobante que se desea borrar. Este debe ser una cadena de digitos.
+     * @return el comprobante que se eliminó.
      */
     
     @DELETE
-    @Path("(id: \\d+)")
-    public void deleteComprobante(@PathParam("id") Long id)throws WebApplicationException, BusinessLogicException
+    @Path("(comprobanteId: \\d+)")
+    public ComprobanteDetailDTO deleteComprobante(@PathParam("comprobanteId") Long comprobanteId)throws WebApplicationException, BusinessLogicException
     {
         //process
-        ComprobanteEntity entity = logic.getById(id);
+        ComprobanteEntity entity = comprobanteLogic.getById(comprobanteId);
         //TODO: disparar WebApplicationException
         if(entity == null)
             throw new WebApplicationException("El comprobante buscado no existe.");
-        logic.delete(id);
+        return new ComprobanteDetailDTO( comprobanteLogic.delete(comprobanteId) );
     }
 }

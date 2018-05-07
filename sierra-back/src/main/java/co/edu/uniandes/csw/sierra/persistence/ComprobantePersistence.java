@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
-import co.edu.uniandes.csw.sierra.ejb.*;
-import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import java.util.List;
@@ -54,7 +52,7 @@ public class ComprobantePersistence {
     public List<ComprobanteEntity> findAll()
     {
         LOGGER.info("Consultando todos los comprobantes.");
-        TypedQuery query = em.createQuery("select u from ComprobanteEntity u", CalificacionEntity.class);
+        TypedQuery query = em.createQuery("select u from ComprobanteEntity u", ComprobanteEntity.class);
         return (List<ComprobanteEntity>) query.getResultList();
     }
     
@@ -72,11 +70,13 @@ public class ComprobantePersistence {
     /**
      * Elimina un comprobante con el id dado por parámetro.
      * @param id 
+     * @return el comprobante que se ha eliminado.
      */
-    public void delete(Long id)
+    public ComprobanteEntity delete(Long id)
     {
         LOGGER.log(Level.INFO, "Eliminando Cliente.", ClienteEntity.class);
         ComprobanteEntity entity = find(id);
         em.remove(entity);
+        return entity;
     }
 }

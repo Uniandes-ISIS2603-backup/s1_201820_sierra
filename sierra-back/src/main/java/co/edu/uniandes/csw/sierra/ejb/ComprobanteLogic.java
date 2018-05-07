@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
 import java.util.List;
@@ -24,6 +25,9 @@ public class ComprobanteLogic {
     
     @Inject
     private ComprobantePersistence persistence; 
+    
+    @Inject
+    private MedioDePagoLogic medioDePagoLogic;
     
     public ComprobanteEntity create(ComprobanteEntity entity)throws BusinessLogicException
     {
@@ -62,14 +66,24 @@ public class ComprobanteLogic {
         return persistence.update(entity);
     }
     
-    public void delete(Long id)throws BusinessLogicException
+    public ComprobanteEntity delete(Long id)throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de borrar una entidad de Comprobante.");
        //TODO: Hay que validar que existe Comprobante con ese id  
        if(persistence.find(id) == null)
            throw new BusinessLogicException("No existe un comprobante con el id dado.");
        
-        persistence.delete(id);
+        ComprobanteEntity entity = persistence.delete(id);
         LOGGER.info("Termína el proceso de borrar una entidad de Comprobante.");
+        return entity;
+    }
+    
+    public ComprobanteEntity addMedioDePago(Long comprobanteId, Long medioDePagoId)throws BusinessLogicException
+    {
+        ComprobanteEntity comprobanteEntity = getById(comprobanteId);
+        MedioDePagoEntity medioDePagoEntity = medioDePagoLogic.getMedioDePago(medioDePagoId);
+        comprobanteEntity.setMedioDePago(medioDePagoEntity);
+        medioDePagoEntity.setComprobante(comprobanteEntity);
+        return comprobanteEntity;
     }
 }

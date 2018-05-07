@@ -46,7 +46,7 @@ public class FacturaPersistence {
      */
     public FacturaEntity find(Long id)
     {
-        LOGGER.log(Level.INFO, "Obteniendo facutra por id.", id);
+        LOGGER.log(Level.INFO, "Obteniendo factura por id.", id);
         return em.find(FacturaEntity.class, id);
     }
     
@@ -75,11 +75,13 @@ public class FacturaPersistence {
     /**
      * Elimina a la factura con el id dado por parámetro.
      * @param id 
+     * @return la factura que se eliminó.
      */
-    public void delete (Long id)
+    public FacturaEntity delete (Long id)
     {
         LOGGER.log(Level.INFO, "Eliminando Factura.", FacturaEntity.class);
         FacturaEntity entity = find(id);
         em.remove(entity);
+        return entity;
     }
 }

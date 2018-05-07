@@ -68,19 +68,19 @@ public class FacturaLogic {
         
         LOGGER.info("Comienza el proceso de actualizar una factura.");
         if(facturaPersistence.find(entity.getId()) == null)
-            throw new BusinessLogicException("No existe una entidad con el id dado.");
+            throw new BusinessLogicException("No existe una factura con el id dado.");
         LOGGER.info("Termína el proceso de actualizar un comprobante.");
         return facturaPersistence.update(entity);
     }
     
-    public void delete(Long id)throws BusinessLogicException
+    public FacturaEntity delete(Long id)throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de factura.");
        
        if(facturaPersistence.find(id) == null)
            throw new BusinessLogicException("No existe una factura con el id dado.");
-       
-        facturaPersistence.delete(id);
-        LOGGER.info("Termína el proceso de eliminar una entidad de factura.");
+       LOGGER.info("Termína el proceso de eliminar una entidad de factura.");
+        return facturaPersistence.delete(id);
+        
     }
 }

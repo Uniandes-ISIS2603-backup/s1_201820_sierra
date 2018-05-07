@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
