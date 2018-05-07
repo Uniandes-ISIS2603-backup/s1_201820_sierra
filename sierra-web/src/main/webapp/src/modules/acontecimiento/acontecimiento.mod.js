@@ -11,21 +11,34 @@
             //Estado por defecto
             $urlRouterProvider.otherwise("/acontecimientoList");
            //Definicion de los estados
-            $stateProvider.state('acontecimientoList', {
+            //Estado iincial
+            $stateProvider.state('acontecimientos',{
+                url:'/acontecimientos',
+                views: {
+                    'mainView':{
+                        templateUrl: basePath + 'acontecimiento.html',
+                        controller: 'acontecimientoCtrl',
+                        controllerAs:'ctrl'
+                    }
+                }
+            })
+               // Define el estado lista
+                .state('acontecimientoList', {
                 url: '/acontecimiento/list',
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'acontecimiento.list.html',
+                        templateUrl: basePath + 'list/acontecimiento.list.html',
                         controller: 'acontecimientoCtrl',     
                         controllerAs: 'ctrl'
                        }
                 }
             })
+            //Estado crear
                     .state('acontecimientoCreate',{
                         url:'/acontecimiento/create',
                 views:{
                     'mainView':{
-                        templateUrl: basePath + 'acontecimiento.create.html',
+                        templateUrl: basePath + 'create/acontecimiento.create.html',
                         controller: 'acontecimientoCtrl',
                         controllerAs: 'ctrl'
                     }
