@@ -1,6 +1,6 @@
 (function(ng){
  
-var mod= ng.module('facturaModule',[]);
+var mod= ng.module('facturaModule',['ui.router']);
 mod.constant('facturaContext','api/facturas');
 mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
     {
