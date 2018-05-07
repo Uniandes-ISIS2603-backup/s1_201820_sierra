@@ -47,9 +47,13 @@ public class CertificadoLogic {
         return persistence.find(id);
     }
     
-    public CertificadoEntity update(CertificadoEntity entity)
+    public CertificadoEntity update(CertificadoEntity entity) throws Exception
     {
 //TODO: NO hay ninguna regla de negocio? 
+        LOGGER.info("Inicia el proceso de actualizar un certificado.");
+         if(persistence.find(entity.getId()) == null)
+            throw new BusinessLogicException("No existe un certificado con el id dado.");
+          LOGGER.info("Termina el proceso de actualizar un certificado.");
         return persistence.update(entity);
     }
     
