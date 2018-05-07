@@ -172,7 +172,7 @@ public class CertificadoResource {
 
     @PUT
     @Path("{id: \\d+}")
-    public CertificadoDetailDTO updateCalificacion(@PathParam("id") Long id, CertificadoDetailDTO dDTO) throws BusinessLogicException {
+    public CertificadoDetailDTO updateCalificacion(@PathParam("id") Long id, CertificadoDetailDTO dDTO) throws BusinessLogicException, Exception {
         CertificadoEntity ent = dDTO.toEntity();
         ent.setId(id);
         //revisa si existe la entidad
