@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.List;
@@ -52,6 +53,9 @@ public class AdquisicionLogic {
     
     @Inject
     private CalificacionLogic calLogic;
+    
+    @Inject
+    private FacturaLogic factLogic;
     
     /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
@@ -124,7 +128,14 @@ public class AdquisicionLogic {
     }
     
     
-    
+    public FacturaEntity addFactura(Long adqId, Long facId)
+    {
+        AdquisicionEntity adqEntity = getById(adqId);
+        FacturaEntity facEntity = factLogic.getById(facId);
+        facEntity.setAdquisicion(adqEntity);
+        adqEntity.setFactura(facEntity);
+        return facEntity;
+    }
     
     
 }

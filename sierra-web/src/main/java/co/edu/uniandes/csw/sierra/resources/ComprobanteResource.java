@@ -95,6 +95,8 @@ public class ComprobanteResource {
     
     /**
      * 
+     * Transforma una lista de entities a DTOs.
+     * 
      * @param entities, lista de lista de entidades.
      * @return la lista de datos resultantes de la transformación de las entidades dadas por parámetro.
      */
@@ -202,6 +204,7 @@ public class ComprobanteResource {
      * 
      * @param comprobanteId Identificar de la entidad del comprobante que se desea borrar. Este debe ser una cadena de digitos.
      * @return el comprobante que se eliminó.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     
     @DELETE
