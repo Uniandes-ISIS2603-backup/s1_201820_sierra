@@ -27,6 +27,7 @@ public class ClienteLogic
     private ClientePersistence persistence;
     @Inject 
     private MedioDePagoLogic medioLogic;
+    
     /**
      * Crea una nueva entidad Cliente.
      * @param entity la entidad de tipo cliente que se va a persistir. 
@@ -70,8 +71,7 @@ public class ClienteLogic
      * @param id El identificador del cliente buscado.
      * @return El cliente correspondiente a el id.
      */
-    public ClienteEntity getCliente(Long id)
-    {
+    public ClienteEntity getCliente(Long id){
         LOGGER.log(Level.INFO,"Inicia el proceso de consultar un cliente con id={0}", id);
         ClienteEntity cliente = persistence.find(id);
         if(cliente == null)
@@ -87,10 +87,10 @@ public class ClienteLogic
      * @param id Identificador del cliente que se quiere actualizar.
      * @param entity Nueva informacion del cliente.
      * @return La entidad cliente con la nueva informacion.
+     * @throws BusinessLogicException Excepciones por reglas de negocio.
      */
-    public ClienteEntity updateCliente (Long id, ClienteEntity entity) throws BusinessLogicException
-    {
-        LOGGER.log(Level.SEVERE, "Inicia el proceso de actualizar un cliente");
+    public ClienteEntity updateCliente (Long id, ClienteEntity entity) throws BusinessLogicException{
+       LOGGER.log(Level.SEVERE, "Inicia el proceso de actualizar un cliente");
         ClienteEntity cliente = persistence.find(id);
         if(cliente == null)
         {
@@ -113,8 +113,6 @@ public class ClienteLogic
         LOGGER.log(Level.SEVERE, "Termina el proceso de actualizar un cliente");
         return entity;
     }
- 
-    
     
     /***
      * Elimina un cliente segun el id.
@@ -132,10 +130,21 @@ public class ClienteLogic
         LOGGER.log(Level.SEVERE, "Termina el proceso de eliminar un cliente");
     }
 
+    /**
+     * Obtiene una coleccion de las instacias de medio de pago asociadas a un cliente.
+     * @param clienteId Identificador del cliente.
+     * @return Coleccion con las instacias de medio de pago asociadas al cliente.
+     */
     public List<MedioDePagoEntity> listMedios(Long clienteId){
         return getCliente(clienteId).getMediosDePago();
     }
     
+    /**
+     * Obtiene un medio de pago asociado al cliente.
+     * @param clienteId Identificador del Medio de pago. 
+     * @param medioId Identificador del cliente.
+     * @return La instacia de medio de pago asociada al cliente con id especificado.
+     */
     public MedioDePagoEntity getMedio (Long clienteId, Long medioId){
         List<MedioDePagoEntity> list = getCliente(clienteId).getMediosDePago();
         MedioDePagoEntity medio = new MedioDePagoEntity();
@@ -147,11 +156,24 @@ public class ClienteLogic
         return null;
     }
     
+    /**
+     * Asocia un medio de pago a un cliente existente.
+     * @param clienteId Identificador del cliente.
+     * @param medioId Identificador del medio de pago a asociar.
+     * @return El medio de pago asociado al cliente.
+     */
     public MedioDePagoEntity addMedio (Long clienteId, Long medioId){
         medioLogic.addCliente(medioId, clienteId);
         return medioLogic.getMedioDePago(medioId);
     }
     
+    /**
+     * Reemplaza la informacion de los medios de pago asociados a un cliente.
+     * @param clienteId Identificador del cliente.
+     * @param list Coleccion de medios de pago con la nueva informacion a actualizar
+     * respecto a los medios de pago asociados.
+     * @return Los medios de pago asociados al cliente.
+     */
     public List<MedioDePagoEntity> replaceMedio (Long clienteId, List<MedioDePagoEntity> list )
     {
         ClienteEntity cliente = getCliente(clienteId);
@@ -170,6 +192,11 @@ public class ClienteLogic
         return cliente.getMediosDePago();
     }
     
+    /**
+     * Desasocia un medio de pago existente de un cliente.
+     * @param clienteId Identificador del cliente.
+     * @param medioId Identificador del medio de pago a retirar.
+     */
     public void removeMedio (Long clienteId, Long medioId)
     {
         medioLogic.removeCliente(medioId, clienteId);

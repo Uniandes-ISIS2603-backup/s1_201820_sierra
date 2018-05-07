@@ -5,12 +5,9 @@
     modulo.controller('acontecimientoCtrl', ['$scope', '$http', 'acontecimientoContext',
                       function($scope, $http, acontecimientoContext)
                       {
-                       $scope.acontecimientos = {};
-                       $http.get('data/acontecimientos.json').then(function (response) 
-                                                                   {
-                                                                    $scope.acontecimientos = response.data;   
-                                                                   }
-                                                                   );
+                     $http.get(acontecimientoContext).then(function (response) {
+                       $scope.acontecimientos = response.data;
+            });
 } 
 ]);
 }

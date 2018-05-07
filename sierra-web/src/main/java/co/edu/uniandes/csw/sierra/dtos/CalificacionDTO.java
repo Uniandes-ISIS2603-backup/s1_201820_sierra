@@ -59,7 +59,7 @@ public class CalificacionDTO {
     private String sugerencia;
 
     public CalificacionDTO() {
-
+        //Constructor por defecto
     }
 
     /**

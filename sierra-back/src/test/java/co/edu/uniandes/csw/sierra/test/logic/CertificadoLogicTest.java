@@ -162,8 +162,13 @@ public class CertificadoLogicTest {
        CertificadoEntity pojoEntity = factory.manufacturePojo(CertificadoEntity.class);
 
         pojoEntity.setId(entity.getId());
-
+try
+{
         logic.update(pojoEntity);
+}catch(Exception e)
+        {
+            Assert.fail("Error: " + e.getMessage());
+        }
 
         CertificadoEntity respuesta = em.find(CertificadoEntity.class, entity.getId());
 

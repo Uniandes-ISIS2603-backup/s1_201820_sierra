@@ -45,7 +45,7 @@ public class CalificacionPersistence {
     protected EntityManager em;
 
     /**
-     *
+     * Crea una calificacion.
      * @param ent la entidad que se quiere guardar en la base de datos
      * @return la entity creada con el id dado por la base de datos
      */
@@ -56,27 +56,43 @@ public class CalificacionPersistence {
         return ent;
     }
 
+    /**
+     * Devuelve todas las calificaciones de la base de datos.
+     * @return una lista con tadas las calificaciones.
+     */
     public List<CalificacionEntity> findAll() {
         LOGGER.info("Consultando todas las entidades de Calificacion");
         TypedQuery<CalificacionEntity> query = em.createQuery("select u from CalificacionEntity u", CalificacionEntity.class);
         return query.getResultList();
     }
 
-    
+    /**
+     * Busca la calificacion con id que se envia por parametro.
+     * @param id correspondiente a la calificacion buscada.
+     * @return L aentidad de calificacion.
+     */
     public CalificacionEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando Calificacion con id={0}", id);
         return em.find(CalificacionEntity.class, id);
     }
 
+    /**
+     * Actualiza la informacion de una calificacion.
+     * @param entity La calificacion que va actualizar.
+     * @return La calificacion actualizada.
+     */
     public CalificacionEntity update(CalificacionEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando Calificacion con id={0}", entity.getId());
         return em.merge(entity);
     }
 
+    /**
+     * Elimina una calificacion  con el id que se envia por parametro
+     * @param id identificador correspondiente a la calificacion a eliminar
+     */
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando Calificacion con id={0}", id);
         CalificacionEntity entity = em.find(CalificacionEntity.class, id);
         em.remove(entity);
     }
-
 }

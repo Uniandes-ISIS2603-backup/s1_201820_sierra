@@ -67,7 +67,6 @@ public class EspeciePersistence
     
      /**
      * Devuelve todas las especies de la base de datos.
-     *
      * @return una lista con todas las especies que encuentre en la base de
      * datos, "select u from EspecieEntity u" es como un "select * from
      * EspecieEntity;" - "SELECT * FROM table_name" en SQL.
@@ -78,11 +77,9 @@ public class EspeciePersistence
             TypedQuery<EspecieEntity> query = em.createQuery( "select u from EspecieEntity u", EspecieEntity.class );
             return query.getResultList( );
 	}
-    
-    
+ 
     /**
      * Busca si hay alguna especie con el id que se envía de argumento
-     *
      * @param id: id correspondiente a la especie buscada.
      * @return una especie.
      */   
@@ -90,7 +87,6 @@ public class EspeciePersistence
         LOGGER.log(Level.INFO, "Consultando especie con id={0}", id);
         return em.find(EspecieEntity.class, id);
     }
-
 
     /**
      * Busca si hay alguna entidad de Especie con el nombre que se envía de argumento
@@ -114,13 +110,11 @@ public class EspeciePersistence
 			return sameName.get( 0 );
 		}
 	}
-    
-    
+       
     /**
      *
      * Borra una especie de la base de datos recibiendo como argumento el id
      * de la especie
-     *
      * @param id: id correspondiente a la especie a borrar.
      */
     public void delete(Long id) {
@@ -131,7 +125,6 @@ public class EspeciePersistence
     
     /**
      * Actualiza una especie.
-     *
      * @param entity: la especie que viene con los nuevos cambios. Por ejemplo
      * el nombre pudo cambiar. En ese caso, se haria uso del método update.
      * @return una especie con los cambios aplicados.
@@ -139,6 +132,5 @@ public class EspeciePersistence
     public EspecieEntity update(EspecieEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando especie con id={0}", entity.getId());
         return em.merge(entity);
-    }
-        
+    }    
 }

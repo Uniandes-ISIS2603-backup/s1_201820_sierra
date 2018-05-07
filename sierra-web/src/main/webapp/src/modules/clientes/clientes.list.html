@@ -23,6 +23,9 @@
                 <td id="{{$index}}-Cedula">{{cliente.cedula}}</td>
                 <td id="{{$index}}-Telefono">{{cliente.telefono}}</td>
                 <td id="{{$index}}-Correoelectronico">{{cliente.correo}}</td>
+                
+                <td id="{{$index}}-Borrar"><a ui-sref="clienteDelete({clienteId:cliente.id})"><input type="button" ng-click="deleteCliente()" value="Borrar"></a></td>
+                 <td id="{{$index}}-Editar"><a ui-sref="clienteUpdate({clienteId:cliente.id})"><input type="button" ng-click="createCliente()" value="Editar"></a></td>
             </tr>
         </tbody>
     </table>

@@ -79,13 +79,18 @@ public class MedioDePagoPersistence
         em.remove(entity);
     }
    
+    /**
+     * Busca si hay alguna entidad de Medio de pago  con el tipo que se envía de argumento
+     * @param tipo: tipo de la entidad de Medio de pago  que se está buscando
+     * @return null si no existe ninguna entidad Medio de pago con el tipo del argumento. Si
+     * existe alguna devuelve la primera.
+     */
     public MedioDePagoEntity findByTipo (String tipo)
     {
         TypedQuery query = em.createQuery("Select e From MedioDePagoEntity e where e.tipo = :tipo", MedioDePagoEntity.class);
         query = query.setParameter("tipo", tipo);
         List<MedioDePagoEntity> sameName = query.getResultList();
         MedioDePagoEntity result; 
-        result = null;
         if (sameName == null ) {
             result = null;
         } else if (sameName.isEmpty()) {
@@ -96,15 +101,18 @@ public class MedioDePagoPersistence
         return result;
     }
     
+    /**
+     * Busca si hay alguna entidad de Medio de pago  con el numero de referencia que se envía de argumento
+     * @param numeroReferencia : numero de Referencia de la entidad de Medio de pago  que se está buscando
+     * @return null si no existe ninguna entidad Medio de pago con el numero de Referencia del argumento. Si
+     * existe alguna devuelve la primera.
+     */
     public MedioDePagoEntity findByReferencia (Long numeroReferencia)
     {
         TypedQuery query = em.createQuery("Select e From MedioDePagoEntity e where e.numeroReferencia = :numeroReferencia", MedioDePagoEntity.class);
-        // Se remplaza el placeholder ":name" con el valor del argumento 
         query = query.setParameter("numeroReferencia", numeroReferencia);
-        // Se invoca el query se obtiene la lista resultado
         List<MedioDePagoEntity> sameName = query.getResultList();
         MedioDePagoEntity result; 
-        result = null;
         if (sameName == null ) {
             result = null;
         } else if (sameName.isEmpty()) {

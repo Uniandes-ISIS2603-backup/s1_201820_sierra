@@ -54,12 +54,11 @@ public class ClienteDTO {
      * Constructor por defecto.
      */
     public ClienteDTO() {
-
+    //Método constructor por Defecto.
     }
 
     /**
      * Crea un objeto ClienteDTO a partir de un objeto ClienteEntity
-     *
      * @param entity Entidad ClienteEntity desde la cual se va a crear el nuevo
      */
     public ClienteDTO(ClienteEntity entity) {

@@ -53,7 +53,7 @@ public class AdquisicionDTO {
     private Date fecha;
 
     public AdquisicionDTO() {
-
+        //Constructor por defecto
     }
 
     /**

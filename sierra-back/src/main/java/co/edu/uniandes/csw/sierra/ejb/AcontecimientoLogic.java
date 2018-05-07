@@ -37,6 +37,7 @@ public class AcontecimientoLogic
      * la crea
      * @param ent la entidad que se quiere persistir
      * @return la entidad persistida con el id autogenerado
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public AcontecimientoEntity create(AcontecimientoEntity ent) throws BusinessLogicException{
         if(persistencia.findByName(ent.getNombre()) != null)
@@ -71,6 +72,7 @@ public class AcontecimientoLogic
      * Actualiza un Acontecmiento
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
     public AcontecimientoEntity update(AcontecimientoEntity ent) throws BusinessLogicException{
         if(persistencia.findByName(ent.getNombre()) != null)

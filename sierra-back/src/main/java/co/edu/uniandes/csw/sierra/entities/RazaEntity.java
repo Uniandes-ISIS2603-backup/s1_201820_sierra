@@ -67,37 +67,67 @@ public class RazaEntity extends BaseEntity implements Serializable {
     @PodamExclude
     private EspecieEntity especie;
 
+    /**
+     * Obtiene el nombre de la raza.
+     * @return Nombre de un araza.
+     */
     public String getNombreRaza() {
         return nombreRaza;
     }
 
+    /**
+     * Asigana el nombre a una raza.
+     * @param nombreRaza Nuevo nombre de una raza.
+     */
     public void setNombreRaza(String nombreRaza) {
         this.nombreRaza = nombreRaza;
     }
 
+    /**
+     * Obtiene los cuidados que se deben tener de una mascota.
+     * @return Los cuidados necesarios de una mascota.
+     */
     public String getCuidados() {
         return cuidados;
     }
 
+    /**
+     * Asigan los cuidados que se deben tener para una mascota.
+     * @param cuidados Los cuidados definidos para una mascota.
+     */
     public void setCuidados(String cuidados) {
         this.cuidados = cuidados;
     }
-
+    
+    /**
+     * Obtiene aspectos destacables a resaltar de la mascotas.
+     * @return Lo destacable de cada raza.
+     */
     public String getDestacable() {
         return destacable;
     }
 
+    /**
+     * Asigna los aspectos destables de una mascota.
+     * @param destacable Aspectos destacables de una raza.
+     */
     public void setDestacable(String destacable) {
         this.destacable = destacable;
     }
 
+    /**
+     * Obtiene las caracteristicas de la mascota.
+     * @return Caracteristicas de una mascota.
+     */
     public String getCaracteristicas() {
         return caracteristicas;
     }
 
+    /**
+     * Asigna las caracteristicas de una mascota.
+     * @param caracteristicas Nuevas caracteristicas de una mascota.
+     */
     public void setCaracteristicas(String caracteristicas) {
         this.caracteristicas = caracteristicas;
-    }
-    
-    
+    }  
 }

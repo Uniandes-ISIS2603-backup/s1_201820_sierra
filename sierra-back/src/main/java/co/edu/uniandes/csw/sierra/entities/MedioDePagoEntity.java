@@ -24,6 +24,9 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     private Long numeroReferencia; //Atributo que contiene el numero de referencia de un medio de pago.
     private String tipo; //Atributo que contiene el tipo del medio de pago. Efectivo o tarjeta.
 
+    /**
+     * Lista de los clientes que emplean cierto medio de pago.
+     */
     @PodamExclude
     @ManyToMany
     private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
@@ -80,7 +83,7 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
     }
     
     /**
-     * Obtiene un comprobante asociado al cuando se pago con el medio especifico.
+     * Obtiene un comprobante asociado cuando se pago con el medio especifico.
      * @return El comprobante cuando se pago.
      */
     public ComprobanteEntity getComprobante() {

@@ -45,7 +45,7 @@ public class AdquisicionPersistence {
     protected EntityManager em;
 
     /**
-     *
+     * Crea una nueva adquisicion.
      * @param ent la entidad que se quiere guardar en la base de datos
      * @return la entity creada con el id dado por la base de datos
      */
@@ -56,27 +56,44 @@ public class AdquisicionPersistence {
         return ent;
     }
 
+    /**
+     * Devuelve todas las adquisiciones de la base de datos.
+     * @return una lista con todas las adquisiciones.
+     */
     public List<AdquisicionEntity> findAll() {
         LOGGER.info("Consultando todas las entidades de Adquisicion");
         TypedQuery<AdquisicionEntity> query = em.createQuery("select u from AdquisicionEntity u", AdquisicionEntity.class);
         return query.getResultList();
     }
 
+    /**
+     * Busca una adquisicion con id que se envia por parametro.
+     * @param id correspondiente a la adquisicion buscada.
+     * @return La entidad adquisicion.
+     */
     public AdquisicionEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando Adquisicion con id={0}", id);
         return em.find(AdquisicionEntity.class, id);
     }
 
+    /**
+     * Actualiza la informacion de una adquisicion.
+     * @param entity La adquisicion que va actualizar.
+     * @return 
+     */
     public AdquisicionEntity update(AdquisicionEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando Adquisicion con id={0}", entity.getId());
         return em.merge(entity);
     }
 
+    /**
+     * Elimina una adquisicion con el id que se envia por parametro
+     * @param id id entificador correspondiente a la adquisicion a eliminar
+     */
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando Adquisicion con id={0}", id);
         AdquisicionEntity entity = em.find(AdquisicionEntity.class, id);
         em.remove(entity);
     }
-
 }
 

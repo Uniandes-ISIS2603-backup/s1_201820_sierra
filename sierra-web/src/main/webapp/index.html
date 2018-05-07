@@ -1,5 +1,6 @@
 <html ng-app="mainApp">
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +38,7 @@
         <!--Acontecimiento-->
         <script src="src/modules/acontecimiento/acontecimiento.mod.js" type="text/javascript"></script>
         <script src="src/modules/acontecimiento/acontecimiento.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/acontecimiento/create/acontecimiento.create.ctrl.js" type="text/javascript"></script>
         
          <!--Publicacion-->
         <script src="src/modules/publicacion/publicacion.mod.js" type="text/javascript"></script>
@@ -68,6 +70,7 @@
         <script src="src/modules/clientes/clientes.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/clientes/clientes.detail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/clientes/clientes.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/clientes/clientes.update.ctrl.js" type="text/javascript"></script>
         
         <!--MEDIOS DE PAGO-->
         <script src="src/modules/mediosDePago/mediosDePago.mod.js" type="text/javascript"></script>
@@ -75,6 +78,8 @@
         <script src="src/modules/mediosDePago/mediosDePago.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/mediosDePago/mediosDePago.detail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/mediosDePago/mediosDePago.delete.ctrl.js" type="text/javascript"></script>
+         <script src="src/modules/mediosDePago/mediosDePago.update.ctrl.js" type="text/javascript"></script>
+        
         
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -152,7 +157,7 @@
                         <li><a ui-sref='comprobantesList'style="color: black"><b>Comprobantes</b></a></li>
                         <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
                         <li><a ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
-                        <li><a ui-sref='acontecimientoList' style="color: black"><b>Acontecimientos</b></a></li>
+                        <li><a ui-sref='acontecimientos' style="color: black"><b>Acontecimientos</b></a></li>
                         <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
                         <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
                         <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
@@ -167,6 +172,63 @@
                 </center>
             </div>
             <br>
+            <div class="slideshow-container">
+
+<div class="mySlides fade"> 
+  <div class="numbertext">1 / 4</div>
+  <img src="recursos/img/perros.jpg" style="width:100%">
+  <div class="text">Perros</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 4</div>
+  <img src="recursos/img/gatos.jpg" style="width:100%">
+  <div class="text">Gatos</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 4</div>
+  <img src="recursos/img/pericos australianos.jpg" style="width:100%">
+  <div class="text">Pericos australianos</div>
+</div>
+ <div class="mySlides fade">
+  <div class="numbertext">4 / 4</div>
+  <img src="recursos/img/cerdos.jpg" style="width:100%">
+  <div class="text">Cerdos</div>
+</div>
+                
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span>
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot"); 
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Muchachos, si quieren cambiar el tiempo en el que cambian las imagenes modifiquenlo acá en milisegundos att: Rodrigo
+}
+</script>
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679; height: 200px ">
                     <center>
@@ -195,7 +257,7 @@
                 </div>  
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
                     <center>
-                        <div style="margin-top: 60px"><h3 style="color: black"><strong>Rodrigo Gonzales</strong></h3></div>    
+                        <div style="margin-top: 60px"><h3 style="color: black"><strong>Rodrigo González</strong></h3></div>    
                     </center>
                 </div> 
             </div>

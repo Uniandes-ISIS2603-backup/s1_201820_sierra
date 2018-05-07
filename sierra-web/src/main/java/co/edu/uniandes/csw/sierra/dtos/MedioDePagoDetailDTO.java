@@ -6,9 +6,7 @@
 package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
-import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +54,6 @@ import java.util.List;
 public class MedioDePagoDetailDTO extends MedioDePagoDTO {
 
     private List<ClienteDTO> clientes;
-    private ComprobanteDTO comprobante;
 
     /**
      * Constructor por defecto.
@@ -92,7 +89,6 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
 
     /**
      * Obtiene la informacion del cliente que selecciona un medio de pago.
-     *
      * @return El cliente que selecciono un medio de pago.
      */
     public List<ClienteDTO> getClientes() {
@@ -101,11 +97,9 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
 
     /**
      * Asigna un cliente que desea seleccionar un medio de pago.
-     *
-     * @param cliente El nuevo cliente.
+     * @param clientes
      */
     public void setCliente(List<ClienteDTO> clientes) {
         this.clientes = clientes;
     }
-
 }

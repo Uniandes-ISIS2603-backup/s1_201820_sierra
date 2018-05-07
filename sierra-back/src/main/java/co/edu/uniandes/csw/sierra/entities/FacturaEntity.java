@@ -42,33 +42,32 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     
     /**
-     * 
-     * @return 
+     * Obtiene el identificador del cliente asignado a la factura.
+     * @return El identificador del cliente.
      */
     public Long getIdCliente() {
         return idCliente;
     }
     
     /**
-     * 
-     * @return 
+     * Obtiene el nombre del cliente asignado a la factura.
+     * @return El nombre del cliente.
      */
     public String getNombreCliente() {
         return nombreCliente;
     }
-    
-    
+        
     /**
-     * 
-     * @param idCliente 
+     * Asigna el identificador del cliente a la factura.
+     * @param idCliente Identificador del cliente.
      */
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
     
     /**
-     * 
-     * @param nombreCliente 
+     * Asigna el nombre del cliente a la factura.
+     * @param nombreCliente Nombre del cliente a quien pertenece la factura.
      */
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
@@ -76,31 +75,25 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     
     /**
      *Retorna el valor total de la factura.
-     * @return 
+     * @return el valor de la factura.
      */
     public Integer getValor() {
         return valor;
     }
     
-
-   
-    
     /**
      * Recibe como parámetro el valor total de la factura.
-     * @param valorTotal 
+     * @param valorTotal de la factura.
      */
     public void setValor(Integer valorTotal) {
         this.valor = valorTotal;
     }
     
-    
-    
     /**
      * Retorna la Adquisición ligada a la Factura..
      * @return Adquisición ligada a la Factura.
      **/
-     public AdquisicionEntity getAdquisicion()
-     
+     public AdquisicionEntity getAdquisicion() 
      {
         return adquisicion;
      }
@@ -122,8 +115,7 @@ public class FacturaEntity extends BaseEntity implements Serializable{
     {
          return comprobantes;
     }
-    
-    
+   
     /**
      * Recibe como parámetro una lista de comprobantes
      * @param comprobantes

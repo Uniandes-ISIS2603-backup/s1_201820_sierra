@@ -64,7 +64,7 @@ public class AcontecimientoPersistence
     }
  /**
      * Busca si hay alguna entidad de Acontecimiento con el nombre que se envía de argumento
-     * @param pName: Nombre de la entidad de Acontecimiento que se está buscando
+     * @param name: Nombre de la entidad de Acontecimiento que se está buscando
      * @return null si no existe ninguna entidad Acontecimiento con el nombre del argumento. Si
      * existe alguna devuelve la primera.
      */

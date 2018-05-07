@@ -43,7 +43,7 @@ public class MedioDePagoDTO
      */
    public MedioDePagoDTO ()
    {
-       
+       //Constructor por defecto
    }
 
    /**

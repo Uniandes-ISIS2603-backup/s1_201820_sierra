@@ -12,7 +12,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -20,8 +19,6 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  * Entidad que representa una Adquisicion.
- * 
- * 
  * @author Juan David Zambrano
  */
 @Entity
@@ -40,10 +37,6 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
-    
-    //------------------
-    //Asociaciones
-    //------------------
     
     /**
      * Mascota asociada  a la adquisicion
@@ -72,27 +65,26 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     @OneToOne
     @PodamExclude
     private FacturaEntity factura;
-
-    
-    
-    
-    
+ 
     /**
-     * @return the valorTotal
+     * Obtiene el valor de la adquisicion.
+     * @return valorTotal de la adquisicion de la mascota. 
      */
     public Double getValorTotal() {
         return valorTotal;
     }
 
     /**
-     * @param valorTotal the valorTotal to set
+     * Asigna el valor total por una adquisicion.
+     * @param valorTotal the valorTotal de una adquisicion.
      */
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
     /**
-     * @return the fecha
+     * Obtiene la fecha en la que se realizo la adquisicion.
+     * @return the fecha  de la adquisicion.
      */
     public Date getFecha() {
         return fecha;
@@ -106,56 +98,64 @@ public class AdquisicionEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the mascota
+     * Obtiene la mascota de la adquisicion.
+     * @return the mascota de la adquisicion.
      */
     public MascotaEntity getMascota() {
         return mascota;
     }
 
     /**
-     * @param mascota the mascota to set
+     * Asigna una mascota a una adquisicion.
+     * @param mascota the mascota por asignar a la adqusicion.
      */
     public void setMascota(MascotaEntity mascota) {
         this.mascota = mascota;
     }
 
     /**
-     * @return the cliente
+     * Obtiene el cliente que realiza la adquisicion.
+     * @return the cliente que realizo la adquisicion.
      */
     public ClienteEntity getCliente() {
         return cliente;
     }
 
     /**
-     * @param cliente the cliente to set
+     * Asigna a la adquisicion un cliente.
+     * @param cliente the cliente que realiza una adquisicion.
      */
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
 
     /**
-     * @return the calificacion
+     * Obtiene la calificacion recibida por el proceso de adquisicion.
+     * @return the calificacion de la adquisicion.
      */
     public CalificacionEntity getCalificacion() {
         return calificacion;
     }
 
     /**
-     * @param calificacion the calificacion to set
+     * Asigna una calificacion a la adquisicion.
+     * @param calificacion the calificacion por la adquisicion.
      */
     public void setCalificacion(CalificacionEntity calificacion) {
         this.calificacion = calificacion;
     }
 
     /**
-     * @return the factura
+     * Obtiene la factura asociada a una adquisicion.
+     * @return the factura de una adquisicion.
      */
     public FacturaEntity getFactura() {
         return factura;
     }
 
     /**
-     * @param factura the factura to set
+     * Asigna la factura correspondiente por la nueva aduisicion.
+     * @param factura the factura generada por la adquisicion.
      */
     public void setFactura(FacturaEntity factura) {
         this.factura = factura;

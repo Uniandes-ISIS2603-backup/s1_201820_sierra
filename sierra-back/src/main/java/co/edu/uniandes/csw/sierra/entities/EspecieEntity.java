@@ -37,15 +37,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class EspecieEntity extends BaseEntity implements Serializable
 {
-    
-    //--------------ATRIBUTOS--------------//
-    
     /**
      * Codigo serializable por SA
      */
     private static final long serialVersionUID = 1L;
     
-      /**
+     /**
      * nombre de la especie
      */
     private String nombre;
@@ -64,8 +61,6 @@ public class EspecieEntity extends BaseEntity implements Serializable
      */
     private String imagen;
     
-    //---------------RELACIONES-----------------//
-    
     /**
      * Lista de razas de una especie
      */
@@ -78,52 +73,57 @@ public class EspecieEntity extends BaseEntity implements Serializable
     @OneToMany(mappedBy = "especie",cascade = CascadeType.PERSIST)
     private List<MascotaEntity>  mascotas;
     
-    //------------METODOS--------------//  
     /**
-     * @return the nombre
+     * Obtiene el nombre de la especie.
+     * @return the nombre de la especie.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * Asigna el nombre a la especie.
+     * @param nombre the nombre de la especie por asignar.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the caracteristicas
+     * Obiene las caracteristicas de la especie. 
+     * @return the caracteristicas de la especie.
      */
     public String getCaracteristicas() {
         return caracteristicas;
     }
 
     /**
-     * @param caracteristicas the caracteristicas to set
+     * Asigna las caracteristicas de la especie.
+     * @param caracteristicas the caracteristicas por asignar a la especie.
      */
     public void setCaracteristicas(String caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 
     /**
-     * @return the clasificacion
+     * Obtiene la clasificacion de la especie.
+     * @return the clasificacion a la que pertenece la especie.
      */
     public String getClasificacion() {
         return clasificacion;
     }
 
     /**
-     * @param clasificacion the clasificacion to set
+     * Asigna la clasificacion a la que pertenece la especie.
+     * @param clasificacion the clasificacion a la que debe pertenecer la especie.
      */
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
     }
 
     /**
-     * 
-     * @return returna la imagen
+     * Obtiene la imagen que identifica a la especie.
+     * @return  la imagen de la especie.
      */
     public String getImagen()
     {
@@ -132,7 +132,7 @@ public class EspecieEntity extends BaseEntity implements Serializable
     
     /**
      * Cambia la imagen por la entrada por parametro
-     * @param imagen 
+     * @param imagen Nueva imagen de la especie.
      */
     public void setImagen(String imagen)
     {
@@ -140,32 +140,34 @@ public class EspecieEntity extends BaseEntity implements Serializable
     }
     
     /**
-     * @return the razas
+     * Obtiene todas las razas asociadas a una especie.
+     * @return the razas que pertenecen a la especie.
      */
     public List<RazaEntity> getRazas() {
         return razas;
     }
 
     /**
-     * @param razas the razas to set
+     * Coleccion de razas por asignar a la especie.
+     * @param razas the razas por asignar a una especie.
      */
     public void setRazas(List<RazaEntity> razas) {
         this.razas = razas;
     }
 
     /**
-     * @return the mascotasVenta
+     * Obtiene las mascotas que pertenecen a la especie.
+     * @return the mascotasVenta de la especie.
      */
     public List<MascotaEntity> getMascotas() {
         return mascotas;
     }
 
     /**
-     * @param mascotas
+     * Coleccion de mascotas por asignar a la especie.
+     * @param mascotas Nuevas mascotas de una especie.
      */
     public void setMascotaS(List<MascotaEntity> mascotas) {
         this.mascotas = mascotas;
-    }
-
-     
+    }     
 }

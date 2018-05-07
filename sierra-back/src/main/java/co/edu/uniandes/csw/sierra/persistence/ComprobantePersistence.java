@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.sierra.persistence;
 
+
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import java.util.List;
@@ -25,6 +26,11 @@ public class ComprobantePersistence {
     @PersistenceContext( unitName = "SierraPU")
     protected EntityManager em;
     
+    /**
+     * Crea un nuevo comprobante.
+     * @param entity objeto Comprobante que se creará en la base de datos
+     * @return devuelve la entidad creada con un id dado por la base de datos.
+     */
     public ComprobanteEntity create(ComprobanteEntity entity)
     {
         LOGGER.info("Creando una nueva entidad de Comprobante.");
@@ -35,7 +41,7 @@ public class ComprobantePersistence {
     
     /**
      * Busca el comprobante con el id dado por parámetro.
-     * @param id
+     * @param id correspondiente al comprobante buscado.
      * @return Comprobante  con el id dado por parámetro.
      */ 
     public ComprobanteEntity find(Long id)
@@ -48,7 +54,6 @@ public class ComprobantePersistence {
      * Retorna todos los comprobantes existentes.
      * @return una lista con todos los comprobantes existentes.
      */
-    
     public List<ComprobanteEntity> findAll()
     {
         LOGGER.info("Consultando todos los comprobantes.");
