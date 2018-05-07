@@ -66,6 +66,19 @@
                     controllerAs: 'Crtl'
                    }
                 }
+            }).state('clienteUpdate', {
+                url:'/{clienteId:int}/update',
+                parent:'clientes',
+                param:{
+                    clienteId:null
+                },
+                views:{
+                    'detailView':{
+                    templateUrl: basePath + 'cliente.create.html',
+                    controller:'clienteUpdateCtrl'
+                  
+                   }
+                }
             });
         }]);
 })(window.angular);

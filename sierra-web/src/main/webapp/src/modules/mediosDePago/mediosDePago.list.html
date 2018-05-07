@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-       
+       <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-info" ui-sref="mediosDePagoCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new medio de pago</a>
+        </div>
     </div>
     <table class="table table-striped col-md-5">
         <thead>
@@ -18,7 +20,8 @@
                 <td id="{{$index}}-TIPO">{{medioDePago.tipo}}</td>
                 <td id="{{$index}}-NumeroDeReferencia">{{medioDePago.numeroReferencia}}</td>
                 
-                <td id="{{$index}}-Borrar"><a ui-sref="mediosDePagoDelete({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="deleteMediosDePago()" value="Borrar"></a></td>              
+                <td id="{{$index}}-Borrar"><a ui-sref="mediosDePagoDelete({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="deleteMediosDePago()" value="Borrar"></a></td>    
+                <td id="{{$index}}-Editar"><a ui-sref="mediosDePagoUpdate({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="mediosDePagoCreate()" value="Editar"></a></td> 
             </tr>
         </tbody>
     </table>

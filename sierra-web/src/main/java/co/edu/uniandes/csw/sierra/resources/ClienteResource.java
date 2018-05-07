@@ -23,7 +23,6 @@ import javax.ws.rs.core.MediaType;
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
  * este recurso tiene la ruta "clientes".</i>
- * <p>
  * <h2>Anotaciones </h2>
  * <pre>
  * Path: indica la dirección después de "api" para acceder al recurso

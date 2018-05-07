@@ -40,7 +40,7 @@ public class ComprobanteDTO {
     
     public ComprobanteDTO()
     {
-        
+        //Constructor por defecto
     }
     
     public ComprobanteDTO(ComprobanteEntity entity)

@@ -41,6 +41,7 @@ public class FacturaDTO {
    
 
     public FacturaDTO() {
+        //Constructor por defecto
     }
 
     public FacturaDTO(FacturaEntity entity) {

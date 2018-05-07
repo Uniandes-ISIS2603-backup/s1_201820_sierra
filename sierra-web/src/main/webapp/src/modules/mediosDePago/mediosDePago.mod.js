@@ -62,6 +62,18 @@
                       controllerAs:'ctrl'
                    }
                 }
+            }).state('mediosDePagoUpdate', {
+                url:'/{mediosDePagoId:int}/update',
+                parent:'mediosDePago',
+                param:{
+                    mediosDePagoId:null
+                },
+                views:{
+                    'detailView':{
+                      templateUrl: basePath + 'mediosDePago.create.html',
+                      controller:'mediosDePagoUpdateCtrl'
+                   }
+                }
             });
         }]);
 })(window.angular);

@@ -29,8 +29,7 @@ public class AcontecimientoDTO {
     private String fotoURL;
 
     public AcontecimientoDTO() 
-    {
-
+    { //Método constructor por Defecto.
     }
 
     public AcontecimientoDTO(AcontecimientoEntity Entity)
