@@ -5,19 +5,27 @@
        
         // Internal modules dependencies       
         'sierraModule',
+        //Juan Sanchez
         'especieModule',
         'mascotaModule',
         'mascotaadopModule',
-        'calificacionModule',
+        //Esteban
+        'clienteModule',
+        'mediosDePagoModule',
+        //Jhonatan
         'facturaModule',
         'comprobanteModule',
-        'adquisicionModule',
-        'clienteModule',
+        //Rodrigo
+        'certificadoModule',
+        'razaModule',
+        //Juan David
+         'adquisicionModule',
+         'calificacionModule',
+        //Julio 
         'acontecimientoModule',
-        'publicacionModule',
-         'certificadoModule',
-         'razaModule',
-         'mediosDePagoModule'
+        'publicacionModule'
+       
+        
     ]);
      
     // Resuelve problemas de las promesas

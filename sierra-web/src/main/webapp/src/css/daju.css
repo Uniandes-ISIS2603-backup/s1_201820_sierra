@@ -124,6 +124,7 @@ DIVISION DEL TITULAR DEL INDEX
     width: 400px;
     height: 400px;
 }
+
 * {box-sizing: border-box;}
 body {font-family: Verdana, sans-serif;}
 .mySlides {display: none;}
