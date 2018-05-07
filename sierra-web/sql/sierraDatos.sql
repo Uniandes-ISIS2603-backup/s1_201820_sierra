@@ -1,7 +1,8 @@
+delete from AcontecimientoEntity;
+delete from PublicacionEntity;
 delete from ClienteEntity;
 delete from MedioDePagoEntity;
 delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
-delete from AcontecimientoEntity;
 delete from AdquisicionEntity;
 delete from CalificacionEntity;
 delete from CertificadoEntity;
@@ -10,12 +11,11 @@ delete from FacturaEntity;
 delete from MascotaAdoptadaEntity;
 delete from MascotaEntity;
 delete from MascotaVentaEntity;
-delete from PublicacionEntity;
 delete from RazaEntity;
 delete from SierraEntity;
 delete from EspecieEntity;
 
-insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL) values (10,'Adopcion', 'Dia en el que se adopto la mascota', '01/01/2018', 1, 'historico', 'https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg');
+
 
 
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (1, 'Open-source modular help-desk', 'Statistician I', 3.41);
@@ -100,3 +100,23 @@ insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efecti
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (3, 30, 'tarjeta credito');
 
+
+/*
+*Insercion en la tabla Acontecimientos de la base de datos
+*/
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (111,'Adopcion de Zeus', 'Dia en el que se adopto la mascota', '01/01/2015', 1, 'historico', 'recursos/img/samoyedo.jpg', 111);
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (112,'Zeus gana una competencia', 'Zeus y su dueno ganan una carrera de canicross', '01/08/2016', 1, 'historico', 'recursos/img/ZeusCompetencia.jpg', 111);
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (113,'Adopcion de Kiba', 'Dia en el que Kiba fue adoptado', '07/03/2014', 1, 'historico', 'recursos/img/siberiano.jpg', 112);
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (114,'Adopcion de Shiba', 'Dia en el que se adopto la mascota', '09/19/2017', 1, 'historico', 'recursos/img/labrador.jpg', 113);
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (115,'Adopcion de Mishu', 'Dia en el que se adopto a Mishu el gato', '09/18/2016', 1, 'historico', 'recursos/img/gatoSiames.jpg', 116);
+insert into AcontecimientoEntity (id, nombre, descripcion, fecha, importancia, tipo, fotoURL, mascotaAdopcion_Id) values (116,'Zeus fallece', 'Lamentablemente Zeus fallecio hoy, que en paz descance', '01/01/2018', 7, 'tragico', 'recursos/img/samoyedo.jpg', 111);
+
+/*
+*Insercion en la tabla publicaciones de la base de datos
+*/
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(111, 'Shiba pasa una tarde en la piscina', '09/29/2017','recursos/img/shibaPiscina.jpg','Shiba pasa una tarde  en la piscina ','gracioso',  113);
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(112, 'Zeus compitiendo por el gran premio', '08/01/2016','recursos/img/ZeusCompetencia.jpg','Zeus compite en carrera de canicross ','Deportivo',  111);
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(113, 'Mishu se come al pez nemo de la pecera de su dueno', '09/25/2017','recursos/img/siluetaPez.jpg','Mishu se come a su hermanito nemo ','gracioso',  116);
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(114, 'El gato Mishu conoce nuevos amigos', '09/04/2018','recursos/img/gatos.jpg','Mishu conoce nuevos amigos ','tierno',  116);
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(115, 'El entierro de Zeus se realizara el proximo fin de semana', '01/05/2018','recursos/img/samoyero.jpg','Entierro de Zeus ','tragico',  111);
+insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(116, 'Mishu se traga los pericos australianos de su dueno', '09/29/2017','recursos/img/pericos_australianos.jpg','Mishu se traga los pericos australianos de su dueno ','gracioso',  116);
