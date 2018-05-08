@@ -123,7 +123,7 @@ public class AcontecimientoResource
 /**
      * <h1>POST /api/acontecimientos : Crear un acontecimiento.</h1>
      *
-     * <pre>Cuerpo de petición: JSON {@link AcontecimientoDetailDTO}.
+     * <pre>Cuerpo de petición: JSON {@link AcontecimientoDTO}.
      *
      * Crea una nuevo acontecimiento con la informacion que se recibe en el cuerpo
      * de la petición y se regresa un objeto identico con un id auto-generado
@@ -133,7 +133,7 @@ public class AcontecimientoResource
      * 200 OK Creo el acontecimiento  .
      * </code>
      * </pre>
-     * @param acDto {@link AcontecimientoDetailDTO} -El acontecimiento que se
+     * @param acDto {@link AcontecimientoDTO} -El acontecimiento que se
      * desea guardar.
      * @return JSON {@link AcontecimientoDetailDTO} -El acontecimiento se a
      * guardado con el atributo id autogenerado.
