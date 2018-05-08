@@ -5,6 +5,8 @@
             <li><a ui-sref="publicacionList">Lista</a></li>
             <li><a ui-sref="publicacionCreate">Crear</a></li>
         </ul>
+    </div>
+</div>
 <h2>Últimas Publicaciones:</h2>
 <div class="container-fluid">
         <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="publicacion in publicaciones">
@@ -12,9 +14,13 @@
                 <img class="img-responsive" ng-src='{{publicacion.fotoURL}}' alt="{{publicacion.nombre}}" />  
                 <div class="caption text-center">{{publicacion.nombre}}</div>
             </div>
+            <div>
+                <b>Tipo:</b>
+                <p>{{publicacion.tipo}}</p>
+            </div>
             <div class ="row">
                 <b>Fecha:</b>
-                <p>{{publicacion.fecha}}</p>
+                <p>{{publicacion.fecha|date}}</p>
             </div>
             <div class ="row">
                 <b>Comentario:</b>

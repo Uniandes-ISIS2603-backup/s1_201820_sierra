@@ -3,11 +3,21 @@
   mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
           var basePath = "src/modules/publicacion/";
           $urlRouterProvider.otherwise("/publicacionList");
-          $stateProvider.state('publicacionList',{
+          $stateProvider.state('publicaciones', {
+              url: '/publicaciones',
+              views:{
+                  'mainView':{
+                      templateUrl : basePath + 'publicacion.html',
+                      controller: 'publicacionCtrl',
+                      controllerAs: 'ctrl'
+                  }
+              }
+          })
+                  .state('publicacionList',{
           url :'/publicacion/list',
           views :{
           'mainView': {
-                        templateUrl: basePath + 'publicacion.list.html',
+                        templateUrl: basePath + 'list/publicacion.list.html',
                         controller: 'publicacionCtrl',     
                         controllerAs: 'ctrl'
                        }
