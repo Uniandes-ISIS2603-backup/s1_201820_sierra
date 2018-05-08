@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
@@ -29,19 +30,28 @@ public class ComprobanteLogic {
     @Inject
     private MedioDePagoLogic medioDePagoLogic;
     
-    public ComprobanteEntity create(ComprobanteEntity entity)throws BusinessLogicException
+    @Inject 
+    private FacturaLogic facturaLogic;
+    
+    public void create(ComprobanteEntity entity, Long medioDePagoId, Long facturaId)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de cración de una entidad de Comprobante");
         //TODO: No tiene sentido validar que existe la entidad con el id porque
         // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
           //TODO: NO hay ninguna regla de negocio? 
-          
-          
+        MedioDePagoEntity medioPago = medioDePagoLogic.getMedioDePago(medioDePagoId);
+        if(medioPago == null)
+            throw new BusinessLogicException("El medio de pago con el id dado por parámetro no existe.");
+        FacturaEntity factura = facturaLogic.getById(facturaId);
+        if(factura == null)
+            throw new BusinessLogicException("La factura con el id dado por parámetro no existe.");
+         
         persistence.create(entity);
-        LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");
-        
-        return entity;
-        
+        System.out.println(">----------------------------------< \n \nComprobante Id: "+entity.getId() +"cliente Id: " + entity.getClienteId()
+        +"\n \n >----------------------------------<");
+        entity = addMedioDePago(entity.getId(), medioDePagoId);
+        entity = addFactura(entity.getId(), facturaId);
+        LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");      
     }
     
     public List<ComprobanteEntity> getAll()
@@ -84,6 +94,15 @@ public class ComprobanteLogic {
         MedioDePagoEntity medioDePagoEntity = medioDePagoLogic.getMedioDePago(medioDePagoId);
         comprobanteEntity.setMedioDePago(medioDePagoEntity);
         medioDePagoEntity.setComprobante(comprobanteEntity);
+        return comprobanteEntity;
+    }
+    
+    public ComprobanteEntity addFactura(Long comprobanteId, Long facturaId)
+    {
+        ComprobanteEntity comprobanteEntity = getById(comprobanteId);
+        FacturaEntity facturaEntity = facturaLogic.getById(facturaId);
+        comprobanteEntity.setFactura(facturaEntity);
+        facturaEntity.setComprobante(comprobanteEntity);
         return comprobanteEntity;
     }
 }

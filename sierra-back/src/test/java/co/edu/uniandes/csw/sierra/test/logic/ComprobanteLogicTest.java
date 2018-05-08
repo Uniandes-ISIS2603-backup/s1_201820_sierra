@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
 import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
-import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
 import java.util.ArrayList;
@@ -106,7 +105,8 @@ public class ComprobanteLogicTest {
     public void createComprobanteTest()throws BusinessLogicException
     {
         ComprobanteEntity newEntity= factory.manufacturePojo(ComprobanteEntity.class);
-        ComprobanteEntity resultado= logic.create(newEntity);
+        ComprobanteEntity resultado= new ComprobanteEntity();
+        logic.create(resultado,new Long(1),new Long(100));
         Assert.assertNotNull(resultado);
         ComprobanteEntity entity= em.find(ComprobanteEntity.class, resultado.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
