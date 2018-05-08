@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -123,5 +124,15 @@ public class FacturaEntity extends BaseEntity implements Serializable{
    public void setComprobantes(List<ComprobanteEntity> comprobantes)
    {
        this.comprobantes = comprobantes;
-   }    
+   }  
+   
+   /**
+    * Agrega un sólo comprobante a la lista de comprobantes.
+    */
+   public void setComprobante(ComprobanteEntity comprobanteEntity)
+   {
+       if(comprobantes == null)
+           comprobantes = new ArrayList<ComprobanteEntity>();
+       comprobantes.add(comprobanteEntity);
+   }
 }

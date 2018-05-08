@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -74,21 +75,21 @@ public class ComprobanteResource {
      * </code>
      *  </pre>
      * @param dto {@link ComprobanteDetailDTO} - El comprobante que se desea guardar
-     * @param  idMedioDePago
+     * @param  medioDePagoId
+     * @param facturaId
      * @return JSON {@link ComprobanteDetailDTO} - El comprobante guardado con el atributo id generado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de logica que se genera cuando ya existe un comprobante.
      *
      */
     @POST
     @Path("/postComprobante")
-    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto, @QueryParam(value="idMedioDePago") Long idMedioDePago) throws WebApplicationException, BusinessLogicException
+    public ComprobanteDetailDTO createComprobante(ComprobanteDetailDTO dto, @QueryParam(value="medioDePagoId") Long medioDePagoId, @QueryParam(value="facturaId") Long facturaId) throws WebApplicationException, BusinessLogicException
     {
-        MedioDePagoEntity mdpEntity = medioDePagoLogic.getMedioDePago(idMedioDePago);
-        if(mdpEntity == null)
-            throw new WebApplicationException("El medio de pago con el id dado por parámetro no existe.");
+        Date fechaActual = new Date();
+        dto.setFecha(fechaActual);
+        ComprobanteEntity compEntity = dto.toEntity();
+        comprobanteLogic.create(dto.toEntity(), medioDePagoId, facturaId);
         
-        ComprobanteEntity compEntity = comprobanteLogic.create(dto.toEntity());
-        compEntity = comprobanteLogic.addMedioDePago(compEntity.getId(), idMedioDePago);
         return new ComprobanteDetailDTO(compEntity);
     }
     
