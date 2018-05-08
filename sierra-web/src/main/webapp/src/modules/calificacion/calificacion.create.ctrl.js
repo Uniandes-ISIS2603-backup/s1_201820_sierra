@@ -13,8 +13,10 @@
                     $state.go('calificacinoesList', {reload: true});
                 });
             };
-            
+            //var calId = $state.params.calId;
             $scope.updateCalificacion = function() {
+                //$
+                
                 $http.put(calificacionContext + '/' + $scope.data.id, $scope.data).then(function (response){
                     $state.go('calificacionesList', {reload: true});
                 });
