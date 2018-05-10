@@ -28,7 +28,7 @@ import java.util.ArrayList;
 @Path("clientes/{clienteId: \\d+}/medios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class clienteMediosResource {
+public class ClienteMediosResource {
     
     @Inject 
     private ClienteLogic clienteLogic;

@@ -32,7 +32,6 @@ import javax.ws.rs.core.MediaType;
  *
  * @author de.gutierrez
  */
-//TODO: Revisar el path para llegar a este recurso
 @Path("/mediosDePago")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

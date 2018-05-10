@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.ClienteLogic;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ClientePersistence;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class ClienteLogicTest {
     @Inject
     private UserTransaction utx;
    
-    private List<ClienteEntity> data = new ArrayList<ClienteEntity>();
+    private final List<ClienteEntity> data;
     
     /**
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -64,6 +65,7 @@ public class ClienteLogicTest {
      * Constructor por defecto.
      */
     public ClienteLogicTest(){
+        this.data = new ArrayList<>();
         
     }
     /**
@@ -179,5 +181,24 @@ public class ClienteLogicTest {
         ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
         Assert.assertNull(deleted );
     }
-
+    
+    /**
+     * Prueba para obtener los medios de pago de un cliente.
+     */
+    @Test
+    public void getMediosDePagoCliente(){
+        ClienteEntity cliente = data.get(0);
+        List<MedioDePagoEntity> list = clienteLogic.listMedios(cliente.getId());
+        int cantidad = data.get(0).getMediosDePago().size();
+        Assert.assertEquals(cantidad, list.size());
+        for(MedioDePagoEntity entity : list){
+            boolean found = false;
+            for(MedioDePagoEntity storeEntity : data.get(0).getMediosDePago()){
+                if(entity.getId().equals(storeEntity.getId())){
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
 }

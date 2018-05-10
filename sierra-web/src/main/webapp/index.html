@@ -8,13 +8,17 @@
         <title>MascotaSierra</title>
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoUniandes.jpg">
          <!-- Dependencias Externas -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+         
+        
+         
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="src/css/daju.css">
-
+        
+       
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         
-    
+      
         <!-- Sierra -->
         <script src="src/modules/sierra/sierra.mod.js" type="text/javascript"></script>
         <script src="src/modules/sierra/sierra.ctrl.js" type="text/javascript"></script>
@@ -102,9 +106,9 @@
     <body>
          <!-- Parte superior Imagen y  Titulo de la pagina-->
          <!--Se genera una row para insertar la imagen y un titulo con un color de fondo-->
-         <div class="row" style= "background-color: #2B4679" >
+         <div class="row"  style= "background-color: #2B4679" >
              <!-- Imagen Logo de  la pagina imagen circular y con fondo negro  -->
-             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-2 " style="background-color: #2B4679 ">
+             <div class=" container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-2  " style="background-color: #2B4679 ">
                  <center>
                  <img src="recursos/img/mascotasTitulo.jpg" alt="ImagenMascotas" class="img-circle img-responsive" style=" height: 150px ; width: 300px">      
                  </center>
@@ -115,7 +119,7 @@
    
             
         </div>
-         <div style="background-color: white" class="row">
+         <div style="background-color: white" class="row" >
                 <div class="container-fluid col-lg-2 col-md-2 col-sm-2 col-xs-2" style="background-color: #2B4679 ; border-bottom: #000; border-bottom-style: solid; border-top: #000; border-top-style: solid">
                     <h4 style="text-align: center ; color: white">SIERRA DEVELOPING</h4>
                 </div>
@@ -148,7 +152,6 @@
                         </ul> 
                     </center> 
                 </div>
-                
             </div>              
             <div class=" row">
                   <ul class="nav nav-tabs col-lg-12" style="background-color: green">
@@ -158,7 +161,7 @@
                         <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
                         <li><a ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
                         <li><a ui-sref='acontecimientos' style="color: black"><b>Acontecimientos</b></a></li>
-                        <li><a ui-sref='publicacionList' style="color: black"><b>Publicacion</b></a></li>
+                        <li><a ui-sref='publicaciones' style="color: black"><b>Publicaciones</b></a></li>
                         <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
                         <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
                         
@@ -168,8 +171,7 @@
             <div ui-view="mainView" ></div> 
             <br>
             <div class="slideshow-container">
-
-<div class="mySlides fade"> 
+<div class="mySlides fade" > 
   <div class="numbertext">1 / 4</div>
   <img src="recursos/img/perros.jpg" style="width:100%">
   <div class="text">Perros</div>
@@ -225,7 +227,7 @@ function showSlides() {
 }
 </script>
 
-            <div class="row" style="background-color: black">
+            <div class="row" data- style="background-color: black">
                 <center>
                     <h3 style="color: white"> SIERRA DEVELOPMENT TEAM</h3>
                 </center>

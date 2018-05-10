@@ -44,9 +44,11 @@ public class AcontecimientoLogic
         {
             throw new BusinessLogicException("Ya hay un acontecimiento con el mismo nombre");
         }
+        else{
         persistencia.create(ent);
         LOGGER.info("Termina la creacion de la entidad de Acontecimineto");
         return ent;
+        }
     }
     
     /**

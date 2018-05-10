@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
 @Path("mediosDePago/{medioId:\\d+}/clientes")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class mediosClientesResource {
+public class MediosClientesResource {
     
     @Inject
     private MedioDePagoLogic medioLogic;

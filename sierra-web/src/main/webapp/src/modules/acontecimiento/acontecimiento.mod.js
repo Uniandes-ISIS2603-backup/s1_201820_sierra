@@ -39,7 +39,7 @@
                 views:{
                     'mainView':{
                         templateUrl: basePath + 'create/acontecimiento.create.html',
-                        controller: 'acontecimientoCtrl',
+                        controller: 'acontecimientoCreateCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
