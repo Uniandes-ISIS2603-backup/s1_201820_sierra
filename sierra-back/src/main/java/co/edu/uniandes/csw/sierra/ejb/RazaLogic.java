@@ -91,7 +91,16 @@ public class RazaLogic
     public RazaEntity update(RazaEntity entity)
     {
         //TODO: No hay ninguna regla de negocio? 
-        return persistence.update(entity);
+          RazaEntity ent = persistence.find(entity.getId());
+        if (ent!=null) {
+            if (entity.getNombreRaza().equals("")) {
+                return null;
+            }
+            else{
+                return  persistence.update(entity);
+            }
+        }  
+        return null;
     }
     
     /**

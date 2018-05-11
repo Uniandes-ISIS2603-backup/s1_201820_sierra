@@ -1,14 +1,14 @@
 (function (ng) {
     var mod = ng.module("razaModule");
-    mod.constant("razaContext", "api/razas");
-    mod.controller('razacreateCtrl', ['$scope', '$http', 'razaContext', '$state', '$rootScope',
+    mod.constant("razasContext", "api/razas");
+    mod.controller('razacreateCtrl', ['$scope', '$http', 'razasContext', '$state', '$rootScope',
         
-        function ($scope, $http, razaContext, $state, $rootScope) {
+        function ($scope, $http, razasContext, $state, $rootScope) {
             $rootScope.edit = false;
 
             $scope.data = {};
             $scope.createRaza = function () {
-                $http.post(razaContext, $scope.data).then(function (response) {
+                $http.post(razasContext, $scope.data).then(function (response) {
                     $state.go('razasList', {razaId: response.data.id}, {reload: true});
                 });
             };
