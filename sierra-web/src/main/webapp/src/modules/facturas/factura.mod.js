@@ -17,7 +17,24 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                     controllerAs: 'Ctrl'
                 }
             }
-        }); 
+        }).state('facturaCreate',
+        {
+            url:'/registrar',
+             parent:'facturas',
+             views:
+              {
+                'listView':{
+                       templateUrl: basePath+"factura.list.html"
+                   },  
+               'detailView':
+                {
+                   templateUrl: basePath + "/create/factura.create.html",
+                   controller:'facturaCreateCtrl',
+                   controllerAs: 'Crtl'
+                }
+              }
+        }
+        ); 
     }]);
 })(window.angular);
 

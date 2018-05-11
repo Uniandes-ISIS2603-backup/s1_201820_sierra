@@ -1,0 +1,39 @@
+<hr>
+<div class="container-fluid">
+    <h4>add new Factura</h4>
+    <br>
+    <div class="col -sm-4">
+        <form class="FormularioFactura" name="Factura">
+            <br>
+            <div>
+                <center>
+                    <label>id Cliente:</label>&nbsp<textarea id="idCliente" required ng-model="data.idCliente" class="col-sm-6"></textarea>
+                </center>
+            </div>
+            <br>
+            <div>
+                <center>
+                    <label>Nombre Cliente:</label><input type="text" class="nombreCliente" ng-model="data.nombreCliente" placeholder="nombreCliente">
+                </center>
+            </div>
+            <br>
+            <div>
+                <center>
+                    <label>Valor: </label><textArea id="valor" required ng-model="data.valor" class="col -sm-6"></textArea>
+                </center>
+            </div>
+            <br>
+            <div>
+                <center>
+                    <button  ng-click="createFactura()" ui-sref="facturaList" >Registrar</button>
+                    
+                </center>
+                <center>
+                    <a class="btn btn-info" ui-sref="facturaList">Cancel</a>
+                </center>
+            </div>
+            
+        </form>
+        
+    </div>
+</div>
