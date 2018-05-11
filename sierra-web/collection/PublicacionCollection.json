@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "bea80d4b-d99b-4aee-97a6-83b1d2a78067",
+		"name": "PublicacionCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Publicaciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da890f11-5382-463b-a8f8-8785bfa7d10b",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"numero de publicaciones\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Publicacion por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a3ed866-fb5d-4b86-8265-4b0991269b89",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Publicacion por id (Failure)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42a9ebe0-3c69-476e-b05f-1c8f931033c8",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una Publicacion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tipo\":\"Tipo de prueba\",\n\t\"fotoURL\": \"recursos/img/samoyedo.jpg\",\n\t\"fecha\":\"2017-06-23T00:00:00-05:00\",\n\t\"comentario\":\"Comentario de prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una Publicacion (Failure)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tipo\":\"Tipo de prueba\",\n\t\"fotoURL\": \"recursos/img/samoyedo.jpg\",\n\t\"fecha\":\"\",\n\t\"comentario\":\"Comentario de prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una Publicacion",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tipo\":\"Tipo de prueba\",\n\t\"fotoURL\": \"recursos/img/samoyedo.jpg\",\n\t\"fecha\":\"2017-06-23T00:00:00-05:00\",\n\t\"comentario\":\"Comentario de prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una Publicacion (Failure)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tipo\":\"Tipo de prueba\",\n\t\"fotoURL\": \"recursos/img/samoyedo.jpg\",\n\t\"fecha\":\"2017-06-23T00:00:00-05:00\",\n\t\"comentario\":\"Comentario de prueba\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una Publicacion ",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una Publicacion (Failure)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/publicaciones/1111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"publicaciones",
+						"1111111"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
