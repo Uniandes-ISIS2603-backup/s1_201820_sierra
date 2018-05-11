@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "309fc2d0-6f54-4192-899c-94b50bc9e9e8",
+		"name": "AcontecimientoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Acontecimientos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f7847a4-7242-458a-8d8a-4bff6f02cf49",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"numero de acontecimientos\"] = data.length >= 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Acontecimiento por id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d6efd2f-2606-43f1-af1c-3145a3c0cbcb",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Acontecimiento por id (Failure)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a3a05f52-4453-450d-9057-9e51020d8583",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Acontecimiento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Acontecimiento de prueba4\",\n  \"descripcion\":\"Descripcion de prueba\",\n  \"fecha\": \"2017-06-23T00:00:00-05:00\",\n  \"importancia\": 1,\n  \"tipo\":\"Tragico\",\n  \"fotoURL\": \"recursos/img/samoyedo.jpg\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Acontecimiento (Failure)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Acontecimiento de prueba\",\n\t\"descripcion\":\"Descripcion de prueba\",\n\t\"fecha\": \"\",\n\t\"importancia\": 1,\n\t\"tipo\":\"Tragico\",\n\t\"fotoURL\": \"recursos/img/samoyedo.jpg\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un Acontecimiento",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Acontecimiento de prueba2\",\n  \"descripcion\":\"Descripcion de prueba\",\n  \"fecha\": \"2017-06-23T00:00:00-05:00\",\n  \"importancia\": 1,\n  \"tipo\":\"Tragico\",\n  \"fotoURL\": \"recursos/img/samoyedo.jpg\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un Acontecimiento (Failure)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4623a07e-8f14-46d1-bc66-bbea6966faa5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Acontecimiento de prueba3\",\n  \"descripcion\":\"Descripcion de prueba\",\n  \"fecha\": \"2017-06-23T00:00:00-05:00\",\n  \"importancia\": 1,\n  \"tipo\":\"Tragico\",\n  \"fotoURL\": \"recursos/img/samoyedo.jpg\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Acontecimiento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Acontecimiento (Failure)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/acontecimientos/111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"acontecimientos",
+						"111111"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
