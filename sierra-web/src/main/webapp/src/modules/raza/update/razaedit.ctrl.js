@@ -20,7 +20,7 @@
             $http.get(razasContext + '/' + idRaza).then(function (response) {
                 var raza = response.data;
              
-                    $scope.nombreRaza = raza.nombre;
+                    $scope.nombreRaza = raza.nombreRaza;
                    
                     $scope.CuidadosRaza = raza.cuidados; 
                 
@@ -34,9 +34,9 @@
      
               $scope.createRaza = function () {   
                 $http.put(razasContext + "/" + idRaza, {
-                    nombre: $scope.nombreRaza,
+                    nombreRaza: $scope.nombreRaza,
                     cuidados: $scope.CuidadosRaza,
-                    descatacable: $scope.DestacableRaza,
+                    destacable: $scope.DestacableRaza,
                     caracteristicas: $scope.CaracteristicasRaza
                 }).then(function (response) {
                     $state.go('razasList', {idRaza: response.data.id}, {reload: true});

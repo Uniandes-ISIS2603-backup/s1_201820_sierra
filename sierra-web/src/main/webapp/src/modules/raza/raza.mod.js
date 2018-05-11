@@ -49,7 +49,7 @@
               }
               
             })
-              .state('razaEdit',
+               .state('razaEdit',
             {
                url:'/edit/{razaId:int}',
               parent:'razas',
@@ -75,7 +75,7 @@
                url:'/delete/{razaId:int}',
               parent:'razas',
               param:{
-                  especieId:null
+                  razaId:null
               },
                views:
                {
