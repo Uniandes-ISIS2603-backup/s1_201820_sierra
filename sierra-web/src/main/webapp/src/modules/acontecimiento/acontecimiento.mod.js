@@ -44,7 +44,21 @@
                     }
                 }
                     }
-                    );
+                    )
+            //Estado actualizar
+            .state('acontecimientoUpdate', {
+                url:'/{acontecimientoId:int}/update',
+                parent:'acontecimiento',
+                param:{
+                   acontecimientoId : null
+                },
+                views:{
+                    'detailView':{
+                      templateUrl: basePath + 'create/acontecimiento.create.html',
+                      controller:'acontecimientoUpdateCtrl'
+                   }
+                }
+            });
         }
     ]);
 })(window.angular);

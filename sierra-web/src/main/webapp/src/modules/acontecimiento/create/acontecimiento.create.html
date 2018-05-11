@@ -4,6 +4,7 @@
             <!-- Enlace al estado de listar las entidades de Sierra -->
             <li><a ui-sref="acontecimientoList">Lista</a></li>
             <li><a ui-sref="acontecimientoCreate">Crear</a></li>
+              <li><a ui-sref="acontecimientoUpdate">Editar</a></li>
         </ul>
             </div>
 </div>
@@ -19,7 +20,7 @@
     
           <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="tipo" class="col-sm-3">Tipo:</label>
+            <label for="acontecimientoTipo" class="col-sm-3">Tipo:</label>
             <input placeholder="Tipo de acontecimiento" type="text" id="acontecimientoTipo" required ng-model="data.tipo" class="col-sm-6"/>
         </div>
     </div>
