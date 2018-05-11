@@ -14,11 +14,11 @@
             //Estado iincial
             $stateProvider.state('acontecimientos',{
                 url:'/acontecimientos',
+                abstrac:true,
                 views: {
                     'mainView':{
                         templateUrl: basePath + 'acontecimiento.html',
-                        controller: 'acontecimientoCtrl',
-                        controllerAs:'ctrl'
+                        controller: 'acontecimientoCtrl'
                     }
                 }
             })
@@ -48,13 +48,12 @@
             //Estado actualizar
             .state('acontecimientoUpdate', {
                 url:'/{acontecimientoId:int}/update',
-                parent:'acontecimiento',
                 param:{
                    acontecimientoId : null
                 },
                 views:{
-                    'detailView':{
-                      templateUrl: basePath + 'create/acontecimiento.create.html',
+                    'mainView':{
+                      templateUrl: basePath + 'update/acontecimiento.update.html',
                       controller:'acontecimientoUpdateCtrl'
                    }
                 }

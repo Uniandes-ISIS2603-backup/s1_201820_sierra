@@ -1,8 +1,7 @@
 (function (ng) {
     var mod = ng.module("acontecimientoModule");
     mod.constant("acontecimientoContext", "api/acontecimientos");
-    mod.controller('acontecimientoUpdateCtrl', ['$scope', '$http', 'acontecimientoContext', '$state', '$rootScope',
-        
+    mod.controller('acontecimientoUpdateCtrl', ['$scope', '$http', 'acontecimientoContext', '$state', '$rootScope',  
         function ($scope, $http ,acontecimientoContext ,$state ,$rootScope) {
             $rootScope.edit = true;
             $scope.data = {};
@@ -18,7 +17,7 @@
                 $scope.data.descripcion = auxiliar.descripcion;
                 $scope.data.fotoURL = auxiliar.fotoURL; 
             });
-            $scope.updateAcontecimiento = function () {
+            $scope.createAcontecimiento = function () {
                 $http.put(acontecimientoContext + "/" + acontecimientoId, $scope.data).then(function (response) {
                     
                     $state.go('acontecimientoList', {acontecimientoId: response.data.id}, {reload: true});
