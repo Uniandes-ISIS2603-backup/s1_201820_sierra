@@ -1,40 +1,64 @@
-(function(ng){
- 
-var mod= ng.module('facturaModule',['ui.router']);
-mod.constant('facturaContext','api/facturas');
-mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
-    {
-        var basePath='src/modules/facturas/';
-        $urlRouterProvider.otherwise("/facturasList");
-        $stateProvider.state('facturasList',
+
+(function (ng)
+{
+   //Definicion del modulo.
+    var modulo = ng.module("facturaModule",  ['ui.router']);
+   //Configuracion de los estados.
+    modulo.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider)
         {
-            url:'/facturas',
-            views:{
-                mainView:{
-                    
-                    templateUrl: basePath+'factura.list.html',
-                    controller:'facturaCtrl',
-                    controllerAs: 'Ctrl'
+            //basePath es la variable con la ruta para encontrar los templates, controladores y modulo.
+            var basePath = 'src/modules/facturas/';
+            //Estado por defecto
+            $urlRouterProvider.otherwise("/facturasList");
+           //Definicion de los estados
+            //Estado iincial
+            $stateProvider.state('facturas',{
+                url:'/facturas',
+                abstrac:true,
+                views: {
+                    'mainView':{
+                        templateUrl: basePath + 'factura.html',
+                        controller: 'facturaCtrl'
+                    }
                 }
-            }
-        }).state('facturaCreate',
-        {
-            url:'/registrar',
-             parent:'facturas',
-             views:
-              {
-                'listView':{
-                       templateUrl: basePath+"factura.list.html"
-                   },  
-               'detailView':
-                {
-                   templateUrl: basePath + "/create/factura.create.html",
-                   controller:'facturaCreateCtrl',
-                   controllerAs: 'Crtl'
+            })
+               // Define el estado lista
+                .state('facturasList', {
+                url: '/facturas/list',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'list/factura.list.html',
+                        controller: 'facturaCtrl',     
+                        controllerAs: 'ctrl'
+                       }
                 }
-              }
+            })
+            //Estado crear
+                    .state('facturaCreate',{
+                        url:'/facturas/create',
+                views:{
+                    'mainView':{
+                        templateUrl: basePath + 'create/factura.create.html',
+                        controller: 'facturaCreateCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+                    }
+                    )
+            //Estado actualizar
+            .state('facturaUpdate', {
+                url:'/{facturaId:int}/update',
+                param:{
+                   facturaId : null
+                },
+                views:{
+                    'mainView':{
+                      templateUrl: basePath + 'update/factura.update.html',
+                      controller:'facturaUpdateCtrl'
+                   }
+                }
+            });
         }
-        ); 
-    }]);
+    ]);
 })(window.angular);
 

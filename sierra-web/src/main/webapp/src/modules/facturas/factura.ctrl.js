@@ -1,15 +1,15 @@
-(function(ng){
-   var mod=ng.module('facturaModule');
-   mod.constant=('facturaContext','api/facturas');
-   mod.controller('facturaCtrl',['$scope', '$http','facturaContext','$state',
-       function($scope, $http, facturaContext, $state){
-           
-           $http.get(facturaContext).then(function(response)
-           {
-               $scope.facturaRecords=response.data;
-           });
-       }
-    ]);
-})(window.angular);
-
+(function(ng)
+{
+    var modulo = ng.module("facturaModule");
+    modulo.constant("facturaContext", "api/facturas");
+    modulo.controller('facturaCtrl', ['$scope', '$http', 'facturaContext',
+                      function($scope, $http, acontecimientoContext)
+                      {
+                     $http.get(acontecimientoContext).then(function (response) {
+                       $scope.facturas = response.data;
+            });
+} 
+]);
+}
+)(window.angular);
 

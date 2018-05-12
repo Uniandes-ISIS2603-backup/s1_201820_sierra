@@ -1,9 +1,9 @@
-
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
     <div class="row">
         <div>
             <ul class="nav nav-tabs" style="background-color: lightblue">
-                <li style="background-color:beige"><a ui-sref="certificadosList"> Certificados</a></li>
+                <li style="background-color:beige"><a ui-sref="certificadosList">Certificados</a></li>
                  <li style="background-color:beige"><a ui-sref="certificadocreate"> Registrar</a></li>
             </ul>
         </div>

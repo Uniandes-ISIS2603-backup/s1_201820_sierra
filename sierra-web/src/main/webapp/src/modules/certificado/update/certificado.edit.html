@@ -1,0 +1,41 @@
+  <div  class="container-fluid">      
+      
+    <hr> 
+    <h3>ID:{{currentCertificado.id}}</h3>
+    <br>
+     <center>
+    <div class="col-sm-10" >
+       
+        <form  class="FormularioCertificado" name="Certificado" ng-submit="createCertificado()">   
+            <br>
+        <div>
+            <center>
+                <lable>Fecha:</lable>&nbsp;<input type="date" class="fecha" required ng-model="fecha" id="fechaCertificado" placeholder="fecha">
+            </center>
+        </div>    
+            <br>
+        <div>
+            <center>
+                <lable>Descripción:</lable>&nbsp;<input type="text" class="descripcion" required ng-model="descripcion" id="descripcionCertificado" placeholder="descripcion">  
+           </center>
+        </div>
+             <br>
+             <div>
+            <center>
+                <lable>Imagen:</lable>&nbsp;<input type="text" class="imagen" required ng-model="imagen" id="imagenCertificado" placeholder="imagen">  
+           </center>
+        </div>  
+             <br>
+        <div>
+            <br>
+            <center>
+                <center> <a ng-click="createCertificado()"  ui-sref="certificadosList"><input type="button" value="Editar"></a></center>
+            </center>
+            <center>
+            <a class="btn btn-info" ui-sref="certificadosList">Cancel</a>
+            </center>
+        </div> 
+    </form>
+              
+     </div>
+            </center>

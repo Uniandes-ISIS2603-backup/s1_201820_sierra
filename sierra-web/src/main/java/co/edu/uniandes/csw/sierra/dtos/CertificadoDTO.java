@@ -54,10 +54,10 @@ public class CertificadoDTO {
     }
     public CertificadoDTO(CertificadoEntity entity)
     {
+        this.fecha = entity.getFecha();
         this.descripcion = entity.getDescripcion();
         this.imagen = entity.getImagen();
         this.id = entity.getId();
-        this.fecha = entity.getFecha();
     }
     
     public CertificadoEntity toEntity()

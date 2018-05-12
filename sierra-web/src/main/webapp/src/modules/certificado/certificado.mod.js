@@ -11,7 +11,7 @@
              views:
                      {
                        mainView:{
-                       templateUrl: basePath+"certificado.html",
+                       templateUrl: basePath+"certificados.html",
                        controller:'certificadoCtrl',
                        controllerAs: 'Crtl'
                          }
@@ -49,12 +49,12 @@
               }
               
             })
-              .state('certificadoEdit',
+               .state('certificadoEdit',
             {
                url:'/edit/{certificadoId:int}',
               parent:'certificados',
               param:{
-                  especieId:null
+                  certificadoId:null
               },
                views:
                {

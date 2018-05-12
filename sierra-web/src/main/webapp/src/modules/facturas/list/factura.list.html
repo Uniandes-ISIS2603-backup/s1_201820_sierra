@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <!-- Enlace al estado de listar las entidades de Sierra -->
+            <li><a ui-sref="facturasList">Lista</a></li>
+            <li><a ui-sref="facturaCreate">Crear</a></li>
+        </ul>
+    </div>
+</div>
+<br>
+<div class = "container-fluid" style="margin: 10%; padding: 0; padding-left: 20px; border-left: 0.5px solid grey; box-shadow:  -5px 0 1px rgba(0,0,0,0.4)">
+    <div class="well">
+        <h2>
+            Facturas
+        </h2>
+    </div>
+    <div class="row" style=" margin:1%" >
+
+        <!--Lista de Facturas-->
+        <div class="col-sm-12 col-lg-6 col-md-6" ng-repeat="factura in facturaRecords" >
+            <div class="thumbnail " style=" border-radius: 5%;padding-bottom:0;padding-top:0">
+                <h3 style="margin:5%">
+                    Factura Adquisición
+                </h3>
+                
+                <div class="container-fluid" style="padding-left:5%">
+                    <div class ="row" style="">
+                        <div class = "col-sm-6">
+                            <label>Id Factura: &nbsp; </label><label id ="{{$index}}-facturaId">{{factura.id}}</label><br>
+                            <label>Id Cliente:  &nbsp;</label><label id ="{{$index}}-facturaIdCliente"> {{factura.idCliente}}</label><br>
+                            <label>Nombre Cliente:  &nbsp;</label><label id ="{{$index}}-facturaNombreCliente">{{factura.nombreCliente}}</label><br>
+                            <label>valor:  &nbsp;</label><label id ="{{$index}}-facturaValor">{{factura.valor}}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <p id ="{{$index}}-Editar"><a ui-sref="facturaUpdate({facturaId:factura.id})"></a></p>
+                    </div>
+                    <dov>
+                        <p id="{{$index}}-Borrar"><a ui-sref="deleteFactura({facturaId:factura.id})"></a></p>
+                    </dov>
+                    
+                </div>
+                
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

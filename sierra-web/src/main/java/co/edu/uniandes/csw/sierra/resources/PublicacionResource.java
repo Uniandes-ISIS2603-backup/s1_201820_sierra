@@ -77,7 +77,7 @@ public class PublicacionResource
  
     /** <h1>POST /api/publicaciones : Crear una publicacion.</h1>
      *
-     * <pre>Cuerpo de petición: JSON {@link PublicacionDetailDTO}.
+     * <pre>Cuerpo de petición: JSON {@link PublicacionDTO}.
      *
      * Crea una nueva publicacion con la informacion que se recibe en el cuerpo
      * de la petición y se regresa un objeto identico con un id auto-generado
@@ -88,14 +88,14 @@ public class PublicacionResource
      * </code>
      * </pre>
      *  @param id Identificador de la publicacion que se desea actualizar. Este debe ser una cadena de digitos.
-     * @param puDto {@link PublicacionDetailDTO} -La publicacion  que se
+     * @param puDto {@link PublicacionDTO} -La publicacion  que se
      * desea guardar.
      * @return JSON {@link PublicacionDetailDTO} -La publicacion se a
      * guardado con el atributo id autogenerado.
      * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
 @POST
-public PublicacionDTO createPublicacion(@PathParam("id") Long id,PublicacionDTO puDto)throws  BusinessLogicException
+public PublicacionDTO createPublicacion(PublicacionDTO puDto)throws  BusinessLogicException
 {
  return new PublicacionDTO(publicacionLogica.create(puDto.toEntity()));
 }
@@ -177,7 +177,7 @@ if(actualizado == null)
 }
 else 
 {
-    return  new PublicacionDTO(publicacionLogica.update(actualizado));
+    return  new PublicacionDTO(publicacionLogica.update(puDto.toEntity()));
 }
 }
 
