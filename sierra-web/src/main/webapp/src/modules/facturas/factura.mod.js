@@ -43,8 +43,7 @@
                         controllerAs: 'ctrl'
                     }
                 }
-                    }
-                    )
+                    })
             //Estado actualizar
             .state('facturaUpdate', {
                 url:'/{facturaId:int}/update',
@@ -57,7 +56,24 @@
                       controller:'facturaUpdateCtrl'
                    }
                 }
-            });
+            }).state('facturaDelete', (
+                url:'/(facturaId:int)/delete',
+                param:(
+                        facturaId:null
+                ),
+                views:(
+                    'mainView':(
+                        templateUrl: basePath + 'list/factura.list.html',
+                        controller:'factura.delete.html'
+                    )
+                        
+                    )
+               
+                    
+            ));
+            
+            
+            
         }
     ]);
 })(window.angular);
