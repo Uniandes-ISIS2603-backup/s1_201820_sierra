@@ -4,7 +4,7 @@
     <h4 style="text-align: center"> Registro de un nuevo certificado</h4>
     <br>
     <div class="col-sm-4" >
-        <form  class="FormularioEspecie" name="Especie">   
+        <form  class="FormularioRaza" name="Cerificado">   
             <br>
         <div>
             <center>
@@ -14,15 +14,15 @@
             <br>
         <div>
             <center>
-            <lable>Descripcion:</lable>&nbsp;<input type="text" class="descripcionCertificado" required ng-model="data.descripción" placeholder="cuidados">  
+            <lable>Descripción:</lable>&nbsp;<input type="text" class="descripciónCertificado" required ng-model="data.descripcion" placeholder="descripción">  
            </center>
         </div>
-             <br> 
              <br>
-        <div>
+            <div>
             <center>
-            <lable>Imagen:</lable>&nbsp;<input type="text" class="imagenCertificado" requiere ng-model="data.imagen" placeholder="destacable" >
-            </center>
+            <lable>Imagen:</lable>&nbsp;<input type="text" class="ImagenCertificado" required ng-model="data.imagen" placeholder="urlImagen">  
+           </center>
+            </div>
             <br>
             <center>
                 <button  ng-click="createCertificado()" ui-sref="certificadosList" >Registrar</button>

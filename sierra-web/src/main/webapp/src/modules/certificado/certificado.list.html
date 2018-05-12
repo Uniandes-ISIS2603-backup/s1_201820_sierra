@@ -1,11 +1,11 @@
-
-<!--LiSTA DE  CERTIFICADOS -->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<!--LiSTA DE CERTIFICADOS -->
 <div class="container-fluid" >
     <div> <h1 style="text-align: center">Certificados registrados en la tienda: </h1> </div>
     <div class="row" >
         <div class="col-md-3" ng-repeat="certificado in certificadosRecords">
             <div class="thumbnail" style="background-color: gray">
-                 <div>  <label> Fecha: </label> {{certificado.fecha}}</div>
+                 <div>  <label> fecha: </label> {{certificado.fecha}}</div>
                     <div> <label> Descripción: </label> {{certificado.descripcion}}</div>
                     <div> <label> Imagen: </label> {{certificado.imagen}}</div>
                 <center> <a ui-sref="certificadoDetail({certificadoId: certificado.id})"><input type="button" value="ver"></a></center>
