@@ -34,7 +34,8 @@ public class AcontecimientoDTO {
 
     public AcontecimientoDTO(AcontecimientoEntity Entity)
     { 
-       if(Entity != null){
+       if(Entity != null)
+       {
         this.descripcion = Entity.getDescripcion();
         this.fecha = Entity.getFecha();
         this.fotoURL = Entity.getFotoURL();

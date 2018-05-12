@@ -51,14 +51,7 @@ public class PublicacionLogic
      */
     public PublicacionEntity create(PublicacionEntity ent) throws BusinessLogicException
     {
-        LOGGER.info("Creando una entidad de Publicacion");
-        //Verifica las reglas de publicacion
-
-       if(persistencia.find(ent.getId())!= null)
-        {
-             throw new BusinessLogicException( "La publicacion con el id suministrado ya existe\"" );
-        }
-       else if(ent.getFecha() == null  || ent.getTipo()== null || ent.getFotoURL() == null || ent.getComentario() == null )
+      if(ent.getFecha() == null  || ent.getTipo()== null  || ent.getComentario() == null )
        {
              throw new BusinessLogicException( "La publicacion no cuenta con los datos necesarios para crearse\"" );
        }

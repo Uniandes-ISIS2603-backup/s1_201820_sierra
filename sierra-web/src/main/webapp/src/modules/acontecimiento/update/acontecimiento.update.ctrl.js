@@ -17,9 +17,9 @@
                 $scope.data.descripcion = auxiliar.descripcion;
                 $scope.data.fotoURL = auxiliar.fotoURL; 
             });
-            $scope.createAcontecimiento = function () {
+            $scope.updateAcontecimiento = function () {
                 $http.put(acontecimientoContext + "/" + acontecimientoId, $scope.data).then(function (response) {
-                    
+    
                     $state.go('acontecimientoList', {acontecimientoId: response.data.id}, {reload: true});
                 });
             };

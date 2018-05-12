@@ -2,9 +2,10 @@
  var mod = ng.module("publicacionModule", ['ui.router']) ;
   mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
           var basePath = "src/modules/publicacion/";
-          $urlRouterProvider.otherwise("/publicacionList");
+          $urlRouterProvider.otherwise("/publicaciones");
           $stateProvider.state('publicaciones', {
               url: '/publicaciones',
+              abstrac:true,
               views:{
                   'mainView':{
                       templateUrl : basePath + 'publicacion.html',
@@ -14,7 +15,7 @@
               }
           })
                   .state('publicacionList',{
-          url :'/publicacion/list',
+          url :'/publicaciones/list',
           views :{
           'mainView': {
                         templateUrl: basePath + 'list/publicacion.list.html',
@@ -27,22 +28,21 @@
                       url: '/publicacion/create',
               views:{
                   'mainView':{
-                      templateUrl: basePath + 'publicacion.create.html',
-                      controller:'publicacionCtrl',
+                      templateUrl: basePath + 'create/publicacion.create.html',
+                      controller:'publicacionCreateCtrl',
                       controllerAs:'ctrl'
                   }
               }
                       
           })
           .state('publicacionUpdate', {
-                url:'/{publicacionId:int}/update',
-                parent:'publicacion',
+                url:'/{publicacionId:int}/updatePublicacion',
                 param:{
-                   acontecimientoId:null
+                   publicacionId:null
                 },
                 views:{
-                    'detailView':{
-                      templateUrl: basePath + 'publicacion.create.html',
+                    'mainView':{
+                      templateUrl: basePath + 'update/publicacion.update.html',
                       controller:'publicacionUpdateCtrl'
                    }
                 }
