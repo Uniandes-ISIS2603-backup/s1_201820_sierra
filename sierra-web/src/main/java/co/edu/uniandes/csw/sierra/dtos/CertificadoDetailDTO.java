@@ -12,36 +12,69 @@ import co.edu.uniandes.csw.sierra.entities.CertificadoEntity;
  * @author rj.gonzalez10
  */
 public class CertificadoDetailDTO extends CertificadoDTO {
-
+    /**
+     * Mascota asociada al certificado
+     */
     private MascotaVentaDTO mascotaVenta;
 
+   
+   
+    /**
+     * Constructor por defecto
+     */
     public CertificadoDetailDTO() {
         super();
+
     }
 
     /**
-     * constructor que convierte una Entity a un DetailDTO
+     * Crea un objeto CertificadoDetailDTO a partir de un objeto CertificadoEntity
+     * incluyendo los atributos de CertificadoDTO.
      *
-     * @param ent la entidad que se quiere convertir
+     * @param entity Entidad CertificadoEntity desde la cual se va a crear el nuevo
+     * objeto.
+     *
      */
-    public CertificadoDetailDTO(CertificadoEntity ent) {
-        super(ent);
-        if (ent != null) {
-            this.mascotaVenta = new MascotaVentaDTO(ent.getMascotaVenta());
+    public CertificadoDetailDTO(CertificadoEntity entity) {
+        super(entity);
+        if (entity != null) {
+             if (entity.getMascotaVenta() != null) {
+                this.mascotaVenta = new MascotaVentaDTO(entity.getMascotaVenta());
+            }
         }
+
     }
 
-    public MascotaVentaDTO getMascota() {
+    /**
+     * Convierte un objeto CertificadoDetailDTO a CertificadoEntity incluyendo los
+     * atributos de CertificadoDTO.
+     *
+     * @return Nueva objeto CertificadoEntity.
+     *
+     */
+    @Override
+    public CertificadoEntity toEntity() {
+        CertificadoEntity entity = super.toEntity();
+        if (mascotaVenta != null) {
+           entity.setMascotaVenta(mascotaVenta.toEntity());
+            }
+           
+        return entity;
+    }
+
+    /**
+     * @return the mascotas
+     */
+    public MascotaVentaDTO getMascotaVenta() {
         return mascotaVenta;
     }
 
     /**
-     * @param mascota the mascota to set
+     * @param pMascotaVenta the mascotas to set
      */
-    public void setMascota(MascotaVentaDTO mascota) {
-        this.mascotaVenta = mascota;
+    public void setMascotaVenta(MascotaVentaDTO pMascotaVenta) {
+        this.mascotaVenta = pMascotaVenta;
     }
-    
-    //TODO: falta el método toEntity
+
 
 }

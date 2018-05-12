@@ -6,6 +6,7 @@
             if (($state.params.especieId !== undefined) && ($state.params.especieId !== null)) {
                 $http.get(especieContext).then(function (response) { 
                     $scope.especieRecords = response.data;
+                    console.log(response.data);
                     $scope.currentEspecie = $filter('filter')($scope.especieRecords, {id: $state.params.especieId}, true)[0];
                  
                 });
