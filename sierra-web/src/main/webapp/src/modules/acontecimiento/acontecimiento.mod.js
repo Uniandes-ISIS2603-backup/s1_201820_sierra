@@ -47,7 +47,7 @@
                     )
             //Estado actualizar
             .state('acontecimientoUpdate', {
-                url:'acontecimientos/{acontecimientoId:int}/update',
+                url:'/acontecimiento/{acontecimientoId:int}/update',
                 param:{
                    acontecimientoId : null
                 },

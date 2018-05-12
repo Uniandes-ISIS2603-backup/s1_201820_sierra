@@ -36,7 +36,7 @@
                       
           })
           .state('publicacionUpdate', {
-                url:'/{publicacionId:int}/updatePublicacion',
+                url:'/publicacion/{publicacionId:int}/update',
                 param:{
                    publicacionId:null
                 },
