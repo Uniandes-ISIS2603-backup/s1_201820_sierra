@@ -1,6 +1,7 @@
-<div class=""row>
-    <div class = "col -lg-12">
+<div class="row">
+    <div class="col-lg-12">
         <ul class="nav nav-tabs">
+            <!-- Enlace al estado de listar las entidades de Sierra -->
             <li><a ui-sref="facturasList">Lista</a></li>
             <li><a ui-sref="facturaCreate">Crear</a></li>
         </ul>
@@ -25,21 +26,18 @@
                 <div class="container-fluid" style="padding-left:5%">
                     <div class ="row" style="">
                         <div class = "col-sm-6">
-                            <label>Id Factura: &nbsp; </label><label>{{factura.id}}</label><br>
-                            <label>Id Cliente:  &nbsp;</label><label> {{factura.idCliente}}</label><br>
-                            <label>Nombre Cliente:  &nbsp;</label><label>{{factura.nombreCliente}}</label><br>
-                            <label>valor:  &nbsp;</label><label>{{factura.valor}}</label>
+                            <label>Id Factura: &nbsp; </label><label id ="{{$index}}-facturaId">{{factura.id}}</label><br>
+                            <label>Id Cliente:  &nbsp;</label><label id ="{{$index}}-facturaIdCliente"> {{factura.idCliente}}</label><br>
+                            <label>Nombre Cliente:  &nbsp;</label><label id ="{{$index}}-facturaNombreCliente">{{factura.nombreCliente}}</label><br>
+                            <label>valor:  &nbsp;</label><label id ="{{$index}}-facturaValor">{{factura.valor}}</label>
                         </div>
                     </div>
-                    <h4 style="border-top: 0.05px solid grey">Adquisición</h4>
-                    <div class ="row" style="padding-left:5%">
-                        <div class = "col -lg-12">
-                            <label>id: &nbsp;</label><label>{{factura.adquisicion.id}}</label><br>
-
-                            <label>Fecha: &nbsp;</label><label>{{factura.adquisicion.fecha}}</label>
-                        </div>
-                        <button type="button" class="btn btn-info" ui-sref="comprobantesList" style="position:absolute; right:3%; bottom:2%;"> Comprobantes</button>
+                    <div>
+                        <p id ="{{$index}}-Editar"><a ui-sref="facturaUpdate({facturaId:factura.id})"></a></p>
                     </div>
+                    <dov>
+                        <p id="{{$index}}-Borrar"><a ui-sref="deleteFactura({facturaId:factura.id})"></a></p>
+                    </dov>
                     
                 </div>
                 

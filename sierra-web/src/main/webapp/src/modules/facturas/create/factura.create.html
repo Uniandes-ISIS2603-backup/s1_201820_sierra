@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <!-- Enlace al estado de listar las entidades de Sierra -->
+            <li><a ui-sref="facturasList">Lista</a></li>
+            <li><a ui-sref="facturaCreate">Crear</a></li>
+        </ul>
+    </div>
+</div>
+<hr>
+<h4>Crear Factura </h4><br><br>
+<div class="container-fluid">
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="idCliente" class="col-sm-3">Id del cliente: </label>
+            <input placeholder="Id del Cliente" type="text" id="idCliente" required ng-model="data.idCliente" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="nombreCliente" class="col-sm-3">Nombre cliente:</label>
+            <input placeholder="Nombre del Cliente" type="text" id="nombreCliente" required ng-model="data.nombreCliente" class="col-sm-6"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+            <label for="facturaValor" class="col-sm-3">Valor: </label>
+            <input type="number" id="facturaValor" required ng-model="data.valor" class="col-sm-6"/>
+        </div>
+    </div>          
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <a class="btn btn-info" ui-sref="facturasList" >Cancelar</a>
+            <input  ng-click="createFactura()"value="Agregar" class="btn btn-success"/>
+        </div>
+    </div>
+
+
+</div>
