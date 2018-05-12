@@ -6,9 +6,8 @@
             if (($state.params.mascotaId !== undefined) && ($state.params.mascotaId !== null)) {
                 $http.get(mascotaaContext).then(function (response) { 
                     $scope.mascotasRecords = response.data;
-                    console.log(response.data);
                     $scope.currentMascota = $filter('filter')($scope.mascotasRecords, {id: $state.params.mascotaId}, true)[0];
-                 
+                   
                 });
             }
             
