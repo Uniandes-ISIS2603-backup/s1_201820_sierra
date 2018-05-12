@@ -9,7 +9,7 @@
             $scope.createFactura = function()
             {
                $http.post(facturaContext, $scope.data).then(function(response){
-                   $state.go('facturaList',{facturaId: response.data.id}, {reload:true});
+                   $state.go('facturasList',{reload:true});
                }); 
             };
         }
