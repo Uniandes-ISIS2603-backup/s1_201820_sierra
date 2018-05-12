@@ -1,12 +1,12 @@
 (function (ng) {
-    var mod = ng.module("mascotaadopModule");
-    mod.constant("mascotaaContext", "api/mascotasAdoptadas");
-    mod.controller('mascotaeditCtrl', ['$scope', '$http', 'mascotaaContext', '$state', '$rootScope', '$filter',
+    var mod = ng.module("mascotaVentaModule");
+    mod.constant("mascotaVentaContext", "api/mascotasVenta");
+    mod.controller('mascotaVentaEditCtrl', ['$scope', '$http', 'mascotaVentaContext', '$state', '$rootScope', '$filter',
 
-      function ($scope, $http, mascotaaContext, $state, $rootScope, $filter) {
+      function ($scope, $http, mascotaVentaContext, $state, $rootScope, $filter) {
             $rootScope.edit = true;
             
-             $http.get(mascotaaContext).then(function (response) { 
+             $http.get(mascotaVentaContext).then(function (response) { 
                     $scope.mascotasRecords = response.data;
                     $scope.currentMascota = $filter('filter')($scope.mascotasRecords, {id: $state.params.mascotaId}, true)[0];
                  
@@ -17,7 +17,7 @@
        
             
             //Consulto el autor a editar.
-            $http.get(mascotaaContext + '/' + idMascota).then(function (response) {
+            $http.get(mascotaVentaContext + '/' + idMascota).then(function (response) {
                 var mascota = response.data;
              
                     $scope.nombreMascota = mascota.nombre;
@@ -33,7 +33,7 @@
             });
      
               $scope.createMascota = function () {   
-                $http.put(mascotaaContext + "/" + idMascota, {
+                $http.put(mascotaVentaContext + "/" + idMascota, {
                     nombre: $scope.nombreMascota,
                     imagen: $scope.imagenMascota,
                     tamano:  $scope.tamanoMascota,
@@ -43,7 +43,7 @@
                     adquirido: $scope.adquiridoMascota 
                     
                 }).then(function (response) {
-                    $state.go('mascotasList', {idMascota: response.data.id}, {reload: true});
+                    $state.go('mascotasVentaList', {idMascota: response.data.id}, {reload: true});
                 });
             };
    

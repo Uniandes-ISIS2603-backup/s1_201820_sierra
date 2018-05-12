@@ -80,6 +80,8 @@ insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquir
 insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (117,'MascotaAdoptadaEntity','Yasha','Pequeño','Femenino',2,'recursos/img/Korat.jpg','Gris',0,0,'6/23/2016',112,116);
 insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (118,'MascotaAdoptadaEntity','Turron','Pequeño','Masculino',1,'recursos/img/pixieBob.jpg','Blanco naranja y negro',0,0,'6/23/2017',112,117);
 
+insert into MascotaEntity(id,DType,nombre,tamano,genero,edad,imagen,color,adquirido,esteril,nacimiento,especie_id,raza_id) values (200,'MascotaVentaEntity','Thanos','Grande','Masculino',1000,'recursos/img/thanos.jpg','Rojo?',0,0,'6/23/1900',112,117);
+
 /*
 *INSERCION EN LA  CLASIFICACION DE  MASCOTAS PARA ADOPCION DE LA BASE DE DATOS
 */
@@ -92,6 +94,10 @@ insert into MascotaAdoptadaEntity(id) values(116);
 insert into MascotaAdoptadaEntity(id) values(117);
 insert into MascotaAdoptadaEntity(id) values(118);
 
+/*
+* Mascotas Venta
+*/
+insert into MascotaVentaEntity(id, precio) values(200, 42000000);
 
 
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efectivo');

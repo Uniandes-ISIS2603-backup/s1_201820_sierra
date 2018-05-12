@@ -1,22 +1,22 @@
 (function (ng) {
-    var mod = ng.module("mascotaadopModule");
-    mod.constant("mascotaaContext", "api/mascotaAdoptadas");
-    mod.controller('mascotaDeleteCtrl', ['$scope', '$http', 'mascotaaContext', '$state',
+    var mod = ng.module("mascotaVentaModule");
+    mod.constant("mascotaVentaContext", "api/mascotasVenta");
+    mod.controller('mascotaVentaDeleteCtrl', ['$scope', '$http', 'mascotaVentaContext', '$state',
 
-        function ($scope, $http, mascotaaContext, $state) {
+        function ($scope, $http, mascotaVentaContext, $state) {
            
            
             var idMascota = $state.params.mascotaId;
             
-                 $http.get(mascotaaContext).then(function (response) { 
+                 $http.get(mascotaVentaContext).then(function (response) { 
                  $scope.mascotasRecords = response.data;
                  $scope.currentMascota = $filter('filter')($scope.mascotasRecords, {id: $state.params.mascotaId}, true)[0];  
                 });
                 
              
             $scope.deleteMascota = function () {
-                $http.delete(mascotaaContext + '/' + idMascota, {}).then(function (response) {
-                    $state.go('mascotasList', {idMascota: response.data.id}, {reload: true});
+                $http.delete(mascotaVentaContext + '/' + idMascota, {}).then(function (response) {
+                    $state.go('mascotasVentaList', {idMascota: response.data.id}, {reload: true});
                 });
             };
         }

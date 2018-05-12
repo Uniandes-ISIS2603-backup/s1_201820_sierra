@@ -1,15 +1,15 @@
 (function (ng) {
-    var mod = ng.module("mascotaadopModule");
-    mod.constant("mascotaaContext", "api/mascotas");
-    mod.controller('mascotacreateCtrl', ['$scope', '$http', 'mascotaaContext', '$state', '$rootScope',
+    var mod = ng.module("mascotaVentaModule");
+    mod.constant("mascotaVentaContext", "api/mascotasVenta");
+    mod.controller('mascotaVentaCreateCtrl', ['$scope', '$http', 'mascotaVentaContext', '$state', '$rootScope',
         
-        function ($scope, $http, mascotaaContext, $state, $rootScope) {
+        function ($scope, $http, mascotaVentaContext, $state, $rootScope) {
             $rootScope.edit = false;
 
             $scope.data = {};
             $scope.createMascota = function () {
-                $http.post(mascotaaContext, $scope.data).then(function (response) {
-                    $state.go('mascotasList', {mascotaId: response.data.id}, {reload: true});
+                $http.post(mascotaVentaContext, $scope.data).then(function (response) {
+                    $state.go('mascotasVentaList', {mascotaId: response.data.id}, {reload: true});
                 });
             };
         }

@@ -1,10 +1,10 @@
 (function (ng) {
-    var mod = ng.module("mascotaadopModule");
-    mod.constant("mascotaaContext", "api/mascotaAdoptadas");
-    mod.controller('mascotaDetailCtrl', ['$scope', '$http', 'mascotaaContext', '$state', '$filter',
-        function ($scope, $http, mascotaaContext, $state, $filter) {
+    var mod = ng.module("mascotaVentaModule");
+    mod.constant("mascotaVentaContext", "api/mascotasVenta");
+    mod.controller('mascotaVentaDetailCtrl', ['$scope', '$http', 'mascotaVentaContext', '$state', '$filter',
+        function ($scope, $http, mascotaVentaContext, $state, $filter) {
             if (($state.params.mascotaId !== undefined) && ($state.params.mascotaId !== null)) {
-                $http.get(mascotaaContext).then(function (response) { 
+                $http.get(mascotaVentaContext).then(function (response) { 
                     $scope.mascotasRecords = response.data;
                     $scope.currentMascota = $filter('filter')($scope.mascotasRecords, {id: $state.params.mascotaId}, true)[0];
                    
