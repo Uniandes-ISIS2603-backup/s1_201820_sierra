@@ -56,21 +56,19 @@
                       controller:'facturaUpdateCtrl'
                    }
                 }
-            }).state('facturaDelete', (
-                url:'/(facturaId:int)/delete',
-                param:(
-                        facturaId:null
-                ),
-                views:(
-                    'mainView':(
-                        templateUrl: basePath + 'list/factura.list.html',
-                        controller:'factura.delete.html'
-                    )
-                        
-                    )
-               
-                    
-            ));
+            })
+               .state('facturaDelete', {
+                url:'/{facturaId:int}/delete',
+                param:{
+                   facturaId : null
+                },
+                views:{
+                    'mainView':{
+                      templateUrl: basePath + 'list/factura.list.html',
+                      controller:'facturaDeleteCtrl'
+                   }
+                }
+            });
             
             
             
