@@ -1,12 +1,12 @@
 (function(ng){
     
-    var mod=ng.module('certificadoModule');
-    mod.constant('certificadoContext','api/certificados');
-    mod.controller('certificadoCtrl',['$scope','$http','certificadoContext',
-            function($scope, $http, certificadoContext,$state,$filter){
-            // carga las entidades de certificado
-            $http.get(certificadoContext).then(function (response) {
-                $scope.certificadosRecords = response.data;
+    var mod=ng.module('razaModule');
+    mod.constant('razaContext','api/razas');
+    mod.controller('razaCtrl',['$scope','$http','razaContext',
+            function($scope, $http, razaContext,$state,$filter){
+            // carga las entidades de especie
+            $http.get(razaContext).then(function (response) {
+                $scope.razasRecords = response.data;
             });
     }]);
     
