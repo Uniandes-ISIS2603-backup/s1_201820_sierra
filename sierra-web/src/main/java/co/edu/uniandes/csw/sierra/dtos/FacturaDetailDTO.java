@@ -105,7 +105,7 @@ public class FacturaDetailDTO extends FacturaDTO {
         }
         List<ComprobanteEntity> comprobantesEntity = new ArrayList<>();
         if (comprobantes.size() > 0) {
-            for (ComprobanteDetailDTO comprobanteActual : comprobantes) {
+            for (ComprobanteDTO comprobanteActual : comprobantes) {
                 comprobantesEntity.add(comprobanteActual.toEntity());
             }
         }

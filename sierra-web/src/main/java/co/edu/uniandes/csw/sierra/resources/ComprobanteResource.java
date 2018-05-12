@@ -43,7 +43,7 @@ import javax.ws.rs.WebApplicationException;
  * @author ja.amortegui10
  */
 //TODO: Revisar el path para llegar a este recurso
-@Path( "facturas/{id: \\d+}/comprobantes" )
+@Path( "comprobantes" )
 @Produces( "application/json" )
 @Consumes( "application/json" )
 @RequestScoped
