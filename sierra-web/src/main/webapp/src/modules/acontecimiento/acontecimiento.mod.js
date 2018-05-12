@@ -14,11 +14,11 @@
             //Estado iincial
             $stateProvider.state('acontecimientos',{
                 url:'/acontecimientos',
+                abstrac:true,
                 views: {
                     'mainView':{
                         templateUrl: basePath + 'acontecimiento.html',
-                        controller: 'acontecimientoCtrl',
-                        controllerAs:'ctrl'
+                        controller: 'acontecimientoCtrl'
                     }
                 }
             })
@@ -44,7 +44,20 @@
                     }
                 }
                     }
-                    );
+                    )
+            //Estado actualizar
+            .state('acontecimientoUpdate', {
+                url:'/{acontecimientoId:int}/update',
+                param:{
+                   acontecimientoId : null
+                },
+                views:{
+                    'mainView':{
+                      templateUrl: basePath + 'update/acontecimiento.update.html',
+                      controller:'acontecimientoUpdateCtrl'
+                   }
+                }
+            });
         }
     ]);
 })(window.angular);

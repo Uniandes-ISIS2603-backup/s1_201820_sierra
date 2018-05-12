@@ -57,19 +57,22 @@ public class RazaDTO {
     }
     public RazaDTO(RazaEntity razaEntity)
     {
+        this.nombreRaza = razaEntity.getNombreRaza();
         this.caracteristicas = razaEntity.getCaracteristicas();
         this.cuidados = razaEntity.getCuidados();
         this.destacable = razaEntity.getDestacable();
         this.id = razaEntity.getId();
-        this.nombreRaza = razaEntity.getNombreRaza();
+       
     }
     
     public RazaEntity toEntity(){
+        
         RazaEntity entity = new RazaEntity();
+        entity.setNombreRaza(nombreRaza);
         entity.setCaracteristicas(caracteristicas);
         entity.setCuidados(cuidados);
         entity.setDestacable(destacable);
-        entity.setName(nombreRaza);
+        
         entity.setId(Long.MIN_VALUE);
         
         return entity;

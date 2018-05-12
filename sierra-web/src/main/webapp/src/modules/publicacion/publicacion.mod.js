@@ -33,7 +33,20 @@
                   }
               }
                       
-          });
+          })
+          .state('publicacionUpdate', {
+                url:'/{publicacionId:int}/update',
+                parent:'publicacion',
+                param:{
+                   acontecimientoId:null
+                },
+                views:{
+                    'detailView':{
+                      templateUrl: basePath + 'publicacion.create.html',
+                      controller:'publicacionUpdateCtrl'
+                   }
+                }
+            });
   }
   ]);
 } )(window.angular);
