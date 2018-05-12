@@ -25,7 +25,7 @@
                 url:'/facturas/create',
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'create/factura.create.html',
+                        templateUrl: basePath + 'factura.create.html',
                         controller: 'facturaCreateCtrl'
                     }
                 }
