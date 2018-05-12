@@ -7,7 +7,7 @@
             </div>
 </div>
 <hr>
-    <h4>Crear Publicación: </h4> <br> <br>
+    <h4>Editar Publicación: </h4> <br> <br>
     <div class="container-fluid">
    
         <div class="form-group row">
@@ -20,32 +20,27 @@
           <div class="form-group row">
      <div class="form-group col-md-6">
             <label for="publicacionTipo" class="col-sm-3">Tipo:</label>
-            <input type="number" id="publicacionTipo" required ng-model="data.tipo" class="col-sm-6"/>
+            <input type="text" id="publicacionTipo" required ng-model="data.tipo" class="col-sm-6"/>
         </div>
         </div>
         
         <div class="form-group row">
      <div class="form-group col-md-6">
             <label for="publicacionFecha" class="col-sm-3">Fecha:</label>
-            <input type="date" id="acontecimientoFecha" required ng-model="data.fecha" class="col-sm-6"/>
+            <input type="text" id="acontecimientoFecha" required ng-model="data.fecha" class="col-sm-6"/>
         </div>
         </div>
      
-        <div class="form-group row">
-        <div class="form-group col-md-6">
-            <label for="publicacionImagen" class="col-sm-3">Imagen:</label>
-            <input placeholder="url" type="url" id="publicacionFecha" required ng-model="data.imagen" class="col-sm-6"/>
-        </div>
-    </div>
         
          <div class="form-group row">
             <div class="form-group col-sm-12">
                 <a class="btn btn-info" ui-sref="publicacionList" >Cancelar</a>
-                <input  ng-click="createPublicacion()"value="Agregar" class="btn btn-success"/>
+                <input  ng-click="updatePublicacion()"value="Guardar" class="btn btn-success"/>
             </div>
         </div>
           </div>  
 
 
     
+
 

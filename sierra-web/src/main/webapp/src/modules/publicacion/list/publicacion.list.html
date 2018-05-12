@@ -11,20 +11,26 @@
 <h2>Últimas Publicaciones:</h2>
 <div class="container-fluid">
         <div class="col-sm-6 col-md-4 col-lg-2 col-xs-12" ng-repeat="publicacion in publicaciones">
-           <div class="thumbnail">
-                <img class="img-responsive" ng-src='{{publicacion.fotoURL}}' alt="{{publicacion.nombre}}" />  
-                <div class="caption text-center">{{publicacion.nombre}}</div>
+          <p id ="{{$index}}-publicacionId" style = "visibility:hidden">{{publicacion.id}}</p>
+            <div class="thumbnail">
+                <img id="{{$index}}-publicacionfotoURL" class="img-responsive" ng-src='{{publicacion.fotoURL}}' alt="{{publicacion.nombre}}" />  
             </div>
             <div>
                 <b>Tipo:</b>
-                <p>{{publicacion.tipo}}</p>
+                <p id="{{$index}}-publicacionTipo">{{publicacion.tipo}}</p>
             </div>
             <div class ="row">
                 <b>Fecha:</b>
-                <p>{{publicacion.fecha|date}}</p>
+                <p id="{{$index}}-publicacionfecha">{{publicacion.fecha|date}}</p>
             </div>
             <div class ="row">
                 <b>Comentario:</b>
-                <p>{{publicacion.comentario}}</p>
+                <p id="{{$index}}-publicacionComentario">{{publicacion.comentario}}</p>
             </div>
+            <div class ="row">
+                <p id="{{$index}}-Editar"><a ui-sref="publicacionUpdate({publicacionId:publicacion.id})"><input type="button"  value="Editar"></a></p> 
+                 </div>
+             <div class ="row">
+                <p id="{{$index}}-Borrar"><a ui-sref="publicacionDelete({publicacionId:publicacion.id})"><input type="button"  value="Borrar"></a></p>    
+                </div>  
           </div>          
