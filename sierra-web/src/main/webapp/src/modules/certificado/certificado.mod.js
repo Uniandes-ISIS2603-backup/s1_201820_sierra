@@ -35,7 +35,7 @@
               url:'/{certificadoId:int}/detail',
               parent:'certificados',
               param:{
-                  certificadoId:null
+                  especiId:null
               },
               views:{
                   'listView':{
