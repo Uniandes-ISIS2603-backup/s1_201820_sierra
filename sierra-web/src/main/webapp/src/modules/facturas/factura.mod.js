@@ -9,7 +9,7 @@
             //basePath es la variable con la ruta para encontrar los templates, controladores y modulo.
             var basePath = 'src/modules/facturas/';
             //Estado por defecto
-            $urlRouterProvider.otherwise("/facturasList");
+            $urlRouterProvider.otherwise("/facturas");
            //Definicion de los estados
             //Estado iincial
             $stateProvider.state('facturas',{
@@ -18,7 +18,8 @@
                 views: {
                     'mainView':{
                         templateUrl: basePath + 'factura.html',
-                        controller: 'facturaCtrl'
+                        controller: 'facturaCtrl',
+                        constrollerAs:'ctrl'
                     }
                 }
             })
@@ -46,14 +47,15 @@
                     })
             //Estado actualizar
             .state('facturaUpdate', {
-                url:'/{facturaId:int}/update',
+                url:'{facturaId:int}/update',
                 param:{
                    facturaId : null
                 },
                 views:{
                     'mainView':{
                       templateUrl: basePath + 'update/factura.update.html',
-                      controller:'facturaUpdateCtrl'
+                      controller:'facturaUpdateCtrl',
+                      controllerAs:'ctrl'
                    }
                 }
             })
