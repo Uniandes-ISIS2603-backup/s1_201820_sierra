@@ -13,21 +13,21 @@
     <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="facturaIdCliente" class="col-sm-3">Id Cliente:</label>
-            <input placeholder="Id del cliente" type="text" id="facturaIdCliente" required ng-model="data.idCliente" class="col-sm-6"/>
+            <input type="number" id="facturaIdCliente" required ng-model="data.idCliente" class="col-sm-6"/>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="facturaNombreCliente" class="col-sm-3">Nombre CLiente:</label>
-            <input placeholder="Nombre Cliente" type="text" id="facturaNombreCliente" required ng-model="data.nombreCliente" class="col-sm-6"/>
+            <inpu type="text" id="facturaNombreCliente" required ng-model="data.nombreCliente" class="col-sm-6"/>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="form-group col-md-6">
-            <label for="valor" class="col-sm-3">valor: </label>
-            <input type="number" id="valor" required ng-model="data.valor" class="col-sm-6"/>
+            <label for="facturaValor" class="col-sm-3">valor: </label>
+            <input type="number" id="facturaValor" required ng-model="data.valor" class="col-sm-6"/>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
     <div class="form-group row">
         <div class="form-group col-sm-12">
             <a class="btn btn-info" ui-sref="facturasList" >Cancelar</a>
-            <input  ng-click="updateFactura()"value="Guardar" class="btn btn-success"/>
+            <a  ng-click="updateFactura()" class="btn btn-success" ui-sref="facturasList">Guardar</a>
         </div>
     </div>
 </div>
