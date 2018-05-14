@@ -3,6 +3,7 @@
     mod.constant("mascotaVentaContext", "api/mascotasVenta");
     mod.controller('mascotaVentaDetailCtrl', ['$scope', '$http', 'mascotaVentaContext', '$state', '$filter',
         function ($scope, $http, mascotaVentaContext, $state, $filter) {
+            //console.log("mascotaVentaDetail" + $state.params);
             if (($state.params.mascotaId !== undefined) && ($state.params.mascotaId !== null)) {
                 $http.get(mascotaVentaContext).then(function (response) { 
                     $scope.mascotasRecords = response.data;

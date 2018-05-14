@@ -41,7 +41,7 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                    }
                    ,detailView:{
                        templateUrl: basePath+"mascotaVentaDetail.html",
-                       controller:'mascotaDetailCtrl',
+                       controller:'mascotaVentaDetailCtrl',
                        controllerAs: 'Crtl'
                    }
               }
@@ -99,7 +99,7 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                'detailView':
                 {
                    templateUrl: basePath + "/new/mascota.create.html",
-                   controller:'mascotacVentaCreateCtrl',
+                   controller:'mascotaVentaCreateCtrl',
                    controllerAs: 'Crtl'
                 }
               }

@@ -1,7 +1,7 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <hr>
 <div class="container-fluid" >    
-    <h4 style="text-align: center"> Registro de una nueva mascota Adopcion</h4>
+    <h4 style="text-align: center"> Registro de una nueva mascota para venta</h4>
     <br>
     <div class="col-sm-4" >
         <form  class="FormularioEspecie" name="MascotaAdop">   
@@ -33,6 +33,9 @@
             <div>
             <center>
             <lable>TAMAÑO:</lable>&nbsp;<input type="text" class="tamanoMascota" requiere ng-model="data.tamano" placeholder="tamano" >
+            </center>
+            <br>
+            <lable>PRECIO:</lable>&nbsp;<input type="text" class="tamanoMascota" requiere ng-model="data.precio" placeholder="tamano" >
             </center>
             <br>
             <center>
