@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-tabs">
@@ -5,37 +6,36 @@
             <li><a ui-sref="comprobantesList">Lista</a></li>
             <li><a ui-sref="comprobanteCreate">Crear</a></li>
         </ul>
-            </div>
+    </div>
 </div>
 <hr>
 <h4>Crear Acontecimiento: </h4><br><br>
-      <div class="container-fluid">
+<div class="container-fluid">
     <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="comprobanteValorTotal" class="col-sm-3">Valor Total: </label>
             <input placeholder="Valor total del comprobante" type="text" id="comprobanteValorTotal" required ng-model="data.valorTotal" class="col-sm-6"/>
         </div>
     </div>
-    
-          <div class="form-group row">
+
+    <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="comprobanteFecha" class="col-sm-3">Fecha:</label>
             <input placeholder="Fecha del comprobante" type="date" id="comprobanteFecha" required ng-model="data.fecha" class="col-sm-6"/>
         </div>
     </div>
-          
-       <div class="form-group row">
+
+    <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="clienteId" class="col-sm-3">Id del Cliente: </label>
             <input type="number" id="clienteId" required ng-model="data.importancia" class="col-sm-6"/>
         </div>
     </div>
-       
-            <div class="form-group row">
-            <div class="form-group col-sm-12">
-                <a class="btn btn-info" ui-sref="comprobantesList" >Cancelar</a>
-                <input  ng-click="createComprobante()"value="Agregar" class="btn btn-success"/>
-            </div>
+
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <a class="btn btn-info" ui-sref="comprobantesList" >Cancelar</a>
+            <input  ng-click="createComprobante()"value="Agregar" class="btn btn-success"/>
         </div>
-      </div>
- 
+    </div>
+</div>

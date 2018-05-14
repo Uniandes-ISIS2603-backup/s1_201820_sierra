@@ -1,4 +1,14 @@
 
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <!-- Enlace al estado de listar las entidades de Sierra -->
+            <li><a ui-sref="comprobantesList">Lista</a></li>
+            <li><a ui-sref="comprobanteCreate">Crear</a></li>
+        </ul>
+            </div>
+</div>
+<hr>
 <div class="container-fluid" style="margin: 10%; padding: 0; padding-left: 20px; border-left: 0.5px solid grey; box-shadow:  -5px 0 1px rgba(0,0,0,0.4)">
     <div class="well">
         <h2>
@@ -19,6 +29,14 @@
                 <label>Total: </label> <label>{{comprobante.valorTotal}}</label><br>
                 <hr>
                 <label>Pagado en: </label><label>{{comprobante.fecha}}</label>
+                <hr>
+                <div>
+                    <a ui-sref="comprobanteUpdate">modificar</a>
+                </div>
+                <div>
+                    <a ui-sref="comprobanteDelete">delete</a>
+                </div>
+                
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@
     <div class="row" style=" margin:1%" >
 
         <!--Lista de Facturas-->
-        <div class="col-sm-12 col-lg-6 col-md-6" ng-repeat="factura in facturaRecords" >
+        <div class="col-sm-12 col-lg-6 col-md-6" ng-repeat="factura in facturas" >
             <div class="thumbnail " style=" border-radius: 5%;padding-bottom:0;padding-top:0">
                 <h3 style="margin:5%">
                     Factura Adquisición
@@ -33,10 +33,10 @@
                         </div>
                     </div>
                     <div>
-                        <p id ="{{$index}}-Editar"><a ui-sref="facturaUpdate({facturaId:factura.id})"></a></p>
+                        <p id ="{{$index}}-facturaEditar"><a ui-sref="facturaUpdate({facturaId:factura.id})">Editar</a></p>
                     </div>
                     <dov>
-                        <p id="{{$index}}-Borrar"><a ui-sref="deleteFactura({facturaId:factura.id})"></a></p>
+                        <p id="{{$index}}-facturaBorrar"><a ui-sref="facturaDelete({facturaId:factura.id})">Borrar</a></p>
                     </dov>
                     
                 </div>
