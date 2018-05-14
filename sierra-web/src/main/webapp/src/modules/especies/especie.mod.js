@@ -4,7 +4,6 @@
  mod.constant('especieContext','api/especies');
  mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
          var basePath = 'src/modules/especies/';
-         $urlRouterProvider.otherwise("/especiesList");
          $stateProvider.state('especies',{
              url:'/especies',
              abstrac:true,
