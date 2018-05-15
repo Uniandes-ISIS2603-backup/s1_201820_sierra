@@ -108,13 +108,14 @@ public class AdquisicionLogic {
     /**
      * Elimina una Adquisicion
      * @param id
+     * @throws BusinessLogicException Excepcion lanzada cuando no existe la adquisicion
      */
-    public void delete(Long id) throws Exception{
+    public void delete(Long id) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Eliminando la Adquisicion con id ={0}", id);
         if(persistencia.find(id) != null){ 
             persistencia.delete(id);
         }else{
-            throw new Exception("No existe una adquisicion con el id dado");
+            throw new BusinessLogicException("No existe una adquisicion con el id dado");
         }
     }
 
