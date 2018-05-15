@@ -126,7 +126,7 @@ public class ClienteDetailDTO extends ClienteDTO {
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity cliente = new ClienteEntity();
-        MascotaEntity otra = null;
+        MascotaEntity otra;
         if (deseadas != null) {
             List<MascotaEntity> mascotas = new ArrayList<>();
             for (MascotaDTO dtoMascota : deseadas) {

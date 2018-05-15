@@ -89,7 +89,7 @@ public class EspecieLogic
     {
         EspecieEntity ent= persistence.findById(entity.getId());
         if (ent!=null) {
-            if (entity.getNombre().equals("") || entity.getClasificacion().equals("")) {
+            if (("").equals(entity.getNombre()) || ("").equals(entity.getClasificacion())) {
                 return null;
             }
             else{

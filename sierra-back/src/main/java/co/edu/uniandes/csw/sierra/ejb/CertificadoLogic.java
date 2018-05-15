@@ -46,10 +46,14 @@ public class CertificadoLogic {
     {
         return persistence.find(id);
     }
-    
-    public CertificadoEntity update(CertificadoEntity entity) throws Exception
+    /**
+     * 
+     * @param entity
+     * @return
+     * @throws BusinessLogicException 
+     */
+    public CertificadoEntity update(CertificadoEntity entity) throws BusinessLogicException
     {
-//TODO: NO hay ninguna regla de negocio? 
         LOGGER.info("Inicia el proceso de actualizar un certificado.");
          if(persistence.find(entity.getId()) == null)
             throw new BusinessLogicException("No existe un certificado con el id dado.");
@@ -60,7 +64,6 @@ public class CertificadoLogic {
     public void delete(Long id) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de eliminar una entidad de certificado.");
-        // TODO: Hay que validar que existe Certificado con ese id (corregido)
         if(persistence.find(id) == null)
         {
             throw new BusinessLogicException("Ya existe una entidad de certificado con el mismo id: " + id);

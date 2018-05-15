@@ -165,7 +165,6 @@ insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (107, '1
 insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (108, '3/8/2017', 4900605,113);
 
 
-
 /*CALIFICACIONES*/
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_id) values (101, 'Open-source modular help-desk', 'Statistician I', 3.41, 101);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_id) values (102, 'Multi-channelled full-range knowledge base', 'Systems Administrator I', 3.83, 102);
@@ -197,3 +196,8 @@ insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, masco
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(114, 'El gato Mishu conoce nuevos amigos', '09/04/2018','recursos/img/gatos.jpg','Mishu conoce nuevos amigos ','tierno',  116);
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(115, 'El entierro de Zeus se realizara el proximo fin de semana', '01/05/2018','recursos/img/samoyedo.jpg','Entierro de Zeus ','tragico',  112);
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(116, 'Mishu se traga los pericos australianos de su dueno', '09/29/2017','recursos/img/pericos australianos.jpg','Mishu se traga los pericos australianos de su dueno ','gracioso',  116);
+
+
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (2,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,2);
