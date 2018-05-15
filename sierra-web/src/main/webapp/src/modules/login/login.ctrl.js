@@ -6,10 +6,10 @@
             $scope.user = {};
             $scope.data = {};
             
-            $http.get('data/users.json').then(function (response) {
+            $http.get('data/usuarios.json').then(function (response) {
                 $scope.users = response.data;
             });
-
+          
        
             $scope.autenticar = function () {
                 var flag = false;

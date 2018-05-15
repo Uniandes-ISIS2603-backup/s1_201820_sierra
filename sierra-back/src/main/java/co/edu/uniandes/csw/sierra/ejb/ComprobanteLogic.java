@@ -54,6 +54,7 @@ public class ComprobanteLogic {
         LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");      
     }
     
+    
     public List<ComprobanteEntity> getAll()
     {
         LOGGER.info("Inicia el proceso de consultar todas las entidades de Comprobante.");
