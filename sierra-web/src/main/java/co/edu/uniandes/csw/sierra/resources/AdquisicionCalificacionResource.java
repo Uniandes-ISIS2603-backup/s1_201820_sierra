@@ -33,6 +33,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -78,9 +79,18 @@ public class AdquisicionCalificacionResource {
      */
     @POST
     @Path("{calificacionId: \\d+}")
-    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId){
+    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId)
+    {
         System.out.println("adqId: " + adqId + "\ncalId: " + calId);
-        return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+        try
+        {
+            return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+        }
+        catch(Exception e)
+        {
+            throw new WebApplicationException("404: " + e.getMessage());
+        }
+        
         
     }
     
