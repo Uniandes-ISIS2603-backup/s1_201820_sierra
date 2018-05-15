@@ -63,7 +63,7 @@ public class ClienteMediosResource {
    @POST
    @Path("{medioId:\\d+}")
    public MedioDePagoDTO addMedio(@PathParam("clienteId") Long clienteId, @PathParam("medioId") Long medioId){
-       return new MedioDePagoDTO(clienteLogic.addMedio(clienteId, clienteId));
+       return new MedioDePagoDTO(clienteLogic.addMedio(clienteId, medioId));
    }
    
    @PUT

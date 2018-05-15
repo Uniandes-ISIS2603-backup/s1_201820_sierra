@@ -90,10 +90,9 @@ public class RazaLogic
      */
     public RazaEntity update(RazaEntity entity)
     {
-        //TODO: No hay ninguna regla de negocio? 
           RazaEntity ent = persistence.find(entity.getId());
         if (ent!=null) {
-            if (entity.getNombreRaza().equals("")) {
+            if (("").equals(entity.getNombreRaza())) {
                 return null;
             }
             else{
@@ -107,10 +106,10 @@ public class RazaLogic
      * Elimina una instancia de Raza de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
+     * @throws BusinessLogicException exception cuando no exite una raza con ese id.
      */
     public void delete(Long id) throws BusinessLogicException {
-        //TODO: este método debe recibir un id y hay que validar que existe Raza con ese id(corregido
-        if(persistence.find(id) == null)
+         if(persistence.find(id) == null)
         {
             throw new BusinessLogicException("El elemento que se desea eliminar no existe");
         }

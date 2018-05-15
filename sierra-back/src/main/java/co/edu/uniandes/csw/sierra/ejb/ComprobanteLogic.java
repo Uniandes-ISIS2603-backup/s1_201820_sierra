@@ -37,9 +37,7 @@ public class ComprobanteLogic {
     public void create(ComprobanteEntity entity, Long medioDePagoId, Long facturaId)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de cración de una entidad de Comprobante");
-        //TODO: No tiene sentido validar que existe la entidad con el id porque
-        // aun no se tiene el id. EL id es la PK que crea la BD después de persistirlo y hacer commit de la transacción. 
-          //TODO: NO hay ninguna regla de negocio? 
+         
         MedioDePagoEntity medioPago = medioDePagoLogic.getMedioDePago(medioDePagoId);
         if(medioPago == null)
             throw new BusinessLogicException("El medio de pago con el id dado por parámetro no existe.");
@@ -47,11 +45,12 @@ public class ComprobanteLogic {
         if(factura == null)
             throw new BusinessLogicException("La factura con el id dado por parámetro no existe.");
          
+        entity = addMedioDePago(entity.getId(), medioDePagoId);
+        entity = addFactura(entity.getId(), facturaId);
         persistence.create(entity);
         System.out.println(">----------------------------------< \n \nComprobante Id: "+entity.getId() +"cliente Id: " + entity.getClienteId()
         +"\n \n >----------------------------------<");
-        entity = addMedioDePago(entity.getId(), medioDePagoId);
-        entity = addFactura(entity.getId(), facturaId);
+        
         LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");      
     }
     

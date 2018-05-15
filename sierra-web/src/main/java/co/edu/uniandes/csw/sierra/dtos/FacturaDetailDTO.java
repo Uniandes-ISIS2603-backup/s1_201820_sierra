@@ -104,7 +104,7 @@ public class FacturaDetailDTO extends FacturaDTO {
             entity.setAdquisicion(adquisicion.toEntity());
         }
         List<ComprobanteEntity> comprobantesEntity = new ArrayList<>();
-        if (comprobantes.size() > 0) {
+        if (!comprobantes.isEmpty()) {
             for (ComprobanteDTO comprobanteActual : comprobantes) {
                 comprobantesEntity.add(comprobanteActual.toEntity());
             }

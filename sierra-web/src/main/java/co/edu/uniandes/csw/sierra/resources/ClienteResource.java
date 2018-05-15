@@ -100,6 +100,7 @@ public class ClienteResource
      * </pre>
      * @param id Identificador del cliente que se esta buscando. Este debe ser una cadena de digitos.
      * @return JSON {@link ClienteDetailDTO} - El cliente buscado.
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}. no exite
      */
     @GET
@@ -134,7 +135,7 @@ public class ClienteResource
      */
     @PUT 
     @Path( "{id: \\d+}")
-    public ClienteDTO updateCliente (@PathParam ("id") Long id, ClienteDTO infoCliente) throws BusinessLogicException
+    public ClienteDTO updateCliente (@PathParam ("id") Long id, ClienteDTO infoCliente) throws BusinessLogicException 
     {
         infoCliente.setId(id);
         ClienteEntity entity = clienteLogic.getCliente(id);

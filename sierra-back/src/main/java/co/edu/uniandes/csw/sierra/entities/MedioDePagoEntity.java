@@ -29,7 +29,7 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @ManyToMany
-    private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
+    private List<ClienteEntity> clientes = new ArrayList<>();
     
     @PodamExclude
     @OneToOne(mappedBy="medioDePago", cascade = CascadeType.PERSIST)

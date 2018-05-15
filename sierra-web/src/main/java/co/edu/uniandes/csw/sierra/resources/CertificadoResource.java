@@ -163,7 +163,7 @@ public class CertificadoResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public CertificadoDetailDTO updateCertificado(@PathParam("id") Long id, CertificadoDetailDTO dDTO) throws Exception, WebApplicationException, BusinessLogicException {
+    public CertificadoDetailDTO updateCertificado(@PathParam("id") Long id, CertificadoDetailDTO dDTO) throws  BusinessLogicException {
         CertificadoEntity entity = dDTO.toEntity();
         entity.setId(id);
         CertificadoEntity oldEntity = certificadoLogic.getById(id);
