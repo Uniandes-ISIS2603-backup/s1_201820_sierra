@@ -89,6 +89,7 @@ public class CalificacionLogic {
      * Actualiza una Calificacion 
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
+     * @throws BusinessLogicException ec¿scepcion cuando no se cumple las condiciones de una calificacion
      */
     public CalificacionEntity update(CalificacionEntity ent) throws BusinessLogicException{
         if(ent.getValor() > 5){
@@ -104,15 +105,15 @@ public class CalificacionLogic {
     /**
      * Elimina una Calificacion
      * @param id el id de la calificacion que se desea eliminar
-     * @throws java.lang.Exception si no existe la calificacion
+     * @throws BusinessLogicException excepcion cuando no existe la calificacion
      */
-    public void delete(Long id)throws Exception{
+    public void delete(Long id)throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Eliminando la Calificacion con id ={0}", id);
         if(persistencia.find(id) != null){
             persistencia.delete(id);
         }else{
             LOGGER.log(Level.WARNING, "No se borra la calificacion con id={0}", id);
-            throw new Exception("No existe la calificacion");
+            throw new BusinessLogicException("No existe la calificacion");
         }
     }
     

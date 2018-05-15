@@ -106,7 +106,6 @@ insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (1, 10, 'efecti
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (2, 20, 'tarjeta debito');
 insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (3, 30, 'tarjeta credito');
 
-
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (100,1,'Andres', 20000);
 insert into facturaEntity(id, idCliente, nombreCliente, valor) values (101,1,'Andres', 130000);
 
@@ -129,3 +128,8 @@ insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, masco
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(114, 'El gato Mishu conoce nuevos amigos', '09/04/2018','recursos/img/gatos.jpg','Mishu conoce nuevos amigos ','tierno',  116);
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(115, 'El entierro de Zeus se realizara el proximo fin de semana', '01/05/2018','recursos/img/samoyedo.jpg','Entierro de Zeus ','tragico',  111);
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(116, 'Mishu se traga los pericos australianos de su dueno', '09/29/2017','recursos/img/pericos australianos.jpg','Mishu se traga los pericos australianos de su dueno ','gracioso',  116);
+
+
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (2,1);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,2);
