@@ -21,6 +21,7 @@
         //Juan David
          'adquisicionModule',
          'calificacionModule',
+         'mascotaVentaModule',
         //Julio 
         'acontecimientoModule',
         'publicacionModule'

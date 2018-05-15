@@ -78,9 +78,9 @@ public class AdquisicionLogic {
      * @return 
      */
     public List<AdquisicionEntity> getAll(){
-        LOGGER.info("Consultando todas las entidades de Adquisicion");
+        LOGGER.info("AdquisicionLogic: Consultando todas las entidades de Adquisicion");
         List<AdquisicionEntity> r = persistencia.findAll();
-        LOGGER.info("consultadas todas las entidades de Adquisicion");
+        LOGGER.info("AdquisicionLogic: consultadas todas las entidades de Adquisicion");
         return r;
     }
     /**

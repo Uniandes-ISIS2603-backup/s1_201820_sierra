@@ -61,7 +61,7 @@ public class AdquisicionPersistence {
      * @return una lista con todas las adquisiciones.
      */
     public List<AdquisicionEntity> findAll() {
-        LOGGER.info("Consultando todas las entidades de Adquisicion");
+        LOGGER.info("AdquisicionPersistence: Consultando todas las entidades de Adquisicion");
         TypedQuery<AdquisicionEntity> query = em.createQuery("select u from AdquisicionEntity u", AdquisicionEntity.class);
         return query.getResultList();
     }
