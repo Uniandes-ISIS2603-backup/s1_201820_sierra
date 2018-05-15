@@ -33,6 +33,7 @@ public class ComprobanteLogic {
     @Inject 
     private FacturaLogic facturaLogic;
     
+  
     public void create(ComprobanteEntity entity, Long medioDePagoId, Long facturaId)throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de cración de una entidad de Comprobante");
