@@ -32,7 +32,7 @@
         })
         .state('comprobanteCreate',
         {
-            url:'/comprobantes/create)',
+            url:'/comprobantes/create',
             views:{
                 mainView:{
                     

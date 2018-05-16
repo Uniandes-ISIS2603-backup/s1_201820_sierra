@@ -1,8 +1,36 @@
 <div class="container-fluid">
-     <h1 style='text-align: center'>ADQUIERA UNA MASCOTA</h1> 
-     <div style="background-color:lightgray">
-                <ul class="nav nav-tabs"> 
-                <li> <a ui-sref="mascotasadopaatadas"> Adopccion </a></li>
-                <li> <a ui-sref="mascotasVenta"> Venta </a></li>
-     </ul>           
+     <h1 style='text-align: center'>MASCOTAS REGISTRADAS</h1> 
+     <h3  style='text-align: center'>Adopcion y Venta </h3>
+     <div  class="row">
+        <div class="col-sm-2" ng-repeat="mascota in mascotaaRecords">
+            <br>
+            <div  class="container-fluid" >
+                <div><center>
+                    <img  src="{{mascota.imagen}}" class="ImagenMascotas img-responsive img-circle" >
+                    </center></div>
+                <div style="text-align: center">  <label> Nombre:</label>{{mascota.nombre}}</div>
+                <div>
+                    <center>
+                         <center> <a ui-sref="mascotaaDetail({mascotaId: mascota.id})"><input type="button" value="ver"></a></center>
+                         
+                    </center>
+                </div>
+            </div>
+         </div>
+          <div class="col-sm-2" ng-repeat="mascota in mascotaVentaRecords">
+            <br>
+            <div  class="container-fluid" >
+                <div><center>
+                    <img  src="{{mascota.imagen}}" class="ImagenMascotas img-responsive img-circle" >
+                    </center></div>
+                <div style="text-align: center">  <label> Nombre:</label>{{mascota.nombre}}</div>
+                <div>
+                    <center>
+                         <center> <a ui-sref="mascotaVentaDetail({mascotaId: mascota.id})"><input type="button" value="ver"></a></center>
+                         
+                    </center>
+                </div>
+            </div>
+         </div>
+     </div>        
  </div>
