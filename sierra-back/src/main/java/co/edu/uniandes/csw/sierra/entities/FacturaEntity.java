@@ -128,11 +128,12 @@ public class FacturaEntity extends BaseEntity implements Serializable{
    
    /**
     * Agrega un sólo comprobante a la lista de comprobantes.
+     * @param comprobanteEntity
     */
    public void setComprobante(ComprobanteEntity comprobanteEntity)
    {
        if(comprobantes == null)
-           comprobantes = new ArrayList<ComprobanteEntity>();
+           comprobantes = new ArrayList<>();
        comprobantes.add(comprobanteEntity);
    }
 }

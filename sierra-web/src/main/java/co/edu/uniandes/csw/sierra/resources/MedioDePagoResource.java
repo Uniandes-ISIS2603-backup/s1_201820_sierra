@@ -58,9 +58,7 @@ public class MedioDePagoResource {
      * <code style="color: #c7254; background-color: #f9f2f4;">
      * 412 Precondition Failed: ya existe ese medio de pago:
      * </code>
-     * </pre>
      *
-     * @param idCliente
      * @param medio {@link MedioDePagoDetailDTO} - El medio de pago que se desea
      * guardar.
      * @return JSON {@link MedioDePagoDetailDTO}- El medio de pago guardado con
@@ -83,9 +81,7 @@ public class MedioDePagoResource {
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve todos los medioDePago de la aplicacion.</code>
-     * </pre>
      *
-     * @param idCliente
      * @return JSONArray {@link  MedioDePagoDetailDTO} - Los medios de pago en la
      * aplicacion. Si no hay ninguno retorna vacio.
      * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
@@ -109,7 +105,6 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
-     * @param idCliente
      * @param id Identificador del medioDePago que se esta buscando. Este debe
      * ser una cadena de digitos.
      * @return JSON {@link MedioDePagoDetailDTO} - El medioDePago buscado.
@@ -140,7 +135,6 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
-     * @param idCliente
      * @param id Identificador de la entidad medio de pago que se desea
      * actualizar. Este debe ser una cadena de digitos.
      * @param medio {@link MedioDePagoDetailDTO} La entidad de medio de pago que
@@ -172,9 +166,7 @@ public class MedioDePagoResource {
      * 200 OK Elimina la entidad de medioDePago correspondiente al id dado.</code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe una entidad de medioDePago con el id dado. </code>
-     * </pre>
      *
-     * @param idCliente
      * @param id Identificador de la entidad de medioDePago que se desea borrar.
      * Este debe ser una cadena de digitos.
      */
@@ -189,23 +181,10 @@ public class MedioDePagoResource {
     }
 
     /**
-     * lista de entidades a DTO.
-     *
-     * Este mÃ©todo convierte una lista de objetos MedioDePagoEntity a una lista
-     * de objetos MedioDePagoDetail (json)
-     *
-     * @param medioList corresponde a la lista de mediosDePago de tipo Entity
-     * que vamos a convertir a DTO.
-     * @return la lista de mediosDePago en forma DTO (json)
-     */
-    private List<MedioDePagoDetailDTO> listEntityDetailDTO(List<MedioDePagoEntity> medioList) {
-        List<MedioDePagoDetailDTO> list = new ArrayList<>();
-        for (MedioDePagoEntity entity : medioList) {
-            list.add(new MedioDePagoDetailDTO(entity));
-        }
-        return list;
-    }
-    
+     * Metodo para convertir una lista de entitys en una lista de DTO
+     * @param entityList Coleccion de entidades de medio de pago 
+     * @return Lista de DTOs de medio de pago.
+     */ 
     private List<MedioDePagoDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
         List<MedioDePagoDTO> list = new ArrayList<>();
         for (MedioDePagoEntity entity : entityList) {

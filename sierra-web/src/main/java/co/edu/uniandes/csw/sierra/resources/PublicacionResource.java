@@ -87,7 +87,6 @@ public class PublicacionResource
      * 200 OK Creo la publicacion  .
      * </code>
      * </pre>
-     *  @param id Identificador de la publicacion que se desea actualizar. Este debe ser una cadena de digitos.
      * @param puDto {@link PublicacionDTO} -La publicacion  que se
      * desea guardar.
      * @return JSON {@link PublicacionDetailDTO} -La publicacion se a
@@ -127,7 +126,6 @@ return listEntityToDTO(publicacionLogica.getAll());
      * 404 Not Found No existe una publicacion con el id dado.
      * </code>
      * </pre>
-     * @param idMascota(No)
      * @param id Identificador de la publicacion que se esta buscando. Este debe ser una cadena de digitos.
      * @return JSON {@link PublicacionDetailDTO} - La publicacion buscada.
      * @throws WebApplicationException {@link WebApplicationExceptionMapper}. 

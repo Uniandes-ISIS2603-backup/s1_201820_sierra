@@ -62,18 +62,23 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
         super();
     }
 
+     /**
+     * Constructor para transformar un Entity a un DTO
+     * @param entity La entidad de la cual se construye el DTO
+     */
     public MedioDePagoDetailDTO(MedioDePagoEntity entity) {
         super(entity);
-        if(entity != null){
-            if(entity.getClientes() != null){
-                clientes = new ArrayList<>();
-                for(ClienteEntity cliente : entity.getClientes()){
+        if(entity != null && entity.getClientes() != null){
+            clientes = new ArrayList<>();
+            for(ClienteEntity cliente : entity.getClientes()){
                     clientes.add(new ClienteDTO(cliente));
-                }
-            }
+             }
         }
     }
-
+    /**
+     * Transformar un DTO a un Entity
+     * @return El DTO de la cliente para transformar a Entity
+     */
     @Override
     public MedioDePagoEntity toEntity() {
         MedioDePagoEntity medio = super.toEntity();

@@ -40,6 +40,7 @@ public class SierraDetailDTO extends SierraDTO
 	 */
 	public SierraDetailDTO( )
 	{
+            //constructor por defecto
 	}
 
 	/**

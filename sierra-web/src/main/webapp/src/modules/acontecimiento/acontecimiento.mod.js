@@ -12,7 +12,21 @@
             $urlRouterProvider.otherwise("/acontecimientoList");
            //Definicion de los estados
             //Estado iincial
-            $stateProvider.state('acontecimientos',{
+            $stateProvider.state('acontecimientoDelete', {
+                url:'/acontecimiento/{acontecimientoId:int}/delete',
+                param:{
+                    acontecimientoId:null
+                },
+                views:{
+                    'mainView':{
+                      templateUrl: basePath + "delete/acontecimiento.delete.html",
+                      controller:'acontecimientoDeleteCtrl',
+                      controllerAs:'ctrl'
+                   }
+                }
+            }
+            )
+                    .state('acontecimientos',{
                 url:'/acontecimientos',
                 abstrac:true,
                 views: {

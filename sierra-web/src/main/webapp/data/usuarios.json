@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "Juan",
+        "user": "daju",
+        "password": "daju",
+        "rol": "admin",
+        "token": 123
+    }
+    ,
+    {
+        "id": 2,
+        "name": "Rodrigo",
+        "user": "rodrigo",
+        "password": "rodrigo",
+        "rol": "admin",
+        "token": 456
+    },
+      {
+        "id": 3,
+        "name": "Jhonatan",
+        "user": "jhonatan",
+        "password": "jhonatan",
+        "rol": "admin",
+        "token": 789
+    }, {
+        "id": 4,
+        "name": "cliente1",
+        "user": "cliente",
+        "password": "cliente",
+        "rol": "cliente",
+        "token": 111
+    }
+]
+ 

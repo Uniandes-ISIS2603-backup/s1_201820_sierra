@@ -113,6 +113,7 @@ public class ComprobanteLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
     }
     
+    
     @Test
     public void getComprobantesTest()
     {

@@ -32,17 +32,17 @@ public class AcontecimientoDTO {
     { //Método constructor por Defecto.
     }
 
-    public AcontecimientoDTO(AcontecimientoEntity Entity)
+    public AcontecimientoDTO(AcontecimientoEntity entity)
     { 
-       if(Entity != null)
+       if(entity != null)
        {
-        this.descripcion = Entity.getDescripcion();
-        this.fecha = Entity.getFecha();
-        this.fotoURL = Entity.getFotoURL();
-        this.id = Entity.getId();
-        this.tipo = Entity.getTipo();
-        this.nombre = Entity.getNombre();
-        this.importancia = Entity.getImportancia();
+        this.descripcion = entity.getDescripcion();
+        this.fecha = entity.getFecha();
+        this.fotoURL = entity.getFotoURL();
+        this.id = entity.getId();
+        this.tipo = entity.getTipo();
+        this.nombre = entity.getNombre();
+        this.importancia = entity.getImportancia();
     }
     }
 
