@@ -29,15 +29,15 @@ public class PublicacionDTO {
        //Defecto
     } 
     
-     public PublicacionDTO(PublicacionEntity Entity)
+     public PublicacionDTO(PublicacionEntity entity)
     {
-        if(Entity != null)
+        if(entity != null)
         {
-        this.comentario = Entity.getComentario();
-        this.fecha = Entity.getFecha();
-        this.fotoURL = Entity.getFotoURL();
-        this.id = Entity.getId();
-        this.tipo = Entity.getTipo();
+        this.comentario = entity.getComentario();
+        this.fecha = entity.getFecha();
+        this.fotoURL = entity.getFotoURL();
+        this.id = entity.getId();
+        this.tipo = entity.getTipo();
     } 
     }
     public PublicacionEntity toEntity()

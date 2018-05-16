@@ -61,8 +61,7 @@ public class SierraDetailDTO extends SierraDTO
 	@Override
 	public SierraEntity toEntity( )
 	{
-		SierraEntity sierraEntity = super.toEntity( );
-		return sierraEntity;
+		return super.toEntity();
 	}
 
 }
