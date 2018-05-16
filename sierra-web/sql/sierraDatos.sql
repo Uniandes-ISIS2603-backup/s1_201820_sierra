@@ -162,6 +162,8 @@ insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) val
 insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (106, '12/9/2017', 3466209,112, 115);
 insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (107, '1/24/2018', 3573395,112, 116);
 insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (108, '3/8/2017', 4900605,113, 117);
+/*Extra para postman*/
+insert into ADQUISICIONENTITY (id, fecha, valorTotal) values (400, '11/24/2017', 2146379);
 
 
 /*CALIFICACIONES*/
@@ -173,6 +175,9 @@ insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_id) values (106, 'Seamless high-level website', 'VP Quality Control', 2.08, 106);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_id) values (107, 'Customer-focused even-keeled secured line', 'Web Developer I', 2.54, 107);
 insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor, adquisicion_id) values (108, 'Grass-roots disintermediate moderator', 'Electrical Engineer', 1.93, 108);
+/*Extra para PostMan*/
+insert into CALIFICACIONENTITY (id, comentarios, sugerencia, valor) values (400, 'Grass-roots disintermediate moderator', 'Electrical Engineer', 1.93);
+
 
 /*CERTIFICADOS*/
 insert into CertificadoEntity(id, fecha, descripcion, imagen,mascotaventa_id) values (111, '01/02/2018', 'El perro cuenta con todas las vacunas', 'recursos/img/cer.jpg',115);
