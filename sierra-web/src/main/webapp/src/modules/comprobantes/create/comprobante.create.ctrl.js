@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("comprobanteModule");
     mod.constant("comprobanteContext", "api/comprobantes");
-    mod.controller('comprobanteCreateCtrl', ['$scope', '$http', 'comprobanteContext', '$state', '$rootScope',
+    mod.controller('comprobanteCreateCtrl', ['$scope', '$http', 'ComprobanteContext', '$state', '$rootScope',
         
         function ($scope, $http, acontecimientoContext, $state, $rootScope) {
             $rootScope.edit = true;
