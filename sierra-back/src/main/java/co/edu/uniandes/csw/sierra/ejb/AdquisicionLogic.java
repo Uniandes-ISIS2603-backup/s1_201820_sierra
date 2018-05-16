@@ -142,10 +142,16 @@ public class AdquisicionLogic {
     }
     
     
-    public FacturaEntity addFactura(Long adqId, Long facId)
+    public FacturaEntity addFactura(Long adqId, Long facId) throws BusinessLogicException
     {
         AdquisicionEntity adqEntity = getById(adqId);
+        if(adqEntity == null){
+            throw new BusinessLogicException("No existe una adquisicion con el Id: " + adqId);
+        }
         FacturaEntity facEntity = factLogic.getById(facId);
+        if(facEntity == null){
+            throw new BusinessLogicException("No existe una factura con el Id: " + facId);
+        }
         facEntity.setAdquisicion(adqEntity);
         adqEntity.setFactura(facEntity);
         return facEntity;
