@@ -113,6 +113,7 @@ public class RazaResource {
      */
     @GET
     public List<RazaDetailDTO> getRazas() {
+        System.out.println("RazaResource: GetAll");
         return listEntity2DTO(razaLogic.getAll());
     }
 

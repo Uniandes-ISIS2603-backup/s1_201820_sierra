@@ -41,13 +41,10 @@ import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
  * <
  * pre>
  *
- *   {
- *      "id": 1,
- *      "nombre": "Mamifero",
- *      "caracteristicas": " similares a los lobos, pelo blanco,negro  o cafe  con una combinacion de color",
- *      "clasificacion": "Canino"
- *      "imagen": especieCanino.jpg
- *   }
+ * {
+ * "id": 1, "nombre": "Mamifero", "caracteristicas": " similares a los lobos,
+ * pelo blanco,negro o cafe con una combinacion de color", "clasificacion":
+ * "Canino" "imagen": especieCanino.jpg }
  *
  * </pre>
  *
@@ -73,7 +70,7 @@ public class EspecieDTO {
      * Imagen de la especie
      */
     private String imagen;
-    
+
     /**
      * id de la especie
      */
@@ -92,14 +89,14 @@ public class EspecieDTO {
      *
      * @param especieEntity: Es la entidad que se va a convertir a DTO
      */
-    public EspecieDTO(EspecieEntity especieEntity) {   
-        
-        if (especieEntity!=null) {
-        this.id = especieEntity.getId();
-        this.nombre = especieEntity.getNombre();
-        this.clasificacion = especieEntity.getClasificacion();
-        this.caracteristicas = especieEntity.getCaracteristicas();
-        this.imagen=especieEntity.getImagen();
+    public EspecieDTO(EspecieEntity especieEntity) {
+
+        if (especieEntity != null) {
+            this.id = especieEntity.getId();
+            this.nombre = especieEntity.getNombre();
+            this.clasificacion = especieEntity.getClasificacion();
+            this.caracteristicas = especieEntity.getCaracteristicas();
+            this.imagen = especieEntity.getImagen();
         }
     }
 
@@ -159,9 +156,8 @@ public class EspecieDTO {
     public void setClasificacion(String calificacion) {
         this.clasificacion = calificacion;
     }
-    
-    
-        /**
+
+    /**
      * @return the imagen
      */
     public String getImagen() {
@@ -174,7 +170,6 @@ public class EspecieDTO {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
 
     /**
      * @return the id

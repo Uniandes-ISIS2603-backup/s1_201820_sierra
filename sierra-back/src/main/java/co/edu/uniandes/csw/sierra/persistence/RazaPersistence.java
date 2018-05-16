@@ -86,6 +86,7 @@ public class RazaPersistence {
 		query = query.setParameter( "name", name );
 		// Se invoca el query se obtiene la lista resultado
 		List<RazaEntity> sameName = query.getResultList( );
+                LOGGER.log( Level.INFO, "FIN: Consultadas entidades de raza por nombre ", name );
 		if( sameName.isEmpty( ) )
 		{
 			return null;
@@ -94,6 +95,7 @@ public class RazaPersistence {
 		{
 			return sameName.get( 0 );
 		}
+                
 	}
     
     
