@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.EspeciePersistence;
@@ -140,6 +141,31 @@ public class EspecieLogic
         
         
         
+    }
+    
+    
+    public List<MascotaEntity> getMascotasList(Long especieId) throws BusinessLogicException
+    {
+        EspecieEntity especieEnt = getEspecieById(especieId);
+        if(especieEnt == null){
+            throw new BusinessLogicException("No existe una especie con el Id: " + especieId);
+        }
+        List<MascotaEntity> lista = new ArrayList<>();
+        List<RazaEntity> listaRazas = especieEnt.getRazas();
+        if(listaRazas != null){
+            for(RazaEntity raza: listaRazas){
+                List<MascotaEntity> listaMascotas = raza.getMascotas();
+                if(listaMascotas != null){
+                    for(MascotaEntity mascota: listaMascotas){
+                        lista.add(mascota);
+                    }
+                }
+            }
+        }
+        
+        
+        
+        return lista;
     }
 
 }

@@ -6,11 +6,15 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.EspecieDetailDTO;
+import co.edu.uniandes.csw.sierra.dtos.MascotaDTO;
 import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -62,7 +66,27 @@ public class EspecieResource {
     private List<EspecieDetailDTO> listEntity2DTO(List<EspecieEntity> entityList) {
         List<EspecieDetailDTO> list = new ArrayList<>();
         for (EspecieEntity entity : entityList) {
-            list.add(new EspecieDetailDTO(entity));
+            EspecieDetailDTO dto = new EspecieDetailDTO(entity);
+            try {
+                dto.setMascotas(listEntity2DTOMascota(especieLogic.getMascotasList(entity.getId())));
+            } catch (BusinessLogicException ex) {
+            }
+            list.add(dto);
+        }
+        return list;
+    }
+    
+     /**
+     * Convierte una lista de entities a una lista de DetailDTO de mascotas.
+     *
+     * @param entityList Lista a convertir.
+     * @return Lista convertida.
+     *
+     */
+    private List<MascotaDTO> listEntity2DTOMascota(List<MascotaEntity> entityList) {
+        List<MascotaDTO> list = new ArrayList<>();
+        for (MascotaEntity entity : entityList) {
+            list.add(new MascotaDTO(entity));
         }
         return list;
     }
@@ -112,7 +136,9 @@ public class EspecieResource {
         if (especie == null) {
             throw new WebApplicationException("La especie que desea buscar no esta registrada en la base de datos.");
         }
-        return new EspecieDetailDTO(especie);
+        EspecieDetailDTO dto = new EspecieDetailDTO(especie);
+        dto.setMascotas(listEntity2DTOMascota(especieLogic.getMascotasList(id)));
+        return dto;
     }
 
     /**
