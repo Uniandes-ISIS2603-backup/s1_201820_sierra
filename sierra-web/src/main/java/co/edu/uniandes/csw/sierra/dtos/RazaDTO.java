@@ -9,8 +9,9 @@ import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 
 /**
  *
- * RazaDTO Objeto de transferencia de datos de la entidad de certificado. Los DTO contienen las
- * representaciones de los JSON que se transfieren entre el cliente y el servidor.
+ * RazaDTO Objeto de transferencia de datos de la entidad de certificado. Los
+ * DTO contienen las representaciones de los JSON que se transfieren entre el
+ * cliente y el servidor.
  * <p>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
@@ -21,13 +22,13 @@ import co.edu.uniandes.csw.sierra.entities.RazaEntity;
  *      "destacable": String,
  *      "caracteristicas": String,
  *   }
- * </pre>
- * Por ejemplo una entidad de Raza se representa asi:<br>
+ * </pre> Por ejemplo una entidad de Raza se representa asi:<br>
  * <p>
- * <pre>
+ * <
+ * pre>
  *
  *   {
- *     
+ *
  *      "id": 164613,
  *      "nombreRaza": "yorkshire",
  *      "cuidados": "concentrado razas pequeñas, paseos constantes, despues de los seis años ir al veterinario cada seis meses"
@@ -40,6 +41,7 @@ import co.edu.uniandes.csw.sierra.entities.RazaEntity;
  * @author rj.gonzalez10
  */
 public class RazaDTO {
+
     //identificador numerico de la raza
     private Long id;
     //nombre de la raza a la que corresponde el animal
@@ -50,33 +52,34 @@ public class RazaDTO {
     private String destacable;
     //caracteristicas de la raza
     private String caracteristicas;
-    
-    
-    public RazaDTO(){
+
+    public RazaDTO() {
         //constructor por defecto
     }
-    public RazaDTO(RazaEntity razaEntity)
-    {
-        this.nombreRaza = razaEntity.getNombreRaza();
-        this.caracteristicas = razaEntity.getCaracteristicas();
-        this.cuidados = razaEntity.getCuidados();
-        this.destacable = razaEntity.getDestacable();
-        this.id = razaEntity.getId();
-       
+
+    public RazaDTO(RazaEntity razaEntity) {
+        System.out.println("DTO ContructorEntity: entity");
+        if (razaEntity != null) {
+
+            this.nombreRaza = razaEntity.getNombreRaza();
+            this.caracteristicas = razaEntity.getCaracteristicas();
+            this.cuidados = razaEntity.getCuidados();
+            this.destacable = razaEntity.getDestacable();
+            this.id = razaEntity.getId();
+        }
     }
-    
-    public RazaEntity toEntity(){
-        
+
+    public RazaEntity toEntity() {
+
         RazaEntity entity = new RazaEntity();
         entity.setNombreRaza(nombreRaza);
         entity.setCaracteristicas(caracteristicas);
         entity.setCuidados(cuidados);
         entity.setDestacable(destacable);
-        
+
         entity.setId(Long.MIN_VALUE);
-        
+
         return entity;
-                
 
     }
 
@@ -119,5 +122,5 @@ public class RazaDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
 }

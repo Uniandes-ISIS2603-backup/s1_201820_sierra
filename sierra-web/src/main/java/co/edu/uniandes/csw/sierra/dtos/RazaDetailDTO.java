@@ -40,13 +40,18 @@ public class RazaDetailDTO extends RazaDTO {
      */
     public RazaDetailDTO(RazaEntity entity) {
         super(entity);
+        System.out.println("RazaDetailDTO ContructorEntity: entity");
         if (entity != null) {
-
+            System.out.println("DTO ContructorEntity: CREA LA MASCOTA");
             mascotas = new ArrayList<>();
             for (MascotaEntity entityMascotas : entity.getMascotas()) {
                 mascotas.add(new MascotaDTO(entityMascotas));
+                System.out.println("DTO ContructorEntity: AGREGA UNA MASCOTA");
             }
-            especie = new EspecieDTO(entity.getEspecie());
+            System.out.println("DTO ContructorEntity: AGREGA LA ESPECIE: " + entity.getEspecie());
+            if(entity.getEspecie() != null){
+                especie = new EspecieDTO(entity.getEspecie());
+            }
             
         }
 
@@ -74,6 +79,9 @@ public class RazaDetailDTO extends RazaDTO {
                 }
             }
             entity.setMascotas(mascotasEntity);
+        }
+        if(especie != null){
+            entity.setEspecie(especie.toEntity());
         }
 
         return entity;
