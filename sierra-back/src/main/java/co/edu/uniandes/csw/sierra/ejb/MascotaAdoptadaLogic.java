@@ -28,7 +28,6 @@ import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
