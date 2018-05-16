@@ -28,18 +28,18 @@
     ]);
      
       // Resuelve problemas de las promesas
-    
     app.config(['$qProvider', function ($qProvider) {
             $qProvider.errorOnUnhandledRejections(false);
         }]);
 
+    //Corre bloque inicial
     app.run(['$rootScope', '$transitions', function ($rootScope, $transitions) {
 
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin
-                var roles = $state.current.data.roles
+                var requireLogin = $state.current.data.requireLogin;
+                var roles = $state.current.data.roles;
                
 
                 /**
@@ -51,9 +51,8 @@
                  * @returns {Boolean} Verdadero si está dentro de su cuenta.
                  */
                 $rootScope.isAuthenticated = function () {
-
-                    if (sessionStorage.getItem("username") != null) {
-                        $rootScope.currentUser = sessionStorage.getItem("name");
+                    if (sessionStorage.getItem("usuario") != null) {
+                        $rootScope.currentUser = sessionStorage.getItem("nombre");
                         return true;
                     } else {
                         return false;
@@ -76,8 +75,7 @@
                     }
                 };
 
-
-                if (requireLogin && (sessionStorage.getItem("username") === null)) {
+                if (requireLogin && (sessionStorage.getItem("usuario") == null)) {
                     event.preventDefault();
                     $state.go('login', $state.params);
                 }

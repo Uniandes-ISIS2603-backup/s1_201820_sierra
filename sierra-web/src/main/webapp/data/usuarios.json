@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Juan",
+        "nombre": "Juan",
         "user": "daju",
         "password": "daju",
         "rol": "admin",
@@ -10,23 +10,23 @@
     ,
     {
         "id": 2,
-        "name": "Rodrigo",
-        "user": "rodrigo",
+        "nombre": "Rodrigo",
+         "user": "rodrigo",
         "password": "rodrigo",
         "rol": "admin",
         "token": 456
     },
       {
         "id": 3,
-        "name": "Jhonatan",
-        "user": "jhonatan",
+        "nombre": "Jhonatan",
+         "user": "jhonatan",
         "password": "jhonatan",
         "rol": "admin",
         "token": 789
     }, {
         "id": 4,
-        "name": "cliente1",
-        "user": "cliente",
+        "nombre": "cliente1",
+         "user": "cliente",
         "password": "cliente",
         "rol": "cliente",
         "token": 111

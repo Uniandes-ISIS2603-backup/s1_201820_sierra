@@ -1,7 +1,6 @@
 (function (ng) {
     // Definición del módulo
     var mod = ng.module("loginModule", ['ui.router']);
-
     // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
@@ -20,10 +19,9 @@
             }).state('logout', {
                 url: '/logout',
                 data: {
-                    requireLogin: false,
+                    requireLogin: true,
                     roles: []
-                }
-                ,
+                },
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'logout.html',
