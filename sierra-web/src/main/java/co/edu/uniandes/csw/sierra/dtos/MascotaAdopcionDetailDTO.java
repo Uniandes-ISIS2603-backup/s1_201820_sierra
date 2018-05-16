@@ -25,8 +25,7 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
     /**
      * Especie de la mascota
      */
-    private EspecieDTO especie;
-
+    //private EspecieDTO especie;
     /**
      * Raza de la mascota
      */
@@ -60,11 +59,12 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
     public MascotaAdopcionDetailDTO(MascotaAdoptadaEntity entity) {
         super(entity);
         if (entity != null) {
+            /*
             if (entity.getEspecie() != null) {
                 this.especie = new EspecieDTO(entity.getEspecie());
             } else {
                 entity.setEspecie(null);
-            }
+            }*/
 
             if (entity.getRaza() != null) {
                 this.raza = new RazaDTO(entity.getRaza());
@@ -100,9 +100,11 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
     @Override
     public MascotaAdoptadaEntity toEntity() {
         MascotaAdoptadaEntity mascota = super.toEntity();
+        /*
         if (this.getEspecie() != null) {
             mascota.setEspecie(this.getEspecie().toEntity());
         }
+         */
         if (this.getRaza() != null) {
             mascota.setRaza(this.getRaza().toEntity());
         }
@@ -144,18 +146,17 @@ public class MascotaAdopcionDetailDTO extends MascotaAdopcionDTO {
 
     /**
      * @return the especie
-     */
-    public EspecieDTO getEspecie() {
-        return especie;
-    }
-
-    /**
+     *
+     * public EspecieDTO getEspecie() { return especie; }
+     *
+     * /
+     **
      * @param especie the especie to set
+     *
+     * public void setEspecie(EspecieDTO especie) { this.especie = especie; }
      */
-    public void setEspecie(EspecieDTO especie) {
-        this.especie = especie;
-    }
-
+    
+    
     /**
      * @return the raza
      */
