@@ -1,5 +1,4 @@
 (function(ng){
- 
  var mod=ng.module('especieModule',[]);
  mod.constant('especieContext','api/especies');
  mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
@@ -14,7 +13,12 @@
                        controller:'especieCtrl',
                        controllerAs: 'Crtl'
                          }
-                     }
+                     },
+                 data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                   }
+                     
              })
                      
                //Estado de lista
@@ -27,7 +31,10 @@
                        controller:'especieCtrl',
                        controllerAs: 'Crtl'
                    }
-               }
+               },
+                data: {
+                    requireLogin: false
+                }
              })
             //EstadoDetail
             .state('especieDetail',{
@@ -45,7 +52,10 @@
                        controller:'especieDetailCtrl',
                        controllerAs: 'Crtl'
                    }
-              }
+              },
+               data: {
+                    requireLogin: false
+                }
               
             })
               .state('especieEdit',
@@ -66,7 +76,11 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               }, 
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
      
          })
            .state('especieDelete',
@@ -87,8 +101,11 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
-     
+               },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
          })         
             //Estado de registro 
              .state('especiecreate', 
@@ -106,10 +123,12 @@
                    controller:'especiecreateCtrl',
                    controllerAs: 'Crtl'
                 }
-              }
+              },
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
          });
-         
         }
- 
     ]);
 })(window.angular);

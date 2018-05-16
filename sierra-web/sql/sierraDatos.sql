@@ -3,7 +3,6 @@ delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
 delete from SierraEntity;
 delete from AcontecimientoEntity;
 delete from PublicacionEntity;
-delete from MedioDePagoEntity;
 delete from CalificacionEntity;
 delete from AdquisicionEntity;
 delete from ComprobanteEntity;
@@ -13,6 +12,7 @@ delete from MascotaVentaEntity;
 delete from CertificadoEntity;
 delete from MascotaEntity;
 delete from ClienteEntity;
+delete from MedioDePagoEntity;
 delete from RazaEntity;
 delete from EspecieEntity;
 
@@ -69,7 +69,6 @@ insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contra
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contrasenia) values (113, 'Basile', 'Youle', 132254899, 3205485498, 'youle254@gmail.com', 'casa1234');
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contrasenia) values (114, 'Hollis', 'Gair', 1069654987, 3125489699, 'gairhollis@hotmail.com', 'mascotas123');
 insert into ClienteEntity(id, nombre, apellido, cedula, telefono, correo, contrasenia) values (115, 'Goodby', 'Knapp', 39265488, 3215448500, 'hnap2018@yahoo.com', 'perros2018');
-
 
 
 /*MASCOTAS*/
