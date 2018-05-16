@@ -59,18 +59,20 @@ public class ClienteAdquisicionResource {
      * @param adqId Identificador de la adquisicion que se desea guardar. Este debe ser una cadena de dígitos.
      * @return JSON {@link CalificacionDetailDTO} - La adquisicion guardada en la cliente
      */
+    /*
     @POST
     @Path("{adquisicionId: \\d+}")
     public AdquisicionDetailDTO addAdquisicion(@PathParam("clienteId") Long clId, @PathParam("adquisicionId") Long adqId){
         System.out.println("ClienteADquisicionResource: \n clId: " + clId + "\n adqId: " + adqId);
         try
         {
-            return new AdquisicionDetailDTO(cLogic.addAdquisicion(clId, adqId));
+            //return new AdquisicionDetailDTO(cLogic.addAdquisicion(clId, adqId));
+            return null;
         }
         catch(BusinessLogicException e)
         {
             throw new WebApplicationException("404: " + e.getMessage());
         }
     }
-    
+    */
 }

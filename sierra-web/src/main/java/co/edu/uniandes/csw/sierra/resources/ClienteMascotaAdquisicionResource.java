@@ -27,12 +27,14 @@ package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.AdquisicionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -64,7 +66,13 @@ public class ClienteMascotaAdquisicionResource {
     public AdquisicionDetailDTO crearAdquisicion(@PathParam("adqId") Long adqId, @PathParam("clienteId") Long clId, @PathParam("mascotaId") Long mascotaId)
     {
         System.out.print("Crear Adquisicion Resource: \n adqId: " + adqId + ", clienteId: " + clId + ", mascotaId: " + mascotaId);
-        return null;
+        try
+        {
+            return new AdquisicionDetailDTO(adqLogic.linkAdquisicion(adqId, clId, mascotaId));
+        }
+        catch(BusinessLogicException e){
+            throw new WebApplicationException("404: " + e.getMessage());
+        }
     }
     
     

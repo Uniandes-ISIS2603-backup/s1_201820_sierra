@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -58,8 +59,9 @@ public class RazaEntity extends BaseEntity implements Serializable {
     //caracteristicas de la raza
     private String caracteristicas;
     
+    
     //Asociaciones, lo hace Juan zambrano porque Rodrigo esta incapacitado
-    @OneToMany(mappedBy = "raza", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "raza", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @PodamExclude
     private List<MascotaEntity> mascotas;
     

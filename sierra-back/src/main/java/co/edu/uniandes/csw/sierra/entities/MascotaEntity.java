@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
@@ -118,7 +119,7 @@ public abstract class MascotaEntity extends BaseEntity
      * Adquisicion a la que  esta  ligada la mascota
      */
     @PodamExclude
-    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private AdquisicionEntity adquisicion;
     
     /**
@@ -132,7 +133,7 @@ public abstract class MascotaEntity extends BaseEntity
      * Publicaciones de una  mascota
      */
     @PodamExclude
-    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<PublicacionEntity> publicaciones;
  
     /**
