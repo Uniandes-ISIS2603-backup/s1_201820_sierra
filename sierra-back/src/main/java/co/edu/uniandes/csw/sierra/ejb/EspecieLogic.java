@@ -7,8 +7,10 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.EspeciePersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -25,6 +27,9 @@ public class EspecieLogic
 
 	@Inject
 	private EspeciePersistence persistence;
+        
+        @Inject
+        private RazaLogic razaLogic;
     
         /**
          * Crea una  entity en la  base de datos  de tipo especie
@@ -109,6 +114,32 @@ public class EspecieLogic
         if (ent!=null) {
              persistence.delete(id);
         }  
+    }
+
+    public EspecieEntity addMascota(Long especieId, Long razaId) throws BusinessLogicException {
+        
+        //Busca la especie y revisa que exista
+        EspecieEntity espEnt = getEspecieById(especieId);
+        if(espEnt == null){
+            throw new BusinessLogicException("No existe una especie con el id: " + especieId);
+        }
+        
+        //revisa que exista la raza
+        RazaEntity razaEnt = razaLogic.getById(razaId);
+        if(razaEnt == null){
+            throw new BusinessLogicException("No existe una raza con el id: " + razaId);
+        }
+        
+        //asocia la raza con especie y lo mismo en sentido contrario
+        if(espEnt.getRazas() == null){
+            espEnt.setRazas(new ArrayList<>());
+        }
+        espEnt.getRazas().add(razaEnt);
+        razaEnt.setEspecie(espEnt);
+        return espEnt;
+        
+        
+        
     }
 
 }
