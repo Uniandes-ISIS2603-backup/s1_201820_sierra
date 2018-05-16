@@ -8,23 +8,22 @@
             
             $http.get('data/usuarios.json').then(function (response) {
                 $scope.users = response.data;
-                console.log($scope.users);
+       
             });
             
             //Validacion de la informacion ingresada
                $scope.autenticar = function () {
                 var flag = false;
-                for (var item in $scope.users) {
-                    console.log(users[item].user);
-                    if ($scope.users[item].user == $scope.data.user && $scope.users[item].password == $scope.data.password && $scope.users[item].rol == $scope.data.rol) {
+                  for (var item in $scope.users) {
+                    if ($scope.users[item].user === $scope.data.user && $scope.users[item].password === $scope.data.password && $scope.users[item].rol === $scope.data.rol) {
                         flag = true;
                         $scope.user = $scope.users[item];
                         $state.go('especiesList', {}, {reload: true});
                         break;
                     }
                 }
-                if (!flag) {
-                    $rootScope.alerts.push({type: "danger", msg: "Nombre de usuario o contraseña incorrecto intente de nuevo."});
+                    if (!flag) {
+                    $rootScope.alerts.push({type: "danger", msg: "Incorrect username or password."});
                 } else {
                     sessionStorage.token = $scope.user.token;
                     sessionStorage.setItem("user", $scope.user.user);
@@ -33,6 +32,8 @@
                     $rootScope.currentUser = $scope.user.nombre; 
                 }
             };
+            
+                
         }
     ]);
 }
