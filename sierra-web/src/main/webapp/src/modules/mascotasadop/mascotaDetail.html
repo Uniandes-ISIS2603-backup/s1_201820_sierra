@@ -1,4 +1,3 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="row" style="background-color: lightgray">
     <hr>
     
@@ -43,9 +42,6 @@
             <div>
                 <p>{{currentMascota.raza.nombreRaza}}</p>
             </div>
-               
-            <center> <a ui-sref="mascotaEdit({mascotaId: currentMascota.id})"><input type="button" value="Editar"></a></center>
-             <center> <a ui-sref="mascotaDelete({mascotaId: currentMascota.id})"><input type="button" value="Borrar"></a></center>
         </div>
     </div>
 </div>

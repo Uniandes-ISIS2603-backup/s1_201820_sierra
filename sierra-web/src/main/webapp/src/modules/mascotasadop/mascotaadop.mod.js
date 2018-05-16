@@ -16,7 +16,11 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                        controller:'mascotaaCtrl',
                        controllerAs: 'Crtl'
                          }
-                     }
+                     },
+                     data: {
+                    requireLogin: false,
+                    roles: ['admin']
+                    }
              }).state('mascotasaList',
          {
             url:'/mascotasadop',
@@ -26,6 +30,9 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                     templateUrl: basePath+'mascotaadop.list.html',
                     controller:'mascotaaCtrl',
                     controllerAs: 'Ctrl'
+                }
+                ,data: {
+                    requireLogin: false
                 }
             }
         })//EstadoDetail
@@ -44,7 +51,10 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                        controller:'mascotaDetailCtrl',
                        controllerAs: 'Crtl'
                    }
-              }
+              },
+              data: {
+                    requireLogin: false
+                }
               
             })  .state('mascotaEdit',
             {
@@ -64,7 +74,11 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
      
              }).state('mascotaDelete',
             {
@@ -84,7 +98,11 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
      
             })   //Estado de registro 
              .state('mascotacreate', 
@@ -102,7 +120,11 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                    controller:'mascotacreateCtrl',
                    controllerAs: 'Crtl'
                 }
-              }
+              },
+              data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                }
          });
          
     }]);
