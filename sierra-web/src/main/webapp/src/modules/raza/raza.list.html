@@ -1,15 +1,15 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <!--LiSTA DE  RAZAS -->
 <div class="container-fluid" >
-    <div> <h1 style="text-align: center">Razas registradas en la tienda: </h1> </div>
     <div class="row" >
         <div class="col-md-3" ng-repeat="raza in razasRecords">
             <div class="thumbnail" style="background-color: gray">
-                 <div>  <label> Nombre: </label> {{raza.nombreRaza}}</div>
-                    <div> <label> Cuidados: </label> {{raza.cuidados}}</div>
-                    <div> <label> Destacable: </label> {{raza.destacable}}</div>
-                     <div> <label> Caracteristicas: </label> {{raza.caracteristicas}}</div>
-                <center> <a ui-sref="razaDetail({razaId: raza.id})"><input type="button" value="ver"></a></center>
+                <div>  <label> Nombre: </label> {{raza.nombreRaza}}</div>
+                 <div> <label> Destacable: </label> {{raza.destacable}}</div>
+                <center> 
+                    <a ui-sref="razaDetail({razaId: raza.id})"><input type="button" value="Detalles"></a>
+                    <a ui-sref="razaEdit({razaId: raza.id})" ng-if="isAuthenticated() && hasPermissions()"><input type="button" value="Editar"></a>
+                    <a ui-sref="razaDelete({razaId: raza.id})" ng-if="isAuthenticated() && hasPermissions()"><input type="button" value="Borrar"></a>
+                </center>
             </div>
         </div>        
     </div>

@@ -8,38 +8,48 @@
             <br>
         <div>
             <center>
-            <lable>Nombre:</lable>&nbsp;<input type="text" class="nombreRaza" required ng-model="data.nombreRaza" placeholder="nombreraza">
+                <lable>Nombre:</lable>&nbsp;<input type=text class="nombreRaza" required ng-model="data.nombreRaza" placeholder="nombre">
             </center>
         </div>    
             <br>
         <div>
             <center>
-            <lable>Cuidados:</lable>&nbsp;<input type="text" class="CuidadosRaza" required ng-model="data.cuidados" placeholder="cuidados">  
+            <lable>Cuidados:</lable>&nbsp;<input type=text class="CuidadosRaza" required ng-model="data.cuidados" placeholder="cuidados">  
            </center>
         </div>
-             <br>
-            <div>
-            <center>
-            <lable>Destacable:</lable>&nbsp;<input type="text" class="destacableRaza" required ng-model="data.destacable" placeholder="destacable">  
-           </center>
-        </div>
-
              <br>
         <div>
             <center>
-            <lable>Caracteristticas:</lable>&nbsp;<input type="text" class="CaracteristicasRaza" requiere ng-model="data.caracteristicas" placeholder="carracteristicas" >
+            <lable>Destacable:</lable>&nbsp;<input type=text class="destacableRaza" required ng-model="data.destacable" placeholder="destacable">  
+           </center>
+        </div>
+             <br>
+        <div>
+            <center>
+            <lable>Caracteristticas:</lable>&nbsp;<input type=text class="CaracteristicasRaza" requiere ng-model="data.caracteristicas" placeholder="carracteristicas" >
             </center>
+         </div>
+          <br>
+          <div>
+            <center>
+                <select class="form-control" name="singleSelect" id="singleSelect" ng-model="data.especie" required="true">
+                        <option value="">--- Seleccione una especie ---</option> <!-- not selected / blank option -->
+                        <option value="{{especie.nombre}}" ng-repeat="especie in especiesRecords">{{especie.nombre}}</option>
+                </select>
+                <p>En caso de no encontrar la especie, debe de crear la especie antes</p>
+                <a ui-sref="especiecreate"><input type="button" value="Crear Especie"></a>
+            </center>
+         </div>
             <br>
+         <div>
             <center>
                 <button  ng-click="createRaza()" ui-sref="razasList" >Registrar</button>
-            </center>
-            <center>
-            <a class="btn btn-info" ui-sref="razasList">Cancel</a>
+               <a class="btn btn-info" ui-sref="razasList">Cancel</a>
             </center>
         </div> 
     </form>
     </div>
     <div class="col-sm-6">
-        <img src="imagenes/registro.jpg" width="800">
+        <img src="recursos/img/registro.jpg" width="800">
     </div>
 </div>

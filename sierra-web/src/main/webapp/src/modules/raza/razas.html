@@ -1,14 +1,16 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class="container-fluid">
     <div class="row">
+        <center><h1><strong>RAZAS</strong></h1></center>
+    </div>
+    <div class="row">
         <div>
-            <ul class="nav nav-tabs" style="background-color: lightblue">
-                <li style="background-color:beige"><a ui-sref="razasList"> Razas</a></li>
-                 <li style="background-color:beige"><a ui-sref="razacreate"> Registrar</a></li>
+            <ul class="nav nav-tabs" ng-if="isAuthenticated() && hasPermissions()" style="background-color: lightblue">
+                <li style="background-color:beige" ><a ui-sref="razasList"> Razas</a></li>
+                 <li style="background-color:beige" ><a ui-sref="razacreate"> Registrar</a></li>
             </ul>
         </div>
-        <div ui-view="listView"></div>
     </div>
+    <div ui-view="listView"></div>
     <div class="row">
         <div ui-view="detailView"></div>
     </div>

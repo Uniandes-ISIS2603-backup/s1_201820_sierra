@@ -2,9 +2,8 @@
  
  var mod=ng.module('razaModule',[]);
  mod.constant('razaContext','api/razas');
- mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider){
          var basePath = 'src/modules/raza/';
-         $urlRouterProvider.otherwise("/razasList");
          $stateProvider.state('razas',{
              url:'/razas',
              abstrac:true,
@@ -15,7 +14,11 @@
                        controller:'razaCtrl',
                        controllerAs: 'Crtl'
                          }
-                     }
+                     },
+                      data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
              })
                      
                //Estado de lista
@@ -27,7 +30,11 @@
                        templateUrl: basePath+"raza.list.html",
                        controller:'razaCtrl',
                        controllerAs: 'Crtl'
+                   },
+                   data: {
+                    requireLogin:false
                    }
+
                }
              })
             //EstadoDetail
@@ -46,7 +53,11 @@
                        controller:'razaDetailCtrl',
                        controllerAs: 'Crtl'
                    }
-              }
+              },
+              data: {
+                    requireLogin: false
+                   }
+
               
             })
                .state('razaEdit',
@@ -67,7 +78,12 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                 }
+
      
          })
            .state('razaDelete',
@@ -88,7 +104,12 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+               data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                   }
+
      
          })         
             //Estado de registro 
@@ -107,7 +128,12 @@
                    controller:'razacreateCtrl',
                    controllerAs: 'Crtl'
                 }
-              }
+              },
+              data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                   }
+
          });
          
         }

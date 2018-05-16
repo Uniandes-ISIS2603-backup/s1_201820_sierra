@@ -16,7 +16,7 @@
                      },
                  data: {
                     requireLogin: true,
-                    roles: ['admin']
+                     roles: ['admin']
                    }
                      
              })
