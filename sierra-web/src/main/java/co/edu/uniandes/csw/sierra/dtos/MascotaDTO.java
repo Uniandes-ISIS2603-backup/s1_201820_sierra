@@ -144,17 +144,18 @@ public class MascotaDTO {
      * @return mascotaEntity: Es la entidad que se va a convertir a DTO
      */
     public MascotaEntity toEntity(MascotaEntity entity) {
-        //TODO : entity puede ser null
-        entity.setNombre(nombre);
-        entity.setId(id);
-        entity.setAdquirido(adquirido);
-        entity.setGenero(genero);
-        entity.setEdad(edad);
-        entity.setColor(color);
-        entity.setEsteril(esteril);
-        entity.setImagen(imagen);
-        entity.setTamano(tamano);
-        entity.setNacimiento(nacimiento);
+        if (entity != null) {
+            entity.setNombre(nombre);
+            entity.setId(id);
+            entity.setAdquirido(adquirido);
+            entity.setGenero(genero);
+            entity.setEdad(edad);
+            entity.setColor(color);
+            entity.setEsteril(esteril);
+            entity.setImagen(imagen);
+            entity.setTamano(tamano);
+            entity.setNacimiento(nacimiento);
+        }
         return entity;
     }
 
