@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import uk.co.jemos.podam.common.PodamIntValue;
 
@@ -32,7 +33,7 @@ public class MascotaVentaEntity extends MascotaEntity
     /**
      * Certificados asociados a la mascota
      */
-    @OneToMany(mappedBy = "mascotaVenta", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "mascotaVenta", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @PodamExclude
     private List<CertificadoEntity> certificados;
 

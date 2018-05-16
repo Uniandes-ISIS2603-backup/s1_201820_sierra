@@ -30,8 +30,10 @@ public class ClienteLogic
     @Inject 
     private MedioDePagoLogic medioLogic;
     
+    /*
     @Inject 
     private AdquisicionLogic adqLogic;
+    */
     
     /**
      * Crea una nueva entidad Cliente.
@@ -207,6 +209,7 @@ public class ClienteLogic
         medioLogic.removeCliente(medioId, clienteId);
     }
 
+    /*
     public AdquisicionEntity addAdquisicion(Long clId, Long adqId) throws BusinessLogicException{
         System.out.println("ClienteLogic: \n clId: " + clId + "\n adqId: " + adqId);
         ClienteEntity clEntity = getCliente(clId);
@@ -231,4 +234,5 @@ public class ClienteLogic
         adqEntity.setCliente(clEntity);
         return adqEntity;
     }
+    */
 }

@@ -25,9 +25,13 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +60,15 @@ public class AdquisicionLogic {
     
     @Inject
     private FacturaLogic factLogic;
+    
+    @Inject
+    private ClienteLogic clLogic;
+    
+    @Inject
+    private MascotaAdoptadaLogic mascotaAdoptadaLogic;
+    
+    @Inject
+    private MascotaVentaLogic mascotaVentaLogic;
     
     /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
@@ -136,6 +149,59 @@ public class AdquisicionLogic {
         facEntity.setAdquisicion(adqEntity);
         adqEntity.setFactura(facEntity);
         return facEntity;
+    }
+
+    public AdquisicionEntity linkAdquisicion(Long adqId, Long clId, Long mascotaId) throws BusinessLogicException 
+    {
+        //Revisa que exista la adquisicion
+        AdquisicionEntity adqEntity = getById(adqId);
+        if(adqEntity == null)
+        {
+            throw new BusinessLogicException("La adquisicion del Id: " + adqId + " no existe");
+        }
+        
+        //Revisa que exista el cliente
+        ClienteEntity clEntity = clLogic.getCliente(clId);
+        if(clEntity == null)
+        {
+            throw new BusinessLogicException("No existe un cliente con el Id: " + clId);
+        }
+        
+        //Revisa que exista la mascota, primero busca la mascotaAdopcion y luego la de venta, esto se puede ya que
+        //MascotaVenta y MascotaAdopcion comparten la misma llave primaria, entonces si se busca en ambas, solo se
+        //Puede encontrar en una
+        MascotaAdoptadaEntity mascAdopEntity = mascotaAdoptadaLogic.getMascotaAdoptadaById(mascotaId);
+        MascotaVentaEntity mascVentEntity = mascotaVentaLogic.getById(mascotaId);
+        if(mascAdopEntity != null)
+        {
+            adqEntity.setMascota(mascAdopEntity);
+            adqEntity.setCliente(clEntity);
+            mascAdopEntity.setAdquisicion(adqEntity);
+            if(clEntity.getAdquisiciones() == null)
+            {
+                clEntity.setAdquisiciones(new ArrayList<>());
+            }
+            clEntity.getAdquisiciones().add(adqEntity);
+            return adqEntity;
+        }
+        else if(mascVentEntity != null)
+        {
+            adqEntity.setMascota(mascVentEntity);
+            adqEntity.setCliente(clEntity);
+            mascVentEntity.setAdquisicion(adqEntity);
+            if(clEntity.getAdquisiciones() == null)
+            {
+                clEntity.setAdquisiciones(new ArrayList<>());
+            }
+            clEntity.getAdquisiciones().add(adqEntity);
+            return adqEntity;
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe una mascota con el id: " + mascotaId);
+        }
+        
+        
     }
     
     

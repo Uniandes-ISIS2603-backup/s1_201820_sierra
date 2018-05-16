@@ -170,7 +170,7 @@ public class EspecieResource {
         if (oldEntity == null) {
             throw new WebApplicationException("La especie no existe");
         }
-        entity.setMascotaS(oldEntity.getMascotas());
+        //entity.setMascotaS(oldEntity.getMascotas());
         entity.setRazas(oldEntity.getRazas());
         return new EspecieDetailDTO(especieLogic.updateEspecie(entity));
     }

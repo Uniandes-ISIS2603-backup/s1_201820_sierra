@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.ws.rs.ext.ParamConverter;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -32,21 +34,21 @@ public class ClienteEntity extends BaseEntity implements Serializable
      * Lista de las mascotas que deseadas por un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<MascotaEntity> mascotas = new ArrayList<>();
     
     /**
      * Lista de todas las adquisiciones de un cliente.
      */
     @PodamExclude
-    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<AdquisicionEntity> adquisiciones = new ArrayList<>();
     
     /**
      * Lista de todos los medios de pago de un cliente.
      */
     @PodamExclude
-    @ManyToMany(mappedBy="clientes")
+    @ManyToMany(mappedBy="clientes", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<MedioDePagoEntity> mediosDePago = new ArrayList<>();
     
     /**

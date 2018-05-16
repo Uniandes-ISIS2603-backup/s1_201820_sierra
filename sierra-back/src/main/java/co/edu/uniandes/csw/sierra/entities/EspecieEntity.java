@@ -28,6 +28,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
@@ -64,13 +65,13 @@ public class EspecieEntity extends BaseEntity implements Serializable
     /**
      * Lista de razas de una especie
      */
-    @OneToMany(mappedBy = "especie", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "especie", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<RazaEntity> razas;
         
     /**
      * Lista de  mascotas que se pueden comprar de una especie
-     */
-    @OneToMany(mappedBy = "especie",cascade = CascadeType.PERSIST)
+     
+    @OneToMany(mappedBy = "especie",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<MascotaEntity>  mascotas;
     
     /**
@@ -158,16 +159,17 @@ public class EspecieEntity extends BaseEntity implements Serializable
     /**
      * Obtiene las mascotas que pertenecen a la especie.
      * @return the mascotasVenta de la especie.
-     */
+     
     public List<MascotaEntity> getMascotas() {
         return mascotas;
     }
 
-    /**
+    
      * Coleccion de mascotas por asignar a la especie.
      * @param mascotas Nuevas mascotas de una especie.
-     */
+     
     public void setMascotaS(List<MascotaEntity> mascotas) {
         this.mascotas = mascotas;
-    }     
+    }   
+    * */
 }
