@@ -145,6 +145,8 @@ public class MascotaAdoptadaLogic {
                 mascota.setAcontecimientos(new ArrayList<>());
             }
             mascota.getAcontecimientos().add(acontecimiento);
+            acontecimiento.setMascota(mascota);
+            acontecimientoLogica.update(acontecimiento);
             return persistence.update(mascota);
         }
         else
