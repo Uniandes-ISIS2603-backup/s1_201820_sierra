@@ -1,4 +1,5 @@
 /*REINICIO DE LAS  TABLAS */
+delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
 delete from SierraEntity;
 delete from AcontecimientoEntity;
 delete from PublicacionEntity;
@@ -12,7 +13,6 @@ delete from MascotaVentaEntity;
 delete from CertificadoEntity;
 delete from MascotaEntity;
 delete from ClienteEntity;
-delete from MEDIODEPAGOENTITY_CLIENTEENTITY;
 delete from RazaEntity;
 delete from EspecieEntity;
 
