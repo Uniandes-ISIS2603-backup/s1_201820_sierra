@@ -20,6 +20,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.dtos;
 
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaEntity;
 import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,8 @@ public class EspecieDetailDTO extends EspecieDTO {
      * Lista de razas que contiene una especie
      */
     private List<RazaDTO> razas;
+    
+    private List<MascotaDTO> mascotas;
 
     /**
      * Constructor por defecto
@@ -134,5 +137,19 @@ public class EspecieDetailDTO extends EspecieDTO {
      */
     public void setRazas(List<RazaDTO> razas) {
         this.razas = razas;
+    }
+
+    /**
+     * @return the mascotas
+     */
+    public List<MascotaDTO> getMascotas() {
+        return mascotas;
+    }
+
+    /**
+     * @param mascotas the mascotas to set
+     */
+    public void setMascotas(List<MascotaDTO> mascotas) {
+        this.mascotas = mascotas;
     }
 }

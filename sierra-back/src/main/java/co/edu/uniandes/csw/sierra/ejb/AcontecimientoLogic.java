@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AcontecimientoPersistence;
+import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +35,12 @@ public class AcontecimientoLogic
     private AcontecimientoPersistence persistencia;
     
     /**
+     * Objeto de persistencia de MascotaAdoptada.
+     */
+    @Inject
+    private MascotaAdoptadaPersistence mascotaPersistencia;
+    
+    /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
      * la crea
      * @param ent la entidad que se quiere persistir
@@ -44,11 +52,17 @@ public class AcontecimientoLogic
         {
             throw new BusinessLogicException("Ya hay un acontecimiento con el mismo nombre");
         }
-        else{
-        persistencia.create(ent);
-        LOGGER.info("Termina la creacion de la entidad de Acontecimineto");
-        return ent;
+        else if( ent.getDescripcion() == null || ent.getDescripcion().equals("") || ent.getFecha()== null || ent.getImportancia() == null || ent.getNombre() == null || ent.getNombre().equals(""))
+        {
+           throw new BusinessLogicException("Los datos del acontecimiento no son validos o estan incompletos");
         }
+        else
+        {
+        AcontecimientoEntity create = persistencia.create(ent);
+        LOGGER.info("Termina la creacion de la entidad de Acontecimineto");
+        return create;
+        }
+        
     }
     
     /**
@@ -81,7 +95,10 @@ public class AcontecimientoLogic
         {
             throw new BusinessLogicException("Ya hay un acontecimiento con este nombre");
         }
-        
+         else if( ent.getDescripcion() == null || ent.getDescripcion().equals("") || ent.getFecha()== null || ent.getImportancia() == null || ent.getNombre() == null || ent.getNombre().equals(""))
+        {
+           throw new BusinessLogicException("Los datos del acontecimiento no son validos o estan incompletos");
+        }
         LOGGER.log(Level.INFO, "Actualizando la entidad de Acontecimieto con el id={0}", ent.getId());
         return persistencia.update(ent);
     }

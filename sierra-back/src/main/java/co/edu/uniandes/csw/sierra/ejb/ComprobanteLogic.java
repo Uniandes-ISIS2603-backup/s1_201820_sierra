@@ -54,6 +54,13 @@ public class ComprobanteLogic {
         LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");      
     }
     
+    public void create(ComprobanteEntity entity)
+    {
+        LOGGER.info("Inicia proceso de cración de una entidad de Comprobante");
+        persistence.create(entity);
+        LOGGER.info("Termmína proceso de creación de la entidad de Comprobante.");      
+    }
+    
     
     public List<ComprobanteEntity> getAll()
     {
