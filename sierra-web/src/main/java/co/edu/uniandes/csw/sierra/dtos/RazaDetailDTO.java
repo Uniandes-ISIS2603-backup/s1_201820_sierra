@@ -16,40 +16,39 @@ import java.util.List;
  * @author rj.gonzalez10
  */
 public class RazaDetailDTO extends RazaDTO {
-    public RazaDetailDTO()
-    {
-        super();
-    }
-    
+
     /**
-     * Lista de mascotas que contiene una  Raza
+     * Lista de mascotas que contiene una Raza
      */
     private List<MascotaDTO> mascotas;
-    
-     /**
-     * Crea un objeto RazaDetailDTO a partir de un objeto RazaEntity
-     * incluyendo los atributos de RazaDTO.
+
+    public RazaDetailDTO() {
+        super();
+    }
+
+    /**
+     * Crea un objeto RazaDetailDTO a partir de un objeto RazaEntity incluyendo
+     * los atributos de RazaDTO.
      *
-     * @param entity Entidad Raza
-     * Entity desde la cual se va a crear el nuevo
+     * @param entity Entidad Raza Entity desde la cual se va a crear el nuevo
      * objeto.
      *
      */
-    public RazaDetailDTO(RazaEntity entity)
-    {
+    public RazaDetailDTO(RazaEntity entity) {
         super(entity);
-        if (entity!=null) {
-            
-            mascotas= new ArrayList<>();
+        if (entity != null) {
+
+            mascotas = new ArrayList<>();
             for (MascotaEntity entityMascotas : entity.getMascotas()) {
                 mascotas.add(new MascotaDTO(entityMascotas));
             }
         }
-        
+
     }
+
     /**
-     * Convierte un objeto RazaDetailDTO a RazaEntity incluyendo los
-     * atributos de RazaDTO.
+     * Convierte un objeto RazaDetailDTO a RazaEntity incluyendo los atributos
+     * de RazaDTO.
      *
      * @return Nueva objeto RazaEntity.
      *
@@ -57,30 +56,30 @@ public class RazaDetailDTO extends RazaDTO {
     @Override
     public RazaEntity toEntity() {
         RazaEntity entity = super.toEntity();
-        if (mascotas!=null) {
-             List<MascotaEntity> mascotasEntity=new ArrayList<>();
-             for (MascotaDTO mascotaDto : mascotas) {
-             if (MascotaAdopcionDTO.class.isInstance(mascotaDto))
-             {
-                 mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
-                 entity.setMascotas(mascotasEntity);
-             }
-             else{
-                 mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
-                 entity.setMascotas(mascotasEntity);
-             }
+        if (mascotas != null) {
+            List<MascotaEntity> mascotasEntity = new ArrayList<>();
+            for (MascotaDTO mascotaDto : mascotas) {
+                if (MascotaAdopcionDTO.class.isInstance(mascotaDto)) {
+                    mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
+                    entity.setMascotas(mascotasEntity);
+                } else {
+                    mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
+                    entity.setMascotas(mascotasEntity);
+                }
             }
-             entity.setMascotas(mascotasEntity);
+            entity.setMascotas(mascotasEntity);
         }
-        
+
         return entity;
     }
+
     /**
      * @return the mascotas
      */
     public List<MascotaDTO> getMascotas() {
         return mascotas;
     }
+
     /**
      * @param mascotas the mascotas to set
      */
@@ -88,6 +87,4 @@ public class RazaDetailDTO extends RazaDTO {
         this.mascotas = mascotas;
     }
 
-    
-    
 }

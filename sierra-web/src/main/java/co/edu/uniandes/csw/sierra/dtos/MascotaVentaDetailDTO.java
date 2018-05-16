@@ -23,11 +23,6 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
     private List<CertificadoDTO> certificados;
 
     /**
-     * Especie de la mascota
-     */
-    private EspecieDTO especie;
-
-    /**
      * Raza de la mascota
      */
     private RazaDTO raza;
@@ -79,10 +74,6 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
                 this.adquisicion = new AdquisicionDTO(ent.getAdquisicion());
             }
 
-            if (ent.getEspecie() != null) {
-                this.especie = new EspecieDTO(ent.getEspecie());
-            }
-
             if (ent.getRaza() != null) {
                 this.raza = new RazaDTO(ent.getRaza());
             }
@@ -107,9 +98,6 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
         }
         if (adquisicion != null) {
             ent.setAdquisicion(adquisicion.toEntity());
-        }
-        if (especie != null) {
-            ent.setEspecie(especie.toEntity());
         }
         if (publicaciones != null) {
             List<PublicacionEntity> listPublicacion = new ArrayList<>();
@@ -136,20 +124,6 @@ public class MascotaVentaDetailDTO extends MascotaVentaDTO {
      */
     public void setCertificados(List<CertificadoDTO> certificados) {
         this.certificados = certificados;
-    }
-
-    /**
-     * @return the especie
-     */
-    public EspecieDTO getEspecie() {
-        return especie;
-    }
-
-    /**
-     * @param especie the especie to set
-     */
-    public void setEspecie(EspecieDTO especie) {
-        this.especie = especie;
     }
 
     /**

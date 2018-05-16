@@ -150,7 +150,7 @@ public class MascotaVentaResource
         entity.setCertificados(oldEntity.getCertificados());
         entity.setPublicaciones(oldEntity.getPublicaciones());
         entity.setAdquisicion(oldEntity.getAdquisicion());
-        entity.setEspecie(oldEntity.getEspecie());
+        //entity.setEspecie(oldEntity.getEspecie());
         entity.setRaza(oldEntity.getRaza());
    
         return new MascotaVentaDetailDTO(mascotaVentaLogica.update(entity));

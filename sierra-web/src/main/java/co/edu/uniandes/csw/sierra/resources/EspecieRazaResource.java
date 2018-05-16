@@ -25,8 +25,11 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.resources;
 
-import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
-import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.dtos.EspecieDetailDTO;
+import co.edu.uniandes.csw.sierra.dtos.RazaDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
+import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -35,13 +38,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-
 /**
- * <pre>Clase que implementa el recurso "adquisiciones/{id}/calificaciones".
- * URL: /api/adquisiciones/{adquisicionId}/calificaiciones
+ * <pre>Clase que implementa el recurso "especies/{id}/razas".
+ * URL: /api/especies/{especieId}/razas
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "adquisiciones/{adquisicionId}/calificaciones".</i>
+ * este recurso tiene la ruta "especies/{especieId}/razas".</i>
  *
  * <h2>Anotaciones </h2>
  * <pre>
@@ -52,45 +54,43 @@ import javax.ws.rs.core.MediaType;
  * @author jd.zambrano
  * @version 1.0
  */
-@Path("adquisiciones/{adquisicionId: \\d+}/calificaciones")
+@Path("especies/{especieId: \\d+}/razas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class AdquisicionCalificacionResource {
-    
+public class EspecieRazaResource {
     
     @Inject
-    private AdquisicionLogic adqLogic;
-        
+    private EspecieLogic especieLogic;
+    
     /**
-     * <h1>POST /api/adquisiciones/{adquisicionId}/calificaciones/{calificacionId} : Guarda una calificacion 
-     * dentro de la adquisicion.</h1>
+     * <h1>POST /api/especies/{especieId}/razas/{razaId} : Guarda una raza 
+     * dentro de la especie.</h1>
      *
-     * <pre> Guarda una calificacion dentro de una adquisicion con la informacion que 
-     * recibe el la URL. Se devuelve la calificacion que se guarda en la adquisicion.
+     * <pre> Guarda una raza dentro de una especie con la informacion que 
+     * recibe el la URL. Se devuelve la raza que se guarda en la especie.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Guardó la calificacion nueva.
+     * 200 OK Guardó la raza nueva.
      * </code>
      * </pre>
-     * @param adqId Identificador de la adquisicion que se esta buscando. Este debe ser una cadena de dígitos.
-     * @param calId Identificador de la calificacion que se desea guardar. Este debe ser una cadena de dígitos.
-     * @return JSON {@link CalificacionDetailDTO} - La calificacion guardada en la adquisicion
+     * @param especieId Identificador de la especie que se esta buscando. Este debe ser una cadena de dígitos.
+     * @param razaId Identificador de la raza que se desea guardar. Este debe ser una cadena de dígitos.
+     * @return JSON {@link RazaDetailDTO} - La especie donde se guardada la raza
      */
     @POST
-    @Path("{calificacionId: \\d+}")
-    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId)
+    @Path("{razaId: \\d+}")
+    public EspecieDetailDTO linkRazaMascota(@PathParam("especieId") Long especieId, @PathParam("razaId") Long razaId)
     {
-        System.out.println("adqId: " + adqId + "\ncalId: " + calId);
+        System.out.println("RazaMascotaResoure: \n especieId: " + especieId + "\nrazaId: " + razaId);
+        
         try
         {
-            return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+            return new EspecieDetailDTO(especieLogic.addMascota(especieId, razaId));
         }
-        catch(Exception e)
-        {
+        catch(BusinessLogicException e){
             throw new WebApplicationException("404: " + e.getMessage());
         }
-        
         
     }
     

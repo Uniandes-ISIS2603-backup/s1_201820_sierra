@@ -185,7 +185,7 @@ public class MascotaAdoptadaResource {
         entity.setAcontecimientos(oldEntity.getAcontecimientos());
         entity.setPublicaciones(oldEntity.getPublicaciones());
         entity.setAdquisicion(oldEntity.getAdquisicion());
-        entity.setEspecie(oldEntity.getEspecie());
+        //entity.setEspecie(oldEntity.getEspecie());
         entity.setRaza(oldEntity.getRaza());
 
         return new MascotaAdopcionDetailDTO(mascotaAdoptadaLogica.updateMascotaAdoptada(entity));

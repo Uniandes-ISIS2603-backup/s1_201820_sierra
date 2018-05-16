@@ -25,8 +25,11 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.resources;
 
-import co.edu.uniandes.csw.sierra.dtos.CalificacionDetailDTO;
+
+
+import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -37,11 +40,11 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
- * <pre>Clase que implementa el recurso "adquisiciones/{id}/calificaciones".
- * URL: /api/adquisiciones/{adquisicionId}/calificaiciones
+ * <pre>Clase que implementa el recurso "adquisiciones/{id}/facturas".
+ * URL: /api/adquisiciones/{adquisicionId}/facturas
  * </pre>
  * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta "/api" y
- * este recurso tiene la ruta "adquisiciones/{adquisicionId}/calificaciones".</i>
+ * este recurso tiene la ruta "adquisiciones/{adquisicionId}/facturas".</i>
  *
  * <h2>Anotaciones </h2>
  * <pre>
@@ -52,45 +55,45 @@ import javax.ws.rs.core.MediaType;
  * @author jd.zambrano
  * @version 1.0
  */
-@Path("adquisiciones/{adquisicionId: \\d+}/calificaciones")
+
+@Path("adquisiciones/{adquisicionId: \\d+}/facturas")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class AdquisicionCalificacionResource {
-    
+public class AdquisicionFacturaResource {
     
     @Inject
-    private AdquisicionLogic adqLogic;
-        
+    private AdquisicionLogic adquisicionLogic;
+    
     /**
-     * <h1>POST /api/adquisiciones/{adquisicionId}/calificaciones/{calificacionId} : Guarda una calificacion 
+     * <h1>POST /api/adquisiciones/{adquisicionId}/facturas/{facturaId} : Guarda una factura 
      * dentro de la adquisicion.</h1>
      *
-     * <pre> Guarda una calificacion dentro de una adquisicion con la informacion que 
-     * recibe el la URL. Se devuelve la calificacion que se guarda en la adquisicion.
+     * <pre> Guarda una factura dentro de una adquisicion con la informacion que 
+     * recibe el la URL. Se devuelve la factura que se guarda en la adquisicion.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Guardó la calificacion nueva.
+     * 200 OK Guardó la factura nueva.
      * </code>
      * </pre>
-     * @param adqId Identificador de la adquisicion que se esta buscando. Este debe ser una cadena de dígitos.
-     * @param calId Identificador de la calificacion que se desea guardar. Este debe ser una cadena de dígitos.
-     * @return JSON {@link CalificacionDetailDTO} - La calificacion guardada en la adquisicion
+     * @param adquisicionId Identificador de la adquisicion que se esta buscando. Este debe ser una cadena de dígitos.
+     * @param facturaId Identificador de la factura que se desea guardar. Este debe ser una cadena de dígitos.
+     * @return JSON {@link RazaDetailDTO} - La adquisicion donde se guardada la factura
      */
     @POST
-    @Path("{calificacionId: \\d+}")
-    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId)
+    @Path("{facturaId: \\d+}")
+    
+    public FacturaDetailDTO linkAdquisicionFactura(@PathParam("adquisicionId") Long adquisicionId, @PathParam("facturaId") Long facturaId)
     {
-        System.out.println("adqId: " + adqId + "\ncalId: " + calId);
+        System.out.println("AdquisicionFacturaResoure: \n adquisicionId: " + adquisicionId + "\nfacturaId: " + facturaId);
+        
         try
         {
-            return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+            return new FacturaDetailDTO(adquisicionLogic.addFactura(adquisicionId, facturaId));
         }
-        catch(Exception e)
-        {
+        catch(BusinessLogicException e){
             throw new WebApplicationException("404: " + e.getMessage());
         }
-        
         
     }
     
