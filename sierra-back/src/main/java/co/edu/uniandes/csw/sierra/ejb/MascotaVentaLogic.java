@@ -23,9 +23,12 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import co.edu.uniandes.csw.sierra.entities.CertificadoEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaVentaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.sierra.persistence.CertificadoPersistence;
 import co.edu.uniandes.csw.sierra.persistence.MascotaVentaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +51,12 @@ public class MascotaVentaLogic {
      */
     @Inject
     private MascotaVentaPersistence persistencia;
+    
+     /**
+     * Objeto de persistencia de certificado.
+     */
+    @Inject
+    private CertificadoLogic certificadoLogica;
     
     /**
      * Revisa que la entidad que se quiere crear cumpla las reglas de negocio y
@@ -120,8 +129,39 @@ public class MascotaVentaLogic {
         persistencia.delete(id);
     }
     
-    
-    
+    /**
+     * Linkea una mascotaVenta con un certificados.
+     * @param mascotaVentaId
+     * @param certificadoId
+     * @return
+     * @throws BusinessLogicException 
+     */
+     public MascotaVentaEntity addCertificado(Long mascotaVentaId, Long certificadoId) throws BusinessLogicException
+    {
+        MascotaVentaEntity mascota = persistencia.find(mascotaVentaId);
+        if(mascota == null)
+        {
+            throw new BusinessLogicException("No existe una mascota con el id: " + mascotaVentaId);
+        }
+        CertificadoEntity certificado = certificadoLogica.getById(certificadoId);
+        if(certificado != null)
+        {
+            if(mascota.getCertificados() == null)
+            {
+                mascota.setCertificados(new ArrayList<>());
+            }
+            mascota.getCertificados().add(certificado);
+            certificado.setMascotaVenta(mascota);
+            certificadoLogica.update(certificado);
+            return persistencia.update(mascota);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe el certificado con el id: " + certificadoId);
+        }
+    }
 }
+    
+
     
     
