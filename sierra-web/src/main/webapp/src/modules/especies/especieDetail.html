@@ -27,7 +27,7 @@
             </ul>
             <h4 ng-if="currentEspecie.mascotas.length>0">MASCOTAS:</h4>
             <ul ng-repeat="mascota in currentEspecie.mascotas">
-                <li><a>{{mascota.nombre}}</a></li>
+                <li><a ui-sref="mascotaaDetail({mascotaId: mascota.id})">{{mascota.nombre}}</a></li>
             </ul>
         </div>
     </div>

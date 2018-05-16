@@ -16,7 +16,7 @@
                          }
                      },
                       data: {
-                    requireLogin: true,
+                    requireLogin: false,
                      roles: ['admin']
                    }
              })

@@ -25,6 +25,16 @@
             <div>
                 <p>{{currentRaza.cuidados}}</p>
             </div>
+            <h4>ESPECIE</h4>
+            <div>
+                    <a ui-sref="especieDetail({especieId: especie.id})"></a>
+            </div>
+            <h4 ng-if="currentRaza.mascotas.length>0">MASCOTAS</h4>
+            <div>
+                <ul ng-repeat="mascota in currentRaza.mascotas">
+                    <li><a ui-sref="mascotaaDetail({mascotaId: mascota.id})">{{mascota.nombre}}</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
