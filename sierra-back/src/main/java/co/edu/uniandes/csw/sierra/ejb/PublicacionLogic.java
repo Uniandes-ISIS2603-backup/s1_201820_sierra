@@ -85,18 +85,20 @@ public class PublicacionLogic
      * Actualiza una Publicacion
      * @param ent la entidad con los datos que se quieren actualizar
      * @return la entidad con los cambios ya realizados
+     * @throws co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException
      */
-    public PublicacionEntity update(PublicacionEntity ent) throws BusinessLogicException{
-      
+    public PublicacionEntity update(PublicacionEntity ent) throws BusinessLogicException
+    {
         LOGGER.log(Level.INFO, "Actualizando la entidad de Publicacion con el id={0}", ent.getId());
-       if(persistencia.find(ent.getId())== null)
+      if(ent.getFecha() == null || ent.getTipo() == null)
+       {
+             throw new BusinessLogicException( "Los datos suministrados no son validos para la publicacion \"" + ent.getId( ) + "\"" );
+       }
+      else if(persistencia.find(ent.getId())== null)
        {
             throw new BusinessLogicException( "La publicacion con el id suministrado no  existe\"" + ent.getId( ) + "\"" );
        }
-    //   else if(ent.getMascota().getNacimiento().after(ent.getFecha()))
-       //{
-      //       throw new BusinessLogicException( "La fecha de la publicación no es valida \"" );
-       //}
+      
        else
        {
             return persistencia.update(ent);
