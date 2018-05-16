@@ -27,7 +27,7 @@
             </div>
             <h4>ESPECIE</h4>
             <div>
-                    <a ui-sref="especieDetail({especieId: especie.id})"></a>
+                    <a ui-sref="especieDetail({especieId: currentRaza.especie.id})">{{currentRaza.especie.nombre}}</a>
             </div>
             <h4 ng-if="currentRaza.mascotas.length>0">MASCOTAS</h4>
             <div>

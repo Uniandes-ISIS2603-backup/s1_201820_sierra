@@ -2,7 +2,7 @@
  
 var mod= ng.module('mascotaModule',[]);
 mod.constant('mascotaContext','api/mascotas');
-mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
+mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider)
     {
         var basePath='src/modules/mascotas/';
         $stateProvider.state('mascotasList',
@@ -15,7 +15,11 @@ mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                     controller:'mascotaCtrl',
                     controllerAs: 'Ctrl'
                 }
-            }
+            },
+            data: {
+                    requireLogin: false,
+                    roles: ['admin']
+                }
         }); 
     }]);
 })(window.angular);
