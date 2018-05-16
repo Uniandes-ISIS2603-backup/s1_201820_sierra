@@ -22,10 +22,14 @@ public class RazaDetailDTO extends RazaDTO {
      */
     private List<MascotaDTO> mascotas;
 
+    private EspecieDTO especie;
+    
     public RazaDetailDTO() {
         super();
     }
 
+    
+    
     /**
      * Crea un objeto RazaDetailDTO a partir de un objeto RazaEntity incluyendo
      * los atributos de RazaDTO.
@@ -42,6 +46,8 @@ public class RazaDetailDTO extends RazaDTO {
             for (MascotaEntity entityMascotas : entity.getMascotas()) {
                 mascotas.add(new MascotaDTO(entityMascotas));
             }
+            especie = new EspecieDTO(entity.getEspecie());
+            
         }
 
     }
@@ -85,6 +91,20 @@ public class RazaDetailDTO extends RazaDTO {
      */
     public void setMascotas(List<MascotaDTO> mascotas) {
         this.mascotas = mascotas;
+    }
+
+    /**
+     * @return the especie
+     */
+    public EspecieDTO getEspecie() {
+        return especie;
+    }
+
+    /**
+     * @param especie the especie to set
+     */
+    public void setEspecie(EspecieDTO especie) {
+        this.especie = especie;
     }
 
 }
