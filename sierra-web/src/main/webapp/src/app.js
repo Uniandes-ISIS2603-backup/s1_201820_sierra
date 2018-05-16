@@ -51,7 +51,7 @@
                  * @returns {Boolean} Verdadero si está dentro de su cuenta.
                  */
                 $rootScope.isAuthenticated = function () {
-                    if (sessionStorage.getItem("usuario") != null) {
+                    if (sessionStorage.getItem("user") != null) {
                         $rootScope.currentUser = sessionStorage.getItem("nombre");
                         return true;
                     } else {
@@ -75,7 +75,7 @@
                     }
                 };
 
-                if (requireLogin && (sessionStorage.getItem("usuario") == null)) {
+                if (requireLogin && (sessionStorage.getItem("user") == null)) {
                     event.preventDefault();
                     $state.go('login', $state.params);
                 }
