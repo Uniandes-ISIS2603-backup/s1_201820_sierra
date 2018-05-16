@@ -33,6 +33,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -59,12 +60,12 @@ public class AdquisicionCalificacionResource {
     
     @Inject
     private AdquisicionLogic adqLogic;
-    
+        
     /**
      * <h1>POST /api/adquisiciones/{adquisicionId}/calificaciones/{calificacionId} : Guarda una calificacion 
      * dentro de la adquisicion.</h1>
      *
-     * <pre> Guarda una adquisicione dentro de una adquisicion con la informacion que 
+     * <pre> Guarda una calificacion dentro de una adquisicion con la informacion que 
      * recibe el la URL. Se devuelve la calificacion que se guarda en la adquisicion.
      * 
      * Codigos de respuesta:
@@ -78,9 +79,18 @@ public class AdquisicionCalificacionResource {
      */
     @POST
     @Path("{calificacionId: \\d+}")
-    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId){
+    public CalificacionDetailDTO addCalificacion(@PathParam("adquisicionId") Long adqId, @PathParam("calificacionId") Long calId)
+    {
         System.out.println("adqId: " + adqId + "\ncalId: " + calId);
-        return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+        try
+        {
+            return new CalificacionDetailDTO(adqLogic.addCalificacion(adqId, calId));
+        }
+        catch(Exception e)
+        {
+            throw new WebApplicationException("404: " + e.getMessage());
+        }
+        
         
     }
     

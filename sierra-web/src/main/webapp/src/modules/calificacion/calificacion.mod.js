@@ -9,37 +9,52 @@
             $urlRouterProvider.otherwise("/calificacionList");
             //estado 'calificacionList'
             $stateProvider.state('calificacionList', {
-                
+
                 url: '/calificacion/list',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'calificacion.list.html',
-                        controller: 'calificacionCtrl',     
+                        controller: 'calificacionCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
-                
+
             })
-            .state('calificacionCreate', 
-            {
-                url:'/calificacion/create',
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'calificacion.create.html',
-                        controller: 'calificacionCreateCtrl'
-                    }
-                }
-            })
-            .state('calificacionUpdate', 
-            {
-                url:'/calificacion/update',
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'calificacion.update.html',
-                        controller: 'calificacionCreateCtrl'
-                    }
-                }
-            });
+                    .state('calificacionCreate',
+                            {
+                                url: '/calificacion/create',
+                                views: {
+                                    'mainView': {
+                                        templateUrl: basePath + 'calificacion.create.html',
+                                        controller: 'calificacionCreateCtrl'
+                                    }
+                                }
+                            })
+                    .state('calificacionUpdate',
+                            {
+                                url: '/calificacion/update/{calId:int}',
+                                views: {
+                                    'mainView': {
+                                        templateUrl: basePath + 'calificacion.update.html',
+                                        controller: 'calificacionCreateCtrl'
+                                    }
+                                }
+                            })
+                    .state('calificacionDelete',
+                            {
+                                parent: 'calificacionList',
+                                url: '/delete/{calId:int}',
+                                param: {
+                                    calId: null
+                                },
+                                views: {
+                                    'mainView': {
+                                        templateUrl: basePath + 'delete/calificacion.delete.html',
+                                        controller: 'calificacionDeleteCtrl'
+                                    }
+                                }
+                            }
+                    );
         }
     ]);
 })(window.angular);

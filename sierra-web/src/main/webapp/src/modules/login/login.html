@@ -1,0 +1,17 @@
+<div ng-if="!isAuthenticated()" class="container-fluid">
+    <form class="form-signin">
+        <h1 class="form-signin-heading text-muted">Log In</h1>
+        <input type="text" class="form-control" placeholder="user" required="" autofocus="true" ng-model="data.user">
+        <input type="password" class="form-control" placeholder="contraseña" required="true" ng-model="data.password">
+        <select class="form-control" name="singleSelect" id="singleSelect" ng-model="data.rol" required="true">
+            <option value="">--- Seleccione su rol ---</option> <!-- not selected / blank option -->
+            <option value="admin">Administrador</option>
+           <option value="cliente">Cliente</option>
+        </select>
+        <br>
+        <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="autenticar()">
+            INGRESAR
+        </button>
+        <a class="btn btn-lg btn-primary btn-block" ui-sref="especies">Cancel</a>
+    </form>
+</div>

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -29,10 +30,10 @@ public class MedioDePagoEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @ManyToMany
-    private List<ClienteEntity> clientes = new ArrayList<ClienteEntity>();
+    private List<ClienteEntity> clientes = new ArrayList<>();
     
     @PodamExclude
-    @OneToOne(mappedBy="medioDePago", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy="medioDePago", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private ComprobanteEntity comprobante;
     /**
      * Metodo que obtiene el numero de referencia de un medio de pago.

@@ -1,7 +1,15 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+(function (ng){
+    var mod = ng.module('publicacionModule');
+    mod.constant("publicacionContext", "api/publicaciones");
+    mod.controller('publicacionDeleteCtrl', ['$scope','$http','publicacionContext','$state',
+         function ($scope, $http, publicacionContext, $state){
+             $scope.deletePublicacion = function(){
+                 $http.delete(publicacionContext+'/'+$state.params.publicacionId).then(function(response){
+                      $state.go('publicacionList', {publicacionId: response.data.id}, {reload: true});
+                 });
+             };
+         }
+    ]);
+    
+}
+)(window.angular);

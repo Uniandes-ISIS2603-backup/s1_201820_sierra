@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ClientePersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,11 @@ public class ClienteLogic
     private ClientePersistence persistence;
     @Inject 
     private MedioDePagoLogic medioLogic;
+    
+    /*
+    @Inject 
+    private AdquisicionLogic adqLogic;
+    */
     
     /**
      * Crea una nueva entidad Cliente.
@@ -201,4 +208,31 @@ public class ClienteLogic
     {
         medioLogic.removeCliente(medioId, clienteId);
     }
+
+    /*
+    public AdquisicionEntity addAdquisicion(Long clId, Long adqId) throws BusinessLogicException{
+        System.out.println("ClienteLogic: \n clId: " + clId + "\n adqId: " + adqId);
+        ClienteEntity clEntity = getCliente(clId);
+        AdquisicionEntity adqEntity = adqLogic.getById(adqId);
+        if(clEntity == null)
+        {
+            throw new BusinessLogicException("No existe un cliente con el Id: " + clId);
+        }
+        if(adqEntity == null)
+        {
+            throw new BusinessLogicException("No existe una adquisicion con el Id: " + adqId);
+        }
+        if(clEntity.getAdquisiciones() != null)
+        {
+            clEntity.getAdquisiciones().add(adqEntity);
+        }
+        else
+        {
+            clEntity.setAdquisiciones(new ArrayList<>());
+            clEntity.getAdquisiciones().add(adqEntity);
+        }
+        adqEntity.setCliente(clEntity);
+        return adqEntity;
+    }
+    */
 }

@@ -102,7 +102,7 @@ public class EspecieDetailDTO extends EspecieDTO {
     /**
      * Lista de mascotas que contiene una especie
      */
-    private List<MascotaDTO> mascotas;
+    //private List<MascotaDTO> mascotas;
 
     /**
      * Lista de razas que contiene una especie
@@ -132,10 +132,12 @@ public class EspecieDetailDTO extends EspecieDTO {
             for (RazaEntity entityRazas : entity.getRazas()) {
                 razas.add(new RazaDTO(entityRazas));
             }
-            mascotas = new ArrayList<>();
+            //mascotas = new ArrayList<>();
+            /*
             for (MascotaEntity entityMascotas : entity.getMascotas()) {
                 mascotas.add(new MascotaDTO(entityMascotas));
             }
+            */
         }
 
     }
@@ -157,12 +159,13 @@ public class EspecieDetailDTO extends EspecieDTO {
             }
             entity.setRazas(razasEntity);
         }
+        /*
         if (mascotas != null) {
             List<MascotaEntity> mascotasEntity = new ArrayList<>();
             for (MascotaDTO mascotaDto : mascotas) {
                 if (MascotaAdopcionDTO.class.isInstance(mascotaDto)) {
                     mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
-                    entity.setMascotaS(mascotasEntity);
+                    //entity.setMascotaS(mascotasEntity);
                 } else {
                     mascotasEntity.add(mascotaDto.toEntity(new MascotaAdoptadaEntity()));
                     entity.setMascotaS(mascotasEntity);
@@ -170,24 +173,25 @@ public class EspecieDetailDTO extends EspecieDTO {
             }
             entity.setMascotaS(mascotasEntity);
         }
+        */
 
         return entity;
     }
 
     /**
      * @return the mascotas
-     */
+     
     public List<MascotaDTO> getMascotas() {
         return mascotas;
     }
 
     /**
      * @param mascotas the mascotas to set
-     */
+     
     public void setMascotas(List<MascotaDTO> mascotas) {
         this.mascotas = mascotas;
     }
-
+    * /
     /**
      * @return the razas
      */

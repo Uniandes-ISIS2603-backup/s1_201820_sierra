@@ -113,7 +113,6 @@ public class AcontecimientoDetailDTO extends AcontecimientoDTO {
        AcontecimientoEntity acontecimiento = super.toEntity();
         if (this.getMascota() != null)
         {
-           MascotaAdoptadaEntity  nuevo = new MascotaAdoptadaEntity();
             acontecimiento.setMascota(this.getMascota().toEntity());
         }
         return acontecimiento;

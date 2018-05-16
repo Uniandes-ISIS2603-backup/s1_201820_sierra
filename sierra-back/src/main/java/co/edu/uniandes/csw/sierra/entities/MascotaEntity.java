@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
@@ -103,10 +104,11 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * Especie  de la mascota
      */
+    /*
     @PodamExclude
     @ManyToOne
     private EspecieEntity especie;
-
+    */
     /**
      * Ciente  de la  mascota
      */
@@ -118,7 +120,7 @@ public abstract class MascotaEntity extends BaseEntity
      * Adquisicion a la que  esta  ligada la mascota
      */
     @PodamExclude
-    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy= "mascota",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private AdquisicionEntity adquisicion;
     
     /**
@@ -132,7 +134,7 @@ public abstract class MascotaEntity extends BaseEntity
      * Publicaciones de una  mascota
      */
     @PodamExclude
-    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="mascota",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<PublicacionEntity> publicaciones;
  
     /**
@@ -291,7 +293,7 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * Obtiene la especie de la mascota.
      * @return the especie de la mascota.
-     */
+     
     public EspecieEntity getEspecie() {
         return especie;
     }
@@ -299,11 +301,11 @@ public abstract class MascotaEntity extends BaseEntity
     /**
      * Asigna la especie de una mascota.
      * @param especie the especie de una mascota.
-     */
+     
     public void setEspecie(EspecieEntity especie) {
         this.especie = especie;
     }
-
+    * */
     /**
      * Obtiene el cliente dueño de la mascota.
      * @return the cliente dueño de la mascota.

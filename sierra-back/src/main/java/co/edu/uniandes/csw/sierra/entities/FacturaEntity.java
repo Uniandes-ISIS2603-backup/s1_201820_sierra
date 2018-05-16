@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -30,14 +31,14 @@ public class FacturaEntity extends BaseEntity implements Serializable{
      /**
      * Adquisición ligada a la factura.
      */ 
-    @OneToOne(mappedBy="factura", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy="factura", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @PodamExclude
     private AdquisicionEntity adquisicion;
     
     /**
      * Lista de comprobantes ligaras a la factura.
      */
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="factura")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy="factura", fetch = FetchType.LAZY)
     @PodamExclude
     private List<ComprobanteEntity> comprobantes;
     
@@ -128,11 +129,12 @@ public class FacturaEntity extends BaseEntity implements Serializable{
    
    /**
     * Agrega un sólo comprobante a la lista de comprobantes.
+     * @param comprobanteEntity
     */
    public void setComprobante(ComprobanteEntity comprobanteEntity)
    {
        if(comprobantes == null)
-           comprobantes = new ArrayList<ComprobanteEntity>();
+           comprobantes = new ArrayList<>();
        comprobantes.add(comprobanteEntity);
    }
 }

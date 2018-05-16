@@ -7,13 +7,10 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>MascotaSierra</title>
         <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoUniandes.jpg">
-         <!-- Dependencias Externas -->
-         
         
-         
+        <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="src/css/daju.css">
-        <link rel="stylesheet" href="src/css/cssJuan.css">
+        <link rel="stylesheet" href="recursos/css/daju.css">
         
        
         <script src="bower_components/angular/angular.js"></script>
@@ -35,6 +32,8 @@
         <!--Mascota Adoptada-->
         <script src="src/modules/mascotas/mascota.mod.js" type="text/javascript"></script>
         <script src="src/modules/mascotas/mascota.ctrl.js" type="text/javascript"></script>
+        
+        
         
          <!--Adquisicion-->
          <script src="src/modules/adquisicion/adquisicion.mod.js" type="text/javascript"></script>
@@ -58,7 +57,7 @@
         <!--Calificacion-->
         <script src="src/modules/calificacion/calificacion.mod.js" type="text/javascript"></script>
         <script src="src/modules/calificacion/calificacion.ctrl.js" type="text/javascript"></script>
-        <script src="src/modules/calificacion/calificacion.create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/calificacion/delete/calificacion.delete.ctrl.js" type="text/javascript"></script>
         
         <!--Factura-->
         <script src="src/modules/facturas/factura.mod.js" type="text/javascript"></script>
@@ -77,6 +76,14 @@
         <script src="src/modules/mascotasadop/update/mascotaEdit.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/mascotasadop/delete/mascotaDelete.ctrl.js" type="text/javascript"></script>
         
+        <!--MascotaVenta-->
+        <script src="src/modules/mascotasVenta/mascotaVenta.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasVenta/mascotaVenta.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasVenta/mascotaVentaDetail.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasVenta/new/mascotaCreate.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasVenta/update/mascotaEdit.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mascotasVenta/delete/mascotaDelete.ctrl.js" type="text/javascript"></script>
+        
            <!--CLIENTES-->
         <script src="src/modules/clientes/clientes.mod.js" type="text/javascript"></script>
         <script src="src/modules/clientes/clientes.ctrl.js" type="text/javascript"></script>
@@ -91,7 +98,7 @@
         <script src="src/modules/mediosDePago/mediosDePago.create.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/mediosDePago/mediosDePago.detail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/mediosDePago/mediosDePago.delete.ctrl.js" type="text/javascript"></script>
-         <script src="src/modules/mediosDePago/mediosDePago.update.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mediosDePago.update.ctrl.js" type="text/javascript"></script>
         
         
         <script src="src/app.js" type="text/javascript"></script> 
@@ -112,9 +119,12 @@
         <script src="src/modules/raza/update/razaedit.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/raza/delete/razaDelete.ctrl.js" type="text/javascript"></script>
         
+        <!--LOG IN-->
+       <script src="src/modules/login/login.mod.js" type="text/javascript"></script>
+       <script src="src/modules/login/login.ctrl.js" type="text/javascript"></script>        
+       <script src="src/modules/login/logout.ctrl.js" type="text/javascript"></script>
+         <link rel="stylesheet" href="recursos/css/login.css" />
         
-
-      
     </head>
     
     <!-- Aca se comienza a mostrar la pagina-->
@@ -155,7 +165,7 @@
                              <button class="dropbtn"><b>Mascotas</b></button>
                         <div class="dropdown-content">
                           <a ui-sref='mascotasadoptadas'>Adopccion</a>
-                          <a href="#">Compra</a>
+                          <a ui-sref='mascotasVenta'>Compra</a>
                         </div>     
                       </div></li>  
                  </ul>
@@ -164,7 +174,7 @@
                     <center>
                         <ul class="nav nav-tabs" >
                         <!-- Enlace al estado de listar las entidades de Sierra -->
-                        <li style="background-color:#2B4679 "> <a style=" color: black" ><strong >Log In</strong></a></li>
+                        <li style="background-color:#2B4679 "> <a style=" color: black" ui-sref="login"><strong >Log In</strong></a></li>
                         </ul> 
                     </center> 
                 </div>
@@ -233,7 +243,7 @@ function showSlides() {
        slides[i].style.display = "none";  
     }
     slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
+    if (slideIndex > slides.length) {slideIndex = 1}
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
