@@ -204,4 +204,53 @@ public class ClientePersistenceTest
        ClienteEntity deleted = em.find(ClienteEntity.class, entity.getId());
        Assert.assertNull(deleted);
     }
+    /**
+     * Test of findByCedula method, of class ClientePersistence.
+     */
+    @Test
+    public void testFindByCedula()
+    {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.findByCedula(entity.getCedula());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getApellido(), newEntity.getApellido());
+        Assert.assertEquals(entity.getCedula(), newEntity.getCedula());
+        Assert.assertEquals(entity.getTelefono(), newEntity.getTelefono());
+        Assert.assertEquals(entity.getCorreo(), newEntity.getCorreo());
+        Assert.assertEquals(entity.getContrasenia(), newEntity.getContrasenia());  
+    }
+    
+    /**
+     * Test of findByCedula method, of class ClientePersistence.
+     */
+    @Test
+    public void testFindByCorreo()
+    {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.findByCorreo(entity.getCorreo());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getApellido(), newEntity.getApellido());
+        Assert.assertEquals(entity.getCedula(), newEntity.getCedula());
+        Assert.assertEquals(entity.getTelefono(), newEntity.getTelefono());
+        Assert.assertEquals(entity.getCorreo(), newEntity.getCorreo());
+        Assert.assertEquals(entity.getContrasenia(), newEntity.getContrasenia());  
+    }
+    /**
+     * Test of findByTelefono method, of class ClientePersistence.
+     */
+    @Test
+    public void testFindByTelefono()
+    {
+        ClienteEntity entity = data.get(0);
+        ClienteEntity newEntity = clientePersistence.findByTelefono(entity.getTelefono());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getApellido(), newEntity.getApellido());
+        Assert.assertEquals(entity.getCedula(), newEntity.getCedula());
+        Assert.assertEquals(entity.getTelefono(), newEntity.getTelefono());
+        Assert.assertEquals(entity.getCorreo(), newEntity.getCorreo());
+        Assert.assertEquals(entity.getContrasenia(), newEntity.getContrasenia());  
+    }
 }
