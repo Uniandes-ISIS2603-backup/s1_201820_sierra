@@ -1,6 +1,6 @@
 (function(ng){
     
-    var mod = ng.module('comprobanteModule',[]);
+    var mod = ng.module('comprobanteModule',['ui.router']);
     mod.constant('comprobanteContext','api/comprobantes');
     mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider)
     {
