@@ -2,8 +2,22 @@
  var mod = ng.module("publicacionModule", ['ui.router']) ;
   mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
           var basePath = "src/modules/publicacion/";
-          $urlRouterProvider.otherwise("/publicaciones");
-          $stateProvider.state('publicaciones', {
+          $urlRouterProvider.otherwise("/publicacionList");
+          $stateProvider.state('publicacionDelete', {
+                url:'/publicacion/{publicacionId:int}/delete',
+                param:{
+                    publicacionId:null
+                },
+                views:{
+                    'mainView':{
+                      templateUrl: basePath + "delete/publicacion.delete.html",
+                      controller:'publicacionDeleteCtrl',
+                      controllerAs:'ctrl'
+                   }
+                }
+            }
+            )
+                  .state('publicaciones', {
               url: '/publicaciones',
               abstrac:true,
               views:{

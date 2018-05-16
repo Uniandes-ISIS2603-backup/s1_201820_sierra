@@ -26,11 +26,13 @@
                 </div>
                 <div class="row">
                     <b style="margin:7%">Fecha:</b>
-                    <p style="margin:7%">{{review.adquisicion.fecha}}</p>
+                    <p style="margin:7%">{{review.adquisicion.fecha | date}}</p>
                 </div>
                 <div class="row">
-                    <a ui-sref="calificacionUpdate({calificacionId: review.id})" style="margin:7%"> Modificar</a>
+                    <a ui-sref="calificacionUpdate({calId: review.id})" style="margin:7%">Modificar</a>
+                    <a btn-sm" ui-sref="calificacionDelete({calIdId: review.id})"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
+                <br>
             </div>
         </div>
         <hr>

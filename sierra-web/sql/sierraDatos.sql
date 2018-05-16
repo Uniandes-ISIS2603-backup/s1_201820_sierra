@@ -155,14 +155,14 @@ insert into facturaEntity(id, idCliente, nombreCliente, valor) values (117,114,'
 
 
 /*<!--Añado las  adquisiciones a las tablas -->*/
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (101, '11/24/2017', 2146379,111);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (102, '12/3/2017', 2843100,111);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (103, '2/1/2018', 4617331,111);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (104, '6/23/2017', 715105,111);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (105, '11/12/2017', 2802294,113);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (106, '12/9/2017', 3466209,112);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (107, '1/24/2018', 3573395,112);
-insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id) values (108, '3/8/2017', 4900605,113);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (101, '11/24/2017', 2146379,111, 100);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (102, '12/3/2017', 2843100,111, 111);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (103, '2/1/2018', 4617331,111, 112);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (104, '6/23/2017', 715105,111, 113);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (105, '11/12/2017', 2802294,113, 114);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (106, '12/9/2017', 3466209,112, 115);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (107, '1/24/2018', 3573395,112, 116);
+insert into ADQUISICIONENTITY (id, fecha, valorTotal,cliente_id, factura_id) values (108, '3/8/2017', 4900605,113, 117);
 
 
 /*CALIFICACIONES*/
@@ -183,11 +183,14 @@ insert into CertificadoEntity(id, fecha, descripcion, imagen,mascotaventa_id) va
 insert into CertificadoEntity(id, fecha, descripcion, imagen,mascotaventa_id) values (115, '05/06/2018', 'El perro cuenta con todas las vacunas', 'recursos/img/cer.jpg',125);
 
 
-/*MEDIOS DE PAGO*/
+/*MEDIOS DE PAGO
 insert into MedioDePagoEntity(id, numeroReferencia, tipo,cliente_id) values (1, 10, 'efectivo',111);
 insert into MedioDePagoEntity(id, numeroReferencia, tipo,cliente_id) values (2, 20, 'tarjeta debito',112);
 insert into MedioDePagoEntity(id, numeroReferencia, tipo,cliente_id) values (3, 30, 'tarjeta credito',113);
-
+*/
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (100, 10, 'efectivo');
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (101, 20, 'tarjeta debito');
+insert into MedioDePagoEntity(id, numeroReferencia, tipo) values (102, 30, 'tarjeta credito');
 
 /*PUBLICACIONSES*/
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(111, 'Shiba pasa una tarde en la piscina', '09/29/2017','recursos/img/shibaPiscina.jpg','Shiba pasa una tarde  en la piscina ','gracioso',  113);
@@ -198,6 +201,6 @@ insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, masco
 insert into PublicacionEntity (id, comentario, fecha, fotoUrl, name, tipo, mascota_Id)values(116, 'Mishu se traga los pericos australianos de su dueno', '09/29/2017','recursos/img/pericos australianos.jpg','Mishu se traga los pericos australianos de su dueno ','gracioso',  116);
 
 
-insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,1);
-insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (2,1);
-insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (1,2);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (100,111);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (101,112);
+insert into MEDIODEPAGOENTITY_CLIENTEENTITY(MEDIOSDEPAGO_ID, CLIENTES_ID) values (102,113);
