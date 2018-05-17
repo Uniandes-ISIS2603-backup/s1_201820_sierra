@@ -11,7 +11,6 @@
         <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="recursos/css/daju.css">
-        <link rel="stylesheet" href="recursos/css/jhoncke.css">
         
        
         <script src="bower_components/angular/angular.js"></script>
@@ -131,31 +130,54 @@
     
     <!-- Aca se comienza a mostrar la pagina-->
     <body>
+        
+  <header id="masthead">
+    <div class="container">
+
+      <ul class="network-nav nav">
+  <li class="nav-docs"><a ui-sref='especiesList'>Especies</a></li>
+  <li class="nav-search"><a ui-sref='razasList'>Razas</a></li>
+   <li class="nav-blog" >
+
+                            <li style="background-color:orange " class="nav-blog">
+                            <div class="dropdown row " >
+                             <button class="dropbtn"><b>Mascotas</b></button>
+                             <div class="dropdown-content">    
+                          <a ui-sref='mascotasaList'>Adopción</a>
+                          <a ui-sref='mascotasVentaList'>Venta</a>
+                          <a ui-sref='mascotasList'>Ambas</a>   
+                            </div>     
+                            </div>
+                        </li>  
+   <!--Boton del login -->
+  <ul ng-if="!isAuthenticated()" class="nav navbar-nav ">
+  <li class="nav-stats"><a ui-sref="login"><span class="glyphicon glyphicon-log-in">Login</a></li>
+  </ul>
+        <ul ng-if="isAuthenticated()" class="nav navbar-nav ">
+                        <li class="nameUser">Hola, {{currentUser}}</li>
+                        <li><a ui-sref="logout">Logout</a></li>
+                         </ul>
+</ul>
+
+      
+          <div class="brand" >
+                  
+               <img src="recursos/img/logofinalfinal.png" class="logo" alt="Bower logo">
+            
+             <h2> Mi Mejor Amigo</h2>  
+             <h3 class="tagline">Un ángel te  &nbsp; esta&nbsp; esperando</h3>
+             </div>
+
+    </div>
+  </header>
          <!-- Parte superior Imagen y  Titulo de la pagina-->
-         <div class="row" style="background-color: white">
+         <div class="row" style="background-color: #2baf2b">
              <div class="col-md-3">
               </div>
              <!--Imagen centrada con nombre de la compañia-->
-              <div class="hero-image col-md-6" style="background-image: url(recursos/img/titular.png)">
-             <div class="hero-text">
-                 <h2> Mi Mejor Amigo</h2>  
-             </div>
-             </div>
+            
              <!--Boton del login -->
-             <div class="col-md-3">
-                 <div class="row">
-                     <div class="col-md-8"></div>
-                     <div class="col-md-4">
-                         <ul ng-if="!isAuthenticated()" class="nav navbar-nav ">
-                             <li><a ui-sref="login" style="color: black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                    <ul ng-if="isAuthenticated()" class="nav navbar-nav ">
-                        <li class="nameUser">Hola, {{currentUser}}</li>
-                        <li><a ui-sref="logout">Logout</a></li>
-                    </ul>
-                     </div>
-                 </div>
-             </div>
+             
          </div>
          <!--Presentacion del grupo de trabajo-->
          <div style="background-color: #2B4679" class="row" >
@@ -164,26 +186,11 @@
                 </div>  
          </div>
           <!--Lista de opciones de busqueda Inicial no es necesario ningun tipo de login-->
-          <div class="row" style="background-color: #2B4679">
-              <ul class="nav nav-tabs-justified">
-                  <li style="background-color:#2B4679 " class="col-md-2"><a ui-sref='especiesList' style="color: black"><b>Especies </b></a></li>
-                        <li style="background-color:#2B4679 " class="col-md-2 "><a ui-sref='razasList' style="color: black"><b>Razas </b></a></li>
-                        <li style="background-color:#2B4679 " class="col-md-2">
-                            <div class="dropdown row " >
-                             <button class="dropbtn"><b>Mascotas</b></button>
-                             <div class="dropdown-content">    
-                          <a ui-sref='mascotasaList'>Adopccion</a>
-                          <a ui-sref='mascotasVentaList'>Compra</a>
-                          <a ui-sref='mascotasList'>Ambas</a>   
-                            </div>     
-                            </div>
-                        </li>  
-              </ul>
-          </div>
+          
                 
           
             <div class="redes y banner">
-                  <ul class="nav nav-tabs col-lg-12" style="background-color: #0495B1">
+                  <ul class="nav nav-tabs col-lg-12" style="background-color: #FFCC2F">
                         <li ><a ng-if="isAuthenticated()" ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
                         <li><a ng-if="isAuthenticated() && hasPermissions()" ui-sref='facturas'style="color: black"><b>Facturas</b></a></li>
                         <li><a ng-if="isAuthenticated()" ui-sref='comprobantes'style="color: black"><b>Comprobantes</b></a></li>
@@ -263,38 +270,38 @@ function showSlides() {
 }
 </script>
 
-            <div class="row" data- style="background-color: black">
+            <div class="row" data- style="background-color: orange">
                 <center>
                     <h3 style="color: white"> SIERRA DEVELOPMENT TEAM</h3>
                 </center>
             </div>
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679; height: 200px ">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #FFCC2F;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px;"><h3 style="color: black"><strong>Juan Sanchez</strong></h3></div>    
                     </center>
                 </div> 
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background: orange;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px"><h3 style="color: black"><strong>David Zambrano</strong></h3></div>    
                     </center>
                 </div>  
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:   #FFCC2F;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px"><h3 style="color: black"><strong>Julio Peña</strong></h3></div>    
                     </center>
                 </div> 
-                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
+                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  orange;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px"><h3 style="color: black"><strong>Jhonatan Amortegui</strong></h3></div>    
                     </center>
                 </div> 
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:   #FFCC2F;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px"><h3 style="color: black"><strong>Esteban Gutierrez</strong></h3></div>    
                     </center>
                 </div>  
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  #2B4679;; height: 200px ">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 recuadroDesarrollador" style="background:  orange;; height: 200px ">
                     <center>
                         <div style="margin-top: 60px"><h3 style="color: black"><strong>Rodrigo González</strong></h3></div>    
                     </center>
