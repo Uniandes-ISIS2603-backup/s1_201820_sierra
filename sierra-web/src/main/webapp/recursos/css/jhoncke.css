@@ -14,12 +14,7 @@
     border-radius: 10%;
 }
 
-#btn_edit_publicacion_list
+#btns_publicacion_list
 {
-    display:display-inline;
-}
-
-#btn_delete_publicacion_list
-{
-    display:display-inline;
+    
 }

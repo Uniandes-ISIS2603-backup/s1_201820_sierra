@@ -30,7 +30,11 @@
                                 controller: 'publicacionCtrl',
                                 controllerAs: 'ctrl'
                             }
-                        }
+                        },
+                    data: {
+                        requireLogin: true,
+                        roles: ['cliente','admin']
+                    }
                     })
                     .state('publicacionList', {
                         url: '/publicaciones/list',
@@ -40,7 +44,11 @@
                                 controller: 'publicacionCtrl',
                                 controllerAs: 'ctrl'
                             }
-                        }
+                        },
+                    data: {
+                        requireLogin: true,
+                        roles: ['cliente','admin']
+                    }
                     })
                     .state('publicacionCreate', {
                         url: '/publicacion/create',

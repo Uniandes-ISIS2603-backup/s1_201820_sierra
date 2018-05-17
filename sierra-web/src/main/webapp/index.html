@@ -184,15 +184,15 @@
           
             <div class="redes y banner">
                   <ul class="nav nav-tabs col-lg-12" style="background-color: #0495B1">
-                        <li ><a ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
-                        <li><a ui-sref='facturas'style="color: black"><b>Facturas</b></a></li>
-                        <li><a ui-sref='comprobantes'style="color: black"><b>Comprobantes</b></a></li>
-                        <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
+                        <li ><a ng-if="isAuthenticated()" ui-sref='calificacionList' style="color: black"><b>Calificaciones</b></a></li>
+                        <li><a ng-if="isAuthenticated()" ui-sref='facturas'style="color: black"><b>Facturas</b></a></li>
+                        <li><a ng-if="isAuthenticated()" ui-sref='comprobantes'style="color: black"><b>Comprobantes</b></a></li>
+                        <li><a ng-if="isAuthenticated()" ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
                         <li><a ng-if="isAuthenticated()"  ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
-                        <li><a ui-sref='acontecimientos' style="color: black"><b>Acontecimientos</b></a></li>
-                        <li><a ui-sref='publicaciones' style="color: black"><b>Publicaciones</b></a></li>
-                        <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
-                        <li><a ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
+                        <li><a ng-if="isAuthenticated()" ui-sref='acontecimientos' style="color: black"><b>Acontecimientos</b></a></li>
+                        <li><a ng-if="isAuthenticated() && hasPermissions()" ui-sref='publicaciones' style="color: black"><b>Publicaciones</b></a></li>
+                        <li><a ng-if="isAuthenticated()" ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
+                        <li><a ng-if="isAuthenticated()" ui-sref='mediosDePagoList' style="color: black"><b>Medios de pago</b></a></li>
                         
                  </ul>
             </div>

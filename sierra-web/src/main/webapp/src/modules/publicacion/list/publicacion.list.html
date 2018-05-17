@@ -27,10 +27,9 @@
             <b>Comentario:</b>
             <p id="{{$index}}-publicacionComentario">{{publicacion.comentario}}</p>
         </div>
-        <div id='btn_edit_publicacion_list'  class ="row">
+        <div id='btns_publicacion_list'  class ="row">
             <p id="{{$index}}-Editar"><a class="btn btn-primary"ui-sref="publicacionUpdate({publicacionId:publicacion.id})"><span class="glyphicon glyphicon-edit"></span></a></p> 
+            <p id="{{$index}}-Borrar"><a class="btn btn-danger"ui-sref="publicacionDelete({publicacionId:publicacion.id})"><span class="glyphicon glyphicon-trash"></span></a></p> 
         </div>
-        <div id='btn_delete_publicacion_list'  class ="row">
-            <p id="{{$index}}-Borrar"><a class="btn btn-danger"ui-sref="publicacionDelete({publicacionId:publicacion.id})"><span class="glyphicon glyphicon-trash"></span></a></p>    
-        </div>  
+        
     </div>          
