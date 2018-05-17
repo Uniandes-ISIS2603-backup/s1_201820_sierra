@@ -14,7 +14,11 @@
                         templateUrl: basePath + 'mediosDePago.html',
                         controller: 'mediosDePagoCtrl'
                     }
-                }   
+                },
+                    data: {
+                        requireLogin: true,
+                        roles: ['admin','cliente']
+                    }   
             }).state('mediosDePagoList',{
                url: '/List',
                parent: 'mediosDePago',
@@ -23,7 +27,11 @@
                        templateUrl: basePath+"mediosDePago.list.html",
                        controller:'mediosDePagoCtrl'
                    }
-               }
+               },
+                    data: {
+                        requireLogin: true,
+                        roles: ['cliente','admin']
+                    }
              })
             .state ('mediosDePagoCreate', {
                 url:'/mediosDePago/create',
@@ -32,7 +40,11 @@
                         controller: 'mediosDePagoNewCtrl',
                         templateUrl: basePath + 'mediosDePago.create.html'
                     }
-                }
+                },
+                    data: {
+                        requireLogin: true,
+                        roles: ['admin']
+                    }
             }).state('mediosDePagoDetail', {
                 url: '/{mediosDePagoId:int}/detail',
                 parent: 'mediosDePago',
@@ -48,7 +60,11 @@
                         controller: 'mediosDePagoDetailCtrl'
                        
                     }
-                }
+                },
+                    data: {
+                        requireLogin: true,
+                        roles: ['cliente','admin']
+                    }
             }).state('mediosDePagoDelete', {
                 url:'/{mediosDePagoId:int}/delete',
                 parent:'mediosDePago',
@@ -61,7 +77,11 @@
                       controller:'deleteMediosDePagoCtrl',
                       controllerAs:'ctrl'
                    }
-                }
+                },
+                    data: {
+                        requireLogin: true,
+                        roles: ['admin']
+                    }
             }).state('mediosDePagoUpdate', {
                 url:'/{mediosDePagoId:int}/update',
                 parent:'mediosDePago',
@@ -73,7 +93,11 @@
                       templateUrl: basePath + 'mediosDePago.create.html',
                       controller:'mediosDePagoUpdateCtrl'
                    }
-                }
+                },
+                    data: {
+                        requireLogin: true,
+                        roles: ['admin']
+                    }
             });
         }]);
 })(window.angular);
