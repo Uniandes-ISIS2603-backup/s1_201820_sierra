@@ -1,8 +1,8 @@
   <div  class="container-fluid">      
       
     <hr> 
-    <h3>ID:{{currentEspecie.id}}</h3>
-    <h4 >Editando la informacion de: {{currentEspecie.nombre}}  </h4>
+    <h3>ID:{{id}}</h3>
+    <h4 >Editando la informacion de: {{nombreEspecie}}  </h4>
     <br>
      <center>
     <div class="col-sm-10" >
@@ -29,9 +29,18 @@
              <br>
         <div>
             <center>
-                <lable>Caracteristticas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
+                <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
             </center>
             <br>
+            <hr>
+              <center>
+                <lable>Razas no asociadas a esta especie</lable>&nbsp;
+                <ul ng-repeat="raza in availableItems">
+                    <li><a ui-sref="razaDetail({razaId: raza.id})"> {{raza.nombreRaza}} </a> <input value="Asociar" type="button" ng-click=""></li>
+                </ul>
+            </center>
+            <br>
+            
             <center>
                 <center> <a ng-click="createEspecie()"  ui-sref="especiesList"><input type="button" value="Editar"></a></center>
             </center>
