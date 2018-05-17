@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <a class="btn btn-info" ui-sref="clienteCreate"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
+            <a class="btn btn-info" ui-sref="clienteCreate" ng-if="isAuthenticated() && hasPermissions()"><span class="glyphicon glyphicon-plus-sign"></span> Add new cliente</a>
         </div>
     </div>
     <table class="table table-striped col-md-5">
@@ -24,8 +24,8 @@
                 <td id="{{$index}}-Telefono">{{cliente.telefono}}</td>
                 <td id="{{$index}}-Correoelectronico">{{cliente.correo}}</td>
                 
-                <td id="{{$index}}-Borrar"><a ui-sref="clienteDelete({clienteId:cliente.id})"><input type="button" ng-click="deleteCliente()" value="Borrar"></a></td>
-                 <td id="{{$index}}-Editar"><a ui-sref="clienteUpdate({clienteId:cliente.id})"><input type="button" ng-click="createCliente()" value="Editar"></a></td>
+                <td id="{{$index}}-Borrar"><a ui-sref="clienteDelete({clienteId:cliente.id})" ng-if="isAuthenticated() && hasPermissions()"><input type="button" ng-click="deleteCliente()" value="Borrar"></a></td>
+                 <td id="{{$index}}-Editar"><a ui-sref="clienteUpdate({clienteId:cliente.id})" ng-if="isAuthenticated() && hasPermissions()"><input type="button" ng-click="createCliente()" value="Editar"></a></td>
             </tr>
         </tbody>
     </table>
