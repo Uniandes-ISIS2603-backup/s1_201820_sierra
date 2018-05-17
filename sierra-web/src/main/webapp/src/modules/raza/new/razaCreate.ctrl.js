@@ -10,8 +10,9 @@
             $http.get(especieContext).then(function (response) {
                 $scope.especiesRecords = response.data;
             });
+            
             $scope.createRaza = function () {
-                $http.post(razasContext, $scope.data).then(function (response) {
+                $http.post(razasContext,$scope.data).then(function (response) {
                     $state.go('razasList', {razaId: response.data.id}, {reload: true});
                 });
             };

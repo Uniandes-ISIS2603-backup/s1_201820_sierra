@@ -5,6 +5,7 @@
 */
 package co.edu.uniandes.csw.sierra.resources;
 import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDTO;
+import co.edu.uniandes.csw.sierra.dtos.MascotaAdopcionDetailDTO;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import javax.inject.Inject;
@@ -52,16 +53,16 @@ public class MascotaAdoptadaAcontecimientoResource
      * </pre>
      * @param mascotaAdoptadaId Identificador de la mascota que se esta buscando. Este debe ser una cadena de dígitos.
      * @param acontecimientoId Identificador del acontecimiento  que se desea guardar. Este debe ser una cadena de dígitos.
-     * @return JSON {@link MascotaAdopcionDTO} - La mascota donde se guardara la factura
+     * @return JSON {@link MascotaAdopcionDTO} - La mascota donde se guardara el acontecimiento.
      */
     @POST
     @Path("{acontecimientoId: \\d+}")
-    public MascotaAdopcionDTO crearMascotaAdoptadaAcontecimiento(@PathParam("mascotaAdoptadaId") Long mascotaAdoptadaId, @PathParam("acontecimientoId") Long acontecimientoId)
+    public MascotaAdopcionDetailDTO crearMascotaAdoptadaAcontecimiento(@PathParam("mascotaAdoptadaId") Long mascotaAdoptadaId, @PathParam("acontecimientoId") Long acontecimientoId)
     {
         System.out.println("MascotaAdoptadaResoure: \n mascotaAdoptadaId: " + mascotaAdoptadaId + "\n acontecimientoId: " + acontecimientoId);
         try
         {
-            return new MascotaAdopcionDTO(mascotaLogica.addAcontecimiento(mascotaAdoptadaId, acontecimientoId));
+            return new MascotaAdopcionDetailDTO(mascotaLogica.addAcontecimiento(mascotaAdoptadaId, acontecimientoId));
         }
         catch(BusinessLogicException e){
             throw new WebApplicationException("404: " + e.getMessage());
