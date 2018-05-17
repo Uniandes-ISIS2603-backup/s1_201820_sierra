@@ -23,7 +23,11 @@
                       controller:'acontecimientoDeleteCtrl',
                       controllerAs:'ctrl'
                    }
-                }
+                },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
             }
             )
                     .state('acontecimientos',{
@@ -34,6 +38,9 @@
                         templateUrl: basePath + 'acontecimiento.html',
                         controller: 'acontecimientoCtrl'
                     }
+                },
+                 data: {
+                    requireLogin: false
                 }
             })
                // Define el estado lista
@@ -45,6 +52,9 @@
                         controller: 'acontecimientoCtrl',     
                         controllerAs: 'ctrl'
                        }
+                },
+                data: {
+                    requireLogin: false
                 }
             })
             //Estado crear
@@ -56,7 +66,11 @@
                         controller: 'acontecimientoCreateCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                }, data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
+                
                     }
                     )
             //Estado actualizar
@@ -70,7 +84,11 @@
                       templateUrl: basePath + 'update/acontecimiento.update.html',
                       controller:'acontecimientoUpdateCtrl'
                    }
-                }
+                },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
             });
         }
     ]);
