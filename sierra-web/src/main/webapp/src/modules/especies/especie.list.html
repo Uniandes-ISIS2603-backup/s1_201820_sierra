@@ -14,11 +14,6 @@
                     <a ng-if="isAuthenticated() && hasPermissions()" ui-sref="especieEdit({especieId: especie.id})" ng-if="isAuthenticated() && hasPermissions()"><input type="button" value="Editar">
                      <a ui-sref="especieDelete({especieId: especie.id})" ng-if="isAuthenticated() && hasPermissions()" ><input type="button" value="Borrar" ng-if="especie.razas.length===0 && especie.mascotas.length===0"></a>
                 </center>
-                <center>
-                    <div ng-if="especie.razas.length>0 && especie.mascotas.length>0">
-                    <p>para borrar una especie no debe tener nada asociado</p>
-                </div>
-                </center>
             </div>
         </div>        
     </div>
