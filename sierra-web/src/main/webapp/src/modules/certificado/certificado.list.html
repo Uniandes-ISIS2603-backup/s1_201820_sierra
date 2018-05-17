@@ -7,7 +7,9 @@
             <div class="thumbnail" style="background-color: gray">
                  <div>  <label> fecha: </label> {{certificado.fecha}}</div>
                     <div> <label> Descripción: </label> {{certificado.descripcion}}</div>
-                    <div> <label> Imagen: </label> {{certificado.imagen}}</div>
+                    <div class="thumb">
+                    <img class="imagenCertificadoDetail img-responsive" ng-src="{{certificado.imagen}}"/>
+          </div>
                 <center> <a ui-sref="certificadoDetail({certificadoId: certificado.id})"><input type="button" value="ver"></a></center>
             </div>
         </div>        
