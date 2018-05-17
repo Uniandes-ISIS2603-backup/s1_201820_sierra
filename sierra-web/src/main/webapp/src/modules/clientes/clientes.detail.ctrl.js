@@ -7,7 +7,7 @@
             if (($state.params.clienteId !== undefined) && ($state.params.clienteId !== null)) {
                 
                 $http.get(clienteContext + '/' + $state.params.clienteId).then(function (response) {
-                    
+                    $scope.mediosDePagoRecords = response.data.mediosDePago;
                     $scope.currentCliente = response.data;
                 });
             }
