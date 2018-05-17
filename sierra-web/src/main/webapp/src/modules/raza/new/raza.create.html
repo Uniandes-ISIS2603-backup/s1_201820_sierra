@@ -30,6 +30,14 @@
             </center>
          </div>
             <br>
+             <div>
+            <center>
+                <lable>Especie:</lable>&nbsp;<select name="especies" ng-model="data.especieId">
+                    <option value="{{especie.id}}" ng-repeat="especie in especiesRecords">{{especie.nombre}}</option>
+                                            </select>
+            </center>
+             </div>
+            <br>
          <div>
             <center>
                 <button  ng-click="createRaza()" ui-sref="razasList" >Registrar</button>
