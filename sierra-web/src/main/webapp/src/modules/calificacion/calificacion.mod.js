@@ -17,6 +17,10 @@
                         controller: 'calificacionCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data: {
+                    requireLogin: true,
+                    roles: ['admin']
                 }
 
             })
@@ -28,6 +32,10 @@
                                         templateUrl: basePath + 'calificacion.create.html',
                                         controller: 'calificacionCreateCtrl'
                                     }
+                                },
+                                data: {
+                                    requireLogin: false,
+                                    roles: ['admin', 'cliente']
                                 }
                             })
                     .state('calificacionUpdate',
@@ -38,6 +46,10 @@
                                         templateUrl: basePath + 'calificacion.update.html',
                                         controller: 'calificacionCreateCtrl'
                                     }
+                                },
+                                data: {
+                                    requireLogin: false,
+                                    roles: ['admin', cliente]
                                 }
                             })
                     .state('calificacionDelete',
@@ -52,7 +64,11 @@
                                         templateUrl: basePath + 'delete/calificacion.delete.html',
                                         controller: 'calificacionDeleteCtrl'
                                     }
-                                }
+                                }, 
+                                data: {
+                    requireLogin: false,
+                    roles: ['admin', 'cliente']
+                    }
                             }
                     );
         }

@@ -26,15 +26,19 @@ package co.edu.uniandes.csw.sierra.test.logic;
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
 import co.edu.uniandes.csw.sierra.ejb.ClienteLogic;
+import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -80,6 +84,9 @@ public class AdquisicionLogicTest {
 
     @Inject
     private MascotaAdoptadaLogic mscLogic;
+    
+    @Inject
+    private FacturaLogic facLogic;
 
     /**
      * Injeccion de la clase de persistencia
@@ -265,6 +272,23 @@ public class AdquisicionLogicTest {
         } catch (BusinessLogicException e) {
             fail("No deberia generar Exception");
         }
+    }
+    
+    @Test
+    public void addFacturaTest(){
+        AdquisicionEntity adqEnt = factory.manufacturePojo(AdquisicionEntity.class);
+        FacturaEntity facEnt = factory.manufacturePojo(FacturaEntity.class);
+        try{
+            adqEnt = calLogic.create(adqEnt);
+            facEnt = facLogic.create(facEnt);
+            calLogic.addFactura(adqEnt.getId(), facEnt.getId());
+            AdquisicionEntity newEnt = calLogic.getById(adqEnt.getId());
+            Assert.assertEquals(newEnt.getFactura().getId(), facEnt.getId());
+            calLogic.delete(adqEnt.getId());
+        } catch (BusinessLogicException ex) {
+            fail("No deberia generar Exception");
+        }
+        
     }
 
 }
