@@ -3,13 +3,14 @@
 {
    //Definicion del modulo.
     var modulo = ng.module("facturaModule",  ['ui.router']);
+    modulo.constant("facturaContext", "api/facturas")
    //Configuracion de los estados.
     modulo.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider)
         {
             //basePath es la variable con la ruta para encontrar los templates, controladores y modulo.
             var basePath = 'src/modules/facturas/';
             //Estado por defecto
-            $urlRouterProvider.otherwise("/facturas");
+            $urlRouterProvider.otherwise("/facturasList");
            //Definicion de los estados
             //Estado iincial
             $stateProvider.state('facturas',{
@@ -61,13 +62,15 @@
             })
                .state('facturaDelete', {
                 url:'/{facturaId:int}/delete',
+                parent:'facturas',
                 param:{
                    facturaId : null
                 },
                 views:{
                     'mainView':{
                       templateUrl: basePath + 'list/factura.list.html',
-                      controller:'facturaDeleteCtrl'
+                      controller:'facturaDeleteCtrl',
+                      controllerAs:'Ctrl'
                    }
                 }
             });
