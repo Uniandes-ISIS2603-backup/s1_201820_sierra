@@ -49,7 +49,7 @@
                                 },
                                 data: {
                                     requireLogin: false,
-                                    roles: ['admin', cliente]
+                                    roles: ['admin', 'cliente']
                                 }
                             })
                     .state('calificacionDelete',
