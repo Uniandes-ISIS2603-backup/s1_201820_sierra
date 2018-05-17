@@ -3,44 +3,44 @@
         <ul class="nav nav-tabs">
             <li><a ui-sref="publicacionList">Lista</a></li>
             <li><a ui-sref="publicacionCreate">Crear</a></li>
-            </ul>
-            </div>
+        </ul>
+    </div>
 </div>
 <hr>
-    <h4>Editar Publicación: </h4> <br> <br>
-    <div class="container-fluid">
-   
-        <div class="form-group row">
+<h4 ng-if="isAuthenticated() && hasPermissions()">Editar Publicación: </h4> <br> <br>
+<div ng-if="isAuthenticated() && hasPermissions()" class="container-fluid">
+
+    <div class="form-group row">
         <div class="form-group col-md-6">
             <label for="publicacionComentario" class="col-sm-3">Comentario:</label>
             <textarea id="publicacionComentario" required ng-model="data.comentario" class="col-sm-6"></textarea>
         </div>
-        </div>
-  
-          <div class="form-group row">
-     <div class="form-group col-md-6">
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
             <label for="publicacionTipo" class="col-sm-3">Tipo:</label>
             <input type="text" id="publicacionTipo" required ng-model="data.tipo" class="col-sm-6"/>
         </div>
-        </div>
-        
-        <div class="form-group row">
-     <div class="form-group col-md-6">
+    </div>
+
+    <div class="form-group row">
+        <div class="form-group col-md-6">
             <label for="publicacionFecha" class="col-sm-3">Fecha:</label>
             <input type="text" id="acontecimientoFecha" required ng-model="data.fecha" class="col-sm-6"/>
         </div>
-        </div>
-     
-        
-         <div class="form-group row">
-            <div class="form-group col-sm-12">
-                <a class="btn btn-info" ui-sref="publicacionList" >Cancelar</a>
-                <input  ng-click="updatePublicacion()"value="Guardar" class="btn btn-success"/>
-            </div>
-        </div>
-          </div>  
+    </div>
 
 
-    
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <a class="btn btn-info" ui-sref="publicacionList" >Cancelar</a>
+            <input  ng-click="updatePublicacion()"value="Guardar" class="btn btn-success"/>
+        </div>
+    </div>
+</div>  
+
+
+
 
 

@@ -6,7 +6,7 @@
     </div>
 </div>
 <hr>
-<div class="container-fluid">
+<div ng-if="isAuthenticated() && hasPermissions()" class="container-fluid">
     
     <div class="form-group row">
         <div class="form-group col-md-6">
