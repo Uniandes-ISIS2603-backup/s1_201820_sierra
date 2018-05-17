@@ -15,7 +15,11 @@
                        controller:'certificadoCtrl',
                        controllerAs: 'Crtl'
                          }
-                     }
+                     },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
              })
                      
                //Estado de lista
@@ -28,7 +32,10 @@
                        controller:'certificadoCtrl',
                        controllerAs: 'Crtl'
                    }
-               }
+               },
+                data: {
+                    requireLogin: false
+                }
              })
             //EstadoDetail
             .state('certificadoDetail',{
@@ -46,7 +53,10 @@
                        controller:'certificadoDetailCtrl',
                        controllerAs: 'Crtl'
                    }
-              }
+              },
+                data: {
+                    requireLogin: false
+                }
               
             })
                .state('certificadoEdit',
@@ -67,7 +77,11 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
      
          })
            .state('certificadoDelete',
@@ -88,7 +102,11 @@
                    controllerAs: 'Crtl'
                    }
                            
-               }
+               },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
      
          })         
             //Estado de registro 
@@ -107,7 +125,11 @@
                    controller:'certificadocreateCtrl',
                    controllerAs: 'Crtl'
                 }
-              }
+              },
+                 data: {
+                    requireLogin: true,
+                     roles: ['admin']
+                   }
          });
          
         }
