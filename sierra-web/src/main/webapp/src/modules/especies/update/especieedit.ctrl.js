@@ -2,10 +2,12 @@
     var mod = ng.module("especieModule");
     mod.constant("especiesContext", "api/especies");
      mod.constant('razaContext','api/razas');
-    mod.controller('especieeditCtrl', ['$scope', '$http', 'especiesContext', '$state', '$rootScope', '$filter','razaContext',
+    mod.controller('especieeditCtrl', ['$scope', '$http', 'especiesContext', '$state', '$rootScope','razaContext',
 
-      function ($scope, $http, especiesContext, $state, $rootScope, $filter,razaContext) {
+      function ($scope, $http, especiesContext, $state, $rootScope,razaContext) {
+          
             $rootScope.edit = true;
+            
             $scope.data = {};
 
             $scope.selectedItems = [];

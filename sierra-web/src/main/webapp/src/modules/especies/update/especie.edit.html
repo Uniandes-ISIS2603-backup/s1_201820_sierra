@@ -1,54 +1,34 @@
   <div  class="container-fluid">      
-      
-    <hr> 
-    <h3>ID:{{id}}</h3>
-    <h4 >Editando la informacion de: {{nombreEspecie}}  </h4>
-    <br>
-     <center>
-    <div class="col-sm-10" >
-       
-        <form  class="FormularioEspecie" name="Especie" ng-submit="createEspecie()">   
-            <br>
-        <div>
-            <center>
-                <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreEspecie" id="nombreEspecie" placeholder="nombre">
-            </center>
-        </div>    
-            <br>
-        <div>
-            <center>
-                <lable>Clasificacion:</lable>&nbsp;<input type="text" class="Clasificacion" required ng-model="ClasificacionEspecie" id="ClasificacionEspecie" placeholder="clasificacion">  
-           </center>
-        </div>
-             <br>
-             <div>
-            <center>
-                <lable>Imagen:</lable>&nbsp;<input type="text" class="Imagen" required ng-model="ImagenEspecie" id="ImagenEspecie" placeholder="urlImagen">  
-           </center>
-        </div>  
-             <br>
-        <div>
-            <center>
-                <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
-            </center>
-            <br>
-            <hr>
-              <center>
-                <lable>Razas no asociadas a esta especie</lable>&nbsp;
-                <ul ng-repeat="raza in availableItems">
-                    <li><a ui-sref="razaDetail({razaId: raza.id})"> {{raza.nombreRaza}} </a> <input value="Asociar" type="checkbox" ng-click=""></li>
-                </ul>
-            </center>
-            <br>
-            
-            <center>
-                <center> <a ng-click="createEspecie()"  ui-sref="especiesList"><input type="button" value="Editar"></a></center>
-            </center>
-            <center>
-            <a class="btn btn-info" ui-sref="especiesList">Cancel</a>
-            </center>
-        </div> 
-    </form>
-              
-     </div>
-            </center>
+        <hr> 
+        <h3>ID:{{id}}</h3>
+        <h3 >Editando la informacion de: {{nombreEspecie}}  </h3
+        <br>
+        <div class="row">
+            <form  class="FormularioEspecie" name="Especie" ng-submit="createEspecie()" style="min-height: 300px">   
+                   
+                    <div class="col-md-4">
+                    <center> 
+                    <h2>Datos Basicos:</h2>
+                    </center>
+                        
+                    <center>
+                        <br>
+                        <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreEspecie" id="nombreEspecie" placeholder="nombre">
+                        <br>
+                        <br>
+                        <lable>Clasificacion:</lable>&nbsp;<input type="text" class="Clasificacion" required ng-model="ClasificacionEspecie" id="ClasificacionEspecie" placeholder="clasificacion"> 
+                        <br>
+                        <br>
+                        <lable>Imagen:</lable>&nbsp;<input type="text" class="Imagen" required ng-model="ImagenEspecie" id="ImagenEspecie" placeholder="urlImagen">  
+                        <br>
+                        <br>
+                        <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
+                        <br>
+                         <a ng-click="createEspecie()"  ui-sref="especiesList"><input type="button" value="Editar"></a>
+                         <a class="btn btn-info" ui-sref="especiesList">Cancel</a>
+                    </center>
+                    </div>
+                    
+            </form>        
+        </div>       
+    </div>
