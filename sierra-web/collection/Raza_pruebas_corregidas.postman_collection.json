@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "2f6be0bc-46a3-4d9b-9c2b-df4b6e89d264",
+		"name": "Raza_pruebas_corregidas",
+		"description": "Se añaden id de manera creciente pero eveces molesta el id 26",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas/26",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas/26",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas",
+						"26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"maaaaaa\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n              \n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas/26",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"maaaaaa\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n              \n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas/26",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas",
+						"26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas/26",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"maaaaaa\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n              \n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas/26",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas",
+						"26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"ma\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n                \"color\": \"Amarillo Dorado\",\n                \"genero\": \"Femenino\",\n                \"imagen\": \"recursos/img/labrador.jpg\",\n                \"nacimiento\": \"2016-06-23T00:00:00-05:00\",\n                \"nombre\": \"Shiba\",\n                \"tamano\": \"Mediana\"\n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"ma\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n                \"color\": \"Amarillo Dorado\",\n                \"genero\": \"Femenino\",\n                \"imagen\": \"recursos/img/labrador.jpg\",\n                \"nacimiento\": \"2016-06-23T00:00:00-05:00\",\n                \"nombre\": \"Shiba\",\n                \"tamano\": \"Mediana\"\n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"type\": \"razaDetailDTO\",\n        \"caracteristicas\": \"ma\",\n        \"cuidados\": \"mi\",\n        \"destacable\": \"mu\",\n        \"nombreRaza\": \"me\",\n        \"mascotas\": [\n            {\n                \"color\": \"Amarillo Dorado\",\n                \"genero\": \"Femenino\",\n                \"imagen\": \"recursos/img/labrador.jpg\",\n                \"nacimiento\": \"2016-06-23T00:00:00-05:00\",\n                \"nombre\": \"Shiba\",\n                \"tamano\": \"Mediana\"\n            }\n        ]\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/razas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/razas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"razas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
