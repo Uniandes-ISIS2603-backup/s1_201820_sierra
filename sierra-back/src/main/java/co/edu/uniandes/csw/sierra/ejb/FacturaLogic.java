@@ -27,7 +27,6 @@ public class FacturaLogic {
     @Inject
     private FacturaPersistence facturaPersistence;
     
-    @Inject ComprobanteLogic comprobanteLogica;
     
     
     
@@ -80,29 +79,4 @@ public class FacturaLogic {
         
     }
     
-    
-    public FacturaEntity addComprobante(Long facturaId, Long comprobanteId) throws BusinessLogicException
-    {
-        FacturaEntity factura = facturaPersistence.find(facturaId);
-        if(factura == null)
-        {
-            throw new BusinessLogicException("No existe una factura con el id: " + facturaId);
-        }
-        ComprobanteEntity comprobante =  comprobanteLogica.getById(comprobanteId);
-        if(comprobante != null)
-        {
-            if(factura.getComprobantes()== null)
-            {
-                factura.setComprobantes(new ArrayList<>());
-            }
-            factura.getComprobantes().add(comprobante);
-            comprobante.setFactura(factura);
-            comprobanteLogica.update(comprobante);
-            return facturaPersistence.update(factura);
-        }
-        else
-        {
-            throw new BusinessLogicException("No existe el comprobante  con el id: " + comprobanteId);
-        }
-    }
 }

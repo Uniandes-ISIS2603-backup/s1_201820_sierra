@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -112,5 +113,30 @@ public class ComprobanteLogic {
         comprobanteEntity.setFactura(facturaEntity);
         facturaEntity.setComprobante(comprobanteEntity);
         return comprobanteEntity;
+    }
+    
+    public FacturaEntity addComprobante(Long facturaId, Long comprobanteId) throws BusinessLogicException
+    {
+        FacturaEntity factura = facturaLogic.getById(facturaId);
+        if(factura == null)
+        {
+            throw new BusinessLogicException("No existe una factura con el id: " + facturaId);
+        }
+        ComprobanteEntity comprobante =  getById(comprobanteId);
+        if(comprobante != null)
+        {
+            if(factura.getComprobantes()== null)
+            {
+                factura.setComprobantes(new ArrayList<>());
+            }
+            factura.getComprobantes().add(comprobante);
+            comprobante.setFactura(factura);
+            update(comprobante);
+            return facturaLogic.update(factura);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe el comprobante  con el id: " + comprobanteId);
+        }
     }
 }
