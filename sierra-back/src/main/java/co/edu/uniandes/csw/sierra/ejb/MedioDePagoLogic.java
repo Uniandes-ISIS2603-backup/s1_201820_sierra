@@ -23,6 +23,7 @@ import javax.inject.Inject;
 public class MedioDePagoLogic {
 
     private static final Logger LOGGER = Logger.getLogger(MedioDePagoLogic.class.getName());
+    
     @Inject
     private MedioDePagoPersistence persistence;
     
