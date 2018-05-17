@@ -4,7 +4,7 @@
         <div>
             <ul class="nav nav-tabs" style="background-color: lightblue" ng-if="isAuthenticated() && hasPermissions()">
                 <li style="background-color:beige"><a ui-sref="mascotasVentaList"> Lista Venta</a></li>
-                <li style="background-color:beige"><a ui-sref="mascotaVentaCreate"> Registrar </a></li>
+                <li ng-if="isAuthenticated() && hasPermissions()" style="background-color:beige"><a ui-sref="mascotaVentaCreate"> Registrar </a></li>
             </ul>
         </div>
     </div>

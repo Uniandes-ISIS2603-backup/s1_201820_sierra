@@ -36,7 +36,7 @@
               <center>
                 <lable>Razas no asociadas a esta especie</lable>&nbsp;
                 <ul ng-repeat="raza in availableItems">
-                    <li><a ui-sref="razaDetail({razaId: raza.id})"> {{raza.nombreRaza}} </a> <input value="Asociar" type="button" ng-click=""></li>
+                    <li><a ui-sref="razaDetail({razaId: raza.id})"> {{raza.nombreRaza}} </a> <input value="Asociar" type="checkbox" ng-click=""></li>
                 </ul>
             </center>
             <br>

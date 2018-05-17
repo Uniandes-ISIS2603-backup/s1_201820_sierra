@@ -32,10 +32,10 @@
                             <label>valor:  &nbsp;</label><label id ="{{$index}}-facturaValor">{{factura.valor}}</label>
                         </div>
                     </div>
-                    <div>
+                    <div ng-if="isAuthenticated() && hasPermissions()">
                         <p id="{{$index}}-facturaEditar"><a ui-sref="facturaUpdate((facturaId:factura.id))">Editar</a></p>
                     </div>
-                    <dov>
+                    <dov ng-if="isAuthenticated() && hasPermissions()">
                         <p id="{{$index}}-facturaBorrar"><a ui-sref="facturaDelete({facturaId:factura.id})">Borrar</a></p>
                     </dov>
                     

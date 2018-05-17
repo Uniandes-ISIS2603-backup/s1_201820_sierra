@@ -7,7 +7,7 @@
             </div>
 </div>
 <hr>
-    <h4>Crear Publicación: </h4> <br> <br>
+    <h4 ng-if="isAuthenticated() && hasPermissions()">Crear Publicación: </h4> <br> <br>
     <div ng-if="isAuthenticated() && hasPermissions()" class="container-fluid">
    
         <div class="form-group row">

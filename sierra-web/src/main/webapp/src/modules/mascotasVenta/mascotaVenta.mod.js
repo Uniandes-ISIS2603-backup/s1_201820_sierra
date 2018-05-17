@@ -76,12 +76,12 @@
                                         controllerAs: 'Crtl'
                                     }
 
-                                }
-                                ,
-                     data: {
-                    requireLogin: true,
-                    roles: ['admin']
-                    }
+
+                                },
+                        data: {
+                            requireLogin: true,
+                            roles: ['cliente']
+                        }
 
                     }).state('mascotaVentaDelete',
                     {
@@ -101,12 +101,11 @@
                                         controllerAs: 'Crtl'
                                     }
 
-                                }
-                                ,
-                     data: {
-                    requireLogin: true,
-                    roles: ['admin']
-                    }
+                    },
+                        data: {
+                            requireLogin: true,
+                            roles: ['cliente']
+                        }
 
                     })   //Estado de registro 
                     .state('mascotaVentaCreate',
@@ -124,12 +123,11 @@
                                                         controller: 'mascotaVentaCreateCtrl',
                                                         controllerAs: 'Crtl'
                                                     }
-                                        }
-                                        ,
-                     data: {
-                    requireLogin: true,
-                    roles: ['admin']
-                    }
+                       },
+                                data: {
+                                    requireLogin: true,
+                                    roles: ['cliente']
+                                }
                             });
 
         }]);
