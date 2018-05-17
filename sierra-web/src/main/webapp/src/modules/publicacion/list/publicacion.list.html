@@ -3,7 +3,7 @@
         <ul class="nav nav-tabs">
             <!-- Enlace al estado de listar las entidades de Sierra -->
             <li><a ui-sref="publicacionList">Lista</a></li>
-            <li><a ui-sref="publicacionCreate">Crear</a></li>
+            <li><a ng-if="isAuthenticated() && hasPermissions()" ui-sref="publicacionCreate">Crear</a></li>
            
         </ul>
     </div>

@@ -20,8 +20,8 @@
                 <td id="{{$index}}-TIPO">{{medioDePago.tipo}}</td>
                 <td id="{{$index}}-NumeroDeReferencia">{{medioDePago.numeroReferencia}}</td>
                 
-                <td id="{{$index}}-Borrar"><a ui-sref="mediosDePagoDelete({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="deleteMediosDePago()" value="Borrar"></a></td>    
-                <td id="{{$index}}-Editar"><a ui-sref="mediosDePagoUpdate({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="mediosDePagoCreate()" value="Editar"></a></td> 
+                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-Borrar"><a ui-sref="mediosDePagoDelete({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="deleteMediosDePago()" value="Borrar"></a></td>    
+                <td ng-if="isAuthenticated() && hasPermissions()" id="{{$index}}-Editar"><a ui-sref="mediosDePagoUpdate({mediosDePagoId:medioDePago.id})"><input type="button" ng-click="mediosDePagoCreate()" value="Editar"></a></td> 
             </tr>
         </tbody>
     </table>
