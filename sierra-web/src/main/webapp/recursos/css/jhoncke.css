@@ -1,0 +1,25 @@
+#publicaciones_list
+{
+    border:1px solid red; 
+    padding:1%;
+}
+
+#publicaciones_list thumbnail 
+{
+    border-radius: 5%;
+}
+
+#publicaciones_list thumbnail img
+{
+    border-radius: 10%;
+}
+
+#btn_edit_publicacion_list
+{
+    display:display-inline;
+}
+
+#btn_delete_publicacion_list
+{
+    display:display-inline;
+}
