@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("certificadoModule");
     mod.constant("certificadosContext", "api/certificados");
-    mod.controller('certificadoDeleteCtrl', ['$scope', '$http', 'certficiadosContext', '$state',
+    mod.controller('certificadoDeleteCtrl', ['$scope', '$http', 'certificadosContext', '$state',
 
         function ($scope, $http, certificadosContext, $state) {
            
