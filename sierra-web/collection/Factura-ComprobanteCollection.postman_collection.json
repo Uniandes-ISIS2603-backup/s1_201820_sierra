@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "caf20f74-f700-4250-8b16-9dd109f05f51",
+		"name": "Factura-ComprobanteCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Factura-Comprobante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/facturas/100/comprobantes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"facturas",
+						"100",
+						"comprobantes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
