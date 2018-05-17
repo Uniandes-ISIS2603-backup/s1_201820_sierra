@@ -22,10 +22,10 @@
              
                     $scope.fechaCertificado = certificado.fecha;
                    
-                    $scope.descripcionCertificado = certificado.descripcion; 
+                    $scope.DescripcionCertificado = certificado.descripcion; 
                 
               
-                     $scope.imagenCertificado = certificado.imagen;
+                     $scope.ImagenCertificado = certificado.imagen;
                      
                      
                 
@@ -34,8 +34,9 @@
               $scope.createCertificado = function () {   
                 $http.put(certificadosContext + "/" + idCertificado, {
                     fecha: $scope.fechaCertificado,
-                    descripcion: $scope.descripcionCertificado,
-                    imagen: $scope.imagenCertificado
+                    descripcion: $scope.DescripcionCertificado,
+                    imagen: $scope.ImagenCertificado,
+                   
                 }).then(function (response) {
                     $state.go('certificadosList', {idCertificado: response.data.id}, {reload: true});
                 });
