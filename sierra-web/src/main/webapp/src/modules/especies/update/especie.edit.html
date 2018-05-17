@@ -25,7 +25,6 @@
                         <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
                         <br>
                         <br>
-                        
                          <a ng-click="createEspecie()"  ui-sref="especiesList"><input type="button" value="Editar"></a>
                          <a class="btn btn-info" ui-sref="especiesList">Cancel</a>
                     </center>
@@ -36,7 +35,7 @@
                           <li><a ui-sref="razaDetail({razaId: raza.id})">{{raza.nombreRaza}}</a></li>   
                     </ul>
                     <p ng-if="currentEspecie.razas.length===0"> No hay razas registradas</p>
-                </div>    
+                </div>   
             </form>        
         </div>       
     </div>

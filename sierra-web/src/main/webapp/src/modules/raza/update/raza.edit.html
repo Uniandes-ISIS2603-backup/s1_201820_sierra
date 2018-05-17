@@ -1,16 +1,16 @@
-  <div ng-if="isAuthenticated() && hasPermissions()"  class="container-fluid">      
+  <div  class="container-fluid">      
     <hr> 
     <h3>ID:{{currentRaza.id}}</h3>
     <h4 >Editando la informacion de: {{currentRaza.nombreRaza}} </h4>
     <br>
      <center>
-    <div class="col-sm-10" >
+    <div class="col-md-12" >
        
         <form  class="FormularioEspecie" name="Raza" ng-submit="createRaza()">   
             <br>
         <div>
             <center>
-                <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreRaza" id="nombreRaza" placeholder="nombre">
+                  <lable>Nombre:</lable>&nbsp;<input type="text" class="nombre" required ng-model="nombreRaza" id="nombreRaza" placeholder="nombre">
             </center>
         </div>    
             <br>
@@ -41,4 +41,5 @@
     </form>
               
      </div>
-            </center>
+      </center>
+  </div>
