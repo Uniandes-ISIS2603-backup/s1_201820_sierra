@@ -34,13 +34,9 @@
             <div>
                 <p>{{currentMascota.adquirido}}</p>
             </div>
-               <h4>ESPECIE</h4>
-            <div>
-                <p>{{currentMascota.especie.nombre}}</p>
-            </div>
                  <h4>RAZA</h4>
             <div>
-                <p>{{currentMascota.raza.nombreRaza}}</p>
+                <p><a ui-sref="razaDetail({razaId: currentMascota.raza.id})">{{currentMascota.raza.nombreRaza}}</a></p>
             </div>
         </div>
     </div>

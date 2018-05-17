@@ -16,7 +16,11 @@
                                 controller: 'mascotaVentaCtrl',
                                 controllerAs: 'Crtl'
                             }
-                        }
+                        },
+                     data: {
+                    requireLogin: false,
+                    roles: ['admin']
+                    }
             }).state('mascotasVentaList',
                     {
                         url: '/mascotasVenta',
@@ -28,6 +32,10 @@
                                 controllerAs: 'Ctrl'
                             }
                         }
+                        ,
+                     data: {
+                    requireLogin: false
+                    }
                     })//EstadoDetail
                     .state('mascotaVentaDetail', {
                         url: '/{mascotaId:int}/detail',
@@ -45,6 +53,10 @@
                                 controllerAs: 'Crtl'
                             }
                         }
+                        ,
+                     data: {
+                    requireLogin: false
+                    }
 
                     }).state('mascotaVentaEdit',
                     {
@@ -65,6 +77,11 @@
                                     }
 
                                 }
+                                ,
+                     data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                    }
 
                     }).state('mascotaVentaDelete',
                     {
@@ -85,6 +102,11 @@
                                     }
 
                                 }
+                                ,
+                     data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                    }
 
                     })   //Estado de registro 
                     .state('mascotaVentaCreate',
@@ -103,6 +125,11 @@
                                                         controllerAs: 'Crtl'
                                                     }
                                         }
+                                        ,
+                     data: {
+                    requireLogin: true,
+                    roles: ['admin']
+                    }
                             });
 
         }]);
