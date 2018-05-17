@@ -1,18 +1,15 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
 <div class="row" style="background-color: lightgray">
     <hr>
     
     <div class="TitEspDel">
-        <center> <label style="font-size:50px">{{currentRaza.nombre}}</label> </center>
+        <center> <label style="font-size:50px">{{currentRaza.nombreRaza}}</label> </center>
+        <center> <h3> <a ui-sref="especieDetail({especieId: currentRaza.especie.id})">{{currentRaza.especie.nombre}}</a></h3> </center>
     </div>
     <div class="row" >
-        <div class="col-sm-3"> 
+        <div class="col-md-3"> 
         </div>
-        <div class="col-sm-2">
-             <h4>NOMBRE:</h4> 
-            <div class="thumb">
-                <p>{{currentRaza.nombreRaza}}</p>
-            </div>
+        <div class="col-md-2">
             <h4>CARACTERISTICAS:</h4> 
             <div class="thumb">
                 <p>{{currentRaza.caracteristicas}}</p>
@@ -25,11 +22,9 @@
             <div>
                 <p>{{currentRaza.cuidados}}</p>
             </div>
-            <h4>ESPECIE</h4>
-            <div>
-                    <a ui-sref="especieDetail({especieId: currentRaza.especie.id})">{{currentRaza.especie.nombre}}</a>
-            </div>
-            <h4 ng-if="currentRaza.mascotas.length>0">MASCOTAS</h4>
+        </div>
+        <div class="col-md-3">
+             <h4 ng-if="currentRaza.mascotas.length>0">MASCOTAS</h4>
             <div>
                 <ul ng-repeat="mascota in currentRaza.mascotas">
                     <li><a ui-sref="mascotaaDetail({mascotaId: mascota.id})">{{mascota.nombre}}</a></li>

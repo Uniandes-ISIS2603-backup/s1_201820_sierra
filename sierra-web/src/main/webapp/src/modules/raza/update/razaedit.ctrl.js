@@ -18,7 +18,6 @@
             //Consulto la raza a editar.
             $http.get(razasContext + '/' + idRaza).then(function (response) {
                 var raza = response.data;
-             
                     $scope.nombreRaza = raza.nombreRaza;   
                     $scope.CuidadosRaza = raza.cuidados; 
                     $scope.especieR=raza.especie;
@@ -26,9 +25,8 @@
                     $scope.CaracteristicasRaza= raza.caracteristicas;
 
             });
-     
+              
               $scope.createRaza = function () {   
-
                 $http.put(razasContext + "/" + idRaza, {
                     nombreRaza: $scope.nombreRaza,
                     cuidados: $scope.CuidadosRaza,

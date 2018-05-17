@@ -1,9 +1,11 @@
 <!--LiSTA DE  RAZAS -->
 <div class="container-fluid" >
+    <hr>
     <div class="row" >
-        <div class="col-md-3" ng-repeat="raza in razasRecords">
-            <div class="thumbnail" style="background-color: gray">
-                <div>  <label> Nombre: </label> {{raza.nombreRaza}}</div>
+        <div class="col-md-4" ng-repeat="raza in razasRecords">
+            
+            <div class="thumbnail" style="background-color: lightgray">
+                <div style="color: black">  <label> Nombre: </label> {{raza.nombreRaza}}</div>
                  <div> <label> Destacable: </label> {{raza.destacable}}</div>
                 <center> 
                     <a ui-sref="razaDetail({razaId: raza.id})"><input type="button" value="Detalles"></a>
