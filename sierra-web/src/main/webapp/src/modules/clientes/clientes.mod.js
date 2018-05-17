@@ -4,6 +4,7 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
             
             var basePath = 'src/modules/clientes/';
+            var basePathMedios = 'src/modules/mediosDePago/';
             $urlRouterProvider.otherwise("/clientesList");
             
             $stateProvider.state('clientes', {
@@ -51,22 +52,15 @@
                 },
                 views: {
                     'listView':{
-                       templateUrl: basePath+"clientes.list.html"
-                   },
-                    'detailView': {
-                        templateUrl: basePath + 'clientes.detail.html',
-                        controller: 'clienteDetailCtrl',
-                        controllerAs:"ctrl"
-                    }
+                       templateUrl:basePathMedios +  'mediosDePago.list.html',
+                       controller:'clienteDetailCtrl'
+                   }
 
                 },
                 data: {
                     requireLogin: false
                 }
-                ,
-                data: {
-                    requireLogin: false
-                }
+               
 
             }).state('clienteDelete', {
                 url:'/{clienteId:int}/delete',

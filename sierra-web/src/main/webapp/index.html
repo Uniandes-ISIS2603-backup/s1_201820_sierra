@@ -188,7 +188,7 @@
                         <li><a ui-sref='facturas'style="color: black"><b>Facturas</b></a></li>
                         <li><a ui-sref='comprobantes'style="color: black"><b>Comprobantes</b></a></li>
                         <li><a ui-sref='adquisicionList' style="color: black"><b>Adquisiciones</b></a></li>
-                        <li><a ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
+                        <li><a ng-if="isAuthenticated()"  ui-sref='clientesList' style="color: black"><b>Clientes</b></a></li>
                         <li><a ui-sref='acontecimientos' style="color: black"><b>Acontecimientos</b></a></li>
                         <li><a ui-sref='publicaciones' style="color: black"><b>Publicaciones</b></a></li>
                         <li><a ui-sref='certificadosList' style="color: black"><b>certificado</b></a></li>        
