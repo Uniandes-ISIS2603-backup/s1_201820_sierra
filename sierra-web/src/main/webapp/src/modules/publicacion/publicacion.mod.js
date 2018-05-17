@@ -17,7 +17,7 @@
                 },
                     data: {
                         requireLogin: true,
-                        roles: ['cliente']
+                        roles: ['cliente','admin']
                     }
             }
             )
@@ -53,7 +53,7 @@
                         },
                     data: {
                         requireLogin: true,
-                        roles: ['cliente']
+                        roles: ['cliente','admin']
                     }
 
                     })
@@ -70,7 +70,7 @@
                         },
                     data: {
                         requireLogin: true,
-                        roles: ['cliente']
+                        roles: ['cliente','admin']
                     }
                     });
         }
