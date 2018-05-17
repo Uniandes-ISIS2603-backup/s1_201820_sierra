@@ -117,7 +117,7 @@ public class EspecieLogic
         }  
     }
 
-    public EspecieEntity addMascota(Long especieId, Long razaId) throws BusinessLogicException {
+    public EspecieEntity addRaza(Long especieId, Long razaId) throws BusinessLogicException {
         
         //Busca la especie y revisa que exista
         EspecieEntity espEnt = getEspecieById(especieId);

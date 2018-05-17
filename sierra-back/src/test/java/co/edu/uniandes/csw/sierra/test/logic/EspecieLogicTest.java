@@ -24,7 +24,9 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.EspecieLogic;
+import co.edu.uniandes.csw.sierra.ejb.RazaLogic;
 import co.edu.uniandes.csw.sierra.entities.EspecieEntity;
+import co.edu.uniandes.csw.sierra.entities.RazaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.EspeciePersistence;
 import java.util.ArrayList;
@@ -66,6 +68,9 @@ public class EspecieLogicTest
      */
     @Inject
     private EspeciePersistence especiePersistence;
+    
+    @Inject
+    private RazaLogic razaLogic;
     
     
     /**
@@ -223,6 +228,23 @@ public class EspecieLogicTest
         Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
         Assert.assertEquals(pojoEntity.getCaracteristicas(), resp.getCaracteristicas());
         Assert.assertEquals(pojoEntity.getClasificacion(), resp.getClasificacion());
+    }
+    
+     @Test
+    public void addRazaTest() {
+        EspecieEntity espEnt = factory.manufacturePojo(EspecieEntity.class);
+        RazaEntity calEnt = factory.manufacturePojo(RazaEntity.class);
+        try {
+            espEnt = especieLogic.createEspecie(espEnt);
+            calEnt = razaLogic.create(calEnt);
+            especieLogic.addRaza(espEnt.getId(), calEnt.getId());
+            EspecieEntity newEnt = especieLogic.getEspecieById(espEnt.getId());
+            Assert.assertEquals(newEnt.getRazas().get(0).getId(), calEnt.getId());
+            razaLogic.delete(calEnt.getId());
+            especieLogic.deleteEspecie(espEnt.getId());
+        } catch (BusinessLogicException e) {
+            Assert.fail("No deberia genera Exception");
+        }
     }
 }
 
