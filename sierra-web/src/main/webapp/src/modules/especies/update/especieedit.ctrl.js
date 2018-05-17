@@ -2,12 +2,10 @@
     var mod = ng.module("especieModule");
     mod.constant("especiesContext", "api/especies");
      mod.constant('razaContext','api/razas');
-    mod.controller('especieeditCtrl', ['$scope', '$http', 'especiesContext', '$state', '$rootScope','razaContext',
+    mod.controller('especieeditCtrl', ['$scope', '$http', 'especiesContext', '$state', '$rootScope', '$filter','razaContext',
 
-      function ($scope, $http, especiesContext, $state, $rootScope,razaContext) {
-          
+      function ($scope, $http, especiesContext, $state, $rootScope, $filter,razaContext) {
             $rootScope.edit = true;
-            
             $scope.data = {};
 
             $scope.selectedItems = [];
@@ -15,24 +13,25 @@
             $scope.availableItems = [];
 
 
+             
             var idEspecie = $state.params.especieId;
-       
             
+             $http.get(especiesContext).then(function (response) { 
+                    $scope.especieRecords = response.data;
+                    $scope.currentEspecie = $filter('filter')($scope.especieRecords, {id: $state.params.especieId}, true)[0];
+                   
+                });
+                
             //Consulto el autor a editar.
             $http.get(especiesContext + '/' + idEspecie).then(function (response) {
                 var especie = response.data;
                     $scope.nombreEspecie = especie.nombre;
                     $scope.id=especie.id;
                     $scope.ClasificacionEspecie = especie.clasificacion; 
-                
-               
                     $scope.CaracteristicasEspecie = especie.caracteristicas;
-          
-                     $scope.ImagenEspecie = especie.imagen;
-                     $scope.razas=especie.razas;
-                     
-                     $scope.getRazas(especie.razas);
-                     $scope.getMascotas(especie.mascotas);
+                    $scope.ImagenEspecie = especie.imagen;
+                    $scope.getRazas(especie.razas);
+                    $scope.getMascotas(especie.mascotas);
                 
             });
      
@@ -62,8 +61,8 @@
 
                     } else {
 
-                        $scope.selectedItems = unFilteredRazas;
-                        $scope.availableItems = filteredRazas;
+                        $scope.selectedItems = filteredRazas;
+                        $scope.availableItems = unFilteredRazas;
                     }
                 });
             };

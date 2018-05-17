@@ -1,19 +1,16 @@
-<div class="row" style="background-color: lightgray">
+<div class="row" style="background-color: lightgray ; border-bottom: #000; border-bottom-style: solid">
     <hr>
-    <div class="TitEspDel">
-        <center> <label style="font-size:50px">{{currentEspecie.nombre}}</label> </center>
+    <div class="TitEspDel col-md-12" >
+        <center><h1><strong>{{currentEspecie.nombre}}</strong></h1></center>
     </div>
     <div class="row" >
-        <div class="col-sm-3">
-            
+        <div class="col-md-4"  style="margin-left: 50px">
+            <img class="imagenEspecieDetail img-responsive" ng-src="{{currentEspecie.imagen}}"/> 
         </div>
-        <div class="col-sm-3">
-          <div class="thumb">
-                    <img class="imagenEspecieDetail img-responsive" ng-src="{{currentEspecie.imagen}}"/>
-          </div>
-        </div> 
-        <div class="col-sm-2">
-            <h4>CARACTERISTICAS:</h4> 
+        <div class="col-md-4">
+            <h3>DATOS BASICOS:</h3>
+            <hr>
+             <h4>CARACTERISTICAS:</h4> 
             <div class="thumb">
                 <p>{{currentEspecie.caracteristicas}}</p>
             </div>
@@ -21,11 +18,16 @@
             <div>
                 <p>{{currentEspecie.clasificacion}}</p>
             </div>
-            <h4 ng-if="currentEspecie.razas.length>0">RAZAS:</h4>
+        </div> 
+        <div class="col-md-3">
+            <center>
+            <h3 ng-if="currentEspecie.razas.length>0">RAZAS:</h3>
+            </center>
             <ul ng-repeat="raza in currentEspecie.razas">
                 <li><a ui-sref="razaDetail({razaId: raza.id})">{{raza.nombreRaza}}</a></li>
             </ul>
         </div>
+        
     </div>
     <div class="row">
         <h4 ng-if="currentEspecie.mascotas.length>0" style="text-align: center">MASCOTAS:</h4>

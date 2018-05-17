@@ -1,10 +1,10 @@
   <div  class="container-fluid">      
         <hr> 
         <h3>ID:{{id}}</h3>
-        <h3 >Editando la informacion de: {{nombreEspecie}}  </h3
+        <h3 >Editando la informacion de: {{currentEspecie.nombre}}  </h3
         <br>
-        <div class="row">
-            <form  class="FormularioEspecie" name="Especie" ng-submit="createEspecie()" style="min-height: 300px">   
+        <div class="row container-fluid FormularioEspecie">
+            <form  name="Especie" ng-submit="createEspecie()" >   
                    
                     <div class="col-md-4">
                     <center> 
@@ -24,11 +24,19 @@
                         <br>
                         <lable>Caracteristicas:</lable>&nbsp;<input type="text" class="CaracteristicaS" requiere ng-model="CaracteristicasEspecie" id="CaracteristicasEspecie" placeholder="carracteristicas" >
                         <br>
+                        <br>
+                        
                          <a ng-click="createEspecie()"  ui-sref="especiesList"><input type="button" value="Editar"></a>
                          <a class="btn btn-info" ui-sref="especiesList">Cancel</a>
                     </center>
                     </div>
-                    
+                <div class="col-md-2">
+                    <h2>Razas</h2>
+                    <ul ng-repeat="raza in currentEspecie.razas" style="align-content: center">
+                          <li><a ui-sref="razaDetail({razaId: raza.id})">{{raza.nombreRaza}}</a></li>   
+                    </ul>
+                    <p ng-if="currentEspecie.razas.length===0"> No hay razas registradas</p>
+                </div>    
             </form>        
         </div>       
     </div>
