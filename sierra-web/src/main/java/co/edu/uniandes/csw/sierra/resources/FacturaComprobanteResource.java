@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.sierra.resources;
 
 import co.edu.uniandes.csw.sierra.dtos.FacturaDetailDTO;
+import co.edu.uniandes.csw.sierra.ejb.ComprobanteLogic;
 import co.edu.uniandes.csw.sierra.ejb.FacturaLogic;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import javax.inject.Inject;
@@ -37,7 +38,7 @@ import javax.ws.rs.core.MediaType;
 public class FacturaComprobanteResource 
 {
     @Inject
-    private FacturaLogic facturaLogica ;
+    private ComprobanteLogic comprobanteLogica ;
     
     /**
      * <h1>POST /api/facturas/{facturaId}/comprobantes/{comprobanteId} : Guarda un comprobante
@@ -62,7 +63,7 @@ public class FacturaComprobanteResource
         System.out.println("facturaIdResoure: \n facturaId: " +  facturaId + "\n comprobanteId: " + comprobanteId);
         try
         {
-            return new FacturaDetailDTO(facturaLogica.addComprobante(facturaId, comprobanteId));
+            return new FacturaDetailDTO(comprobanteLogica.addComprobante(facturaId, comprobanteId));
         }
         catch(BusinessLogicException e)
         {

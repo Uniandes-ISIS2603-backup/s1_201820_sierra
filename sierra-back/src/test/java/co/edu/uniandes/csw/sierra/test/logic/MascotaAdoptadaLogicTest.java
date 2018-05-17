@@ -23,12 +23,16 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.sierra.test.logic;
 
+import co.edu.uniandes.csw.sierra.ejb.AcontecimientoLogic;
 import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
+import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -66,6 +70,8 @@ public class MascotaAdoptadaLogicTest {
     @Inject
     private MascotaAdoptadaPersistence mascotaAdoptadaPersistence;
     
+    @Inject
+    private AcontecimientoLogic aLogic;
     
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -231,6 +237,26 @@ public class MascotaAdoptadaLogicTest {
         Assert.assertEquals(pojoEntity.getImagen(), resp.getImagen());
         Assert.assertEquals(pojoEntity.getTamano(), resp.getTamano());
         Assert.assertEquals(pojoEntity.getNacimientoFecha(), resp.getNacimientoFecha());
+    }
+    
+    @Test
+    public void addAcontecimientoTest(){
+        
+        MascotaAdoptadaEntity mEnt = factory.manufacturePojo(MascotaAdoptadaEntity.class);
+        AcontecimientoEntity aEnt = factory.manufacturePojo(AcontecimientoEntity.class);
+        System.out.println("====================================\n==========================================\n");
+        try{
+            mEnt = mascotaAdoptadaLogic.createMascotaAdoptada(mEnt);
+            aEnt = aLogic.create(aEnt);
+            mascotaAdoptadaLogic.addAcontecimiento(mEnt.getId(), aEnt.getId());
+            MascotaAdoptadaEntity newEnt = mascotaAdoptadaLogic.getMascotaAdoptadaById(mEnt.getId());
+            aLogic.delete(aEnt.getId());
+            mascotaAdoptadaLogic.deleteMascotaAdoptada(mEnt.getId());
+            
+        } catch (BusinessLogicException ex) {
+            Assert.fail("no deberia causar exception");
+        }
+        
     }
     
 }

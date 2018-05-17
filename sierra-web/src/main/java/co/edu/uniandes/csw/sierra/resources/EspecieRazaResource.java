@@ -80,13 +80,13 @@ public class EspecieRazaResource {
      */
     @POST
     @Path("{razaId: \\d+}")
-    public EspecieDetailDTO linkRazaMascota(@PathParam("especieId") Long especieId, @PathParam("razaId") Long razaId)
+    public EspecieDetailDTO linkRazaEspecie(@PathParam("especieId") Long especieId, @PathParam("razaId") Long razaId)
     {
         System.out.println("RazaMascotaResoure: \n especieId: " + especieId + "\nrazaId: " + razaId);
         
         try
         {
-            return new EspecieDetailDTO(especieLogic.addMascota(especieId, razaId));
+            return new EspecieDetailDTO(especieLogic.addRaza(especieId, razaId));
         }
         catch(BusinessLogicException e){
             throw new WebApplicationException("404: " + e.getMessage());
