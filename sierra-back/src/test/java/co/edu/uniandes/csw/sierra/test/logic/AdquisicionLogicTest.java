@@ -20,13 +20,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
 import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
+import co.edu.uniandes.csw.sierra.ejb.ClienteLogic;
+import co.edu.uniandes.csw.sierra.ejb.MascotaAdoptadaLogic;
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
 import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
+import co.edu.uniandes.csw.sierra.entities.ClienteEntity;
+import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.ArrayList;
@@ -53,44 +57,50 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class AdquisicionLogicTest {
-    
+
     /**
      * PodamFactory
      */
     private PodamFactory factory = new PodamFactoryImpl();
-    
+
     /**
      * Injeccion de la clase que se va a probar
      */
     @Inject
-    private AdquisicionLogic calLogic; 
-    
+    private AdquisicionLogic calLogic;
+
     /**
      * INjeccion de la logica de calificacion para probar las asociaciones
      */
     @Inject
     private CalificacionLogic calificacionLogic;
-    
+
+    @Inject
+    private ClienteLogic clLogic;
+
+    @Inject
+    private MascotaAdoptadaLogic mscLogic;
+
     /**
-     * Injeccion  de la clase de persistencia
+     * Injeccion de la clase de persistencia
      */
     @Inject
-    private AdquisicionPersistence calPersistence; 
-    
+    private AdquisicionPersistence calPersistence;
+
     /**
      * Manejador de persistencia
      */
     @PersistenceContext
     private EntityManager em;
-    
+
     /**
      * Marcador de transacciones
      */
     @Inject
     private UserTransaction ussrTX;
-    
+
     private List<AdquisicionEntity> data = new ArrayList<>();
-    
+
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -100,12 +110,11 @@ public class AdquisicionLogicTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
-    
-    public AdquisicionLogicTest(){
+
+    public AdquisicionLogicTest() {
         //Constructor Vacio
     }
-    
+
     @Before
     public void setUp() {
         try {
@@ -122,8 +131,8 @@ public class AdquisicionLogicTest {
             }
         }
     }
-    
-     private void clearData() {
+
+    private void clearData() {
         em.createQuery("delete from AdquisicionEntity").executeUpdate();
     }
 
@@ -140,51 +149,50 @@ public class AdquisicionLogicTest {
 
         }
     }
-    
-        /**
+
+    /**
      * Prueba para crear una Adquisicion
      */
     @Test
-    public void createAdquisicionTest(){
+    public void createAdquisicionTest() {
         AdquisicionEntity newEntity = factory.manufacturePojo(AdquisicionEntity.class);
-        try{
+        try {
             AdquisicionEntity result = calLogic.create(newEntity);
             Assert.assertNotNull(result);
             AdquisicionEntity entity = em.find(AdquisicionEntity.class, result.getId());
             Assert.assertEquals(newEntity.getName(), entity.getName());
-            
-        }catch(BusinessLogicException e){
+
+        } catch (BusinessLogicException e) {
             fail("No deberia generar Exception: " + e.getMessage());
         }
 
-        
-        
     }
-    
+
     /**
      * Prueba que se pueden recuperar los objetos de la base de datos
      */
     @Test
-    public void getAdquisicionesTest(){
-        List<AdquisicionEntity> list =  calLogic.getAll();
+    public void getAdquisicionesTest() {
+        List<AdquisicionEntity> list = calLogic.getAll();
         //Revisa que ambas listas tengan el mismo tamano
         Assert.assertEquals(data.size(), list.size());
-        for(AdquisicionEntity ent: list){
-            boolean fand= false;
+        for (AdquisicionEntity ent : list) {
+            boolean fand = false;
             //Revisa que ambas adquisiciones tengan el mismo ID
-            for(AdquisicionEntity ent2: data){
-                if(ent.getId().equals(ent2.getId())){
+            for (AdquisicionEntity ent2 : data) {
+                if (ent.getId().equals(ent2.getId())) {
                     fand = true;
                 }
             }
             Assert.assertTrue(fand);
         }
     }
+
     /**
      * test para obtener una Adquisicion en especifico
      */
     @Test
-    public void getAdquisicionTest(){
+    public void getAdquisicionTest() {
         AdquisicionEntity ent = data.get(0);
         AdquisicionEntity ent2 = calLogic.getById(ent.getId());
         Assert.assertNotNull(ent2);
@@ -195,52 +203,68 @@ public class AdquisicionLogicTest {
      * Prueba para borrar una Adquisicion
      */
     @Test
-    public void deleteAdquisicionTest(){
+    public void deleteAdquisicionTest() {
         AdquisicionEntity ent = data.get(0);
-        try{
-        calLogic.delete(ent.getId());
-        }
-        catch(Exception e){
+        try {
+            calLogic.delete(ent.getId());
+        } catch (Exception e) {
             fail();
         }
         AdquisicionEntity notFound = em.find(AdquisicionEntity.class, ent.getId());
         Assert.assertNull(notFound);
-        
+
     }
+
     /**
      * Test para actualizar una Adquisicion
      */
     @Test
-    public void updateAdquisicionTest(){
+    public void updateAdquisicionTest() {
         AdquisicionEntity ent = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         AdquisicionEntity newEnt = factory.manufacturePojo(AdquisicionEntity.class);
         newEnt.setId(ent.getId());
-        
+
         try {
             calLogic.update(newEnt);
             AdquisicionEntity retrievedEnt = em.find(AdquisicionEntity.class, ent.getId());
-        Assert.assertEquals(newEnt.getName(), retrievedEnt.getName());
+            Assert.assertEquals(newEnt.getName(), retrievedEnt.getName());
         } catch (BusinessLogicException ex) {
             fail("No deberia generar Exception: " + ex.getMessage());
         }
-        
-        
+
     }
-    
-    
+
     @Test
-    public void addCalificacionTest(){
+    public void addCalificacionTest() {
         AdquisicionEntity adqEnt = factory.manufacturePojo(AdquisicionEntity.class);
         CalificacionEntity calEnt = factory.manufacturePojo(CalificacionEntity.class);
-        try{
+        try {
             adqEnt = calLogic.create(adqEnt);
             calEnt = calificacionLogic.create(calEnt);
             calLogic.addCalificacion(adqEnt.getId(), calEnt.getId());
             calLogic.delete(adqEnt.getId());
-        }catch(BusinessLogicException e){
+        } catch (BusinessLogicException e) {
             fail("No deberia genera Exception");
         }
     }
-    
+
+    @Test
+    public void relateClienteMascotaTest() {
+        AdquisicionEntity adqEnt = factory.manufacturePojo(AdquisicionEntity.class);
+        ClienteEntity clEnt = factory.manufacturePojo(ClienteEntity.class);
+        MascotaAdoptadaEntity mcsEnt = factory.manufacturePojo(MascotaAdoptadaEntity.class);
+        try {
+            adqEnt = calLogic.create(adqEnt);
+            clEnt = clLogic.createCliente(clEnt);
+            mcsEnt = mscLogic.createMascotaAdoptada(mcsEnt);
+            calLogic.linkAdquisicion(adqEnt.getId(), clEnt.getId(), mcsEnt.getId());
+            AdquisicionEntity newEnt = calLogic.getById(adqEnt.getId());
+            Assert.assertEquals(newEnt.getCliente().getId(), clEnt.getId());
+            calLogic.delete(adqEnt.getId());
+        } catch (BusinessLogicException e) {
+            fail("No deberia generar Exception");
+        }
+    }
+
 }
