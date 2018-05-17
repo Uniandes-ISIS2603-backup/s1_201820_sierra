@@ -44,10 +44,10 @@ public class ComprobanteLogic {
         FacturaEntity factura = facturaLogic.getById(facturaId);
         if(factura == null)
             throw new BusinessLogicException("La factura con el id dado por parámetro no existe.");
-         
+        persistence.create(entity);
         entity = addMedioDePago(entity.getId(), medioDePagoId);
         entity = addFactura(entity.getId(), facturaId);
-        persistence.create(entity);
+        
         System.out.println(">----------------------------------< \n \nComprobante Id: "+entity.getId() +"cliente Id: " + entity.getClienteId()
         +"\n \n >----------------------------------<");
         

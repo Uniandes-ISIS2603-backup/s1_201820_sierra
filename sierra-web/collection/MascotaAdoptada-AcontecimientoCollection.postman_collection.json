@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "06096fb7-0682-49b3-a643-3c33aa9153a1",
+		"name": "MascotaAdoptada-AcontecimientoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear MascotaAdoptada-Acontecimiento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/mascotasAdoptadas/112/acontecimientos/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"mascotasAdoptadas",
+						"112",
+						"acontecimientos",
+						"111"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

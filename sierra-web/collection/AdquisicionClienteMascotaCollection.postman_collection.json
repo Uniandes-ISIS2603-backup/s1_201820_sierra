@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "80a64fe0-22f3-4704-9686-1d76b8bca9aa",
+		"name": "AdquisicionClienteMascotaCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/adquisiciones/400/111/112",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"caracteristicas\": \"Perros con rasgos de sus ancestros los lobos con un pelaje de color combinado\",\n        \"cuidados\": \"Su pelaje y cadera\",\n        \"destacable\": \"fieles, activos y juguetones\",\n        \"nombreRaza\": \"RAZA DE TEST\"\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/adquisiciones/400/111/112",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"adquisiciones",
+						"400",
+						"111",
+						"112"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
 import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
+import co.edu.uniandes.csw.sierra.entities.PublicacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;
 import java.util.ArrayList;
@@ -48,6 +49,9 @@ public class MascotaAdoptadaLogic {
     
     @Inject
     private AcontecimientoLogic acontecimientoLogica;
+    
+    @Inject
+    private PublicacionLogic publicacionLogica;
     
     
     /**
@@ -151,6 +155,31 @@ public class MascotaAdoptadaLogic {
         else
         {
             throw new BusinessLogicException("No existe el acontecimiento  con el id: " + acontecimientoId);
+        }
+    }
+    
+    public MascotaAdoptadaEntity addPublicacion(Long mascotaAdoptadaId, Long publicacionId) throws BusinessLogicException
+    {
+        MascotaAdoptadaEntity mascota = persistence.findById(mascotaAdoptadaId);
+        if(mascota == null)
+        {
+            throw new BusinessLogicException("No existe una mascota con el id: " + mascotaAdoptadaId);
+        }
+        PublicacionEntity publicacion =  publicacionLogica.getById(publicacionId);
+        if(publicacion != null)
+        {
+            if(mascota.getPublicaciones() == null)
+            {
+                mascota.setPublicaciones(new ArrayList<>());
+            }
+            mascota.getPublicaciones().add(publicacion);
+            publicacion.setMascota(mascota);
+            publicacionLogica.update(publicacion);
+            return persistence.update(mascota);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe el publicacion  con el id: " + publicacionId);
         }
     }
 }

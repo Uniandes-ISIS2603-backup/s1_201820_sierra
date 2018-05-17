@@ -5,11 +5,11 @@
  */
 package co.edu.uniandes.csw.sierra.ejb;
 
+import co.edu.uniandes.csw.sierra.entities.ComprobanteEntity;
 import co.edu.uniandes.csw.sierra.entities.FacturaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
-import co.edu.uniandes.csw.sierra.persistence.ComprobantePersistence;
 import co.edu.uniandes.csw.sierra.persistence.FacturaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -27,11 +27,7 @@ public class FacturaLogic {
     @Inject
     private FacturaPersistence facturaPersistence;
     
-    @Inject 
-    private AdquisicionPersistence adquisicionPersistence;
-    
-    @Inject
-    private ComprobantePersistence comprobantePersistence;
+    @Inject ComprobanteLogic comprobanteLogica;
     
     
     
@@ -82,5 +78,31 @@ public class FacturaLogic {
        LOGGER.info("Termína el proceso de eliminar una entidad de factura.");
         return facturaPersistence.delete(id);
         
+    }
+    
+    
+    public FacturaEntity addComprobante(Long facturaId, Long comprobanteId) throws BusinessLogicException
+    {
+        FacturaEntity factura = facturaPersistence.find(facturaId);
+        if(factura == null)
+        {
+            throw new BusinessLogicException("No existe una factura con el id: " + facturaId);
+        }
+        ComprobanteEntity comprobante =  comprobanteLogica.getById(comprobanteId);
+        if(comprobante != null)
+        {
+            if(factura.getComprobantes()== null)
+            {
+                factura.setComprobantes(new ArrayList<>());
+            }
+            factura.getComprobantes().add(comprobante);
+            comprobante.setFactura(factura);
+            comprobanteLogica.update(comprobante);
+            return facturaPersistence.update(factura);
+        }
+        else
+        {
+            throw new BusinessLogicException("No existe el comprobante  con el id: " + comprobanteId);
+        }
     }
 }

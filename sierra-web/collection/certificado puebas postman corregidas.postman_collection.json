@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "0a557d6b-7fe2-4627-be09-d7ddc7f96b9b",
+		"name": "certificado puebas postman corregidas",
+		"description": "Se asume que la enteida de id 7 ya está en la base de datos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados/7",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n        \"descripcion\": \"el perro tiene que ser sacrificado\",\n        \"fecha\": \"2015-01-01T00:00:00-05:00\",\n        \"imagen\": \"http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados/7",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n        \"descripcion\": \"el perro tiene que ser sacrificado\",\n        \"fecha\": \"2015-01-01T00:00:00-05:00\",\n        \"imagen\": \"http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n        \"descripcion\": \"el perro tiene que ser sacrificado\",\n        \"fecha\": \"2015-01-01T00:00:00-05:00\",\n        \"imagen\": \"http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados/3",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n        \"descripcion\": \"esta vacunado commpletamente\",\n        \"fecha\": \"2015-01-01T00:00:00-05:00\",\n        \"imagen\": \"http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n        \"descripcion\": \"esta vacunado commpletamente\",\n        \"fecha\": \"2015-01-01T00:00:00-05:00\",\n        \"imagen\": \"http://m.cdn.blog.hu/ko/kockagyar/image/harry_potter_poster/harry_potter_1.jpg\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sierra-web/api/certificados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n      \r\n       \"id\": 468464,\r\n       \"fecha\": \"10/01/12\",\r\n       \"descripcion\": \"padres con premios de belleza\",\r\n       \"imagen\": \"https://t1.ea.ltmcdn.com/es/images/6/0/0/img_5_cosas_graciosas_que_hacen_los_perros_22006_600.jpg\"\r\n       \r\n   }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/certificados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"certificados"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -9,28 +9,36 @@
             $urlRouterProvider.otherwise("/adquisicionList");
             //estado 'adquisicionList'
             $stateProvider.state('adquisicionList', {
-                
+
                 url: '/adquisicion/list',
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'adquisicion.list.html',
-                        controller: 'adquisicionCtrl',     
-                        controllerAs: 'ctrl'
-                    }
-                }
-                
-            })
-            .state('adquisicionCreate', 
-            {
-                url:'/adquisicion/create',
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'adquisicion.create.html',
                         controller: 'adquisicionCtrl',
                         controllerAs: 'ctrl'
                     }
+                },
+                data: {
+                    requireLogin: false,
+                    roles: ['admin', 'cliente']
                 }
-            });
+
+            })
+                    .state('adquisicionCreate',
+                            {
+                                url: '/adquisicion/create',
+                                views: {
+                                    'mainView': {
+                                        templateUrl: basePath + 'adquisicion.create.html',
+                                        controller: 'adquisicionCtrl',
+                                        controllerAs: 'ctrl'
+                                    }
+                                },
+                                data: {
+                                    requireLogin: false,
+                                    roles: ['admin', 'cliente']
+                                }
+                            });
         }
     ]);
 })(window.angular);
