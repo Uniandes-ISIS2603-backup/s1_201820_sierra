@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.sierra.ejb;
 
 import co.edu.uniandes.csw.sierra.entities.AcontecimientoEntity;
-import co.edu.uniandes.csw.sierra.entities.MascotaAdoptadaEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AcontecimientoPersistence;
 import co.edu.uniandes.csw.sierra.persistence.MascotaAdoptadaPersistence;

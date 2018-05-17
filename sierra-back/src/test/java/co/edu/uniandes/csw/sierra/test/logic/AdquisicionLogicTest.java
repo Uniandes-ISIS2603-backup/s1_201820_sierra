@@ -24,13 +24,13 @@ SOFTWARE.
 package co.edu.uniandes.csw.sierra.test.logic;
 
 import co.edu.uniandes.csw.sierra.ejb.AdquisicionLogic;
+import co.edu.uniandes.csw.sierra.ejb.CalificacionLogic;
 import co.edu.uniandes.csw.sierra.entities.AdquisicionEntity;
+import co.edu.uniandes.csw.sierra.entities.CalificacionEntity;
 import co.edu.uniandes.csw.sierra.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.sierra.persistence.AdquisicionPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -64,6 +64,12 @@ public class AdquisicionLogicTest {
      */
     @Inject
     private AdquisicionLogic calLogic; 
+    
+    /**
+     * INjeccion de la logica de calificacion para probar las asociaciones
+     */
+    @Inject
+    private CalificacionLogic calificacionLogic;
     
     /**
      * Injeccion  de la clase de persistencia
@@ -220,6 +226,21 @@ public class AdquisicionLogicTest {
         }
         
         
+    }
+    
+    
+    @Test
+    public void addCalificacionTest(){
+        AdquisicionEntity adqEnt = factory.manufacturePojo(AdquisicionEntity.class);
+        CalificacionEntity calEnt = factory.manufacturePojo(CalificacionEntity.class);
+        try{
+            adqEnt = calLogic.create(adqEnt);
+            calEnt = calificacionLogic.create(calEnt);
+            calLogic.addCalificacion(adqEnt.getId(), calEnt.getId());
+            calLogic.delete(adqEnt.getId());
+        }catch(BusinessLogicException e){
+            fail("No deberia genera Exception");
+        }
     }
     
 }

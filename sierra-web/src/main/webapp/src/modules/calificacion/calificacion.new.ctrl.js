@@ -1,7 +1,7 @@
 (function (ng) {
-    var mod = ng.module("editorialModule");
-    mod.constant("editorialsContext", "api/editorials");
-    mod.controller('editorialNewCtrl', ['$scope', '$http', 'editorialsContext', '$state', '$rootScope',
+    var mod = ng.module("calificacionModule");
+    mod.constant("calificacionContext", "api/calificaciones");
+    mod.controller('calificacionCreateCtrl', ['$scope', '$http', 'calificacionContext', '$state', '$rootScope',
         /**
          * @ngdoc controller
          * @name editorials.controller:editorialNewCtrl
@@ -19,22 +19,12 @@
          * @param {Object} $rootScope Referencia injectada al Scope definida para
          * toda la aplicación.
          */
-        function ($scope, $http, editorialsContext, $state, $rootScope) {
-            $rootScope.edit = false;
+        function ($scope, $http, calificacionContext, $state, $rootScope) {
+            $rootScope.edit = true;
 
-            $scope.data = {};
-
-            /**
-             * @ngdoc function
-             * @name createEditorial
-             * @methodOf editorials.controller:editorialNewCtrl
-             * @description
-             * Esta función utiliza el protocolo HTTP para crear la editorial.
-             * @param {Object} editorial Objeto con la nueva de la editorial.
-             */
-            $scope.createEditorial = function () {
-                $http.post(editorialsContext, $scope.data).then(function (response) {
-                    $state.go('editorialsList', {editorialId: response.data.id}, {reload: true});
+            $scope.createCalificacion = function () {
+                $http.post(calificacionContext, $scope.data).then(function (response) {
+                    $state.go('calificacionist', {calificacionId: response.data.id}, {reload: true});
                 });
             };
         }
