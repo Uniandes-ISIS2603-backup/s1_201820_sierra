@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "f02690da-1861-45ed-8252-3db8dcdb6f65",
+		"name": "MascotaVenta-CertificadoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create MascotaVenta-Certificado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/sierra-web/api/mascotasVenta/115/publicaciones/114",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sierra-web",
+						"api",
+						"mascotasVenta",
+						"115",
+						"publicaciones",
+						"114"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
